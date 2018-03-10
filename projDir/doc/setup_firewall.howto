@@ -1,0 +1,31 @@
+Setting up the firewall on the DOW LINUX hosts
+----------------------------------------------
+
+The software on the various hosts communicates using TCP.
+We need to open up the port range 5400-5700.
+
+Alternatively you can disable the firewall altogether, but
+this is more risky.
+
+To open up the port range, use the system menu:
+
+  System -> Administration -> Firewall
+
+Select
+
+  Other ports -> Add
+
+Put in a port range:
+
+  5400 - 5700
+
+and the protocol should be
+
+  tcp
+
+Click
+
+  Apply
+
+and you are done.
+

@@ -1,0 +1,20 @@
+#! /bin/csh -f
+
+#
+# ensure that no archive tasks are still running
+#
+
+ssh drx kill_archive
+
+#
+# run archive job on remote host
+#
+
+doArchive.remote.py --debug \
+    --sourceDir $DATA_DIR \
+    --dirListPath $PROJ_DIR/archive/params/archiveDirList.drx \
+    --projectName $PROJECT_NAME \
+    --maxAgeHours 3 \
+    --remoteHost drx \
+    |& LogFilter -d $ERRORS_LOG_DIR -p doArchive.remote >& /dev/null &
+

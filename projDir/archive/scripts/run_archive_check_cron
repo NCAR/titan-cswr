@@ -1,0 +1,20 @@
+#! /bin/csh -f
+#
+
+#
+# run the archive job only if cron is active
+#
+
+set checkfile=/tmp/croncheck_archive
+crontab -l >& $checkfile
+grep "no crontab" $checkfile >& /dev/null
+
+# if grep returns 1, cron is there so go ahead
+
+if ($status == 1) then
+    run_archive
+endif
+
+# rm tmp file
+
+/bin/rm -f $checkfile

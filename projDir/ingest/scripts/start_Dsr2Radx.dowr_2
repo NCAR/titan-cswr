@@ -1,0 +1,12 @@
+#! /bin/csh
+
+cd $PROJ_DIR/ingest/params
+setenv INSTANCE dowr_2
+setenv FREQ_NUM 2
+
+running "Dsr2Radx -instance $INSTANCE"
+if ($status == 1) then
+  Dsr2Radx -instance $INSTANCE -params Dsr2Radx.dowr |& \
+    LogFilter -d $ERRORS_LOG_DIR -p Dsr2Radx -i $INSTANCE &
+endif
+

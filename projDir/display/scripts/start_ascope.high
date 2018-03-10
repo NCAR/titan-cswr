@@ -1,0 +1,3 @@
+#! /bin/csh
+
+tcpscope --fmq $DATA_DIR/fmq/ts/shmem_high_with_angles_10300 --title "AScope high" &

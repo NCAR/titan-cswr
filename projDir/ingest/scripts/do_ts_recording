@@ -1,0 +1,16 @@
+#! /bin/csh
+
+# create flag file which indicates that we want to save
+# time series data
+
+#touch /tmp/TsSmartSave.flag
+#confirm_ts_recording
+#sleep 3600
+#/bin/rm -f /tmp/TsSmartSave.flag
+#snuff confirm_ts_recording
+
+cd $PROJ_DIR/ingest/params
+#TsSmartSave -params TsSmartSave.high -debug
+
+xterm -title TsRecording.high -bg black -fg yellow -font 8x13bold -g 70x11-0+100 -e "TsSmartSave -params TsSmartSave.high -debug"
+

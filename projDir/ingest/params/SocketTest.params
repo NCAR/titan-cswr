@@ -1,0 +1,121 @@
+/**********************************************************************
+ * TDRP params for SocketTest
+ **********************************************************************/
+
+//======================================================================
+//
+// DEBUGGING AND PROCESS CONTROL.
+//
+//======================================================================
+ 
+///////////// debug ///////////////////////////////////
+//
+// Debug option.
+// If set, debug messages will be printed appropriately.
+//
+// Type: enum
+// Options:
+//     DEBUG_OFF
+//     DEBUG_NORM
+//     DEBUG_VERBOSE
+//     DEBUG_EXTRA
+//
+
+debug = DEBUG_OFF;
+
+//======================================================================
+//
+// MODE OF OPERATION.
+//
+//======================================================================
+ 
+///////////// mode ////////////////////////////////////
+//
+// Mode of operation.
+// SERVER: listens for incoming connections, reads data from socket. 
+//   CLIENT: connects to server, writes data to socket.
+//
+// Type: enum
+// Options:
+//     SERVER
+//     CLIENT
+//
+
+mode = SERVER;
+
+///////////// threaded ////////////////////////////////
+//
+// Option to use threaded methods.
+// If TRUE, uses ThreadSocket class, and incremental read/write methods.
+// Type: boolean
+//
+
+threaded = FALSE;
+
+//======================================================================
+//
+// MESSAGE DETAILS.
+//
+//======================================================================
+ 
+///////////// use_messages ////////////////////////////
+//
+// Option to use Socket messages.
+// If TRUE, a header will be added by the writer, and read by the 
+//   reader. This header specifies the message length, id and sequence 
+//   number.
+// Type: boolean
+//
+
+use_messages = FALSE;
+
+///////////// data_len_mbytes /////////////////////////
+//
+// Length of data in megabytes.
+// Input as a double, converted to a signed integer in the app.
+// Type: double
+//
+
+data_len_mbytes = 1;
+
+///////////// treat_as_text ///////////////////////////
+//
+// Treat messages as text.
+// Type: boolean
+//
+
+treat_as_text = TRUE;
+
+//======================================================================
+//
+// SERVER SOCKET DETAILS.
+//
+//======================================================================
+ 
+///////////// server_port /////////////////////////////
+//
+// Port on which the server listens for connections.
+// The client will connect to this port.
+// Type: int
+//
+
+server_port = 10000;
+
+///////////// server_host /////////////////////////////
+//
+// Host on which the server runs.
+// The client will connect to this host.
+// Type: string
+//
+
+server_host = "localhost";
+
+///////////// server_echo_messages ////////////////////
+//
+// Echo message back to client.
+// If TRUE, a received message will be echoed back to the client.
+// Type: boolean
+//
+
+server_echo_messages = FALSE;
+

@@ -1,0 +1,18 @@
+# COnfiguring the network for field or hangar
+# ===========================================
+# 
+
+# Configure for field
+---------------------
+
+# Do this as root.
+
+sudo ~/projDir/system/scripts/set_to_field
+
+# Configure for hangar
+----------------------
+
+# Do this as root.
+
+sudo ~/projDir/system/scripts/set_to_hangar
+

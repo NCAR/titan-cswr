@@ -1,0 +1,11 @@
+# NAME ncp_trip.colors
+
+0.0     0.1	DarkBlue
+0.1 	0.3	Blue
+0.3	0.5	SeaGreen
+0.5	1.0	DarkGreen
+1.0	1.25	salmon1
+1.25 	1.5  	tomato
+1.5	2.0	brown1
+2.0	2.5 	red
+2.5 	99 	firebrick

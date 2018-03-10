@@ -1,0 +1,28 @@
+##############################################################################
+# SYSTEM processes - MGEN8
+#
+DsServerMgr   primary    start_DsServerMgr           snuff_inst        
+DataMapper    primary    start_DataMapper            kill_DataMapper   
+DsFileDist    quicklook  start_DsFileDist.quicklook  snuff_inst        
+#
+###############################################################################
+# MOMENTS
+#
+Iq2Dsr    dow8           start_Iq2Dsr.dow8              snuff_inst
+Dsr2Radx  dorade.dow8    start_Dsr2Radx.dorade.dow8     snuff_inst    
+Dsr2Radx  quicklook.dow8 start_Dsr2Radx.quicklook.dow8  snuff_inst    
+###############################################################################
+# Time series recording
+#
+TsSmartSave   dow8       start_TsSmartSave.dow8         snuff_inst    
+###############################################################################
+# Status monitoring
+#
+TsStatusMonitor  dow8      start_TsStatusMonitor.dow8   snuff_inst    
+###############################################################################
+# Transmit quicklook data to ftp
+#
+InputWatcher  quicklook.dow8 start_InputWatcher.quicklook.dow8   snuff_inst    
+###############################################################################
+# RADAR MONITOR display
+RadMon         dow8        start_RadMon.dow8          snuff_inst    

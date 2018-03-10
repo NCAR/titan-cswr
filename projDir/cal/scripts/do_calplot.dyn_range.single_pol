@@ -1,0 +1,31 @@
+#!/bin/csh
+#
+# Generate a plot from the txt file and display it
+#
+
+set pname=`basename $1`
+set pname=$pname:r
+
+set xmlname=$1:r.xml
+set label1="MDS: `grep  i0DbmHc  $xmlname | cut -b 12-18` dBm"
+set label2="Slope: `grep  receiverSlopeDbHc  $xmlname | cut -b 22-27 `"
+set label3="Dyn R: `grep  dynamicRangeDbHc   $xmlname | cut -b 21-27 ` dB"
+
+echo "set terminal png" > /tmp/gnulpot.cmd 
+echo "set key right bottom" >> /tmp/gnulpot.cmd 
+echo "set output '/tmp/cal_plot.png'" >> /tmp/gnulpot.cmd
+echo "set title 'Receiver Calibration $pname'" >> /tmp/gnulpot.cmd
+echo "set xlabel 'Input Signal dBm'" >> /tmp/gnulpot.cmd
+echo "set ylabel 'Response Signal" >> /tmp/gnulpot.cmd
+echo "set label 1 '$label1' at graph 0.02,0.95 tc lt 1" >> /tmp/gnulpot.cmd
+echo "set label 2 '$label2' at graph 0.02,0.90 tc lt 1" >> /tmp/gnulpot.cmd
+echo "set label 3 '$label3' at graph 0.02,0.85 tc lt 1" >> /tmp/gnulpot.cmd
+
+echo -n "plot '$1' using 1:2 title 'Horiz', " >> /tmp/gnulpot.cmd
+echo -n " '$1' using 1:10 title 'Hc-noise' with lines, " >> /tmp/gnulpot.cmd
+
+gnuplot /tmp/gnulpot.cmd
+display /tmp/cal_plot.png
+
+set newname=$1:r.png
+mv  /tmp/cal_plot.png $newname

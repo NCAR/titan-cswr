@@ -1,0 +1,3 @@
+#! /bin/csh
+
+tcpscope --fmq $DATA_DIR/fmq/ts/shmem_dow8_with_angles_80300 --title "AScope dow8" &

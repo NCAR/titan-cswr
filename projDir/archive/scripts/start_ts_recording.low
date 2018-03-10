@@ -1,0 +1,4 @@
+#! /bin/csh
+
+xterm -title TsSmartSave.manual_low -bg black -fg orange -font 8x13bold -g 80x11+0-310 -e do_ts_recording.low >& /dev/null &
+

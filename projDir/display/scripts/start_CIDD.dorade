@@ -1,0 +1,6 @@
+#! /bin/csh
+
+cd $PROJ_DIR/display/params
+
+CIDD -p CIDD.dorade -i dorade  -fn fixed >& /dev/null &
+

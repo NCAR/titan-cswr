@@ -1,0 +1,49 @@
+#############################################
+# site-specific parameters - DOW6
+#
+# Edit for radar site
+#############################################
+
+setenv PROJECT_NAME               "PECAN"
+
+# location
+
+setenv SITE_NAME                  "Boulder"
+setenv RADAR_NAME                 "DOW6"
+setenv RADAR_LAT                  40.0352
+setenv RADAR_LON                  -105.2334
+setenv RADAR_ALT_KM               1.609
+setenv RADAR_ALT_M                1609
+setenv TRUCK_HEADING_DEG          0.0
+
+# operating frequency
+
+setenv HIGH_FREQ                  9.55e9
+setenv LOW_FREQ                   9.40e9
+setenv HIGH_FREQ_GHZ              9.55
+setenv LOW_FREQ_GHZ               9.40
+
+# calibration - 2013/11/25
+
+setenv HIGH_COUPLER_LOSS_H_DB     27.38
+setenv HIGH_COUPLER_LOSS_V_DB     27.44
+setenv LOW_COUPLER_LOSS_H_DB      27.04
+setenv LOW_COUPLER_LOSS_V_DB      27.13
+
+setenv HIGH_XMIT_POWER_H_DBM      77.8
+setenv HIGH_XMIT_POWER_V_DBM      77.4
+setenv LOW_XMIT_POWER_H_DBM       77.3
+setenv LOW_XMIT_POWER_V_DBM       77.3
+
+setenv HIGH_ZDR_CORRECTION_DB     -0.2
+setenv HIGH_SYSTEM_PHIDP_DEG         0
+setenv LOW_ZDR_CORRECTION_DB       1.1
+setenv LOW_SYSTEM_PHIDP_DEG          0
+
+setenv ANTENNA_GAIN_H_DB          44.3
+setenv ANTENNA_GAIN_V_DB          44.3
+
+setenv TWO_WAY_WAVEGUIDE_LOSS_H_DB 2.0
+setenv TWO_WAY_WAVEGUIDE_LOSS_V_DB 2.0
+
+#############################################

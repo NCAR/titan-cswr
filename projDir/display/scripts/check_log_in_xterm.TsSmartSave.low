@@ -1,0 +1,5 @@
+#! /bin/csh -f
+
+xterm -title TsSmartSave.low -bg black -fg green -g 150x40+0-0 -fn fixed -e "tail -f ~/projDir/logs/status/today/TsSmartSave.low.log" &
+
+

@@ -1,0 +1,62 @@
+README for analysis procedures
+==============================
+
+1. To reprocess time series into sweep files
+============================================
+
+(a) Frequency 1.
+================
+
+Open two xterm windows.
+
+In window 1:
+------------
+
+  cd projDir/analysis/params
+  Dsr2Sweep -params Dsr2Sweep.analysis1 -debug
+
+In window 2:
+------------
+
+  Iq2Dsr -params Iq2Dsr.analysis1 -debug -f ~/projDir/data/time_series/save/freq1/20101211/*ts
+
+You list the files you want to reprocess with the -f argument.
+The above is just an example.
+
+To complete:
+------------
+
+When Iq2Dsr is done, hit Crtl-C in window 1.
+
+Files will be written to the following directory:
+
+  projDir/data/analysis_swp/freq1/
+
+(b) Frequency 2.
+================
+
+Open two xterm windows.
+
+In window 1:
+------------
+
+  cd projDir/analysis/params
+  Dsr2Sweep -params Dsr2Sweep.analysis2 -debug
+
+In window 2:
+------------
+
+  Iq2Dsr -params Iq2Dsr.analysis2 -debug -f ~/projDir/data/time_series/save/freq2/20101211/*ts
+
+You list the files you want to reprocess with the -f argument.
+The above is just an example.
+
+To complete:
+------------
+
+When Iq2Dsr is done, hit Crtl-C in window 1.
+
+Files will be written to the following directory:
+
+  projDir/data/analysis_swp/freq2/
+

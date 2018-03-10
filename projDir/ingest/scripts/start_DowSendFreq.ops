@@ -1,0 +1,10 @@
+#! /bin/csh
+
+cd $PROJ_DIR/ingest/params
+
+running "DowSendFreq -params DowSendFreq.ops"
+if ($status == 1) then
+  DowSendFreq -params DowSendFreq.ops |& \
+    LogFilter -d $ERRORS_LOG_DIR -p DowSendFreq -i ops &
+endif
+

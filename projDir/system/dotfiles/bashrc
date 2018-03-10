@@ -1,0 +1,18 @@
+# .bashrc
+
+# User specific aliases and functions
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+export PATH=/home/operator/projDir/rvp8/scripts:/home/operator/projDir/bin:/home/operator/projDir/system/scripts:/usr/sigmet/bin:/usr/sigmet/bin/rda:$PATH
+# keep cursor in sync for Avocent KVM
+xset m 1 1
+
+alias matlab='/usr/local/MATLAB/R2011a/bin/matlab'
+alias MegaCli='/opt/MegaRAID/MegaCli/MegaCli64'
+
+
+# added by Anaconda2 4.0.0 installer
+export PATH="/home/titan5/anaconda2/bin:$PATH"

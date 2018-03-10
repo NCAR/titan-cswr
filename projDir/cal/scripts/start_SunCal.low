@@ -1,0 +1,10 @@
+#! /bin/csh
+
+cd $PROJ_DIR/cal/params
+
+running "SunCal -params SunCal.low"
+if ($status == 1) then
+  SunCal -params SunCal.low |& \
+    LogFilter -d $ERRORS_LOG_DIR -p SunCal -i low &
+endif
+

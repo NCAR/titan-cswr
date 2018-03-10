@@ -1,0 +1,4 @@
+#! /bin/csh
+
+xterm -title "Titan Status" -bg black -fg cyan -g 124x60+0+124 -e  show_titan_status
+

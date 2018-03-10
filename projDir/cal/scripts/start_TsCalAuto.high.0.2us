@@ -1,0 +1,10 @@
+#! /bin/csh
+
+cd $PROJ_DIR/cal/params
+
+echo "Starting calibration - high 0.2 us"
+echo
+echo "Please Wait - This takes a few minutes"
+echo
+snuff TsCalAuto
+TsCalAuto -params TsCalAuto.high.0.2us

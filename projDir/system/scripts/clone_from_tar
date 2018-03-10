@@ -1,0 +1,38 @@
+#! /bin/bash
+
+#--------------------------------------------------------------------
+#
+# create a clone from a tar file made with 'make_clone_tar'.
+#
+# run as root
+#
+# Usage: clone_from_tar tar_file_name
+#
+#--------------------------------------------------------------------
+
+# restore from root
+
+cd /
+
+# set the path
+
+export PATH=.:/bin:/usr/bin:/sbin:/usr/sbin:/usr/bin/X11:/usr/local/bin:/usr/local/sbin
+
+# set dest dir
+
+tar_name=$1
+
+# make a copy of etc/sysconfig
+
+cp -r etc/sysconfig /tmp
+
+# untar
+
+tar cvf $tar_name
+
+# copy sysconfig back
+
+cp -r /tmp/sysconfig etc
+
+
+

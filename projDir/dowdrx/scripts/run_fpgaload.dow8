@@ -1,0 +1,5 @@
+#! /bin/csh -f
+
+fpgaload ~/svn/dow/src/bitstream/sd3c-ddc10.angles.mcs
+
+

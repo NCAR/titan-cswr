@@ -1,0 +1,12 @@
+#! /bin/csh
+
+#setenv DISPLAY :0.0
+
+cd $PROJ_DIR/display/params
+
+running "CIDD -p CIDD.dow_export -i dow_export"
+if ($status == 1) then
+CIDD -p CIDD.dow_export -i dow_export -fn fixed |& \
+    LogFilter -d $ERRORS_LOG_DIR -p CIDD -i dow_export &
+endif
+

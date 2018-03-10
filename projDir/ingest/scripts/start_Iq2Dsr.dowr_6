@@ -1,0 +1,12 @@
+#! /bin/csh
+
+cd $PROJ_DIR/ingest/params
+setenv INSTANCE dowr_6
+setenv FREQ_NUM 6
+
+running "Iq2Dsr -instance $INSTANCE"
+if ($status == 1) then
+  Iq2Dsr -instance $INSTANCE -params Iq2Dsr.dowr |& \
+    LogFilter -d $ERRORS_LOG_DIR -p Iq2Dsr -i $INSTANCE &
+endif
+

@@ -1,0 +1,6 @@
+#! /bin/csh
+
+cd $PROJ_DIR/display/params
+
+CIDD -p CIDD.sunscan.high -i sunscan.high  -fn fixed >& /dev/null &
+

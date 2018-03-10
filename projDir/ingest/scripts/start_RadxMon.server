@@ -1,0 +1,11 @@
+#! /bin/csh -f
+
+cd $PROJ_DIR/ingest/params
+
+running "RadxMon -params RadxMon.server"
+if ($status == 1) then
+  RadxMon -params RadxMon.server |& \
+    LogFilter -d $ERRORS_LOG_DIR -p RadxMon -i server &
+endif
+
+

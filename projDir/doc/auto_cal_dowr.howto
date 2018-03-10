@@ -1,0 +1,73 @@
+How to perform the calibration using TsCalAuto - DOWR
+=====================================================
+
+On DRX:
+
+1. Start the realtime system
+----------------------------
+
+  start_all
+
+2. Go to the cal params directory
+---------------------------------
+
+  cd
+  cd projDir/cal/params
+
+3. Set the siggen
+-----------------
+
+Set the siggen up to inject signals into the coupler.
+
+4. Run the cals for each pulse width and frequency number
+---------------------------------------------------------
+
+For each of the pulse widths:
+
+  (a) select the correct entry in the GUI.
+  (b) run the cals.
+  (c) close the pop-up window with the cal plot.
+
+For each pulse width there are 6 frequencies.
+
+So for example you would run:
+
+  start_TsCalAuto.dowr 075 1
+  start_TsCalAuto.dowr 075 2
+  start_TsCalAuto.dowr 075 3
+  start_TsCalAuto.dowr 075 4
+  start_TsCalAuto.dowr 075 5
+  start_TsCalAuto.dowr 075 6
+
+  start_TsCalAuto.dowr 150 1
+  start_TsCalAuto.dowr 150 2
+  start_TsCalAuto.dowr 150 3
+  start_TsCalAuto.dowr 150 4
+  start_TsCalAuto.dowr 150 5
+  start_TsCalAuto.dowr 150 6
+
+  start_TsCalAuto.dowr 225 1
+  start_TsCalAuto.dowr 225 2
+  start_TsCalAuto.dowr 225 3
+  start_TsCalAuto.dowr 225 4
+  start_TsCalAuto.dowr 225 5
+  start_TsCalAuto.dowr 225 6
+
+5. Stop the cal processes
+-------------------------
+
+  stop_all
+
+6. Copy to the default files
+----------------------------
+
+cd
+cd projDir/data/DOWR/cal/calib_075ns
+cp TsCalAuto_yyyymmdd_hhmmss.xml ../TsCalAuto.default.xml
+
+7. Copy the results across to mgen
+----------------------------------
+
+  rsync_cal_to_mgen
+
+

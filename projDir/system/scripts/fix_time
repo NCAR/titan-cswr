@@ -1,0 +1,17 @@
+#! /bin/csh -f
+
+# fix the sync with ntp
+# you must be root to run this
+
+systemctl stop ntpd
+
+ntpdate -b ntp
+sleep 1
+ntpdate -b ntp
+sleep 1
+ntpdate -b ntp
+
+systemctl start ntpd
+
+ntpq -p
+

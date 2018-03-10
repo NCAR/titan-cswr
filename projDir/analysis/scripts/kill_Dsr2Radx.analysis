@@ -1,0 +1,7 @@
+#! /bin/csh
+
+snuff Dsr2Radx.analysis.high
+snuff Dsr2Radx.analysis.low
+
+snuff "tail -f /tmp/Dsr2Radx.analysis.high.log"
+snuff "tail -f /tmp/Dsr2Radx.analysis.low.log"

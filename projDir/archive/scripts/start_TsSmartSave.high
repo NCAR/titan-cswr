@@ -1,0 +1,10 @@
+#! /bin/csh
+
+cd $PROJ_DIR/archive/params
+
+running "TsSmartSave -params TsSmartSave.high"
+if ($status == 1) then
+  TsSmartSave -params TsSmartSave.high |& \
+    LogFilter -d $ERRORS_LOG_DIR -p TsSmartSave -i high &
+endif
+

@@ -1,0 +1,3 @@
+#! /bin/csh
+
+xterm -title pdm-dow8 -bg black -fg yellow -font 8x13bold -sb -sl 2000 -g 80x25+0+0 -e "PrintDataMap -relt -lreg -c 5" &

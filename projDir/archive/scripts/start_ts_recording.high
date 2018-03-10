@@ -1,0 +1,4 @@
+#! /bin/csh
+
+xterm -title TsSmartSave.manual_high -bg black -fg yellow -font 8x13bold -g 80x11+0-130 -e do_ts_recording.high >& /dev/null &
+

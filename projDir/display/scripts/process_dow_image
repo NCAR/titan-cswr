@@ -1,0 +1,102 @@
+#!/bin/tcsh -f
+# PROCESS_DOW_IMAGE : 
+#  Take an image and associated XML file and:
+# 1. Convert black background to transparent using lots of compression.
+# 2. Convert the XML file to a Manifold format.
+# 3. ftp the files to Vortex2.org.
+#
+# (C)  2010 Advanced Radar Corporation
+# F. Hage  April 2010
+#
+
+set orig_file = $1
+set new_file = $1:r.png
+set tmp_file = $1:r.tmp.png
+
+# Convert the image
+echo "Converting Image $orig_file to $new_file"
+convert -transparent black -quality 90 $orig_file $tmp_file 
+mv $tmp_file $new_file
+
+set file = "/tmp/geo.xml"
+set xmlfile = $1:r.xml
+
+# COnvert the XML FilE
+echo "Converting  $xmlfile :"
+ls -l $xmlfile
+
+set Clon = `grep west $xmlfile | awk '{print $2};'`
+set Clat = `grep south $xmlfile | awk '{print $2};'`
+set Dlon = `grep pdx $xmlfile | awk '{print $2};'`
+set Dlat = `grep pdy $xmlfile | awk '{print $2};'`
+set Px = `grep px $xmlfile | awk '{print $2};'`
+set Py = `grep py $xmlfile | awk '{print $2};'`
+
+cat - > $file << 'EOF'
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+<coordinateSystem>
+<name>Latitude / Longitude</name>
+<datum>World Geodetic 1984 (WGS84)</datum>
+<system>Latitude / Longitude</system>
+<unit>Degree</unit>
+<majorAxis>6.378137000000000000000000e+006</majorAxis>
+<eccentricity>8.181919084262148600000000e-002</eccentricity>
+<centerX>0.000000000000000000000000e+000</centerX>
+<centerY>0.000000000000000000000000e+000</centerY>
+<centerZ>0.000000000000000000000000e+000</centerZ>
+<rotationX>0.000000000000000000000000e+000</rotationX>
+<rotationY>0.000000000000000000000000e+000</rotationY>
+<rotationZ>0.000000000000000000000000e+000</rotationZ>
+<scaleAdjustment>0.000000000000000000000000e+000</scaleAdjustment>
+<scaleX>1.000000000000000000000000e+000</scaleX>
+'EOF'
+
+echo "<localScaleX>$Dlon</localScaleX>" >> $file
+echo "<scaleY>1.000000000000000000000000e+000</scaleY>" >> $file
+echo "<localScaleY>$Dlat</localScaleY>" >> $file
+echo "<falseEasting>0.000000000000000000000000e+000</falseEasting>" >> $file
+echo "<localOffsetX>$Clon</localOffsetX>" >> $file
+echo "<falseNorthing>0.000000000000000000000000e+000</falseNorthing>" >> $file
+echo "<localOffsetY>$Clat</localOffsetY>" >> $file
+
+
+cat - >> $file << 'EOF'
+</coordinateSystem>
+<image>
+<channels>3</channels>
+'EOF'
+
+echo "      <cx>$Px</cx>" >> $file
+echo "      <cy>$Py</cy>" >> $file
+
+cat - >> $file << 'EOF'
+</image>
+</data>
+'EOF'
+
+# Replace the original XML with the new XML file
+\mv $file $xmlfile
+
+# FTP to Vortex2.org
+#
+set local_dir = `dirname $xmlfile`
+set image_base = `basename $new_file`
+set xml_base = `basename $xmlfile`
+
+cd $local_dir
+
+# Assemble the ftp commands
+cat - > /tmp/ftp.cmd << 'EOF'
+prompt
+user DOWCAPPI images
+bin
+'EOF'
+
+# Add the mput  file names and the quit
+echo "mput $image_base $xml_base" >>  /tmp/ftp.cmd
+echo "quit" >> /tmp/ftp.cmd
+
+# Do the actual ftp.
+ftp -n vortex2.org  <  /tmp/ftp.cmd >& /dev/null
+rm  /tmp/ftp.cmd

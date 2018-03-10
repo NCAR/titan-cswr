@@ -1,0 +1,10 @@
+#! /bin/csh
+
+cd $PROJ_DIR/ingest/params
+
+running "TsScanInfoMerge -params TsScanInfoMerge.high"
+if ($status == 1) then
+  TsScanInfoMerge -params TsScanInfoMerge.high |& \
+    LogFilter -d $ERRORS_LOG_DIR -p TsScanInfoMerge -i high &
+endif
+

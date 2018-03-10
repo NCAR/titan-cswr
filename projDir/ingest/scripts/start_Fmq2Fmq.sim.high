@@ -1,0 +1,10 @@
+#! /bin/csh
+
+cd $PROJ_DIR/ingest/params
+
+running "Fmq2Fmq -params Fmq2Fmq.sim.high"
+if ($status == 1) then
+  Fmq2Fmq -params Fmq2Fmq.sim.high |& \
+    LogFilter -d $ERRORS_LOG_DIR -p Fmq2Fmq -i sim.high &
+endif
+

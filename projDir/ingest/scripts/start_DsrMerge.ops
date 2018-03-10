@@ -1,0 +1,10 @@
+#! /bin/csh
+
+cd $PROJ_DIR/ingest/params
+
+running "DsrMerge -params DsrMerge.ops"
+if ($status == 1) then
+  DsrMerge -params DsrMerge.ops |& \
+    LogFilter -d $ERRORS_LOG_DIR -p DsrMerge -i ops &
+endif
+

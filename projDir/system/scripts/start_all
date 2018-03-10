@@ -1,0 +1,44 @@
+#! /bin/csh 
+
+# source the site info file
+
+source $PROJ_DIR/system/params/radar_info
+source $PROJ_DIR/system/params/truck_heading
+
+# load fpga bitstream
+
+echo Loading bitstream .....
+$PROJ_DIR/dowdrx/scripts/run_fpgaload.${radar_name}
+echo Done loading bitstream .....
+
+#
+# Start up entire system...
+#
+
+#
+# start the procmap first so we can watch everything come up
+#
+
+start_procmap
+
+#
+# do a fast-start from the process list. We sleep between starts
+# to prevent overloading the system
+#
+ 
+procmap_list_start -sleep 0 \
+  -proc_list $PROJ_DIR/control/proc_list
+
+#
+# starting up the auto_restart should start up anything
+# that didn't come up during the fast-start
+#
+start_auto_restart
+
+#
+# install the crontab which insures that procmap and
+# the auto_restarter are always going
+#
+install_crontab
+
+

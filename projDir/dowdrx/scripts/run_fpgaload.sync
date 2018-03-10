@@ -1,0 +1,6 @@
+#! /bin/csh -f
+
+echo 1 | fpgaload ~/svn/dow/src/bitstream/sd3c-ddc10_sync.mcs
+echo 2 | fpgaload ~/svn/dow/src/bitstream/sd3c-ddc10_sync.mcs
+
+

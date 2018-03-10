@@ -1,0 +1,47 @@
+##############################################################################
+# SYSTEM processes - MGEN8
+#
+DsServerMgr   primary    start_DsServerMgr           snuff_inst        
+DataMapper    primary    start_DataMapper            kill_DataMapper   
+#DsFileDist    quicklook  start_DsFileDist.quicklook  snuff_inst        
+#
+###############################################################################
+# Time series recording
+#
+TsSmartSave   dowr       start_TsSmartSave.dowr         snuff_inst    
+###############################################################################
+# MOMENTS
+#
+Iq2Dsr    dowr_1         start_Iq2Dsr.dowr_1            snuff_inst
+Iq2Dsr    dowr_2         start_Iq2Dsr.dowr_2            snuff_inst
+Iq2Dsr    dowr_3         start_Iq2Dsr.dowr_3            snuff_inst
+Iq2Dsr    dowr_4         start_Iq2Dsr.dowr_4            snuff_inst
+Iq2Dsr    dowr_5         start_Iq2Dsr.dowr_5            snuff_inst
+Iq2Dsr    dowr_6         start_Iq2Dsr.dowr_6            snuff_inst
+Dsr2Radx  dowr_1         start_Dsr2Radx.dowr_1          snuff_inst    
+Dsr2Radx  dowr_2         start_Dsr2Radx.dowr_2          snuff_inst    
+Dsr2Radx  dowr_3         start_Dsr2Radx.dowr_3          snuff_inst    
+Dsr2Radx  dowr_4         start_Dsr2Radx.dowr_4          snuff_inst    
+Dsr2Radx  dowr_5         start_Dsr2Radx.dowr_5          snuff_inst    
+Dsr2Radx  dowr_6         start_Dsr2Radx.dowr_6          snuff_inst    
+###############################################################################
+# Status monitoring
+#
+TsStatusMonitor  dowr      start_TsStatusMonitor.dowr   snuff_inst    
+###############################################################################
+# Quick look plotting
+#
+#Dsr2Radx      quicklook.dowr  start_Dsr2Radx.quicklook.dowr      snuff_inst    
+#LdataWatcher  quicklook.dowr  start_LdataWatcher.quicklook.dowr  snuff_inst 
+###############################################################################
+# Transmit quicklook data to ftp
+#
+#InputWatcher  quicklook.dowr start_InputWatcher.quicklook.dowr   snuff_inst    
+###############################################################################
+# RADAR MONITOR display
+RadMon         dowr_1       start_RadMon.dowr_1          snuff_inst    
+RadMon         dowr_2       start_RadMon.dowr_2          snuff_inst    
+RadMon         dowr_3       start_RadMon.dowr_3          snuff_inst    
+RadMon         dowr_4       start_RadMon.dowr_4          snuff_inst    
+RadMon         dowr_5       start_RadMon.dowr_5          snuff_inst    
+RadMon         dowr_6       start_RadMon.dowr_6          snuff_inst    

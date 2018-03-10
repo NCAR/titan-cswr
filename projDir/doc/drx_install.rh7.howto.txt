@@ -1,0 +1,480 @@
+# Preparing a DRX host for the DOW Pentek system
+# ==============================================
+# 
+# OS: RH7
+#
+# Hardware
+# --------
+# 
+# This is generally a DELL T620.
+# 
+# Machine should have 2 CPUs, 32 GB RAM, extra fans.
+# 2 high-speed system disks in RAID-1, hardware RAID controller.
+# 
+# RAID controller:
+#
+#   Move to slot 3
+
+# Video card:
+# 
+#   Install good Nvidia graphics card, e.g. GeForce GT 610
+#   Install in slot 4.
+# 
+# Penteks:
+# 
+#   Install in slots 2 and 5.
+#   Install SCSI cable cards in slots 1 and 7.
+#
+#   IMPORTANT: on Pentek PCIe carrier card:
+#     (a) Move jumper JB9 to pins 1/2. (Int A)
+#     (b) Load updated PCI image to flash memory.
+#     (c) Load DDC10 image to flash memory. 
+# 
+# Acromag:
+# 
+#   Install in slot 6.
+# 
+# BIOS
+# ----
+# 
+#   Disable on-board video in the BIOS:
+# 
+#   Select:
+# 
+#     System Bios
+#       -> Integrated Devices
+#          -> Embedded Video Controller
+#             -> Disabled
+#
+# FAN speed
+# ---------
+#
+# In BIOS:
+#  Configure IDRAC
+#  Scroll down to 'Thermal'
+#  Select (a) maximum performance
+#         (b) fan offset - low
+# 
+# Install OS
+# ----------
+# 
+# The following notes are from the install for Scientific LINUX 6.4:
+# 
+#   Install with basic video driver
+#   English keyboard
+#   Basic storage device
+#   Discard data on RAID
+#   Hostname: drx
+#   Time: Etc/UTC
+#   
+#   Create custom disk partition layout:
+# 
+#    /      50 GB
+#    /root  500 MB
+#    /swap  16 GB
+#    /home  rest
+# 
+#   Software development workstation
+#   Customize:
+#     Basic system: add yum repos
+#     Virtualization: turn all off
+#     Desktops: add KDE
+#     Apps: add office
+# 
+#   Install:
+#     If dependency errors occur, ignore and go on.
+# 
+#   After install:
+#   
+#     Perform software update from menu.
+#   
+#   Firewall:
+#
+#     Open port range 5432 - 5500
+#     (Also on mgen).
+# 
+#   Add titan5 user:
+# 
+#     Add user titan5
+#     Change titan5 shell to /bin/csh using 'chsh'.
+# 
+
+# install extra repos
+# -------------------
+
+  yum install -y epel-release
+
+# Install packages
+# ----------------
+
+# You will need:
+# 
+#     emacs
+#     cvs
+#     svn
+#     git
+#     scons
+#     ftp
+#     tkcvs
+#    
+#     gcc
+#     g++
+#     gfortran
+#     Xvfb (virtual X server)
+#     gnuplot
+#     ImageMagick-devel
+#     ImageMagick-c++-devel
+# 
+#     kernel-devel
+#     fftw3-devel development (for radar moments)
+#     log4cpp-devel
+#     expat-devel (for udunits)
+#     jasper-devel (for grib2)
+# 
+#     glibc-devel
+#     libX11-devel (for X)
+#     libXext-devel (if available)
+#     bzip2-devel (for NEXRAD decompression)
+#     zlib-devel
+#     libpng-devel
+#     libtiff-devel
+#     qt4-devel (for Qt apps)
+#     qwt-devel (for tcpscope)
+#     glut-devel (for Open GL)
+#     flex-devel
+#     compat-libstdc++-296.i686 (32-bit compat)
+#     compat-libstdc++-33.i686  (32-bit compat)
+#     boost-devel
+#
+#     hdf5
+#     netcdf
+#     udunits2
+#
+#     perl.Env
+#     xorg-x11-fonts-misc
+#     xorg-x11-fonts-75dpi
+#     xorg-x11-fonts-100dpi
+
+# You can install these with this command
+
+  yum install -y cvs svn scons ftp gcc gcc-c++ gcc-gfortran Xvfb fftw3-devel log4cpp-devel expat-devel jasper-devel glibc-devel libX11-devel libXext-devel bzip2-devel zlib-devel libpng-devel libtiff-devel qt4-devel qwt-devel glut-devel flex-devel compat-libstdc++-296.i686 compat-libstdc++-33.i686 boost-devel hdf5 netcdf udunits2 perl-Env xorg-x11-fonts-misc xorg-x11-fonts-75dpi xorg-x11-fonts-100dpi emacs git tkcvs kernel-devel gnuplot ImageMagick-devel ImageMagick-c++-devel
+
+#
+# Make link for qmake
+#
+  cd /usr/bin
+  ln -s qmake-qt4 qmake
+
+# Install anaconda for python 2.7
+---------------------------------
+
+Go to the anaconda web site:
+
+  https://www.continuum.io/downloads
+
+download anaconda and install in $HOME.
+
+# disable unwanted services - firewall
+--------------------------------------
+
+  systemctl disable ip6tables
+  systemctl disable iptables
+  systemctl disable firewalld
+
+# disable SELINUX
+-----------------
+
+In
+
+  /etc/sysconfig/selinux
+
+set
+
+  SELINUX=disabled
+
+# Install Java JDK
+#  ----------------
+
+# Download Java JDK tar file from Oracle.
+
+# For example: 
+
+  jdk-8u72-linux-x64.tar.gz
+
+# As root:
+
+  mkdir /usr/java
+  cd /usr/java
+  cp jdk-8u72-linux-x64.tar.gz .
+  tar xvfz jdk-8u72-linux-x64.tar.gz
+  ln -s jdk1.8.0_72 latest
+
+# So that you can reference java using:
+
+  /usr/java/latest/bin/java
+
+# and JAVA_HOME will be set to:
+
+  setenv JAVA_HOME /usr/java/latest
+
+# Install ant
+# -----------
+
+# Download ant from:
+
+  http://ant.apache.org
+
+# Normally we grab the .gz file, e.g. apache-ant-1.9.4-bin.tar.gz
+# Untar the file and copy the contents to
+
+  /usr/local/ant
+
+# Check out LROSE
+# ---------------
+
+  setenv CVSROOT :pserver:dixon@localhost:/cvs
+  alias cvs 'cvs -d :pserver:dixon@localhost:/cvs \!*'
+  cvs login
+
+  cd ~/cvs
+  cvs co distribs/lrose
+  ./distribs/lrose/do_src_checkout
+
+# Check out dow project from cvs
+# ------------------------------
+
+  setenv CVSROOT :pserver:dixon@localhost:/cvs
+  cvs login
+  mkdir cvs
+  cd cvs
+  cvs co projects/titan/dow
+
+# set up cshrc file
+# -----------------
+
+  cd
+  ln -s cvs/projects/titan/dow/dualFreq/system/dotfiles/cshrc .cshrc
+  source ~/.cshrc
+
+# Check out dowdrx project from svn
+# ---------------------------------
+
+  mkdir -p svn/dow
+  cd svn/dow
+  svn co http://svn.eol.ucar.edu/svn/dow/trunk/src src
+
+# or if svn server port has been forwarded locally:
+
+  svn co http://localhost:8888/svn/dow/trunk/src src
+
+# Update firmware on Penteks to support option 428
+--------------------------------------------------
+
+# As shipped, the Penteks do not natively support
+# option 428, which is needed for our downconverters.
+
+# Therefore, the firmware for Option 428 must be uploaded
+# to the Penteks before use.
+
+# Install Windriver for Pentek Readyflow
+# --------------------------------------
+
+# As root, perform the following:
+
+  cd /usr/local
+  cp ~titan5/svn/dow/src/drivers/WinDriver1150_64.tgz .
+  tar xvfz WinDriver1150_64.tgz
+  cd WinDriver1150_64/redist
+  ./configure  --with-kernel-source=/lib/modules/`uname -r`/build
+  make
+  su
+  make install
+
+# Add the following to /etc/rc.local
+
+  rmmod windrvr6
+  /usr/local/WinDriver1150_64/redist/wdreg windrvr6 auto
+  chmod 666 /dev/windrvr6
+
+# You also need to change the permissions on the library files, to make
+# them readable.
+
+  cd /usr/local/WinDriver1150_64/lib/
+  chmod +r *
+
+# Install ReadyFlow in /usr/local/ReadyFlow
+# -----------------------------------------
+
+# ensure install directories exist, change ownership
+
+  mkdir -p /usr/local/ReadyFlow/include
+  mkdir -p /usr/local/ReadyFlow/lib
+  chown -R titan5.titan5 /usr/local/ReadyFlow
+
+# Check out ReadyFlow lib:
+
+  cd /usr/local/ReadyFlow
+  svn co http://svn.eol.ucar.edu/svn/sd3c/trunk/driver/ReadyFlow/7142_428_WinDriver1150/linux src
+
+# or if port forwarding is on:
+
+  svn co http://localhost:8888/svn/sd3c/trunk/driver/ReadyFlow/7142_428_WinDriver1150/linux src
+
+# build
+
+  cd src/1.0/x86_64/lib
+  make
+
+# make fpgaload
+
+  cd /usr/local/ReadyFlow/src/1.0/x86_64/examples
+  make
+  mkdir -p ~/cvs/bin
+  cp fpgaload.out ~/cvs/bin/fpgaload
+
+# Then perform the following copies
+
+  cd /usr/local/ReadyFlow/src
+  rsync -av 1.0/include/* /usr/local/ReadyFlow/include/
+  rsync -av 1.0/x86_64/include/* /usr/local/ReadyFlow/include/
+  rsync -av 1.0/x86_64/lib/*7142* /usr/local/ReadyFlow/lib
+
+# you can then remove the ReadyFlow source directory, which is proprietary
+# and cannot be distributed
+
+  /bin/rm -rf /usr/local/ReadyFlow/src
+
+# Install Acromag PMC730 driver
+# -----------------------------
+
+# Check out dow/dualFreq project.
+
+# As root:
+
+  cd /usr/local
+  mkdir Acromag
+  cd Acromag
+  cp ~titan5/svn/dow/src/drivers/pmc730_20141208.tgz .
+  tar xvfz pmc730_20141208.tgz
+  cd pmc730/dev730
+  make
+  cp apmc730.ko /lib/modules/`uname -r`/kernel/drivers
+  sudo depmod -a
+
+# You can also build some testing utilities, but it isn't necessary:
+
+  cd pmc730
+  make
+
+# Add the following lines to /etc/rc.local to create device nodes and
+# load the driver module at boot time:
+
+  #Acromag apmc730
+  if [ ! -r /dev/apmc730_0 ]; then
+    /bin/mknod -m 666 /dev/apmc730_0 c 46 0 #(1st PMC board)
+    /bin/mknod -m 666 /dev/apmc730_1 c 46 1 #(2nd PMC board)
+    /bin/mknod -m 666 /dev/apmc730_2 c 46 2 #(3rd PMC board)
+    /bin/mknod -m 666 /dev/apmc730_3 c 46 3 #(4th PMC board)
+  fi
+  /usr/sbin/modprobe apmc730
+
+# Ensure /etc/rc.local is executable
+# ----------------------------------
+
+As root:
+
+  cd /etc/rc.d
+  chmod +x rc.local
+
+# Download and build netcdf / hdf5
+# --------------------------------
+
+  ftp ftp.rap.ucar.edu
+ 
+# log in as anonymous
+
+  cd pub/titan/lrose
+  get lrose-20150406.src.tgz # (or whatever the latest dist is)
+  quit
+
+# install in ~/cvs
+
+  tar xvfz lrose-20150406.src.tgz
+  cd lrose-20150406.src.tgz
+  ./build_netcdf ~/cvs
+
+# Build LROSE
+# -----------
+
+  cd ~/cvs
+  cvs co distribs/lrose
+  ./distribs/lrose/do_src_checkout
+
+  cd ~/cvs/libs
+  make -j 8 install_include
+  make -j 8 opt
+  make -j 8 install
+  
+  cd ~/cvs/apps/tdrp/src/tdrp_gen
+  make opt
+  make install
+
+  cd ~/cvs/apps
+  make -j 8 opt
+  make -j 8 install
+  
+# Link /usr/local/lrose
+# ---------------------
+
+# As root:
+
+  cd /usr/local
+  mkdir lrose
+  cd lrose
+  ln -s ~titan5/cvs/include
+  ln -s ~titan5/cvs/lib
+  ln -s ~titan5/cvs/bin
+  
+# Compile dowdrx
+# --------------
+
+  cd
+  cd svn/dow/src/dowdrx
+  scons -u -j 8
+  cp dowdrx ~/cvs/bin
+
+# Compile pentek utilities
+# ------------------------
+
+  cd
+  cd svn/dow/src/pentek/test
+  scons -u
+  cp toggle_7142_leds ~/cvs/bin
+
+# Install the DowControl GUI
+# --------------------------
+
+# Check out the GUI
+
+  cd ~/cvs
+  cvs co java/src/edu/ucar/rap/titan
+
+# Build the GUI
+
+  cd java/src/edu/ucar/rap/titan/DowControl
+  ant dist
+
+# Configure project
+# -----------------
+
+  sudo mkdir /data
+  sudo chown titan5 /data
+
+  cd projects/titan/dow/dualFreq/system/scripts
+  ./configure_host
+
+# select host type 'drx'
+
+  source ~/.cshrc
+
+

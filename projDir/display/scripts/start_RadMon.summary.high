@@ -1,0 +1,3 @@
+#! /bin/csh -f
+
+RadMon -params $PROJ_DIR/display/params/RadMon.high -summary -update -1

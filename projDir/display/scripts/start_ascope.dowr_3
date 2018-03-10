@@ -1,0 +1,3 @@
+#! /bin/csh
+
+tcpscope --fmq $DATA_DIR/fmq/ts/shmem_dowr_90100 --title "AScope dowr_3" --radarId 3 &

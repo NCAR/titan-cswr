@@ -1,0 +1,13 @@
+#! /bin/csh
+
+setenv INSTANCE dowr_5
+setenv FREQ_NUM 5
+
+cd $PROJ_DIR/display/params
+
+snuff "HawkEye.dowr -instance ${INSTANCE}"
+
+#setenv DISPLAY :0.0
+
+HawkEye -instance ${INSTANCE} -params HawkEye.dowr -debug -start_x 500 -start_y 300 |& \
+    LogFilter -d $ERRORS_LOG_DIR -p HawkEye -i ${INSTANCE} &

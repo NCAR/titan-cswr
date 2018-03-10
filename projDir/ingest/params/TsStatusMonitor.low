@@ -1,0 +1,616 @@
+/**********************************************************************
+ * TDRP params for TsStatusMonitor
+ **********************************************************************/
+
+//======================================================================
+//
+// TsStatusMonitor reads IWRF time-series data from a file message queue 
+//   (FMQ). It locates monitoring XML-formatted information in the time 
+//   series, and writes that information out to SPDB, and in a form 
+//   suitable for Nagios.
+//
+//======================================================================
+ 
+//======================================================================
+//
+// DEBUGGING AND PROCESS CONTROL.
+//
+//======================================================================
+ 
+///////////// debug ///////////////////////////////////
+//
+// Debug option.
+// If set, debug messages will be printed appropriately.
+//
+// Type: enum
+// Options:
+//     DEBUG_OFF
+//     DEBUG_NORM
+//     DEBUG_VERBOSE
+//     DEBUG_EXTRA
+//
+
+debug = DEBUG_OFF;
+
+///////////// instance ////////////////////////////////
+//
+// Process instance.
+// Used for registration with procmap.
+// Type: string
+//
+
+instance = "low";
+
+//======================================================================
+//
+// DATA INPUT - from file message queue (FMQ).
+//
+//======================================================================
+ 
+///////////// fmq_name ////////////////////////////////
+//
+// FMQ name. For FMQ input_mode only.
+// Path to FMQ files. There are 2 files, one with a .buf extension and 
+//   one with a .stat extention. This path does not include the 
+//   extensions.
+// Type: string
+//
+
+fmq_name = "$(DATA_DIR)/fmq/ts/shmem_low_10400";
+
+///////////// data_valid_interval_secs ////////////////
+//
+// Maximum interval with no data (secs).
+// After this time elapses with no data, the status data is considered 
+//   invalid until the data restarts.
+// Type: int
+//
+
+data_valid_interval_secs = 300;
+
+//======================================================================
+//
+// XML STATUS INPUT.
+//
+//======================================================================
+ 
+///////////// xml_entries /////////////////////////////
+//
+// Details of XML entries to process.
+// 	xml_outer_tag: the main tag for the entry
+// 	xml_inner_tag: the sub tag for the entry
+// 	entry_type: the type of data stored
+// 	ok_boolean: BOOLEAN only: the value for an OK state
+// 	boolean_failure_is_critical: true if FAILURE is critical, false if 
+//   failure indicates IMPAIRED
+// 	ok_value_lower_limit: INT or DOUBLE: the lower limit for an OK state
+// 	ok_value_upper_limit: INT or DOUBLE: the upper limit for an OK state
+// 	impaired_value_lower_limit: INT or DOUBLE: the lower limit for an 
+//   IMPAIRED state
+// 	impaired_value_upper_limit: INT or DOUBLE: the upper limit for an 
+//   IMPAIRED state
+// 	graph_min_val: minimum value for history graph
+// 	graph_max_val: maximim value for history graph
+// 	comment: if set, appears at end of status line
+// .
+//
+// Type: struct
+//   typedef struct {
+//      string xml_outer_tag;
+//      string xml_inner_tag;
+//      xml_entry_type_t entry_type;
+//        Options:
+//          XML_ENTRY_BOOLEAN
+//          XML_ENTRY_INT
+//          XML_ENTRY_DOUBLE
+//          XML_ENTRY_STRING
+//      boolean ok_boolean;
+//      boolean boolean_failure_is_critical;
+//      double ok_value_lower_limit;
+//      double ok_value_upper_limit;
+//      double impaired_value_lower_limit;
+//      double impaired_value_upper_limit;
+//      string label;
+//      string units;
+//      double graph_min_val;
+//      double graph_max_val;
+//      string comment;
+//   }
+//
+// 1D array - variable length.
+//
+
+xml_entries = {
+  {
+    xml_outer_tag = "TransmitterStatus",
+    xml_inner_tag = "G0StartMissing",
+    entry_type = XML_ENTRY_BOOLEAN,
+    ok_boolean = FALSE,
+    boolean_failure_is_critical = TRUE,
+    ok_value_lower_limit = 0,
+    ok_value_upper_limit = 0,
+    impaired_value_lower_limit = 0,
+    impaired_value_upper_limit = 0,
+    label = "",
+    units = "",
+    graph_min_val = 0,
+    graph_max_val = 1,
+    comment = ""
+  }
+  ,
+  {
+    xml_outer_tag = "TransmitterStatus",
+    xml_inner_tag = "G0EndMissing",
+    entry_type = XML_ENTRY_BOOLEAN,
+    ok_boolean = FALSE,
+    boolean_failure_is_critical = TRUE,
+    ok_value_lower_limit = 0,
+    ok_value_upper_limit = 0,
+    impaired_value_lower_limit = 0,
+    impaired_value_upper_limit = 0,
+    label = "",
+    units = "",
+    graph_min_val = 0,
+    graph_max_val = 1,
+    comment = ""
+  }
+  ,
+  {
+    xml_outer_tag = "TransmitterStatus",
+    xml_inner_tag = "RfFreqHz",
+    entry_type = XML_ENTRY_DOUBLE,
+    ok_boolean = TRUE,
+    boolean_failure_is_critical = TRUE,
+    ok_value_lower_limit = 9.3e+09,
+    ok_value_upper_limit = 9.6e+09,
+    impaired_value_lower_limit = 9.3e+09,
+    impaired_value_upper_limit = 9.6e+09,
+    label = "",
+    units = "Hz",
+    graph_min_val = 9.2e+09,
+    graph_max_val = 9.7e+09,
+    comment = ""
+  }
+  ,
+  {
+    xml_outer_tag = "TransmitterStatus",
+    xml_inner_tag = "G0PowerMeanDbm",
+    entry_type = XML_ENTRY_DOUBLE,
+    ok_boolean = TRUE,
+    boolean_failure_is_critical = TRUE,
+    ok_value_lower_limit = -15,
+    ok_value_upper_limit = 0,
+    impaired_value_lower_limit = -20,
+    impaired_value_upper_limit = 5,
+    label = "",
+    units = "dBm",
+    graph_min_val = 0,
+    graph_max_val = 1,
+    comment = ""
+  }
+  ,
+  {
+    xml_outer_tag = "TransmitterStatus",
+    xml_inner_tag = "G0PowerMaxDbm",
+    entry_type = XML_ENTRY_DOUBLE,
+    ok_boolean = TRUE,
+    boolean_failure_is_critical = TRUE,
+    ok_value_lower_limit = -15,
+    ok_value_upper_limit = 0,
+    impaired_value_lower_limit = -20,
+    impaired_value_upper_limit = 5,
+    label = "",
+    units = "dBm",
+    graph_min_val = 0,
+    graph_max_val = 1,
+    comment = ""
+  }
+  ,
+  {
+    xml_outer_tag = "TransmitterStatus",
+    xml_inner_tag = "G0PowerP90Dbm",
+    entry_type = XML_ENTRY_DOUBLE,
+    ok_boolean = TRUE,
+    boolean_failure_is_critical = TRUE,
+    ok_value_lower_limit = -15,
+    ok_value_upper_limit = 0,
+    impaired_value_lower_limit = -20,
+    impaired_value_upper_limit = 5,
+    label = "",
+    units = "dBm",
+    graph_min_val = 0,
+    graph_max_val = 1,
+    comment = ""
+  }
+  ,
+  {
+    xml_outer_tag = "TransmitterStatus",
+    xml_inner_tag = "G0WidthSec",
+    entry_type = XML_ENTRY_DOUBLE,
+    ok_boolean = TRUE,
+    boolean_failure_is_critical = TRUE,
+    ok_value_lower_limit = 1e-07,
+    ok_value_upper_limit = 1.1e-06,
+    impaired_value_lower_limit = 1.5e-07,
+    impaired_value_upper_limit = 1.05e-06,
+    label = "",
+    units = "sec",
+    graph_min_val = 0,
+    graph_max_val = 12,
+    comment = ""
+  }
+  ,
+  {
+    xml_outer_tag = "ReceiverStatus",
+    xml_inner_tag = "AfcIsTracking",
+    entry_type = XML_ENTRY_BOOLEAN,
+    ok_boolean = TRUE,
+    boolean_failure_is_critical = FALSE,
+    ok_value_lower_limit = 0,
+    ok_value_upper_limit = 10,
+    impaired_value_lower_limit = 11,
+    impaired_value_upper_limit = 20,
+    label = "",
+    units = "",
+    graph_min_val = 0,
+    graph_max_val = 1,
+    comment = ""
+  }
+  ,
+  {
+    xml_outer_tag = "ReceiverStatus",
+    xml_inner_tag = "If1FreqHz",
+    entry_type = XML_ENTRY_DOUBLE,
+    ok_boolean = TRUE,
+    boolean_failure_is_critical = TRUE,
+    ok_value_lower_limit = 1.2e+08,
+    ok_value_upper_limit = 1.4e+08,
+    impaired_value_lower_limit = 1.2e+08,
+    impaired_value_upper_limit = 1.4e+08,
+    label = "",
+    units = "Hz",
+    graph_min_val = 1.1e+08,
+    graph_max_val = 1.5e+08,
+    comment = ""
+  }
+  ,
+  {
+    xml_outer_tag = "ReceiverStatus",
+    xml_inner_tag = "G0If2FreqHz",
+    entry_type = XML_ENTRY_DOUBLE,
+    ok_boolean = TRUE,
+    boolean_failure_is_critical = TRUE,
+    ok_value_lower_limit = 2.49e+07,
+    ok_value_upper_limit = 2.51e+07,
+    impaired_value_lower_limit = 2.48e+07,
+    impaired_value_upper_limit = 2.52e+07,
+    label = "",
+    units = "Hz",
+    graph_min_val = 1.1e+08,
+    graph_max_val = 1.5e+08,
+    comment = ""
+  }
+  ,
+  {
+    xml_outer_tag = "ReceiverStatus",
+    xml_inner_tag = "AfcOscFreqHz",
+    entry_type = XML_ENTRY_DOUBLE,
+    ok_boolean = TRUE,
+    boolean_failure_is_critical = TRUE,
+    ok_value_lower_limit = 1.02e+08,
+    ok_value_upper_limit = 1.2e+08,
+    impaired_value_lower_limit = 1e+08,
+    impaired_value_upper_limit = 1.1e+08,
+    label = "",
+    units = "Hz",
+    graph_min_val = 0,
+    graph_max_val = 1400,
+    comment = ""
+  }
+  ,
+  {
+    xml_outer_tag = "ReceiverStatus",
+    xml_inner_tag = "PentekFpgaTemp",
+    entry_type = XML_ENTRY_DOUBLE,
+    ok_boolean = TRUE,
+    boolean_failure_is_critical = TRUE,
+    ok_value_lower_limit = 0,
+    ok_value_upper_limit = 75,
+    impaired_value_lower_limit = 0,
+    impaired_value_upper_limit = 70,
+    label = "",
+    units = "C",
+    graph_min_val = 40,
+    graph_max_val = 80,
+    comment = ""
+  }
+  ,
+  {
+    xml_outer_tag = "ReceiverStatus",
+    xml_inner_tag = "PentekCircuitBoardTemp",
+    entry_type = XML_ENTRY_DOUBLE,
+    ok_boolean = TRUE,
+    boolean_failure_is_critical = TRUE,
+    ok_value_lower_limit = 0,
+    ok_value_upper_limit = 75,
+    impaired_value_lower_limit = 0,
+    impaired_value_upper_limit = 70,
+    label = "",
+    units = "C",
+    graph_min_val = 40,
+    graph_max_val = 80,
+    comment = ""
+  }
+};
+
+//======================================================================
+//
+// MONITOR TEST PULSE POWER.
+//
+// If test pulse monitoring is active, an extra XML block will be 
+//   generate to hold the test pulse powers. The main tag for this block 
+//   is specified in test_pulse_tag. Within the test pulse block, the 
+//   following values will the stored, as applicable:
+// 	TestPulsePowerHcDb
+// 	TestPulsePowerVcDb
+// 	TestPulsePowerHxDb
+// 	TestPulsePowerVxDb.
+//
+//======================================================================
+ 
+///////////// monitor_test_pulse //////////////////////
+//
+// Option to compute test pulse power and add to monitoring.
+// Type: boolean
+//
+
+monitor_test_pulse = FALSE;
+
+///////////// test_pulse_xml_tag //////////////////////
+//
+// Tag to delineate test pulse block in output XML.
+// Type: string
+//
+
+test_pulse_xml_tag = "HcrBandTestPulse";
+
+///////////// test_pulse_range_km /////////////////////
+//
+// Range to test pulse (km).
+// We compute the gate number from this range. The power at this gate is 
+//   averaged over the monitoring interval.
+// Type: double
+//
+
+test_pulse_range_km = 145;
+
+///////////// test_pulse_n_samples ////////////////////
+//
+// Number of samples used to compute test pulse power.
+// Type: int
+//
+
+test_pulse_n_samples = 5000;
+
+///////////// dual_pol_alternating_mode ///////////////
+//
+// If this is a dual-polarization system, is it operating in fast 
+//   alternating mode?.
+// If true, the HV flag is used to determine which receiver path to use.
+// Type: boolean
+//
+
+dual_pol_alternating_mode = FALSE;
+
+///////////// dual_pol_switching_receivers ////////////
+//
+// If this is a dual-polarization system, does it have switching 
+//   receivers?.
+// If true, then there is a co-pol receiver path and a cross-pol 
+//   receiver path. If false, there is an H and V receiver path.
+// Type: boolean
+//
+
+dual_pol_switching_receivers = FALSE;
+
+//======================================================================
+//
+// MONITOR GATE 0 VELOCITY.
+//
+// This is used to make sure the radar is cohering correctly. Only 
+//   applicable to magnetron radars.
+//
+//======================================================================
+ 
+///////////// monitor_g0_velocity /////////////////////
+//
+// Option to monitor the gate 0 velocity - intended for the ka-band.
+// Type: boolean
+//
+
+monitor_g0_velocity = FALSE;
+
+///////////// g0_velocity_xml_tag /////////////////////
+//
+// Tag to delineate G0 velocity blocki in output XML.
+// Type: string
+//
+
+g0_velocity_xml_tag = "KaBandG0Velocity";
+
+///////////// g0_velocity_range_km ////////////////////
+//
+// Range to test pulse (km).
+// We compute the gate number from this range. The velocity at this gate 
+//   is averaged over the monitoring interval.
+// Type: double
+//
+
+g0_velocity_range_km = 0.15;
+
+///////////// g0_velocity_n_samples ///////////////////
+//
+// Number of samples used to compute g0 velocity.
+// Type: int
+//
+
+g0_velocity_n_samples = 1024;
+
+//======================================================================
+//
+// NAGIOS OUTPUT.
+//
+//======================================================================
+ 
+///////////// write_to_nagios /////////////////////////
+//
+// If true, writes  one file only and then quit.
+// Type: boolean
+//
+
+write_to_nagios = TRUE;
+
+///////////// nagios_file_path ////////////////////////
+//
+// File path for NAGIOS data.
+// This file is overwritten at regular intervals.
+// Type: string
+//
+
+nagios_file_path = "/tmp/nagios/status_dow";
+
+///////////// nagios_interval_secs ////////////////////
+//
+// Interval at which the data is written to NAGIOS (secs).
+// Type: int
+//
+
+nagios_interval_secs = 10;
+
+///////////// nagios_nsecs_missing_for_warning ////////
+//
+// Length of missing data to generate a warning (secs).
+// Type: int
+//
+
+nagios_nsecs_missing_for_warning = 60;
+
+///////////// nagios_nsecs_missing_for_critical ///////
+//
+// Length of missing data to generate a critical state (secs).
+// Type: int
+//
+
+nagios_nsecs_missing_for_critical = 300;
+
+//======================================================================
+//
+// CHECK FOR ANTENNA MOVEMENT.
+//
+//======================================================================
+ 
+///////////// check_for_moving_antenna ////////////////
+//
+// Option to only process status if antenna is moving.
+// Type: boolean
+//
+
+check_for_moving_antenna = FALSE;
+
+///////////// antenna_movement_xml_tag ////////////////
+//
+// Tag to delineate antenna movement block in output XML.
+// Type: string
+//
+
+antenna_movement_xml_tag = "AntennaMovement";
+
+///////////// movement_check_interval /////////////////
+//
+// Minimim time between checks for movement (secs).
+// Type: int
+//
+
+movement_check_interval = 2;
+
+///////////// stationary_max_angle_change /////////////
+//
+// Maximum angle change for stationary mode (deg).
+// For the antenna to be considered stationary, it must not move by more 
+//   than this angle in the lockon period.
+// Type: double
+//
+
+stationary_max_angle_change = 0.01;
+
+///////////// nagios_monitor_antenna_movement /////////
+//
+// Option to add movement monitoring to nagios.
+// Type: boolean
+//
+
+nagios_monitor_antenna_movement = FALSE;
+
+///////////// nagios_antenna_movement_warn_secs ///////
+//
+// Number of stationary seconds to generate a warning.
+// Type: int
+//
+
+nagios_antenna_movement_warn_secs = 30;
+
+///////////// nagios_antenna_movement_crit_secs ///////
+//
+// Number of stationary seconds to generate a critical condition.
+// Type: int
+//
+
+nagios_antenna_movement_crit_secs = 60;
+
+///////////// nagios_antenna_movement_label ///////////
+//
+// Name for antenna movement entry in nagios.
+// Type: string
+//
+
+nagios_antenna_movement_label = "SBandAntennaMovement";
+
+//======================================================================
+//
+// SPDB OUTPUT.
+//
+//======================================================================
+ 
+///////////// write_to_spdb ///////////////////////////
+//
+// If true, writes status out to SPDB in XML format.
+// Type: boolean
+//
+
+write_to_spdb = TRUE;
+
+///////////// spdb_url ////////////////////////////////
+//
+// URL for SPDB output.
+// SPDB data is written to this location.
+// Type: string
+//
+
+spdb_url = "spdbp:://localhost::$(RADAR_NAME)/spdb/monitor/low";
+
+///////////// spdb_interval_secs //////////////////////
+//
+// Interval at which the data is written to SPDB (secs).
+// Type: int
+//
+
+spdb_interval_secs = 10;
+
+///////////// compress_spdb ///////////////////////////
+//
+// If true, compress the SPDB chunks on write.
+// Type: boolean
+//
+
+compress_spdb = TRUE;
+

@@ -1,0 +1,186 @@
+#! /bin/bash
+
+#--------------------------------------------------------------------
+#
+# script to set the IF frequency to 25 or 30, for DOW6 and DOW7
+#
+# Mike Dixon, EOL, NCAR, Boulder, CO, USA
+# Sept 2015
+#
+#--------------------------------------------------------------------
+#
+# Makes links to the relevant files
+#
+#--------------------------------------------------------------------
+
+# set the path
+
+export PATH=.:/bin:/usr/bin:/sbin:/usr/sbin:/usr/bin/X11:/usr/local/bin:/usr/local/sbin
+
+#--------------------------------------------------------------------
+# usage function
+#
+
+function usage() {
+    echo
+    echo "Usage: set_if_freq [ -d -h -v ] -r root_dir"
+    echo
+    echo "  -h:  produce this usage list"
+    echo "  -d:  turn debugging on"
+    echo "  -v:  version"
+    echo "  -r:  specify root directory (required arg)"
+    echo "       This dir contains projects, apps and libs"
+    echo
+}
+
+#--------------------------------------------------------------------
+# check args
+
+ROOT_DIR="$HOME/cvs"
+debug=false
+
+# Parse command line options.
+while getopts hvdr:D: OPT; do
+    case "$OPT" in
+        h)
+            usage
+            exit 0
+            ;;
+        d)
+            debug=true
+            ;;
+        v)
+            echo "`basename $0` version 1.0"
+            exit 0
+            ;;
+        r)
+            ROOT_DIR=$OPTARG
+            ;;
+        \?)
+            # getopts issues an error message
+            echo "Problems with command line usage"
+            usage
+            exit 1
+            ;;
+    esac
+done
+
+# Remove the switches we parsed above.
+shift `expr $OPTIND - 1`
+
+if [ "$ROOT_DIR" == "not_set" ] 
+then
+    echo
+    echo "ERROR - bad command line"
+    echo "  Must specify root dir using -r option"
+    usage
+    exit -1
+fi
+
+if [ "$debug" == "true" ]
+then
+    set -x
+    echo "ROOT_DIR is $ROOT_DIR"
+    echo "debug is $debug"
+fi
+
+# set directory paths
+
+cvs_dow_dir=$ROOT_DIR/projects/titan/dow
+cvs_proj_dir=$cvs_dow_dir/dualFreq
+system_dir=$cvs_proj_dir/system
+
+echo "cvs_dow_dir: $cvs_dow_dir"
+echo "cvs_proj_dir: $cvs_proj_dir"
+echo "system_dir: $system_dir"
+
+#-- get current if freq if possible -------------------------------
+#
+# This is stored in the file ~/.if_freq
+
+installed_if_freq=25
+if [ -e $HOME/.if_freq ]
+then
+  installed_if_freq=`cat $HOME/.if_freq`
+  echo "  Found installed if freq: '$installed_if_freq'"
+  echo
+fi
+
+#-- get if freq ---------------------------------------------------
+
+while [ "$if_freq" != 25 -a \
+        "$if_freq" != 30 ]
+
+do
+
+echo "Choose if freq from the following list"
+echo " or hit enter to use existing if freq as shown:"
+echo
+echo "    25"
+echo "    30"
+read -ep "    ......($installed_if_freq)? " if_freq
+test "$if_freq" || if_freq=$installed_if_freq
+echo
+
+if [ "$if_freq" != 25 -a \
+     "$if_freq" != 30 ]
+
+then
+
+    echo -n X | tr X '\07'	# Beep.
+    echo
+    echo "  ERROR - invalid if freq ..."
+    echo "          try again ..."
+
+fi
+
+done
+
+# set radar name
+
+if [ "$if_freq" = '25' ];
+then
+    if_freq=25
+elif [ "$if_freq" = '30' ];
+then
+    if_freq=30
+fi
+
+# save the if freq
+
+echo $if_freq > $HOME/.if_freq
+
+echo
+echo "*********************************************************************"
+echo
+echo "  set_if_freq for $if_freq"
+echo
+echo "  `date`"
+echo
+echo "  if freq: $if_freq"
+echo
+echo "*********************************************************************"
+echo
+
+# create links for dowdrx params files
+
+cd $HOME/projDir/dowdrx/params/${radar_name} || exit 1
+
+/bin/rm dowdrx.default
+ln -s dowdrx${if_freq}.default dowdrx.default
+
+/bin/rm dowdrx.calib
+ln -s dowdrx${if_freq}.calib dowdrx.calib
+
+# create links for gui param files
+
+cd $HOME/projDir/gui/params || exit 1
+
+/bin/rm DowControl.${radar_name}
+ln -s DowControl.${if_freq}.${radar_name} DowControl.${radar_name}
+
+/bin/rm DowControl.calib.${radar_name}
+ln -s DowControl.${if_freq}.calib.${radar_name} DowControl.calib.${radar_name}
+
+
+

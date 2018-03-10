@@ -1,0 +1,6 @@
+#! /bin/csh -f
+
+cd $PROJ_DIR/dowdrx/params/test
+
+dowdrx -params dowdrx.1000.1000.1_1.150m --debug all
+

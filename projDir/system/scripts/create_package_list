@@ -1,0 +1,22 @@
+#! /bin/bash
+
+#--------------------------------------------------------------------
+#
+# script to create list of required installed packages
+#
+# this is run on a master host
+#
+#--------------------------------------------------------------------
+
+# set the path
+
+export PATH=.:/bin:/usr/bin:/sbin:/usr/sbin:/usr/bin/X11:/usr/local/bin:/usr/local/sbin
+
+required=$HOME/projDir/system/params/required_pkgs.txt
+
+rpm -qa --qf '%{name}\n' | sort | uniq > $required
+
+echo "Wrote package list to: $required"
+
+
+

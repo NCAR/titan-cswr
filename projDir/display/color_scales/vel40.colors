@@ -1,0 +1,29 @@
+# NAME vel3.colors
+# jaimi 	9/22/1999 15:17:3
+# MIN    MAX    NAME
+-40 	-36 	midnightblue 
+-36 	-33 	navy 
+-33 	-30 	darkslateblue 
+-30 	-27 	slateblue 
+-27 	-24 	lightslateblue 
+-24 	-21 	mediumblue 
+-21 	-18 	royalblue 
+-18 	-15 	dodgerblue 
+-15 	-12 	deepskyblue 
+-12 	-9 	skyblue 
+-9 	-6 	mediumaquamarine 
+-6 	-3 	cadetblue 
+-3 	0 	honeydew 
+0 	3 	lemonchiffon 
+3 	6 	palegoldenrod 
+6 	9 	khaki 
+9 	12 	lightgoldenrod 
+12 	15 	darkkhaki 
+15 	18 	darkgoldenrod 
+18 	21 	peru 
+21 	24 	sandybrown 
+24 	27 	chocolate 
+27 	30 	brown 
+30 	33 	firebrick 
+33 	36 	indianred 
+36 	40 	darksalmon 

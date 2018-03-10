@@ -1,0 +1,7 @@
+#! /bin/csh
+
+snuff TsSmartSave.sunscan.high
+snuff TsSmartSave.sunscan.low
+snuff TsSmartSave.sunscan.dow8
+
+

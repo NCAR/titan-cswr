@@ -1,0 +1,131 @@
+SPECTRACOM howto
+================
+
+1. Setting DHCP off
+-------------------
+
+On dow7 the IP is 192.168.0.204.
+On dow6 the IP is 192.168.0.224.
+
+Set this up via the front panel.
+
+Hit X a few times to get to the top menu.
+
+Hit checkmark to show top menu.
+
+With arrows (down) select NetV4.
+
+Hit checkmark.
+
+Select eth0, hit checkmark.
+
+Down arrow to DHCP.
+
+Check that 'State = disabled'.
+
+Otherwise cycle with checkmark until 'State = disabled', then apply.
+
+2. Setting IP address
+---------------------
+
+Hit X to exit DHCP menu.
+
+Go up, select IPADDR.
+
+Then set IP to 192.169.0.204/24 for DOW7
+            to 192.169.0.224/24 for DOW6
+
+3. Set up remote ssh access
+---------------------------
+
+Bring up the Spectracom web page in Firefox.
+
+In your browser, go to:
+
+  ntp6 (on dow6)
+  ntp7 (on dow7)
+
+Confirm security exception in Firefox.
+
+Log in:
+
+  user: spadmin
+  passwd: admin123
+
+On newer systems, select: "Classic"
+
+On main menu, select:
+
+  Network -> HTTPS/SSH
+
+Select:
+
+  SSH tab
+
+For:
+
+  Public Keys File
+
+select:
+
+  Enabled
+
+Then, paste in public key, and hit
+
+  Submit
+
+The unit will store the key, and then you should see the
+key displayed.
+
+4. Test remote ssh access.
+--------------------------
+
+From the command line, do:
+
+  ssh spadmin@ntp6 (DOW6)
+  ssh spadmin@ntp7 (DOW7)
+
+and you should get straight in.
+
+5. Setting to mobile mode
+-------------------------
+
+On newer systems, select: "Classic"
+
+(a) Select Setup -> Inputs
+
+(b) Select On-board reference GPS (at the right)
+
+(c) Set:
+
+  Receiver mode: Mobile
+  Dynamics:      Land
+
+and then click submit.
+
+6. Bringing up the spectracom unit.
+-----------------------------------
+
+You can do this from a web browser, from mgen or drx.
+
+The url is just 'ntp' and that should get you to the login screen.
+
+User is spadmin, password is admin123.
+
+You will notice that it takes the NTP status (on the front panel)
+about 2 to 3 mins to reach 'strat = 1' - i.e. stratum 1, meaning that
+is is sync'd with GPS. I think when it reaches that state the time
+system is probably good to go.
+
+You will notice that the 10 MHz oscillator reference takes longer to
+settle down - it goes through various stages. Once the oscillator is
+ready and accurate, the fault light will go off.
+
+As an aside, it is worth making sure the NTP time on mgen and drx are
+accurate before starting up. You can do this with:
+
+  sudo fix_time
+
+and it should show how close you are when it is done. The values are
+in millisecs.
+

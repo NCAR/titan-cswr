@@ -1,0 +1,6 @@
+#! /bin/csh
+
+crontab $PROJ_DIR/control/crontab >> /dev/null &
+
+
+

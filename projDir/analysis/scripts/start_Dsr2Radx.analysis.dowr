@@ -1,0 +1,8 @@
+#! /bin/csh
+
+cd $PROJ_DIR/analysis/params
+setenv FREQ_NUM $1
+
+Dsr2Radx -params Dsr2Radx.analysis.dowr -debug
+
+

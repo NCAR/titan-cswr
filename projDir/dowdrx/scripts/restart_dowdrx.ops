@@ -1,0 +1,4 @@
+#! /bin/csh -f
+
+snuff_slow dowdrx
+start_dowdrx.ops

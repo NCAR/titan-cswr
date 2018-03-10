@@ -1,0 +1,10 @@
+#! /bin/csh
+
+cd $PROJ_DIR/archive/params
+
+running "InputWatcher -params InputWatcher.quicklook.sec"
+if ($status == 1) then
+  InputWatcher -params InputWatcher.quicklook.sec -debug |& \
+    LogFilter -d $ERRORS_LOG_DIR -p InputWatcher -i quicklook.sec &
+endif
+

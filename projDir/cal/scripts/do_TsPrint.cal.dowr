@@ -1,0 +1,5 @@
+#! /bin/csh
+
+TsPrint -fmq ${DATA_DIR}/fmq/ts/shmem_dowr_90100 -nsamples 5000 -gate 50 -ngates 500
+
+

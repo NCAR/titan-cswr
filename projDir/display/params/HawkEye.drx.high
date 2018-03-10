@@ -1,0 +1,482 @@
+/**********************************************************************
+ * TDRP params for HawkEye
+ **********************************************************************/
+
+//======================================================================
+//
+// HawkEye is the engineering display for the HAWK moments data.
+//
+// This is a C++ application using the QT4 GUI toolkit.
+//
+//======================================================================
+ 
+//======================================================================
+//
+// DEBUGGING AND PROCESS CONTROL.
+//
+//======================================================================
+ 
+///////////// debug ///////////////////////////////////
+//
+// Debug option.
+// If set, debug messages will be printed appropriately.
+//
+// Type: enum
+// Options:
+//     DEBUG_OFF
+//     DEBUG_NORM
+//     DEBUG_VERBOSE
+//     DEBUG_EXTRA
+//
+
+debug = DEBUG_OFF;
+
+///////////// instance ////////////////////////////////
+//
+// Process instance.
+// Used for registration with procmap.
+// Type: string
+//
+
+instance = "drx.high";
+
+//======================================================================
+//
+// DATA INPUT.
+//
+//======================================================================
+ 
+///////////// input_mode //////////////////////////////
+//
+// Method for reading the input data.
+// 	IWRF_FMQ_INPUT: read IWRF moments from an FMQ.
+// 	IWRF_TCP_INPUT: read an IWRF moments stream from a TCP socket.
+// 	SIMULATED_INPUT: internally-generated test pattern data.
+// 	SIMULATED_RHI_INPUT: internally-generated test pattern data for 
+//   RHIs.
+// 	DSR_FMQ_INPUT: deprecated.
+//
+// Type: enum
+// Options:
+//     IWRF_FMQ_INPUT
+//     IWRF_TCP_INPUT
+//     SIMULATED_INPUT
+//     SIMULATED_RHI_INPUT
+//     DSR_FMQ_INPUT
+//
+
+input_mode = DSR_FMQ_INPUT;
+
+///////////// input_fmq_url ///////////////////////////
+//
+// DSR_FMQ_INPUT or IWRF_FMQ_INPUT mode: input URL for moments data from 
+//   an FMQ.
+// Full url is of the form fmqp:://hostname:port:path. Path does not in 
+//   lude the file extension.
+// Type: string
+//
+
+input_fmq_url = "$(DATA_DIR)/fmq/moments/shmem_drx_high_30100";
+
+///////////// seek_to_end_of_fmq //////////////////////
+//
+// Option to seek to the end of the input FMQ.
+// If TRUE, the program will seek to the end of the fmq and only read in 
+//   new data. If FALSE, it will start reading from the beginning of the 
+//   FMQ.
+// Type: boolean
+//
+
+seek_to_end_of_fmq = TRUE;
+
+///////////// input_tcp_host //////////////////////////
+//
+// IWRF_TCP_INPUT: name of host running IWRF moments server.
+// Type: string
+//
+
+input_tcp_host = "localhost";
+
+///////////// input_tcp_port //////////////////////////
+//
+// IWRF_TCP_INPUT: port for IWRF moments server.
+// Type: int
+//
+
+input_tcp_port = 11000;
+
+///////////// beam_queue_size /////////////////////////
+//
+// Size of the internal queue used to store beams.
+// The reader runs in a separate thread, and stored the beams in a 
+//   queue. The main thread then grabs the available beams from the queue 
+//   as they become available.
+// Type: int
+//
+
+beam_queue_size = 400;
+
+///////////// sim_sleep_msecs /////////////////////////
+//
+// Number of milliseconds to sleep between beams in simulated input 
+//   mode.
+// Type: int
+//
+
+sim_sleep_msecs = 20;
+
+//======================================================================
+//
+// FIELDS TO BE DISPLAYED.
+//
+//======================================================================
+ 
+///////////// color_scale_dir /////////////////////////
+//
+// Directory for color scales.
+// Type: string
+//
+
+color_scale_dir = "$(PROJ_DIR)/display/color_scales";
+
+///////////// fields //////////////////////////////////
+//
+// Fields to be displayed.
+// label: appears on the GUI. raw_name: unfiltered field name. 
+//   filtered_name: field with clutter filter applied. units: units string 
+//   for color scale. color_map: name of color map in color_scale_dir. 
+//   shortcut: keyboard character for shortcut. Specified key will select 
+//   raw field. Use ALT-key to get filtered field. .
+//
+// Type: struct
+//   typedef struct {
+//      string label;
+//      string raw_name;
+//      string filtered_name;
+//      string units;
+//      string color_map;
+//      string shortcut;
+//   }
+//
+// 1D array - variable length.
+//
+
+fields = {
+  {
+    label = "DBZHC",
+    raw_name = "DBZHC",
+    filtered_name = "",
+    units = "dBZ",
+    color_map = "dbz.colors",
+    shortcut = "1"
+  }
+  ,
+  {
+    label = "VEL25",
+    raw_name = "VEL",
+    filtered_name = "VEL_F",
+    units = "m/s",
+    color_map = "vel25.colors",
+    shortcut = "2"
+  }
+  ,
+  {
+    label = "VEL35",
+    raw_name = "VEL",
+    filtered_name = "VEL_F",
+    units = "m/s",
+    color_map = "vel35.colors",
+    shortcut = "3"
+  }
+  ,
+  {
+    label = "VEL40",
+    raw_name = "VEL",
+    filtered_name = "VEL_F",
+    units = "m/s",
+    color_map = "vel40.colors",
+    shortcut = "4"
+  }
+  ,
+  {
+    label = "VEL50",
+    raw_name = "VEL",
+    filtered_name = "VEL_F",
+    units = "m/s",
+    color_map = "vel50.colors",
+    shortcut = "5"
+  }
+  ,
+  {
+    label = "VEL75",
+    raw_name = "VEL",
+    filtered_name = "VEL_F",
+    units = "m/s",
+    color_map = "vel75.colors",
+    shortcut = "6"
+  }
+  ,
+  {
+    label = "WIDTH",
+    raw_name = "WIDTH",
+    filtered_name = "",
+    units = "m/s",
+    color_map = "width.colors",
+    shortcut = "7"
+  }
+  ,
+  {
+    label = "SNRHC",
+    raw_name = "SNRHC",
+    filtered_name = "",
+    units = "m/s",
+    color_map = "snr.colors",
+    shortcut = "8"
+  }
+  ,
+  {
+    label = "DBMHC",
+    raw_name = "DBMHC",
+    filtered_name = "",
+    units = "m/s",
+    color_map = "dbm.colors",
+    shortcut = "9"
+  }
+  ,
+  {
+    label = "VELPS",
+    raw_name = "VELPS",
+    filtered_name = "",
+    units = "m/s",
+    color_map = "vel35.colors",
+    shortcut = "q"
+  }
+  ,
+  {
+    label = "VELPL",
+    raw_name = "VELPL",
+    filtered_name = "",
+    units = "m/s",
+    color_map = "vel35.colors",
+    shortcut = "w"
+  }
+  ,
+  {
+    label = "NCP",
+    raw_name = "NCP",
+    filtered_name = "",
+    units = "",
+    color_map = "ncp.colors",
+    shortcut = "e"
+  }
+};
+
+///////////// background_render_mins //////////////////
+//
+// Background rendering time period in minutes.
+// Any field which is viewed will continue to be rendered in the 
+//   background for this number of minutes.
+// Minimum val: 0
+// Type: double
+//
+
+background_render_mins = 2;
+
+//======================================================================
+//
+// DISPLAY DETAILS.
+//
+//======================================================================
+ 
+///////////// override_radar_name /////////////////////
+//
+// Option to override radar name in the data.
+// Type: boolean
+//
+
+override_radar_name = FALSE;
+
+///////////// radar_name //////////////////////////////
+//
+// Radar name if overridden.
+// Type: string
+//
+
+radar_name = "$(RADAR_NAME)";
+
+///////////// display_site_name ///////////////////////
+//
+// Option to display the site name in the left panel.
+// Type: boolean
+//
+
+display_site_name = TRUE;
+
+///////////// override_site_name //////////////////////
+//
+// Option to override site name in the data.
+// Type: boolean
+//
+
+override_site_name = TRUE;
+
+///////////// site_name ///////////////////////////////
+//
+// Site name if overridden.
+// Type: string
+//
+
+site_name = "DRX";
+
+///////////// max_range_km ////////////////////////////
+//
+// Max range for the display (km).
+// Type: double
+//
+
+max_range_km = 150;
+
+///////////// main_window_width ///////////////////////
+//
+// Startup width of main window (pixels).
+// Type: int
+//
+
+main_window_width = 1070;
+
+///////////// main_window_height //////////////////////
+//
+// Startup height of main window (pixels).
+// Type: int
+//
+
+main_window_height = 550;
+
+///////////// main_window_start_x /////////////////////
+//
+// Startup X for main window (pixels).
+// Type: int
+//
+
+main_window_start_x = 0;
+
+///////////// main_window_start_y /////////////////////
+//
+// Startup Y for main window (pixels).
+// Type: int
+//
+
+main_window_start_y = 0;
+
+///////////// color_scale_width ///////////////////////
+//
+// Width of color scale (pixels).
+// Type: int
+//
+
+color_scale_width = 80;
+
+///////////// label_font_size /////////////////////////
+//
+// Basic font size for labels (pixels).
+// Some of the labels are scaled relative to this size.
+// Type: int
+//
+
+label_font_size = 12;
+
+///////////// background_color ////////////////////////
+//
+// Color of main display background.
+// Type: string
+//
+
+background_color = "black";
+
+///////////// grid_and_range_ring_color ///////////////
+//
+// Color of grids and range rings.
+// Type: string
+//
+
+grid_and_range_ring_color = "white";
+
+///////////// display_transmit_power //////////////////
+//
+// Option to display transmit power values.
+// Set this to FALSE is transmit power is not available.
+// Type: boolean
+//
+
+display_transmit_power = FALSE;
+
+//======================================================================
+//
+// PPI DISPLAY DETAILS.
+//
+//======================================================================
+ 
+///////////// ppi_display_type ////////////////////////
+//
+// Type of display to use for the PPI window.
+// 	PPI_FULL - Display the full 360 degrees of the PPI. This is the 
+//   default.
+// 	PPI_AIRBORN - Use the airborn radar PPI display. This display shows 
+//   just the 180 degrees of radar pointing forward from the nose of the 
+//   plane.
+//
+// Type: enum
+// Options:
+//     PPI_FULL
+//     PPI_AIRBORNE
+//
+
+ppi_display_type = PPI_FULL;
+
+//======================================================================
+//
+// RHI DISPLAY DETAILS.
+//
+//======================================================================
+ 
+///////////// rhi_window_width ////////////////////////
+//
+// Startup width of RHI window (pixels).
+// Type: int
+//
+
+rhi_window_width = 500;
+
+///////////// rhi_window_height ///////////////////////
+//
+// Startup height of RHI window (pixels).
+// Type: int
+//
+
+rhi_window_height = 500;
+
+///////////// rhi_window_start_x //////////////////////
+//
+// Startup X for RHI window (pixels).
+// Type: int
+//
+
+rhi_window_start_x = 1000;
+
+///////////// rhi_window_start_y //////////////////////
+//
+// Startup Y for RHI window (pixels).
+// Type: int
+//
+
+rhi_window_start_y = 0;
+
+///////////// rhi_display_180_degrees /////////////////
+//
+// Flag indicating to display full 180 degrees in RHI window. If set to 
+//   false, the RHI window will just display 90 degrees of the RHI.
+// Type: boolean
+//
+
+rhi_display_180_degrees = FALSE;
+

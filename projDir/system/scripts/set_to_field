@@ -1,0 +1,9 @@
+# Set network for field - connect to cell modem
+#
+# Run this as root
+
+cd /etc/sysconfig/network-scripts
+
+cp def_route.ifcfg-eth1 ifcfg-eth1
+cp no_def_route.ifcfg-eth0 ifcfg-eth0
+/etc/init.d/network restart

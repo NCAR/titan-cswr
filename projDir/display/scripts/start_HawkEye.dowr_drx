@@ -1,0 +1,12 @@
+#! /bin/csh
+
+setenv INSTANCE dowr_drx
+setenv FREQ_NUM 1
+
+cd $PROJ_DIR/display/params
+
+running "HawkEye -instance $INSTANCE"
+if ($status == 1) then
+  HawkEye -instance ${INSTANCE} -params HawkEye.dowr -debug -start_x 2000 -start_y 65 |& \
+    LogFilter -d $ERRORS_LOG_DIR -p HawkEye -i ${INSTANCE} &
+endif

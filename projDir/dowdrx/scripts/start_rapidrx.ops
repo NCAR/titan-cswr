@@ -1,0 +1,12 @@
+#! /bin/csh -f
+
+source $PROJ_DIR/system/params/radar_info
+source $PROJ_DIR/system/params/truck_heading
+
+cd $PROJ_DIR/dowdrx/params/dowr
+
+running "rapidrx"
+if ($status == 1) then
+  rapidrx -params rapidrx.default --debug all |& \
+      LogFilter -d $ERRORS_LOG_DIR -p rapidrx -i ops &
+endif

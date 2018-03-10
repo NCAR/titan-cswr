@@ -1,0 +1,30 @@
+# The master template for this file resides here:
+#
+# http://svn/svn/eol/repo/eol-epel.repo
+#
+# Do not edit the copy in the web repository.  That copy gets overwritten.
+
+[eol]
+name=EOL Repository for Enterprise Linux and CentOS $releasever - $basearch
+baseurl=http://www.eol.ucar.edu/software/rpms/epel/$releasever/$basearch
+enabled=0
+gpgcheck=0
+
+[eol-src]
+name=EOL source Repository for Enterprise Linux and CentOS
+baseurl=http://www.eol.ucar.edu/software/rpms/epel/$releasever/SRPMS
+enabled=0
+gpgcheck=0
+
+[eol-ael]
+name=EOL Repository for Arcom Embedded Linux cross development of ARM & ARMBE on i386 and x86_64 hosts
+baseurl=http://www.eol.ucar.edu/software/rpms/ael/i386
+enabled=0
+gpgcheck=0
+
+[eol-ael-src]
+name=EOL source Repository for Arcom Embedded Linux cross development of ARM & ARMBE
+baseurl=http://www.eol.ucar.edu/software/rpms/ael/SRPMS
+enabled=0
+gpgcheck=0
+

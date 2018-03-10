@@ -1,0 +1,9 @@
+#! /bin/csh -f
+
+xterm -title hdrdrx -bg black -fg yellow -g 90x40+0-0 -fn fixed -e ssh rds tail -f projDir/logs/status/today/dowdrx.ops.log
+
+
+
+
+
+

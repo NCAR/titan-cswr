@@ -1,0 +1,64 @@
+How to rerun analysis on the time series - DOWR
+===============================================
+
+1. Data
+-------
+
+Mount the USB drive with the data
+
+2. Install the correct site info file into the environment
+----------------------------------------------------------
+
+  /bin/cp ~/projDir/system/params/site_info.dowr ~/projDir/system/params/site_info
+
+Then
+
+  source ~/.cshrc
+
+3. Start up Dsr2Radx
+--------------------
+
+In one xterm:
+
+cd ~/projDir/analysis/scripts
+
+For frequency 1 beams:
+
+  ./start_Dsr2Radx.analysis.dowr 1
+
+For frequency 2 beams:
+
+  ./start_Dsr2Radx.analysis.dowr 2
+
+etc. - from 1 to 6
+
+4. Run Iq2Dsr
+-------------
+
+In one xterm:
+
+cd ~/projDir/analysis/params
+
+For frequency number 1:
+
+  setenv FREQ_NUM 1
+
+Similarly for frequencies 2 through 6
+
+Then run:
+
+  Iq2Dsr -params Iq2Dsr.analysis.dowr -f ..../DOWR/time_series/save/dowr/yyyymmdd/yyyy*.ts
+
+Watch for Dsr2Radx to save files.
+
+5. Check with solo
+------------------
+
+For example:
+
+  cd $DATA_DIR/DOWR/dorade/analysis/dowr_1/yyyymmdd/....
+
+for frequency 1.
+
+Use dowr_2 for frequency 2, etc.
+

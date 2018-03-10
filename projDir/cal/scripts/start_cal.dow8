@@ -1,0 +1,21 @@
+#!/bin/csh
+#
+# Start the processes needed for cals
+#
+
+stop_all
+
+start_procmap
+start_DsServerMgr
+start_DataMapper
+start_dowdrx.calib
+start_gui.calib
+start_TsTcp2Fmq.hiq
+start_TsScanInfoMerge.dow8
+start_GetGpsPosn.primary
+start_RadMon.dow8
+start_RadxMon.server.dow8
+start_Iq2Dsr.dow8
+start_Fmq2Fmq.dow8
+
+

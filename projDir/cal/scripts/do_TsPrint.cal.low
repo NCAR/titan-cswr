@@ -1,0 +1,5 @@
+#! /bin/csh
+
+TsPrint -fmq ~/projDir/data/fmq/ts/shmem_low_no_angles_10200.lock -dual -nsamples 5000 -gate 50 -ngates 500
+
+

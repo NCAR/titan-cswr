@@ -1,0 +1,11 @@
+#! /bin/csh
+
+cd $PROJ_DIR/cal/params
+
+echo "Starting calibration - dowr 750 ns"
+echo
+echo "Please Wait - This takes a few minutes"
+echo
+snuff TsCalAuto
+TsCalAuto -params TsCalAuto.dowr.750ns
+

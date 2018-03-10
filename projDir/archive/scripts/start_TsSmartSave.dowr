@@ -1,0 +1,10 @@
+#! /bin/csh
+
+cd $PROJ_DIR/archive/params
+
+running "TsSmartSave -params TsSmartSave.dowr"
+if ($status == 1) then
+  TsSmartSave -params TsSmartSave.dowr |& \
+    LogFilter -d $ERRORS_LOG_DIR -p TsSmartSave -i dowr &
+endif
+

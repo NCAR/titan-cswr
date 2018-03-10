@@ -1,0 +1,4 @@
+#! /bin/csh
+
+xterm -title start_all -bg black -fg red -font 8x13bold -g 80x40+300+300 -e stop_all_confirm
+

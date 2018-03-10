@@ -1,0 +1,10 @@
+#! /bin/csh
+
+cd $PROJ_DIR/ftp/params
+
+running "LdataWatcher -params LdataWatcher.images_to_cswr.high"
+if ($status == 1) then
+  LdataWatcher -params LdataWatcher.images_to_cswr.high -debug |& \
+    LogFilter -d $ERRORS_LOG_DIR -p LdataWatcher -i images_to_cswr.high &
+endif
+

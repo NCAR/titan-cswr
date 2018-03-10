@@ -1,0 +1,69 @@
+#! /bin/csh -f
+
+# Start cal for DOWr
+
+if ($#argv < 2) then
+  echo "ERROR on the command line"
+  echo "Usage: $0 pulse_width_ns freq_num"
+  echo "  You must specify the frequency number and pulse width on the command line"
+  echo "  Frequency number is an integer between 1 and 6 inclusive"
+  echo "  Pulse width is 3-digit nano-secs with leading 0"
+  echo "  Valid pulse widths: 075, 150, 225, 300, 450, 600, 750, 900"
+  exit 1
+endif
+
+# get frequency num from first arg
+
+setenv PULSE_WIDTH_NS $1
+setenv FREQ_NUM $2
+
+if ($FREQ_NUM < 1 || $FREQ_NUM > 6) then
+  echo "ERROR on the command line"
+  echo "Usage: $0 pulse_width_ns freq_num"
+  echo "  You must specify the frequency number and pulse width on the command line"
+  echo "  Frequency number is an integer between 1 and 6 inclusive"
+  echo "  Pulse width is 3-digit nano-secs with leading 0"
+  echo "  Valid pulse widths: 075, 150, 225, 300, 450, 600, 750, 900"
+  exit 1
+endif
+
+if ($FREQ_NUM == 1) then
+    setenv RF_FREQUENCY_GHZ ${DOWR_FREQ_GHZ_1}
+    setenv DOWR_COUPLER_LOSS_DB ${DOWR_COUPLER_LOSS_DB_1}
+else if ($FREQ_NUM == 2) then
+    setenv RF_FREQUENCY_GHZ ${DOWR_FREQ_GHZ_2}
+    setenv DOWR_COUPLER_LOSS_DB ${DOWR_COUPLER_LOSS_DB_2}
+else if ($FREQ_NUM == 3) then
+    setenv RF_FREQUENCY_GHZ ${DOWR_FREQ_GHZ_3}
+    setenv DOWR_COUPLER_LOSS_DB ${DOWR_COUPLER_LOSS_DB_3}
+else if ($FREQ_NUM == 4) then
+    setenv RF_FREQUENCY_GHZ ${DOWR_FREQ_GHZ_4}
+    setenv DOWR_COUPLER_LOSS_DB ${DOWR_COUPLER_LOSS_DB_4}
+else if ($FREQ_NUM == 5) then
+    setenv RF_FREQUENCY_GHZ ${DOWR_FREQ_GHZ_5}
+    setenv DOWR_COUPLER_LOSS_DB ${DOWR_COUPLER_LOSS_DB_5}
+else if ($FREQ_NUM == 6) then
+    setenv RF_FREQUENCY_GHZ ${DOWR_FREQ_GHZ_6}
+    setenv DOWR_COUPLER_LOSS_DB ${DOWR_COUPLER_LOSS_DB_6}
+endif
+
+setenv PULSE_WIDTH_US 0.${PULSE_WIDTH_NS}
+
+echo "Starting DOWR calibration - 075 ns"
+echo "  FREQ_NUM: ${FREQ_NUM}"
+echo "  RF_FREQUENCY_GHZ: ${RF_FREQUENCY_GHZ}"
+echo "  PULSE_WIDTH_NS: ${PULSE_WIDTH_NS}"
+echo "  PULSE_WIDTH_US: ${PULSE_WIDTH_US}"
+echo
+echo "Please wait - this may take a few minutes"
+
+echo "PROJ_DIR: $PROJ_DIR"
+
+cd $PROJ_DIR/cal/params
+snuff TsCalAuto
+TsCalAuto -params TsCalAuto.dowr
+#TsCalAuto -params TsCalAuto.dowr -print_params long_expand
+
+
+
+

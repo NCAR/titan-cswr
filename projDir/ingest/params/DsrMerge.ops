@@ -1,0 +1,549 @@
+/**********************************************************************
+ * TDRP params for DsrMerge
+ **********************************************************************/
+
+//======================================================================
+//
+// DsrMerge reads moments data from 2 Dsr file message queues, which 
+//   contain data from 2 channels of the same radar system, in which there 
+//   are differences. For example, there may be 2 transmitters operating 
+//   at different frequencies, each of which has a separate moments data 
+//   set. DsrMerge merges these two data streams, and produces a single 
+//   combined data stream. In doing so, some fields are copied unchanged 
+//   into the output queue. Other fields may be combined using the mean of 
+//   the two incoming fields.
+//
+//======================================================================
+ 
+//======================================================================
+//
+// DEBUGGING AND PROCESS CONTROL.
+//
+//======================================================================
+ 
+///////////// debug ///////////////////////////////////
+//
+// Debug option.
+// If set, debug messages will be printed appropriately.
+//
+// Type: enum
+// Options:
+//     DEBUG_OFF
+//     DEBUG_NORM
+//     DEBUG_VERBOSE
+//     DEBUG_EXTRA
+//
+
+debug = DEBUG_NORM;
+
+///////////// instance ////////////////////////////////
+//
+// Process instance.
+// Used for registration with procmap.
+// Type: string
+//
+
+instance = "ops";
+
+///////////// register_with_procmap ///////////////////
+//
+// Option to register with the process mapper.
+// If true, this application will try to register with procmap once per 
+//   minute. (If unable to do so, no error occurs.).
+// Type: boolean
+//
+
+register_with_procmap = TRUE;
+
+//======================================================================
+//
+// FMQ INPUT - file message queues.
+//
+//======================================================================
+ 
+///////////// input_fmq_name_chan1 ////////////////////
+//
+// Name for first input FMQ.
+// Type: string
+//
+
+input_fmq_name_chan1 = "$(DATA_DIR)/fmq/moments/shmem_high_20100";
+
+///////////// input_fmq_name_chan2 ////////////////////
+//
+// Name for second input FMQ.
+// Type: string
+//
+
+input_fmq_name_chan2 = "$(DATA_DIR)/fmq/moments/shmem_low_20200";
+
+///////////// start_reading_at_fmq_start //////////////
+//
+// Option to start reading at beginning of input FMQs.
+// Normally, we start reading at the end of the queues. For debugging, 
+//   however, it is sometimes helpful to start at the beginning of the 
+//   queues.
+// Type: boolean
+//
+
+start_reading_at_fmq_start = FALSE;
+
+//======================================================================
+//
+// OPTION TO REQUIRE DATA FROM BOTH CHANNELS.
+//
+//======================================================================
+ 
+///////////// require_both_channels ///////////////////
+//
+// Option to require data from both channels.
+// If TRUE, a beam will only be written when data is available from both 
+//   channels. If FALSE, a beam will be written even when data is only 
+//   availabl from one of the two channels.
+// Type: boolean
+//
+
+require_both_channels = TRUE;
+
+///////////// allow_merge_from_single_channel /////////
+//
+// Option to allow set of merge field from only one channel.
+// If FALSE, then the merged fields are only set if both channels are 
+//   available. If TRUE, when only a single channel is available, the 
+//   merged fields will be set from the single available channel.
+// Type: boolean
+//
+
+allow_merge_from_single_channel = FALSE;
+
+///////////// print_active_channel ////////////////////
+//
+// Option to print which channel is being used.
+// If TRUE, prints to stderr: 'M' if merged from both, '1' if from 
+//   channel 1 only, '2' if from channel 2 only.
+// Type: boolean
+//
+
+print_active_channel = FALSE;
+
+//======================================================================
+//
+// CONSTRAINTS FOR MATCHING BEAMS BETWEEN CHANNELS.
+//
+//======================================================================
+ 
+///////////// max_beam_time_difference ////////////////
+//
+// The maximum difference in time between beams in the 2 channels - 
+//   secs.
+// If the difference in the times in the two channels is less than this 
+//   number, the two beams are considered candidates for merging.
+// Type: double
+//
+
+max_beam_time_difference = 0.001;
+
+///////////// max_beam_azimuth_difference /////////////
+//
+// The maximum difference in azimuth between beams in the 2 channels - 
+//   degrees.
+// If the difference in the azimuths in the two channels is less than 
+//   this number, the two beams are considered candidates for merging.
+// Type: double
+//
+
+max_beam_azimuth_difference = 0.005;
+
+///////////// max_beam_elevation_difference ///////////
+//
+// The maximum difference in elevation between beams in the 2 channels - 
+//   degrees.
+// If the difference in the elevations in the two channels is less than 
+//   this number, the two beams are considered candidates for merging.
+// Type: double
+//
+
+max_beam_elevation_difference = 0.005;
+
+//======================================================================
+//
+// FIELD LIST - which fields to copy.
+//
+//======================================================================
+ 
+///////////// output_fields ///////////////////////////
+//
+// Specify which derived fields are to be included in the output.
+// Only the selected fields will be written to the output queue. The 
+//   output field names will be computed from the input filed name, with a 
+//   suffix as specified.
+//
+// Type: struct
+//   typedef struct {
+//      string input_name;
+//      boolean output_from_queue_1;
+//      boolean output_from_queue_2;
+//      boolean output_mean;
+//   }
+//
+// 1D array - variable length.
+//
+
+output_fields = {
+  {
+    input_name = "SNRHC",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "SNRHC_F",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "SNRVC",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "SNRVC_F",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "DBMHC",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "DBMVC",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "DBMHC_F",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "DBMVC_F",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "DBZHC",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "DBZHC_F",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "DBZVC",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "DBZVC_F",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "VEL",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "VEL_F",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "VELPS",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "VELPS_F",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "VELPL",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "VELPL_F",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "WIDTH",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "WIDTH_F",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "ZDR",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "ZDRM",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "ZDR_F",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "ZDRM_F",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "RHOHV",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "RHOHV_F",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "PHIDP",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "PHIDP_F",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "KDP",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "KDP_F",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "NCP",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "NCP_F",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "CPA",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "CMD",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "CMD_FLAG",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+  ,
+  {
+    input_name = "CLUT",
+    output_from_queue_1 = TRUE,
+    output_from_queue_2 = TRUE,
+    output_mean = TRUE
+  }
+};
+
+///////////// field_name_suffix_1 /////////////////////
+//
+// Suffix for computing names of fields copied from queue 1.
+// Type: string
+//
+
+field_name_suffix_1 = "_HIGH";
+
+///////////// field_name_suffix_2 /////////////////////
+//
+// Suffix for computing names fields copied from queue 2.
+// Type: string
+//
+
+field_name_suffix_2 = "_LOW";
+
+///////////// field_name_suffix_mean //////////////////
+//
+// Suffix for computing names of mean fields.
+// Type: string
+//
+
+field_name_suffix_mean = "_COMB";
+
+//======================================================================
+//
+// FMQ OUTPUT for merged data.
+//
+//======================================================================
+ 
+///////////// output_fmq_name /////////////////////////
+//
+// Name for output FMQ.
+// Type: string
+//
+
+output_fmq_name = "$(DATA_DIR)/fmq/moments/shmem_combined_20300";
+
+///////////// output_fmq_size /////////////////////////
+//
+// Size of output FMQ, in bytes.
+// This is the total size of the output FMQ buffer. Some of this buffer 
+//   will be used for control bytes (12 bytes per message).
+// Type: int
+//
+
+output_fmq_size = 2000000000;
+
+///////////// output_fmq_nslots ///////////////////////
+//
+// Number of slots in output FMQ.
+// The number of slots corresponds to the maximum number of messages 
+//   which may be written to the buffer before overwrites occur. However, 
+//   overwrites may occur sooner if the size is not set large enough.
+// Type: int
+//
+
+output_fmq_nslots = 20000;
+
+///////////// write_blocking //////////////////////////
+//
+// Option to set up the FMQ as blocking.
+// If TRUE, FMQ will be set up FMQ for blocking operation. If the FMQ 
+//   becomes full, Test2Dsr will then block until there is space for more 
+//   data.
+// Type: boolean
+//
+
+write_blocking = FALSE;
+
+///////////// data_mapper_report_interval /////////////
+//
+// Number of seconds between reports to DataMapper.
+// If > 0, the program will register with the DataMapper when the output 
+//   FMQ is written to. If <= 0, registration will not be performed.
+// Type: int
+//
+
+data_mapper_report_interval = 5;
+
+//======================================================================
+//
+// RADAR NAME.
+//
+//======================================================================
+ 
+///////////// override_radar_name /////////////////////
+//
+// Option to specify a radar name.
+// If TRUE, the specified name will be used. If FALSE, the name from 
+//   radar 1 will be used.
+// Type: boolean
+//
+
+override_radar_name = TRUE;
+
+///////////// radar_name //////////////////////////////
+//
+// Radar name.
+// Type: string
+//
+
+radar_name = "$(RADAR_NAME)comb";
+

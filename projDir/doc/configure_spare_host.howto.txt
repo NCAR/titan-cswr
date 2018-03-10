@@ -1,0 +1,114 @@
+# COnfiguring a spare host for use in a DOW
+# =========================================
+# 
+# This covers both the DRX and MGEN hosts
+
+# Copy in relevant host table
+-----------------------------
+
+Do this as root.
+
+If DOW6:
+
+  cp ~/projDir/doc/etc_hosts_6.txt /etc/hosts
+
+If DOW7:
+
+  cp ~/projDir/doc/etc_hosts_7.txt /etc/hosts
+
+# Set the host name
+-------------------
+
+Do this as root.
+
+In:
+
+  /etc/sysconfig/network
+
+set appropriately to one of the following:
+
+  HOSTNAME=mgen6
+  HOSTNAME=mgen7
+  HOSTNAME=drx6
+  HOSTNAME=drx7
+
+# Set up the networking
+-----------------------
+
+Do this as root.
+
+Set the IP address to the relevant value.
+
+Check /etc/hosts for the correct address.
+
+You can do this in 2 ways:
+
+(a) Menus:
+
+  * right click on the networking icon (2 computers)
+  * select Network Connections
+  * select em1 or eth1, and edit
+  * select IP4 settings
+  * set IP address, gateway and DNS servers
+   
+(b) Edit system file:
+
+  cd /etc/sysconfig/network-scripts
+
+Find ifcfg-eth1 or ifcfg-em1
+
+It will look like the following:
+
+  DEVICE=em1
+  TYPE=Ethernet
+  UUID=4658603a-92b2-41d5-8a75-b96a9b79fd17
+  ONBOOT=yes
+  NM_CONTROLLED=yes
+  BOOTPROTO=none
+  DEFROUTE=yes
+  NAME="em1"
+  IPADDR=192.168.84.211
+  PREFIX=24
+  GATEWAY=192.168.84.240
+  DNS1=192.43.244.39
+  DNS2=128.117.82.2
+  HWADDR=90:B1:1C:4C:74:96
+  IPV4_FAILURE_FATAL=yes
+  IPV6INIT=no
+
+First make a .bak copy:
+
+  cp ifcfg.eth1 ifcfg.eth1.bak
+
+Then edit it and set the IP address, gateway and DNS servers.
+
+Then reboot.
+
+# Copy in the correct site_info file
+------------------------------------
+
+Do this as titan5.
+
+cd projDir/system/params
+
+Either:
+
+  cp site_info.dow6 site_info
+
+or
+
+  cp site_info.dow7 site_info
+
+# Copy in the correct dowdrx config files
+-----------------------------------------
+
+If in dow6:
+
+  cd projDir/dowdrx/params/dow6
+  /bin/cp -f dowdrx* ..
+
+If in dow7:
+
+  cd projDir/dowdrx/params/dow7
+  /bin/cp -f dowdrx* ..
+

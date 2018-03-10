@@ -1,0 +1,28 @@
+#!/bin/csh
+
+
+echo
+echo "Titan Shared Memory Status ************************************"
+ipcs | grep -v 0x00000000
+
+echo
+echo "Titan Disk Status ****************"
+df -h $HOME
+
+echo
+echo "Titan System Status ************************************"
+uptime
+
+echo
+echo "Titan Processes ************************************"
+print_procmap -hb -up -status
+
+echo
+echo "Titan Data ************************************"
+PrintDataMap -all -relt -lreg
+
+echo
+echo
+echo "Sleeping for 60 seconds   ***********"
+sleep 60
+

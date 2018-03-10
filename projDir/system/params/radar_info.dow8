@@ -1,0 +1,85 @@
+#############################################
+# site-specific parameters - DOW8
+#
+#############################################
+
+setenv PROJECT_NAME               "PECAN"
+
+# NAME etc
+# Location is generally overridden by GPS
+
+setenv SITE_NAME                  "PECAN"
+setenv RADAR_NAME                 "DOW8"
+setenv radar_name                 "dow8"
+setenv RADAR_LAT                  40.0352
+setenv RADAR_LON                  -105.2334
+setenv RADAR_ALT_KM               1.609
+setenv RADAR_ALT_M                1609
+
+# FREQUENCY
+
+setenv DOW8_FREQ                   9.45e9
+setenv DOW8_FREQ_GHZ               9.45
+
+# CALIBRATION
+
+setenv DOW8_COUPLER_LOSS_H_DB            14.75
+setenv DOW8_XMIT_POWER_H_DBM             79.5
+setenv DOW8_ANTENNA_GAIN_H_DB            44.3
+setenv DOW8_ANTENNA_GAIN_V_DB            44.3
+setenv DOW8_TWO_WAY_WAVEGUIDE_LOSS_H_DB  2.0
+
+# DOWDRX
+
+setenv MAX_DUTY_CYCLE 0.00101
+
+setenv TX_MOD_WIDTH_STRETCH_HIGH_1000  0.05e-6
+setenv TX_MOD_WIDTH_STRETCH_HIGH_833   0.05e-6
+setenv TX_MOD_WIDTH_STRETCH_HIGH_667   0.04e-6
+setenv TX_MOD_WIDTH_STRETCH_HIGH_500   0.03e-6
+setenv TX_MOD_WIDTH_STRETCH_HIGH_333   0.01e-6
+setenv TX_MOD_WIDTH_STRETCH_HIGH_167   0.00e-6
+
+setenv TX_DELAY_HIGH_1000  1.0e-7
+setenv TX_DELAY_HIGH_833   1.0e-7
+setenv TX_DELAY_HIGH_667   1.0e-7
+setenv TX_DELAY_HIGH_500   1.0e-7
+setenv TX_DELAY_HIGH_333   1.0e-7
+setenv TX_DELAY_HIGH_167   1.0e-7
+
+setenv TX_TO_RX_DELAY_HIGH_1000 5e-07
+setenv TX_TO_RX_DELAY_HIGH_833 5e-07
+setenv TX_TO_RX_DELAY_HIGH_667 5e-07
+setenv TX_TO_RX_DELAY_HIGH_500 5e-07
+setenv TX_TO_RX_DELAY_HIGH_333 5e-07
+setenv TX_TO_RX_DELAY_HIGH_167 5e-07
+
+setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_1000 4.5e-6
+setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_833 4.5e-6
+setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_667 4.5e-6
+setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_500 4.5e-6
+setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_333 4.5e-6
+setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_167 4.5e-6
+
+setenv BURST_SAMPLE_WIDTH_STRETCH_HIGH_1000 0.5e-6
+setenv BURST_SAMPLE_WIDTH_STRETCH_HIGH_833 1.166666667e-6
+setenv BURST_SAMPLE_WIDTH_STRETCH_HIGH_667 1.333333333e-6
+setenv BURST_SAMPLE_WIDTH_STRETCH_HIGH_500 1.5e-6
+setenv BURST_SAMPLE_WIDTH_STRETCH_HIGH_333 0.666666667e-6
+setenv BURST_SAMPLE_WIDTH_STRETCH_HIGH_167 0.833333333e-6
+
+# FMQ for dowdrx
+#   for ops, no_angles
+#   for sim, with_angles
+
+setenv DOWDRX_FMQ_HIGH ${DATA_DIR}/fmq/ts/shmem_dow8_no_angles_80100
+#setenv DOWDRX_FMQ_HIGH ${DATA_DIR}/fmq/ts/shmem_dow8_with_angles_80300
+
+# simulate angles
+#   for ops, false
+#   for sim, true
+
+setenv SIM_ANTENNA_ANGLES          "false"
+#setenv SIM_ANTENNA_ANGLES          "true"
+
+#############################################

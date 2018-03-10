@@ -1,0 +1,5 @@
+#! /bin/csh -f
+
+xterm -title archive -bg black -fg orange -g 150x40+0-0 -fn fixed -e "tail -f ~/projDir/logs/status/today/doArchive.log" &
+
+

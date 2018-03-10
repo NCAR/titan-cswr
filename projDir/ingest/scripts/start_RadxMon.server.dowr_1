@@ -1,0 +1,12 @@
+#! /bin/csh
+
+cd $PROJ_DIR/ingest/params
+setenv INSTANCE server.dowr_1
+setenv FREQ_NUM 1
+
+running "RadxMon -instance ${INSTANCE}"
+if ($status == 1) then
+  RadxMon -instance ${INSTANCE} -params RadxMon.server.dowr |& \
+    LogFilter -d $ERRORS_LOG_DIR -p RadxMon -i ${INSTANCE} &
+endif
+

@@ -1,0 +1,9 @@
+# Set network for hangar - connect to 192.168.0
+#
+# Run this as root
+
+cd /etc/sysconfig/network-scripts
+
+cp def_route.ifcfg-eth0 ifcfg-eth0
+cp no_def_route.ifcfg-eth1 ifcfg-eth1
+/etc/init.d/network restart

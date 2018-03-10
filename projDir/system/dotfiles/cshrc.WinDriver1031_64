@@ -1,0 +1,267 @@
+#############################################
+# .cshrc file - Mike Dixon RAP June 1992
+#############################################
+
+umask 002
+
+setenv EDITOR /usr/local/bin/emacs
+setenv EMACS /usr/local/bin/emacs
+setenv USERNAME "titan5"
+setenv FULLNAME "titan5"
+setenv MANPATH /usr/man:/usr/X11R6/man:/usr/local/man:
+setenv TAPE /dev/rmt/tps0d4.8200
+setenv PRINTER lp
+
+#limit coredumpsize unlimited
+
+#
+# directories
+#
+
+setenv TITAN_HOME $HOME/projDir
+setenv CVSROOT :pserver:dixon@localhost:/cvs
+
+#
+# REGISTRATION
+#
+
+setenv PROCMAP_HOST localhost
+
+#
+# Ldata FMQ
+#
+
+setenv LDATA_FMQ_ACTIVE true
+
+#
+# make
+#
+
+#setenv GCC_WARNINGS "-Wall -Wextra"
+setenv GCC_WARNINGS "-Wall"
+setenv HOST_OS LINUX_64
+setenv LANG C
+
+setenv WORK $HOME/cvs
+setenv BUILD_DIR $HOME/cvs
+
+setenv RAP_MAKE_INC_DIR $WORK/make_include
+setenv RAP_MAKE_BIN_DIR $WORK/make_bin
+
+setenv RAP_INC_DIR $WORK/include
+setenv RAP_LIB_DIR $WORK/lib
+setenv RAP_BIN_DIR $WORK/bin
+setenv RAP_MAN_DIR $WORK/man
+setenv RAP_DOC_DIR $WORK/doc
+setenv RAP_JAVA_DIR $WORK/java_packages
+
+setenv RAP_SHARED_INC_DIR $RAP_INC_DIR
+setenv RAP_SHARED_LIB_DIR $RAP_LIB_DIR
+setenv RAP_SHARED_BIN_DIR $RAP_BIN_DIR
+setenv RAP_SHARED_MAN_DIR $RAP_MAN_DIR
+setenv RAP_SHARED_DOC_DIR $RAP_DOC_DIR
+
+setenv RAP_INST_BIN_DIR $RAP_BIN_DIR
+setenv RAP_INST_JAVA_DIR $WORK/java/dist/lib
+
+setenv WINDRIVER_DIR /opt/WinDriver1031_64
+setenv READYFLOW_7142_428_LINUX /usr/local/ReadyFlow/src/1.0
+
+setenv DATA_HOST localhost
+setenv PROJ_DIR $HOME/projDir
+setenv DATA_DIR $PROJ_DIR/data
+setenv RAP_DATA_DIR $DATA_DIR
+setenv PROCMAP_HOST localhost
+setenv DATA_MAPPER_ACTIVE true
+setenv LDATA_FMQ_ACTIVE true
+setenv DATA_DISTRIB_LOG_DIR $PROJ_DIR/logs/distrib
+setenv ERRORS_LOG_DIR $PROJ_DIR/logs/status
+setenv RESTART_LOG_DIR $PROJ_DIR/logs/restart
+setenv DS_COMM_TIMEOUT_MSECS 60000
+
+# --- site info --- 
+
+if (-f $PROJ_DIR/system/params/site_info) then
+  source $PROJ_DIR/system/params/site_info
+endif
+
+if (-f $PROJ_DIR/system/params/radar_info) then
+  source $PROJ_DIR/system/params/radar_info
+endif
+
+if (-f $PROJ_DIR/system/params/truck_heading) then
+  source $PROJ_DIR/system/params/truck_heading
+endif
+
+# LD_LIBRARY_PATH
+
+setenv LD_LIBRARY_PATH /usr/local/ReadyFlow/lib:/usr/local/gcc/lib:/usr/local/dcs/lib:/usr/local/lib:/usr/local/netcdf/lib:$HOME/cvs/lib
+
+# LD_RUN_PATH
+
+setenv LD_RUN_PATH /usr/local/lib:/usr/local/gcc/lib:/usr/local/dcs/lib:/usr/local/lib:/usr/local/netcdf/lib:/usr/local/hdf5/lib
+
+# PYTHON PATH
+
+setenv PYTHONPATH :/opt/local/lib/python2.6/site-packages:
+
+# JAVA
+
+setenv CLASSPATH .:$WORK/java/ext_lib/jdom/jdom_b9/jdom.jar:$WORK/java/ext_lib/jai/jai-1_1_1_01/jai_codec.jar:$WORK/java/src:$WORK/java/src/junit3.8.1/junit.jar
+
+setenv JAVA_HOME /usr/java/latest
+setenv ANT_HOME /usr/local/ant
+
+# PATH
+
+/bin/mkdir -p ${PROJ_DIR}/junk/scripts
+
+set path=( . $RAP_BIN_DIR $RAP_MAKE_BIN_DIR ~/bin )
+set path=( $path /usr/local/netcdf4/bin )
+set path=( $path $PROJ_DIR/*/scripts $PROJ_DIR/script_bin )
+
+set path=( $path $ANT_HOME/bin )
+set path=( $path $JAVA_HOME/bin )
+set path=( $path /usr/local/jdk/bin /usr/local/lib/gcc-lib /usr/lib /bin /usr/bin /usr/sbin /usr/bsd /usr/bin/X11 /opt/bin /usr/local/bin )
+set path=( $path /usr/local/dcs/bin )
+#pcr path for dreader and solo3
+set path=( $path /home/titan5/src/dreader/bin  /home/titan5/src/bin )
+
+#  INTERACTIVE SHELL ONLY
+
+if ($?prompt) then
+
+    set prompt = "`hostname`:\!>"
+    alias cd 'cd \!* ; echo $cwd'
+    alias rm 'rm -i'
+
+    alias ls 'ls -F'
+    alias dir 'ls -lgF \!* | more'
+    alias mail Mail
+    alias h history 1000
+
+    alias df 'df -h'
+    set filec
+
+    set history=1000
+
+    set fignore = (.o .ln)
+
+    stty intr 
+    stty erase 
+    set ttystr = `tty`
+    set host = `hostname | sed -e 's/\..*$//'`
+
+    alias catw 'cat `which \!*`'
+    alias lessw 'less `which \!*`'
+
+#      qmake - make for Qt
+
+#      alias qmake 'qmake-qt4'
+
+#     temporary settings: suspend file substitution, set alias alias
+
+#	set noglob  
+
+    alias sc source ~/.cshrc
+
+#     working directories
+
+    alias cddow 'cd ~/svn/dow/src'
+    alias cdhcr 'cd ~/svn/dow/src/hcrdrx'
+    alias cddrx 'cd ~/svn/dow/src/dowdrx'
+    alias cdtcpscope 'cd ~/svn/dow/src/tcpscope'
+
+    alias scopeHigh 'cd ~/svn/dow/src/tcpscope; ./tcpscope --port 5601'
+    alias scopeLow 'cd ~/svn/dow/src/tcpscope; ./tcpscope --port 5602'
+
+    alias printHigh 'TsPrint -tcp_port 5601 -Nsamples 1000 -dual'
+    alias printLow 'TsPrint -tcp_port 5602 -nsamples 1000 -dual'
+
+#   a. Directory movement - (actually problematic on DS3100;s)
+
+    alias setprompt 'set prompt="(`hostname`) `basename $cwd` ! % "'
+    alias rename_xterm 'echo -n "]0;\!*"'
+#   alias cd 'cd \!*;setprompt;rename_xterm $host-$ttystr (`dirs`)'
+    alias cd 'cd \!*;setprompt'
+    alias push 'pushd \!*; cd .'
+    alias pop 'popd; cd .'
+
+#   b. System queries
+
+    alias psg 'ps -aux | grep -v grep | grep'
+    alias psa 'ps -aux | more' 
+    alias looka 'grep \!* /usr/lib/aliases'
+    alias lookg 'grep \!* /etc/group'
+    alias lookp 'grep \!* /etc/passwd'
+    alias lookh 'grep \!* /etc/hosts'
+
+#   c. File display
+
+    alias m 'more'
+
+#   f. Job control
+
+    alias psd 'ps -ef | grep dixon'
+    alias pps 'ps -ef | egrep -v egrep | egrep $USER'
+    alias ppq 'pps | grep -v rsh | grep -v xterm | grep -v emacs | grep -v tcsh | grep -v /usr | grep -v defunct'
+    alias j 'jobs -l'
+    alias k9 'kill -9 \!*'
+    alias nuke 'ps -ax | grep -v grep | grep \!* | kill -9 `awk -f ~/.awk.kill`'
+
+#   g. terminal control - just the typical ttys
+
+    alias se 'stty erase '
+    alias sb 'stty erase '
+    alias vt100 'set term=vt100; tset -Q'
+    alias busy 'biff n; msg n'
+    alias free 'biff y; msg y'
+
+#   h. File deletion protection
+
+    alias rm 'rm -i'
+    alias mv 'mv -i'
+    alias cp 'cp -i' 
+
+#
+# cvs
+#
+
+    alias gate 'ssh -L 2401:cvs.rap.ucar.edu:2401 -L 8888:svn.eol.ucar.edu:80 dixon@gate.ucar.edu'
+    alias cvssh 'ssh -a -X -C -R 2401:cvs:2401 aoaws@mail.aoaws.caa.gov.tw'
+    alias cvsdow 'ssh -p 22 -a -XY -R 2401:cvs:2401 -R 8888:svn.eol.ucar.edu:80 tita5@128.117.47.93'
+    alias cvscswr 'ssh -p 22 -a -XY -R 2401:cvs:2401 titan5@71.33.231.78'
+    alias sshcswr 'ssh -p 22 -a -XY titan5@71.33.231.78'
+    alias mgen 'ssh -a -X -C -R 2401:localhost:2401 titan5@mgen'
+    alias pgen 'ssh -a -X -C -R 2401:localhost:2401 titan5@pgen'
+
+    alias cvs 'cvs -d :pserver:dixon@localhost:/cvs \!*'
+    alias ssh 'ssh -Y'
+
+    alias savedvd 'growisofs -Z /dev/dvd -r -J'
+    alias saveiso2dvd 'growisofs -dvd-compat -Z /dev/dvd='
+
+    alias cvsforward 'ssh -a -X -C -R 2401:localhost:2401 -R 8888:localhost:8888 '      
+
+    alias drx 'ssh -a -XY -C -R 2401:localhost:2401 -R 8888:localhost:8888 drx'
+    alias mgen 'ssh -a -XY -C mgen'
+    alias ntp 'ssh spadmin@ntp'
+
+    alias ppm 'print_procmap -hb -up -status'
+    alias pcheck 'procmap_list_check -proc_list $PROJ_DIR/control/proc_list'
+    alias pdm 'PrintDataMap -all -relt -lreg'
+    alias rd '/usr/local/rdesktop/bin/rdesktop -g1280x1024 -a 24 vise &'
+
+
+# Reset
+
+#   unset noglob
+#
+   endif
+
+#
+#  D. Reset the prompt
+
+   cd .
+#
+

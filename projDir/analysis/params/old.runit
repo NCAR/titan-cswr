@@ -1,0 +1,42 @@
+#!/bin/tcsh
+
+foreach iop(IOP31-20150715)
+# IOP15-20150624 IOP20-20150705 IOP27-20150712 IOP31-20150715 IOP11-20150616 IOP08-20150610
+set day = `echo $iop | cut -f 2 -d '-'`
+set jiop = `echo $iop | cut -f 1 -d '-'`
+echo $day
+echo $jiop
+set disk = A1
+
+# Read lat, lon, alt, heading as env variables
+source IOPdir/IOP$jiop
+
+set line = ' output_dir = "/mnt/PECAN-EditD1/'
+set line2 = "$line"$iop
+set line3 = "$line2"'/DOW6/trans_swps/high",'
+set line4 = "$line2"'/DOW6/trans_swps/low",'
+sed -i '1337d' Dsr2Radx.analysis.high
+sed -i "1337i$line3" Dsr2Radx.analysis.high
+sed -i '1337d' Dsr2Radx.analysis.low
+sed -i "1337i$line4" Dsr2Radx.analysis.low
+vi Dsr2Radx.analysis.high
+vi Dsr2Radx.analysis.low
+exit
+set iqline = /mnt/PECAN-$disk/$day/DOW6/time_series/save
+if(! -d $iqline)then
+  set disk = A2
+  set iqline = /mnt/PECAN-$disk/$day/DOW6/time_series/save
+  if(! -d $iqline)then
+    set disk = A3
+    set iqline = /mnt/PECAN-$disk/$day/DOW6/time_series/save
+  endif
+endif
+../scripts/start_Dsr2Radx.analysis 
+echo $iqline/high
+echo $iqline/low
+Iq2Dsr -params Iq2Dsr.analysis.high -f $iqline/high/2015????_0300* -debug &
+Iq2Dsr -params Iq2Dsr.analysis.low -f $iqline/low/2015????_0300* -debug 
+
+sleep 8
+
+end

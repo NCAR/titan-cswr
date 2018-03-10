@@ -1,0 +1,13 @@
+#! /bin/csh
+
+# make sure virtual X server is running and set display accordingly
+
+start_Xvfb
+sleep 2
+setenv DISPLAY :1.0
+
+# run cidd to generate images in /tmp/cidd
+
+cd $PROJ_DIR/display/params
+CIDD -p CIDD.quicklook.dowr -i quicklook.dowr -fn fixed >& /dev/null &
+

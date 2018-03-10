@@ -1,0 +1,10 @@
+#! /bin/csh
+
+cd $PROJ_DIR/display/params
+
+running "LdataWatcher -params LdataWatcher.quicklook.dow8"
+if ($status == 1) then
+  LdataWatcher -params LdataWatcher.quicklook.dow8 -debug |& \
+    LogFilter -d $ERRORS_LOG_DIR -p LdataWatcher -i quicklook.dow8 &
+endif
+

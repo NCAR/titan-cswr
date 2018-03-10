@@ -1,0 +1,10 @@
+#! /bin/csh
+
+cd $PROJ_DIR/archive/params
+
+running "InputWatcher -params InputWatcher.quicklook.high"
+if ($status == 1) then
+  InputWatcher -params InputWatcher.quicklook.high -debug |& \
+    LogFilter -d $ERRORS_LOG_DIR -p InputWatcher -i quicklook.high &
+endif
+

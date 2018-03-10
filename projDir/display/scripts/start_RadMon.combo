@@ -1,0 +1,4 @@
+#! /bin/csh -f
+
+xterm -title RadMonCombo -bg black -fg cyan -font 8x13bold -g  78x3-0+0 -e "RadMon -params $PROJ_DIR/display/params/RadMon.combo " &
+

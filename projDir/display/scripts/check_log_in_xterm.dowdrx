@@ -1,0 +1,5 @@
+#! /bin/csh -f
+
+xterm -title dowdrx-log -bg black -fg yellow -g 150x40+0-0 -fn fixed -e "tail -f ~/projDir/logs/status/today/dowdrx.ops.log" &
+
+

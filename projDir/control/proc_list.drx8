@@ -1,0 +1,34 @@
+##############################################################################
+# SYSTEM processes - DRX8
+#
+DsServerMgr   primary    start_DsServerMgr         snuff_inst        localhost
+DataMapper    primary    start_DataMapper          kill_DataMapper   localhost
+#
+###############################################################################
+# GPS POSITION
+#
+GetGpsPosn.py  primary  start_GetGpsPosn.primary    snuff_inst    localhost
+###############################################################################
+# dowdrx
+#
+dowdrx   ops     start_dowdrx.ops    kill_dowdrx    localhost
+#
+###############################################################################
+# MERGE SCAN INFO FROM HIQ - ops
+#
+TsTcp2Fmq       hiq       start_TsTcp2Fmq.hiq         snuff_inst    localhost
+TsScanInfoMerge dow8      start_TsScanInfoMerge.dow8  snuff_inst    localhost
+###############################################################################
+# Copy time series across to mgen
+Fmq2Fmq         dow8       start_Fmq2Fmq.dow8         snuff_inst    localhost
+###############################################################################
+# single pol MOMENTS for Hawkeye on DRX
+#
+Iq2Dsr    dow8           start_Iq2Dsr.dow8            snuff_inst    localhost
+###############################################################################
+# angle server for GUI
+#
+RadxMon   server.dow8    start_RadxMon.server.dow8    snuff_inst    localhost
+###############################################################################
+# RADAR MONITOR display
+RadMon    dow8           start_RadMon.dow8            snuff_inst    localhost

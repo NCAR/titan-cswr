@@ -1,0 +1,3 @@
+#!/bin/csh
+
+snuff "CIDD -p CIDD.dow_export"

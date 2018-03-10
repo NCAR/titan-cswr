@@ -1,0 +1,7 @@
+#! /bin/csh -f
+
+setenv INSTANCE dowr_6
+setenv FREQ_NUM 6
+
+xterm -title RadMon-${INSTANCE} -bg black -fg red -font 8x13bold -g  82x3-0+325 -e "RadMon -params $PROJ_DIR/display/params/RadMon.dowr " &
+

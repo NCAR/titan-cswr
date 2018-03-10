@@ -1,0 +1,10 @@
+#! /bin/csh
+
+cd $PROJ_DIR/ftp/params
+
+running "LdataWatcher -params LdataWatcher.data_to_catalog.low"
+if ($status == 1) then
+  LdataWatcher -params LdataWatcher.data_to_catalog.low -debug |& \
+    LogFilter -d $ERRORS_LOG_DIR -p LdataWatcher -i data_to_catalog.low &
+endif
+

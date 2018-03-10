@@ -1,0 +1,10 @@
+#! /bin/csh
+
+cd $PROJ_DIR/cal/params
+
+echo "Starting calibration - dow8 1.0 us"
+echo
+echo "Please Wait - This takes a few minutes"
+echo
+snuff TsCalAuto
+TsCalAuto -params TsCalAuto.dow8.1.0us

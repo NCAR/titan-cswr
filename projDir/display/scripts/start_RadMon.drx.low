@@ -1,0 +1,4 @@
+#! /bin/csh -f
+
+xterm -title RadMon-low -bg black -fg green -font 8x13bold -g  80x3-0+100 -e "RadMon -params $PROJ_DIR/display/params/RadMon.drx.low " &
+

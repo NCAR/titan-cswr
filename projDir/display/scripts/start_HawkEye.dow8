@@ -1,0 +1,10 @@
+#! /bin/csh
+
+cd $PROJ_DIR/display/params
+
+snuff HawkEye.dow8
+
+#setenv DISPLAY :0.0
+
+HawkEye -params HawkEye.dow8 -debug |& \
+    LogFilter -d $ERRORS_LOG_DIR -p HawkEye -i dow8 &

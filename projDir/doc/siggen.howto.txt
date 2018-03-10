@@ -1,0 +1,29 @@
+SIGGEN howto
+================
+
+1. Setting the IP address
+-------------------------
+
+On dow7 the IP is 192.168.0.205.
+On dow6 the IP is 192.168.0.225.
+
+Click:
+
+  Setup
+
+Use down arrow to find:
+
+  Network settings
+
+and hit Enter.
+
+Change
+
+  Address Mode
+
+from DHCP to Static.
+
+Set the IP address, and hit Enter.
+
+Hit Escape.
+

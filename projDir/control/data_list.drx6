@@ -1,0 +1,9 @@
+#################################################
+# required data for drx6
+#
+# Format is:
+#
+#  dir               late_secs  very_late_secs
+#################################################
+#
+# No data stored on drx6 host

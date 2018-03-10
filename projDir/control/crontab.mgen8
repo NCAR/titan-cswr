@@ -1,0 +1,23 @@
+####################################################################
+# SYSTEM
+#
+# Process restarters
+*/1 * * * *  csh -c "start_auto_restart_check_cron" 1> /dev/null 2> /dev/null
+*/1 * * * *  csh -c "start_procmap_check_cron"      1> /dev/null 2> /dev/null
+#
+# Build links to log date subdirs
+*/1 * * * *   csh -c "start_build_logdir_links" 1> /dev/null 2> /dev/null
+#
+####################################################################
+# HISTORY FILES
+#
+# Delete history file - creating problems on scientific linux 6
+#
+*/1 * * * *  csh -c "remove_history"      1> /dev/null 2> /dev/null
+#####################################################################
+# ARCHIVE DATA TO USB
+# Restart every 5 mins
+#
+*/5 * * * *  csh -c "run_archive" 1> /dev/null 2> /dev/null
+*/5 * * * *  csh -c "run_archive.remote" 1> /dev/null 2> /dev/null
+#

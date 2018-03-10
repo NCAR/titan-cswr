@@ -1,0 +1,19 @@
+#! /bin/csh -f
+
+# fix the sync with ntp
+# you must be root to run this
+
+# this works with RH6 - i.e. init.d instead of systemctl.
+
+/etc/init.d/ntpd stop
+
+ntpdate -b ntp
+sleep 1
+ntpdate -b ntp
+sleep 1
+ntpdate -b ntp
+
+/etc/init.d/ntpd start
+
+ntpq -p
+

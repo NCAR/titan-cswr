@@ -1,0 +1,8 @@
+#!/bin/csh
+#
+# Rsync the cal files across to mgen
+#
+
+cd $DATA_DIR
+
+rsync -avC ${RADAR_NAME}/cal mgen:projDir/data/${RADAR_NAME}

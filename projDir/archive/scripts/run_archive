@@ -1,0 +1,20 @@
+#! /bin/csh -f
+
+#
+# ensure that no archive tasks are still running
+#
+
+kill_archive
+
+#
+# run archive job
+#
+
+doArchive.py --debug \
+    --sourceDir $DATA_DIR \
+    --dirListPath $PROJ_DIR/archive/params/archiveDirList.${radar_name} \
+    --projectName $PROJECT_NAME \
+    --radarName $RADAR_NAME \
+    --maxAgeHours 3 \
+    |& LogFilter -d $ERRORS_LOG_DIR -p doArchive >& /dev/null &
+

@@ -1,0 +1,13 @@
+#  List of directories for primary data
+
+logs/status
+
+dorade/moments/dow8
+dorade/moments/dow8/sur
+dorade/moments/dow8/rhi
+dorade/moments/dow8/sec
+dorade/quicklook/dow8/sur
+cfradial/quicklook/dow8/sur
+time_series/save/dow8
+time_series/sunscan/dow8
+spdb/monitor/dow8

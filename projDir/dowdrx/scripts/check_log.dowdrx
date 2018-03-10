@@ -1,0 +1,5 @@
+#! /bin/csh -f
+
+tail -f ~/projDir/logs/status/today/dowdrx.ops.log
+
+

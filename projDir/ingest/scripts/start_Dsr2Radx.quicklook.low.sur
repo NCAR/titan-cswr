@@ -1,0 +1,10 @@
+#! /bin/csh
+
+cd $PROJ_DIR/ingest/params
+
+running "Dsr2Radx -params Dsr2Radx.quicklook.low.sur"
+if ($status == 1) then
+  Dsr2Radx -params Dsr2Radx.quicklook.low.sur |& \
+    LogFilter -d $ERRORS_LOG_DIR -p Dsr2Radx -i quicklook.low.sur &
+endif
+

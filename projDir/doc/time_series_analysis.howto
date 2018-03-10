@@ -1,0 +1,71 @@
+How to rerun analysis on the time series
+========================================
+
+1. Data
+-------
+
+Mount the USB drive with the data
+
+2. Install the correct site info file into the environment
+----------------------------------------------------------
+
+  /bin/cp ~/projDir/system/params/site_info.DOW7 ~/projDir/system/params/site_info
+
+or
+
+  /bin/cp ~/projDir/system/params/site_info.DOW6 ~/projDir/system/params/site_info
+
+Then
+
+  source ~/.cshrc
+
+3. Start up Dsr2Radx
+--------------------
+
+cd ~/projDir/analysis/scripts
+./start_Dsr2Radx.analysis
+
+4. Reprocess the data - high
+----------------------------
+
+In a window:
+
+cd ~/projDir/analysis/params
+Iq2Dsr -params Iq2Dsr.analysis.high -f /media/DOW_XXX/data/yyyymmdd/time_series/save/high/yyyymmdd/yyyy*.ts
+
+Watch for Dsr2Radx to save files.
+
+5. Reprocess the data - low
+---------------------------
+
+In a window:
+
+cd ~/projDir/analysis/params
+Iq2Dsr -params Iq2Dsr.analysis.low -f /media/DOW_XXX/data/yyyymmdd/time_series/save/low/yyyymmdd/yyyy*.ts
+
+Watch for Dsr2Radx to save files.
+
+6. Data files
+-------------
+
+Sweep files are saved in:
+
+   projDir/data/${RADAR_NAME}/dorade/moments/analysis/high/yyymmdd/
+   projDir/data/${RADAR_NAME}/dorade/moments/analysis/low/yyymmdd/
+
+7. Clean-up
+-----------
+
+  kill_Dsr2Radx.analysis
+
+8. Create merged fields
+-----------------------
+
+As an example:
+
+  cd ~/projDir/analysis/params
+  RadxMergeFields -params RadxMergeFields.analysis -debug -start "2014 01 28 00 00 00" -end "2014 01 29 00 00 00" 
+
+Sweep files are saved in:
+
+   projDir/data/${RADAR_NAME}/dorade/moments/analysis/combined/yyymmdd/

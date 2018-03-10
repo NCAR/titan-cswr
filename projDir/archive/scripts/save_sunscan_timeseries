@@ -1,0 +1,10 @@
+#! /bin/csh
+
+start_TsSmartSave.sunscan.high
+start_TsSmartSave.sunscan.low
+start_TsSmartSave.sunscan.dow8
+
+tail -f $ERRORS_LOG_DIR/today/TsSmartSave.sunscan.log
+
+
+

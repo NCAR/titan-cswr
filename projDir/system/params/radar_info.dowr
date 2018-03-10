@@ -1,0 +1,114 @@
+###############################################
+# site-specific parameters - DOWR - rapid DOW
+#
+###############################################
+
+setenv PROJECT_NAME               "TWIRL"
+
+# NAME etc
+# Location is generally overridden by GPS
+
+setenv SITE_NAME                  "TWIRL"
+setenv RADAR_NAME                 "DOWR"
+setenv radar_name                 "dowr"
+setenv RADAR_LAT                  40.0352
+setenv RADAR_LON                  -105.2334
+setenv RADAR_ALT_KM               1.609
+setenv RADAR_ALT_M                1609
+
+# FREQUENCIES
+
+setenv DOWR_FREQ_1               9.310e+09
+setenv DOWR_FREQ_2               9.394e+09
+setenv DOWR_FREQ_3               9.478e+09
+setenv DOWR_FREQ_4               9.562e+09
+setenv DOWR_FREQ_5               9.646e+09
+setenv DOWR_FREQ_6               9.730e+09
+
+setenv DOWR_FREQ_GHZ_1           9.310
+setenv DOWR_FREQ_GHZ_2           9.394
+setenv DOWR_FREQ_GHZ_3           9.478
+setenv DOWR_FREQ_GHZ_4           9.562
+setenv DOWR_FREQ_GHZ_5           9.646
+setenv DOWR_FREQ_GHZ_6           9.730
+
+# antenna angle offsets
+
+#setenv DOWR_ELEV_OFFSET_1        -10.9
+#setenv DOWR_ELEV_OFFSET_2        -9.78
+#setenv DOWR_ELEV_OFFSET_3        -8.66
+#setenv DOWR_ELEV_OFFSET_4        -7.54
+#setenv DOWR_ELEV_OFFSET_5        -6.42
+#setenv DOWR_ELEV_OFFSET_6        -5.3
+
+setenv DOWR_ELEV_OFFSET_1        0.0
+setenv DOWR_ELEV_OFFSET_2        1.1
+setenv DOWR_ELEV_OFFSET_3        2.2
+setenv DOWR_ELEV_OFFSET_4        3.3
+setenv DOWR_ELEV_OFFSET_5        4.4
+setenv DOWR_ELEV_OFFSET_6        5.5
+
+setenv DOWR_AZ_OFFSET_1           0.00
+setenv DOWR_AZ_OFFSET_2          -0.66
+setenv DOWR_AZ_OFFSET_3          -1.32
+setenv DOWR_AZ_OFFSET_4          -1.98
+setenv DOWR_AZ_OFFSET_5          -2.64
+setenv DOWR_AZ_OFFSET_6          -3.30
+
+# CALIBRATION
+
+setenv DOWR_XMIT_POWER_DBM       74.70
+setenv DOWR_ANTENNA_GAIN_DB      40.0
+
+setenv DOWR_COUPLER_LOSS_DB_1      15.91
+setenv DOWR_COUPLER_LOSS_DB_2      16.11
+setenv DOWR_COUPLER_LOSS_DB_3      16.11
+setenv DOWR_COUPLER_LOSS_DB_4      15.97
+setenv DOWR_COUPLER_LOSS_DB_5      16.35
+setenv DOWR_COUPLER_LOSS_DB_6      16.22
+
+setenv DOWR_TWO_WAY_WAVEGUIDE_LOSS_DB  2.0
+setenv DOWR_TWO_WAY_RADOME_LOSS_DB     0.3
+
+# RAPIDRX
+
+setenv DOWR_MAX_DUTY_CYCLE             0.0101
+setenv N_GATES_REQUESTED               1500
+setenv MAX_TOTAL_GATES_PER_SEC         12.0e+06
+
+setenv TX_DELAY_FROM_T0                1.0e-06
+setenv TX_PULSE_SEPARATION             0.0e-9
+setenv TX_PULSE_SWITCHING_TIME         0.0e-9
+setenv TX_ENVELOPE_SWITCHING_TIME      100.0e-9
+setenv TX_PENTEK_SEPARATION            25.0e-9
+
+setenv TX_TO_RX_DELAY_PENTEK_1_075NS   4.25e-06;
+setenv TX_TO_RX_DELAY_PENTEK_1_150NS   4.25e-06;
+setenv TX_TO_RX_DELAY_PENTEK_1_225NS   4.25e-06;
+setenv TX_TO_RX_DELAY_PENTEK_1_300NS   4.25e-06;
+setenv TX_TO_RX_DELAY_PENTEK_1_450NS   4.25e-06;
+setenv TX_TO_RX_DELAY_PENTEK_1_600NS   4.25e-06;
+setenv TX_TO_RX_DELAY_PENTEK_1_750NS   4.25e-06;
+setenv TX_TO_RX_DELAY_PENTEK_1_900NS   4.25e-06;
+
+setenv TX_TO_RX_DELAY_PENTEK_2_075NS   4.30e-06;
+setenv TX_TO_RX_DELAY_PENTEK_2_150NS   4.30e-06;
+setenv TX_TO_RX_DELAY_PENTEK_2_225NS   4.30e-06;
+setenv TX_TO_RX_DELAY_PENTEK_2_300NS   4.30e-06;
+setenv TX_TO_RX_DELAY_PENTEK_2_450NS   4.30e-06;
+setenv TX_TO_RX_DELAY_PENTEK_2_600NS   4.30e-06;
+setenv TX_TO_RX_DELAY_PENTEK_2_750NS   4.30e-06;
+setenv TX_TO_RX_DELAY_PENTEK_2_900NS   4.30e-06;
+
+setenv IQCOUNT_SCALE_FOR_MW_PENTEK_1   9700
+setenv IQCOUNT_SCALE_FOR_MW_PENTEK_2   9700
+
+# simulate angles
+#   for ops, false
+#   for sim, true
+
+setenv SIM_ANTENNA_ANGLES        "false"
+#setenv SIM_ANTENNA_ANGLES       "true"
+setenv SIM_AZIMUTH_RATE          30.0
+
+#############################################

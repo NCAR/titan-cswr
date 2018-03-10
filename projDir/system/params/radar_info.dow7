@@ -1,0 +1,143 @@
+#############################################
+# site-specific parameters - DOW7
+#############################################
+
+setenv PROJECT_NAME               "SNOWIE"
+
+# location
+
+setenv SITE_NAME                  "PACKER"
+setenv RADAR_NAME                 "DOW7"
+setenv radar_name                 "dow7"
+setenv RADAR_LAT                  40.0352
+setenv RADAR_LON                  -105.2334
+setenv RADAR_ALT_KM               1.609
+setenv RADAR_ALT_M                1609
+
+# operating frequency
+
+setenv HIGH_FREQ                  9.50e9
+setenv LOW_FREQ                   9.35e9
+setenv HIGH_FREQ_GHZ              9.50
+setenv LOW_FREQ_GHZ               9.35
+
+# calibration - 2015/08/19
+
+setenv HIGH_COUPLER_LOSS_H_DB     26.90
+setenv HIGH_COUPLER_LOSS_V_DB     26.21
+setenv LOW_COUPLER_LOSS_H_DB      26.42
+setenv LOW_COUPLER_LOSS_V_DB      26.44
+
+setenv HIGH_XMIT_POWER_H_DBM      80.03
+setenv HIGH_XMIT_POWER_V_DBM      79.59
+setenv LOW_XMIT_POWER_H_DBM       80.23
+setenv LOW_XMIT_POWER_V_DBM       80.19
+
+setenv HIGH_ZDR_CORRECTION_DB      -1.8
+setenv HIGH_SYSTEM_PHIDP_DEG         0
+setenv LOW_ZDR_CORRECTION_DB       1.5
+setenv LOW_SYSTEM_PHIDP_DEG          0
+
+setenv ANTENNA_GAIN_H_DB          44.3
+setenv ANTENNA_GAIN_V_DB          44.3
+
+setenv TWO_WAY_WAVEGUIDE_LOSS_H_DB 2.0
+setenv TWO_WAY_WAVEGUIDE_LOSS_V_DB 2.0
+
+#############################################
+
+#############################################
+
+# DOWDRX for DOW7
+
+setenv MAX_DUTY_CYCLE 0.00101
+setenv MAX_N_GATES 1000
+
+setenv TX_MOD_WIDTH_STRETCH_HIGH_1000  -0.6e-07
+setenv TX_MOD_WIDTH_STRETCH_HIGH_833   -0.7e-07
+setenv TX_MOD_WIDTH_STRETCH_HIGH_667   -0.1e-07
+setenv TX_MOD_WIDTH_STRETCH_HIGH_500   0.2e-07
+setenv TX_MOD_WIDTH_STRETCH_HIGH_333   0.6e-07
+setenv TX_MOD_WIDTH_STRETCH_HIGH_167   1.42e-07
+
+setenv TX_MOD_WIDTH_STRETCH_LOW_1000  -0.6e-07
+setenv TX_MOD_WIDTH_STRETCH_LOW_833   -0.9e-07
+setenv TX_MOD_WIDTH_STRETCH_LOW_667   -0.5e-07
+setenv TX_MOD_WIDTH_STRETCH_LOW_500   -0.2e-07
+setenv TX_MOD_WIDTH_STRETCH_LOW_333   0.3e-07
+setenv TX_MOD_WIDTH_STRETCH_LOW_167   1.2e-07
+
+setenv TX_DELAY_HIGH_1000  1.0e-7
+setenv TX_DELAY_HIGH_833   1.0e-7
+setenv TX_DELAY_HIGH_667   1.0e-7
+setenv TX_DELAY_HIGH_500   1.0e-7
+setenv TX_DELAY_HIGH_333   1.0e-7
+setenv TX_DELAY_HIGH_167   1.0e-7
+
+setenv TX_PULSE_SEPARATION_1000 10e-07
+setenv TX_PULSE_SEPARATION_833  10e-07
+setenv TX_PULSE_SEPARATION_667  10e-07
+setenv TX_PULSE_SEPARATION_500  10e-07
+setenv TX_PULSE_SEPARATION_333  10e-07
+setenv TX_PULSE_SEPARATION_167  5.0e-07
+
+setenv TX_TO_RX_DELAY_HIGH_1000 5.10e-06
+setenv TX_TO_RX_DELAY_HIGH_833  5.10e-06
+setenv TX_TO_RX_DELAY_HIGH_667  5.10e-06
+setenv TX_TO_RX_DELAY_HIGH_500  5.10e-06
+setenv TX_TO_RX_DELAY_HIGH_333  5.10e-06
+setenv TX_TO_RX_DELAY_HIGH_167  5.10e-06
+
+setenv TX_TO_RX_DELAY_LOW_1000 5.15e-06
+setenv TX_TO_RX_DELAY_LOW_833  5.15e-06
+setenv TX_TO_RX_DELAY_LOW_667  5.15e-06
+setenv TX_TO_RX_DELAY_LOW_500  5.15e-06
+setenv TX_TO_RX_DELAY_LOW_333  5.15e-06
+setenv TX_TO_RX_DELAY_LOW_167  5.15e-06
+
+setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_1000 7e-07
+setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_833  6e-07
+setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_667  6e-07
+setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_500  6e-07
+setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_333  6e-07
+setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_167  9e-07
+
+setenv TX_TO_BURST_SAMPLE_DELAY_LOW_1000 7e-07
+setenv TX_TO_BURST_SAMPLE_DELAY_LOW_833  6e-07
+setenv TX_TO_BURST_SAMPLE_DELAY_LOW_667  6e-07
+setenv TX_TO_BURST_SAMPLE_DELAY_LOW_500  6e-07
+setenv TX_TO_BURST_SAMPLE_DELAY_LOW_333  6e-07
+setenv TX_TO_BURST_SAMPLE_DELAY_LOW_167  6e-07
+
+setenv BURST_SAMPLE_WIDTH_STRETCH_HIGH_1000 0.5e-6
+setenv BURST_SAMPLE_WIDTH_STRETCH_HIGH_833 1.166666667e-6
+setenv BURST_SAMPLE_WIDTH_STRETCH_HIGH_667 1.333333333e-6
+setenv BURST_SAMPLE_WIDTH_STRETCH_HIGH_500 1.5e-6
+setenv BURST_SAMPLE_WIDTH_STRETCH_HIGH_333 0.666666667e-6
+setenv BURST_SAMPLE_WIDTH_STRETCH_HIGH_167 0.833333333e-6
+
+setenv BURST_SAMPLE_WIDTH_STRETCH_LOW_1000 0.5e-6
+setenv BURST_SAMPLE_WIDTH_STRETCH_LOW_833 1.166666667e-6
+setenv BURST_SAMPLE_WIDTH_STRETCH_LOW_667 1.333333333e-6
+setenv BURST_SAMPLE_WIDTH_STRETCH_LOW_500 1.5e-6
+setenv BURST_SAMPLE_WIDTH_STRETCH_LOW_333 0.666666667e-6
+setenv BURST_SAMPLE_WIDTH_STRETCH_LOW_167 0.833333333e-6
+
+# FMQ for dowdrx
+#   for ops, no_angles
+#   for sim, with_angles
+
+setenv DOWDRX_FMQ_HIGH ${DATA_DIR}/fmq/ts/shmem_high_no_angles_10100
+setenv DOWDRX_FMQ_LOW  ${DATA_DIR}/fmq/ts/shmem_low_no_angles_10200
+
+#setenv DOWDRX_FMQ_HIGH ${DATA_DIR}/fmq/ts/shmem_high_with_angles_10300
+#setenv DOWDRX_FMQ_LOW  ${DATA_DIR}/fmq/ts/shmem_low_with_angles_10400
+
+# simulate angles
+#   for ops, false
+#   for sim, true
+
+setenv SIM_ANTENNA_ANGLES          "false"
+#setenv SIM_ANTENNA_ANGLES          "true"
+
+#############################################

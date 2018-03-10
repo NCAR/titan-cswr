@@ -1,0 +1,9 @@
+#! /bin/csh
+
+cd $PROJ_DIR/ingest/params
+
+running "TsTcp2Fmq -params TsTcp2Fmq.hiq"
+if ($status == 1) then
+    TsTcp2Fmq -params TsTcp2Fmq.hiq |& \
+    LogFilter -d $ERRORS_LOG_DIR -p TsTcp2Fmq -i hiq &
+endif

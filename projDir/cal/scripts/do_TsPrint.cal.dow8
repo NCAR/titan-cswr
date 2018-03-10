@@ -1,0 +1,5 @@
+#! /bin/csh
+
+TsPrint -fmq $DOWDRX_FMQ_HIGH -nsamples 5000 -gate 50 -ngates 500
+
+

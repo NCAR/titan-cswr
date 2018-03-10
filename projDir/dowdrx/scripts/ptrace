@@ -1,0 +1,87 @@
+#!/bin/sh --
+# *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=* 
+# ** Copyright UCAR (c) 1992 - 2010 
+# ** University Corporation for Atmospheric Research(UCAR) 
+# ** National Center for Atmospheric Research(NCAR) 
+# ** Research Applications Laboratory(RAL) 
+# ** P.O.Box 3000, Boulder, Colorado, 80307-3000, USA 
+# ** 2010/10/7 23:11:36 
+# *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=* 
+# ptrace: run strace on a process by name, BSD or SysV.
+# Tres Hofmeister <tres@ncar.ucar.edu>
+# Usage: ptrace process
+# CVS: $Id: ptrace,v 1.1 2013/06/09 03:06:55 dixon Exp $
+
+
+PATH=/bin:/usr/bin:/usr/ucb
+
+prog=`basename $0`
+usage="Usage: $prog [-l] [-s siglist] process[es]"
+
+# Default signal list.
+signals="INT TERM KILL"
+
+# Process command line.
+while getopts ls: opt
+do
+    case $opt in
+        s)  # Allow commas as signal list separator.
+            signals=`echo $OPTARG | sed 's/,/ /g'`
+            ;;
+        l)  # Loose match.
+	    loose=true
+	    ;;
+        \?) echo $usage >&2
+            exit 1
+            ;;
+        esac
+done
+shift `expr $OPTIND - 1`
+
+# Remaining arguments are process names.
+if [ $# -eq 0 ]; then
+    echo $usage >&2
+    exit 1
+fi
+
+# Loop over each pattern on the command line.
+for proc in "$@"
+do
+    # Quote any '/' characters in the pattern.
+    pat=`echo "$proc" | sed 's%/%\\\/%g'`
+
+    # Is this a loose match?
+    if [ ! "$loose" ]; then
+	pat="( |\/)$pat( |$)"
+    fi
+
+    # A process name is considered to start with either
+    # a space or '/', and end with either a space or newline.
+    if [ "$BSD" ]; then
+        pids=`ps axww | awk '/'"$pat"'/ && \
+            $0 !~ / awk |'$prog'/ {print $1}'`
+    else
+        pids=`ps -ef  | awk '/'"$pat"'/ && \
+            $0 !~ / awk |'$prog'/ {print $2}'`
+    fi
+
+    # Do any processes match this pattern?
+    if [ "$pids" ]; then
+        inst=`echo $pids | wc -w`
+        echo "Instances of \`$proc':" $inst
+
+        # Loop over each instance of this pattern.
+        for pid in $pids
+        do
+            echo " strace -p $pid"
+
+            strace -p $pid
+
+        done
+    else
+        # No processes match this pattern.
+        echo "$proc: no such process" >&2
+    fi
+done
+
+exit 0

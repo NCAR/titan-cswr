@@ -1,0 +1,10 @@
+#! /bin/csh
+
+cd $PROJ_DIR/ingest/params
+
+running "Dsr2Radx -params Dsr2Radx.cfradial.low"
+if ($status == 1) then
+  Dsr2Radx -params Dsr2Radx.cfradial.low |& \
+    LogFilter -d $ERRORS_LOG_DIR -p Dsr2Radx -i cfradial.low &
+endif
+

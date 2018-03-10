@@ -1,0 +1,10 @@
+#! /bin/csh
+
+cd $PROJ_DIR/display/params
+
+snuff HawkEye.high
+
+#setenv DISPLAY :0.0
+
+HawkEye -params HawkEye.high -debug |& \
+    LogFilter -d $ERRORS_LOG_DIR -p HawkEye -i high &

@@ -1,0 +1,33 @@
+#! /bin/bash
+
+#--------------------------------------------------------------------
+#
+# install packages that are not in the master required list
+#
+# Usage: install_missing_packages required_package_list
+#--------------------------------------------------------------------
+
+# set the path
+
+export PATH=.:/bin:/usr/bin:/sbin:/usr/sbin:/usr/bin/X11:/usr/local/bin:/usr/local/sbin
+
+# get required list
+
+required=$1
+
+# get installed list
+
+installed=/tmp/installed_pkgs.txt
+rpm -qa --qf '%{name}\n' | sort | uniq > $installed
+
+# install list of missing RPMS
+yum --nogpgcheck -y install `comm -23 $1 $installed`
+ 
+# check for packages that we couldn't install
+rpm -qa --qf '%{name}\n' | sort| uniq > $installed
+ 
+echo 'Missing Package :' `comm -23 $1 $installed`
+
+
+
+

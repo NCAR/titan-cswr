@@ -1,0 +1,92 @@
+Preparing a usb3 external drive for data archival
+=================================================
+
+1. Figure out the device name
+-----------------------------
+
+Plug in the drive.
+
+Then figure out what is mounted:
+
+  df -h
+
+This will return something like
+
+  Filesystem            Size  Used Avail Use% Mounted on
+  /dev/sda3              49G  6.1G   40G  14% /
+  tmpfs                  32G  232K   32G   1% /dev/shm
+  /dev/sda1             485M   64M  397M  14% /boot
+  /dev/sda2              97G  1.9G   90G   3% /home
+  /dev/sda5             5.3T   24G  5.0T   1% /data
+
+Note that the devices go to /dev/sda5.
+
+So, find out what is next:
+
+  ls -al /dev/sdb*
+
+will return something like:
+
+  (mgen) doc 174 % ls -al /dev/sdb*
+  brw-rw----. 1 root disk 8, 16 May 20 11:55 /dev/sdb
+  brw-rw----. 1 root disk 8, 17 May 20 12:01 /dev/sdb1
+
+It looks like you want /dev.sdb1. To be sure, unplug the drive
+and try again:
+
+  ls -al /dev/sdb*
+
+and the devices should have gone.
+
+So now we know it is /dev/sdb1 that we want to format.
+
+2. Format the drive
+-------------------
+
+  sudo mkfs -t ext4 -v /dev/sdb1
+
+3. Label the drive
+------------------0
+
+  sudo e2label /dev/sdb1 DOW7_XXX
+
+where the XXX is the drive number. For example:
+
+  sudo e2label /dev/sdb1 DOW7_001
+  sudo e2label /dev/sdb1 DOW7_002
+  ....
+  sudo e2label /dev/sdb1 DOW7_012
+
+for the first 12 drives.
+
+4. Mount the drive
+------------------
+
+Unplug the drive and plug it back in. It should mount automatically.
+Check it with:
+
+  df -h
+
+which should return something like:
+
+  Filesystem            Size  Used Avail Use% Mounted on
+  /dev/sda3              49G  6.1G   40G  14% /
+  tmpfs                  32G  232K   32G   1% /dev/shm
+  /dev/sda1             485M   64M  397M  14% /boot
+  /dev/sda2              97G  1.9G   90G   3% /home
+  /dev/sda5             5.3T   24G  5.0T   1% /data
+  /dev/sdb1             1.8T  196M  1.7T   1% /media/DOW_001
+
+5. Make the directory we need on the drive
+------------------------------------------
+
+  cd /media/DOW7_001
+  sudo mkdir data
+  sudo chown titan5 data
+
+
+
+
+
+ 
+

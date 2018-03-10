@@ -1,0 +1,10 @@
+#! /bin/csh
+
+cd $PROJ_DIR/ingest/params
+
+running "TsStatusMonitor -params TsStatusMonitor.dowr"
+if ($status == 1) then
+  TsStatusMonitor -params TsStatusMonitor.dowr |& \
+    LogFilter -d $ERRORS_LOG_DIR -p TsStatusMonitor -i dowr &
+endif
+

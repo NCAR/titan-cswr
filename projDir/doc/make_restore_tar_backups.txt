@@ -1,0 +1,51 @@
+Making and restoring from tar backups
+======================================
+
+TITAN setup in DOW trucks
+
+Making backups
+--------------
+
+You tar up the cvs directory, into the backups dir.
+
+For example, on mgen7:
+
+cd
+mkdir -p backups
+tar cvfz backups/mgen7.cvs.20160501.tgz cvs
+
+Or on rapid dow drx:
+
+cd
+mkdir -p backups
+tar cvfz backups/drxr.cvs.20160501.tgz cvs
+
+Restoring from backups
+----------------------
+
+First copy the backup into the backups dir.
+For example:
+
+cd
+mkdir -p backups
+cp mgen6.cvs.20160501.tgz backups
+
+The restore from it. For example
+
+cd
+mv cvs old.cvs
+tar xvfz backups/mgen6.cvs.20160501.tgz
+
+This will create a new cvs directory.
+
+Configuring the host after restoring
+------------------------------------
+
+cd
+cd cvs/projects/titan/dow/dualprt/system/scripts
+./configure_host
+
+NOTE: before running configure_host, make sure that /data exists, and is writeable by titan5.
+
+
+

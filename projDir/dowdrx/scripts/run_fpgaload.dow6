@@ -1,0 +1,7 @@
+#! /bin/csh -f
+
+# run FPGA load for DOW6
+# this has been upgraded for good inter-card synchronization
+
+run_fpgaload.sync
+

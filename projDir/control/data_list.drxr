@@ -1,0 +1,9 @@
+#################################################
+# required data for drxr
+#
+# Format is:
+#
+#  dir               late_secs  very_late_secs
+#################################################
+#
+# No data stored on drxr host

@@ -6,24 +6,20 @@
 # Hardware
 # --------
 # 
-# This is generally a DELL T620.
-# 
-# Machine should have 2 CPUs, 32 GB RAM, extra fans.
-# 2 high-speed system disks in RAID-1, hardware RAID controller.
+# This is generally a Trenton 4U machine.
 # 
 # RAID controller:
 #
-#   Move to slot 3
-
+#   Move to 8x slot out of the way
+#
 # Video card:
 # 
-#   Install good Nvidia graphics card, e.g. GeForce GT 610
-#   Install in slot 4.
+#   Install Nvidia graphics card, e.g. GeForce GT 610
+#   Install in a x16 slot.
 # 
 # Penteks:
 # 
-#   Install in slots 2 and 5.
-#   Install SCSI cable cards in slots 1 and 7.
+#   Install in x8 slots, separated a bit because of heat.
 #
 #   IMPORTANT: on Pentek PCIe carrier card:
 #     (a) Move jumper JB9 to pins 1/2. (Int A)
@@ -32,72 +28,46 @@
 # 
 # Acromag:
 # 
-#   Install in slot 6.
+#   Install in x4 slot.
+#
+# Connect the ribbon cables to the Penteks.
 # 
 # BIOS
 # ----
 # 
-#   Disable on-board video in the BIOS:
+#   Set to boot from USB.
 # 
-#   Select:
+# Install OS from USB
+# -------------------
 # 
-#     System Bios
-#       -> Integrated Devices
-#          -> Embedded Video Controller
-#             -> Disabled
-#
-# FAN speed
-# ---------
-#
-# In BIOS:
-#  Configure IDRAC
-#  Scroll down to 'Thermal'
-#  Select (a) maximum performance
-#         (b) fan offset - low
+# The following notes are from the install for Scientific LINUX 7.4:
 # 
-# Install OS
-# ----------
-# 
-# The following notes are from the install for Scientific LINUX 6.4:
-# 
-#   Install with basic video driver
 #   English keyboard
-#   Basic storage device
-#   Discard data on RAID
-#   Hostname: drx
-#   Time: Etc/UTC
+#   Time: GMT
+#   Hostname: drx1, drx2 etc.
 #   
 #   Create custom disk partition layout:
 # 
-#    /      50 GB
-#    /root  500 MB
-#    /swap  16 GB
-#    /home  rest
+#    /swap      16 GB
+#    /boot      1  GB
+#    /boot-EFI  1  GB
+#    /          50 GB
+#    /home      50 GB
+#    /data      the rest
 # 
-#   Software development workstation
-#   Customize:
-#     Basic system: add yum repos
-#     Virtualization: turn all off
-#     Desktops: add KDE
-#     Apps: add office
-# 
-#   Install:
-#     If dependency errors occur, ignore and go on.
-# 
+#   Type of install:
+#     KDE Plasma workstation
+#     add development tools
+#     add open office
+#
 #   After install:
 #   
 #     Perform software update from menu.
 #   
-#   Firewall:
-#
-#     Open port range 5432 - 5500
-#     (Also on mgen).
-# 
 #   Add titan5 user:
 # 
 #     Add user titan5
 #     Change titan5 shell to /bin/csh using 'chsh'.
-# 
 
 # install extra repos
 # -------------------
@@ -107,63 +77,43 @@
 # Install packages
 # ----------------
 
-# You will need:
-# 
-#     emacs
-#     cvs
-#     svn
-#     git
-#     scons
-#     ftp
-#     tkcvs
-#    
-#     gcc
-#     g++
-#     gfortran
-#     Xvfb (virtual X server)
-#     gnuplot
-#     ImageMagick-devel
-#     ImageMagick-c++-devel
-# 
-#     kernel-devel
-#     fftw3-devel development (for radar moments)
-#     log4cpp-devel
-#     expat-devel (for udunits)
-#     jasper-devel (for grib2)
-# 
-#     glibc-devel
-#     libX11-devel (for X)
-#     libXext-devel (if available)
-#     bzip2-devel (for NEXRAD decompression)
-#     zlib-devel
-#     libpng-devel
-#     libtiff-devel
-#     qt4-devel (for Qt apps)
-#     qwt-devel (for tcpscope)
-#     glut-devel (for Open GL)
-#     flex-devel
-#     compat-libstdc++-296.i686 (32-bit compat)
-#     compat-libstdc++-33.i686  (32-bit compat)
-#     boost-devel
-#
-#     hdf5
-#     netcdf
-#     udunits2
-#
-#     perl.Env
-#     xorg-x11-fonts-misc
-#     xorg-x11-fonts-75dpi
-#     xorg-x11-fonts-100dpi
-
 # You can install these with this command
 
-  yum install -y cvs svn scons ftp gcc gcc-c++ gcc-gfortran Xvfb fftw3-devel log4cpp-devel expat-devel jasper-devel glibc-devel libX11-devel libXext-devel bzip2-devel zlib-devel libpng-devel libtiff-devel qt4-devel qwt-devel glut-devel flex-devel compat-libstdc++-296.i686 compat-libstdc++-33.i686 boost-devel hdf5 netcdf udunits2 perl-Env xorg-x11-fonts-misc xorg-x11-fonts-75dpi xorg-x11-fonts-100dpi emacs git tkcvs kernel-devel gnuplot ImageMagick-devel ImageMagick-c++-devel
+yum install -y epel-release
+yum install -y \
+tcsh perl perl-Env ftp git svn cvs tkcvs emacs tkcvs m4 \
+gcc gcc-c++ gcc-gfortran glibc-devel libX11-devel libXext-devel \
+libpng-devel libtiff-devel jasper-devel zlib-devel bzip2-devel expat-devel \
+flex-devel fftw3-devel bzip2-devel jasper-devel qt5-devel xrdb \
+Xvfb xorg-x11-fonts-misc xorg-x11-fonts-75dpi xorg-x11-fonts-100dpi \
+gnuplot ImageMagick-devel ImageMagick-c++-devel log4cpp-devel \
+qwt-devel glut-devel compat-libstdc++-296.i686 compat-libstdc++-33.i686 boost-devel \
+perl-Env kernel-devel gnuplot
 
+# Install NVIDIA driver
+# ---------------------
 #
+# See:
+#
+#  https://www.dedoimedo.com/computers/centos-7-nvidia-second.html
+#  http://elrepo.org/tiki/tiki-index.php
+
+  rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+  rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
+
+  yum install kmod-nvidia-340xx.x86_64 nvidia-x11-drv-340xx.x86_64 nvidia-detect.x86_64
+
+# this last step takes a while
+
+  reboot
+
+# QT
+# --
+
 # Make link for qmake
-#
+
   cd /usr/bin
-  ln -s qmake-qt4 qmake
+  ln -s qmake-qt5 qmake
 
 # Install anaconda for python 2.7
 ---------------------------------
@@ -193,7 +143,7 @@ set
   SELINUX=disabled
 
 # Install Java JDK
-#  ----------------
+# ----------------
 
 # Download Java JDK tar file from Oracle.
 
@@ -232,28 +182,22 @@ set
 # Check out LROSE
 # ---------------
 
-  setenv CVSROOT :pserver:dixon@localhost:/cvs
-  alias cvs 'cvs -d :pserver:dixon@localhost:/cvs \!*'
-  cvs login
+  mkdir ~/git
+  cd ~/git
+  git clone https://github.com/ncar/lrose-core
+  git clone https://github.com/ncar/lrose-netcdf
 
-  cd ~/cvs
-  cvs co distribs/lrose
-  ./distribs/lrose/do_src_checkout
+# Check out titan dow project
+# ---------------------------
 
-# Check out dow project from cvs
-# ------------------------------
-
-  setenv CVSROOT :pserver:dixon@localhost:/cvs
-  cvs login
-  mkdir cvs
-  cd cvs
-  cvs co projects/titan/dow
+  cd ~/git
+  git clone https://github.com/ncar/titan-cswr
 
 # set up cshrc file
 # -----------------
 
   cd
-  ln -s cvs/projects/titan/dow/dualFreq/system/dotfiles/cshrc .cshrc
+  ln -s git/titan-cswr/projDir/system/dotfiles/cshrc .cshrc
   source ~/.cshrc
 
 # Check out dowdrx project from svn

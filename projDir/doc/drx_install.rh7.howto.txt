@@ -69,22 +69,18 @@
 #     Add user titan5
 #     Change titan5 shell to /bin/csh using 'chsh'.
 
-# install extra repos
-# -------------------
-
-  yum install -y epel-release
-
 # Install packages
 # ----------------
 
-# You can install these with this command
+# You can install these with these commands
 
 yum install -y epel-release
+
 yum install -y \
 tcsh perl perl-Env ftp git svn cvs tkcvs emacs tkcvs m4 \
 gcc gcc-c++ gcc-gfortran glibc-devel libX11-devel libXext-devel \
 libpng-devel libtiff-devel jasper-devel zlib-devel bzip2-devel expat-devel \
-flex-devel fftw3-devel bzip2-devel jasper-devel qt5-devel xrdb \
+flex-devel fftw3-devel bzip2-devel jasper-devel qt5-qtbase-devel xrdb \
 Xvfb xorg-x11-fonts-misc xorg-x11-fonts-75dpi xorg-x11-fonts-100dpi \
 gnuplot ImageMagick-devel ImageMagick-c++-devel log4cpp-devel \
 qwt-devel glut-devel compat-libstdc++-296.i686 compat-libstdc++-33.i686 boost-devel \
@@ -101,7 +97,7 @@ perl-Env kernel-devel gnuplot
   rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
   rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
 
-  yum install kmod-nvidia-340xx.x86_64 nvidia-x11-drv-340xx.x86_64 nvidia-detect.x86_64
+  yum install -y kmod-nvidia-340xx.x86_64 nvidia-x11-drv-340xx.x86_64 nvidia-detect.x86_64
 
 # this last step takes a while
 
@@ -122,7 +118,7 @@ Go to the anaconda web site:
 
   https://www.continuum.io/downloads
 
-download anaconda and install in $HOME.
+download anaconda2 and install in $HOME.
 
 # disable unwanted services - firewall
 --------------------------------------
@@ -212,7 +208,7 @@ set
   svn co http://localhost:8888/svn/dow/trunk/src src
 
 # Update firmware on Penteks to support option 428
---------------------------------------------------
+# ------------------------------------------------
 
 # As shipped, the Penteks do not natively support
 # option 428, which is needed for our downconverters.

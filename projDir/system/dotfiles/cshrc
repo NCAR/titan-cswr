@@ -1,18 +1,16 @@
 #############################################
-# .cshrc file - Mike Dixon RAP June 1992
+# .cshrc file - CSWR systems
 #############################################
 
 umask 002
 
-setenv EDITOR /usr/local/bin/emacs
-setenv EMACS /usr/local/bin/emacs
+setenv EDITOR emacs
+setenv EMACS emacs
 setenv USERNAME "titan5"
 setenv FULLNAME "titan5"
-setenv MANPATH /usr/man:/usr/X11R6/man:/usr/local/man:
-setenv TAPE /dev/rmt/tps0d4.8200
 setenv PRINTER lp
 
-#limit coredumpsize unlimited
+# limit coredumpsize unlimited
 
 #
 # directories
@@ -21,51 +19,32 @@ setenv PRINTER lp
 setenv TITAN_HOME $HOME/projDir
 setenv CVSROOT :pserver:dixon@localhost:/cvs
 
-#
-# REGISTRATION
-#
+# Set the build environment
 
-setenv PROCMAP_HOST localhost
-
-#
-# Ldata FMQ
-#
-
-setenv LDATA_FMQ_ACTIVE true
-
-#
-# make
-#
-
-#setenv GCC_WARNINGS "-Wall -Wextra"
-setenv GCC_WARNINGS "-Wall"
-setenv HOST_OS LINUX_64
 setenv LANG C
+setenv HOST_OS LINUX_CX11
+setenv GCC_WARNINGS "-Wall"
 
-setenv WORK $HOME/cvs
-setenv BUILD_DIR $HOME/cvs
+setenv LROSE_CORE_DIR $HOME/git/lrose-core
+setenv LROSE_INSTALL_DIR $HOME/lrose
 
-setenv RAP_MAKE_INC_DIR $WORK/make_include
-setenv RAP_MAKE_BIN_DIR $WORK/make_bin
+setenv RAP_MAKE_INC_DIR $LROSE_CORE_DIR/codebase/make_include
+setenv RAP_MAKE_BIN_DIR $LROSE_CORE_DIR/codebase/make_bin
 
-setenv RAP_INC_DIR $WORK/include
-setenv RAP_LIB_DIR $WORK/lib
-setenv RAP_BIN_DIR $WORK/bin
-setenv RAP_MAN_DIR $WORK/man
-setenv RAP_DOC_DIR $WORK/doc
-setenv RAP_JAVA_DIR $WORK/java_packages
+setenv RAP_INC_DIR $LROSE_INSTALL_DIR/include
+setenv RAP_LIB_DIR $LROSE_INSTALL_DIR/lib
+setenv RAP_BIN_DIR $LROSE_INSTALL_DIR/bin
+setenv RAP_MAN_DIR $LROSE_INSTALL_DIR/man
+setenv RAP_DOC_DIR $LROSE_INSTALL_DIR/doc
 
 setenv RAP_SHARED_INC_DIR $RAP_INC_DIR
 setenv RAP_SHARED_LIB_DIR $RAP_LIB_DIR
 setenv RAP_SHARED_BIN_DIR $RAP_BIN_DIR
-setenv RAP_SHARED_MAN_DIR $RAP_MAN_DIR
-setenv RAP_SHARED_DOC_DIR $RAP_DOC_DIR
-
-setenv RAP_INST_BIN_DIR $RAP_BIN_DIR
-setenv RAP_INST_JAVA_DIR $WORK/java/dist/lib
 
 setenv WINDRIVER_DIR /opt/WinDriver1031_64
 setenv READYFLOW_7142_428_LINUX /usr/local/ReadyFlow/src/1.0
+
+# runtime
 
 setenv DATA_HOST localhost
 setenv PROJ_DIR $HOME/projDir
@@ -103,7 +82,7 @@ setenv LD_RUN_PATH /usr/local/lib:/usr/local/gcc/lib:/usr/local/dcs/lib:/usr/loc
 
 # PYTHON PATH
 
-setenv PYTHONPATH :$HOME/anaconda/pkgs:/opt/local/lib/python2.6/site-packages:
+setenv PYTHONPATH :$HOME/anaconda2/pkgs:
 
 # JAVA
 

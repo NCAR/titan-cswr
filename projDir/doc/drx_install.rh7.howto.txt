@@ -196,6 +196,40 @@ set
   ln -s git/titan-cswr/projDir/system/dotfiles/cshrc .cshrc
   source ~/.cshrc
 
+# Download and build netcdf / hdf5
+# --------------------------------
+
+  ftp ftp.rap.ucar.edu
+ 
+# log in as anonymous
+
+  cd pub/titan/lrose
+  get lrose-20150406.src.tgz # (or whatever the latest dist is)
+  quit
+
+# install in ~/cvs
+
+  tar xvfz lrose-20150406.src.tgz
+  cd lrose-20150406.src.tgz
+  ./build_netcdf ~/cvs
+
+# Build LROSE
+# -----------
+
+  cd ~/git/lrose-netcdf
+  ./build_and_install_netcdf
+
+  cd ~/git/lrose-core
+  ./build/build_lrose.ncar
+  
+# Link /usr/local/lrose
+# ---------------------
+
+# As root:
+
+  cd /usr/local
+  ln -s ~titan5/lrose
+  
 # Check out dowdrx project from svn
 # ---------------------------------
 
@@ -326,55 +360,6 @@ As root:
   cd /etc/rc.d
   chmod +x rc.local
 
-# Download and build netcdf / hdf5
-# --------------------------------
-
-  ftp ftp.rap.ucar.edu
- 
-# log in as anonymous
-
-  cd pub/titan/lrose
-  get lrose-20150406.src.tgz # (or whatever the latest dist is)
-  quit
-
-# install in ~/cvs
-
-  tar xvfz lrose-20150406.src.tgz
-  cd lrose-20150406.src.tgz
-  ./build_netcdf ~/cvs
-
-# Build LROSE
-# -----------
-
-  cd ~/cvs
-  cvs co distribs/lrose
-  ./distribs/lrose/do_src_checkout
-
-  cd ~/cvs/libs
-  make -j 8 install_include
-  make -j 8 opt
-  make -j 8 install
-  
-  cd ~/cvs/apps/tdrp/src/tdrp_gen
-  make opt
-  make install
-
-  cd ~/cvs/apps
-  make -j 8 opt
-  make -j 8 install
-  
-# Link /usr/local/lrose
-# ---------------------
-
-# As root:
-
-  cd /usr/local
-  mkdir lrose
-  cd lrose
-  ln -s ~titan5/cvs/include
-  ln -s ~titan5/cvs/lib
-  ln -s ~titan5/cvs/bin
-  
 # Compile dowdrx
 # --------------
 

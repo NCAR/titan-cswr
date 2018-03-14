@@ -187,7 +187,6 @@ set
 # ---------------------------
 
   cd ~/git
-  git clone https://github.com/ncar/titan-cswr
 
 # set up cshrc file
 # -----------------
@@ -230,16 +229,18 @@ set
   cd /usr/local
   ln -s ~titan5/lrose
   
-# Check out dowdrx project from svn
+# Check out dowdrx project from git
 # ---------------------------------
 
-  mkdir -p svn/dow
-  cd svn/dow
-  svn co http://svn.eol.ucar.edu/svn/dow/trunk/src src
+# Note - this will require access to gitlab.eol.ucar.edu because
+# the ReadyFlow code is stored there
 
-# or if svn server port has been forwarded locally:
+  cd ~/git
+  git clone https://github.com/ncar/titan-dowdrx
 
-  svn co http://localhost:8888/svn/dow/trunk/src src
+  cd titan-dowdrx
+  git submodule init
+  git submodule update
 
 # Update firmware on Penteks to support option 428
 # ------------------------------------------------
@@ -256,7 +257,7 @@ set
 # As root, perform the following:
 
   cd /usr/local
-  cp ~titan5/svn/dow/src/drivers/WinDriver1150_64.tgz .
+  cp ~titan5/git/titan-dowdrx/drivers/WinDriver1150_64.tgz .
   tar xvfz WinDriver1150_64.tgz
   cd WinDriver1150_64/redist
   ./configure  --with-kernel-source=/lib/modules/`uname -r`/build
@@ -285,18 +286,14 @@ set
   mkdir -p /usr/local/ReadyFlow/lib
   chown -R titan5.titan5 /usr/local/ReadyFlow
 
-# Check out ReadyFlow lib:
+# Check out ReadyFlow lib into /usr/local:
 
-  cd /usr/local/ReadyFlow
-  svn co http://svn.eol.ucar.edu/svn/sd3c/trunk/driver/ReadyFlow/7142_428_WinDriver1150/linux src
-
-# or if port forwarding is on:
-
-  svn co http://localhost:8888/svn/sd3c/trunk/driver/ReadyFlow/7142_428_WinDriver1150/linux src
+  cd /usr/local
+  git clone http://gitlab.eol.ucar.edu/vendor/ReadyFlow7142_428_WinDriver1150.git ReadyFlow
 
 # build
 
-  cd src/1.0/x86_64/lib
+  cd /usr/local/ReadyFlow/src/1.0/x86_64/lib
   make
 
 # make fpgaload
@@ -321,14 +318,12 @@ set
 # Install Acromag PMC730 driver
 # -----------------------------
 
-# Check out dow/dualFreq project.
-
 # As root:
 
   cd /usr/local
   mkdir Acromag
   cd Acromag
-  cp ~titan5/svn/dow/src/drivers/pmc730_20141208.tgz .
+  cp ~titan5/git/titan-dowdrx/drivers/pmc730_20141208.tgz .
   tar xvfz pmc730_20141208.tgz
   cd pmc730/dev730
   make
@@ -372,9 +367,9 @@ As root:
 # ------------------------
 
   cd
-  cd svn/dow/src/pentek/test
+  cd git/titan-dowdrx/src/Pentek7142/test
   scons -u
-  cp toggle_7142_leds ~/cvs/bin
+  cp toggle_7142_leds ~/lrose/bin
 
 # Install the DowControl GUI
 # --------------------------

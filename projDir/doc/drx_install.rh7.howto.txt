@@ -83,7 +83,8 @@ libpng-devel libtiff-devel jasper-devel zlib-devel bzip2-devel expat-devel \
 flex-devel fftw3-devel bzip2-devel jasper-devel qt4-devel xrdb \
 Xvfb xorg-x11-fonts-misc xorg-x11-fonts-75dpi xorg-x11-fonts-100dpi \
 gnuplot ImageMagick-devel ImageMagick-c++-devel log4cpp-devel \
-qwt-devel glut-devel compat-libstdc++-296.i686 compat-libstdc++-33.i686 boost-devel \
+qwt-devel glut-devel compat-libstdc++-296.i686 \
+compat-libstdc++-33.i686 boost-devel \
 perl-Env kernel-devel gnuplot scons
 
 # Install NVIDIA driver
@@ -95,9 +96,9 @@ perl-Env kernel-devel gnuplot scons
 #  http://elrepo.org/tiki/tiki-index.php
 
   rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
-  rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
-
-  yum install -y kmod-nvidia-340xx.x86_64 nvidia-x11-drv-340xx.x86_64 nvidia-detect.x86_64
+  yum install -y http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
+  yum install -y nvidia-detect.x86_64
+  yum install -y kmod-nvidia-340xx.x86_64 nvidia-x11-drv-340xx.x86_64
 
 # this last step takes a while
 
@@ -109,7 +110,7 @@ perl-Env kernel-devel gnuplot scons
 # Make link for qmake
 
   cd /usr/bin
-  ln -s qmake-qt5 qmake
+  ln -s qmake-qt4 qmake
 
 # Install anaconda for python 2.7
 ---------------------------------
@@ -261,58 +262,26 @@ set
   cd /usr/local/WinDriver1150_64/lib/
   chmod +r *
 
-# Install ReadyFlow in /usr/local/ReadyFlow
-# -----------------------------------------
-
-# As root:
-
-# Check out ReadyFlow lib into /usr/local:
-
-  cd /usr/local
-  git clone http://gitlab.eol.ucar.edu/vendor/ReadyFlow7142_428_WinDriver1150.git ReadyFlow
-
-# create src link
-
-  cd ReadyFlow
-  ln -s linux src
+# Compile ReadyFlow
+# -----------------
 
 # set environment for building ReadyFlow
 
-  set WINDRIVER_DIR=/opt/WinDriver1031_64
-  set READYFLOW_7142_428_LINUX=/usr/local/ReadyFlow/src/1.0
+  setenv READYFLOW_7142_428_LINUX ~/git/titan-dowdrx/src/ReadyFlow/linux/1.0
 
-# change ownership
+# build lib
 
-  # mkdir -p /usr/local/ReadyFlow/include
-  # mkdir -p /usr/local/ReadyFlow/lib
-  # chown -R titan5.titan5 /usr/local/ReadyFlow
-
-# build
-
-  cd /usr/local/ReadyFlow/src/1.0/x86_64/lib
+  cd $READYFLOW_7142_428_LINUX/x86_64/lib
   make
 
 # make fpgaload
 
-  cd /usr/local/ReadyFlow/src/1.0/x86_64/examples
+  cd $READYFLOW_7142_428_LINUX/x86_64/examples
   make
 
-# install as titan5
+# install fpgaload
 
-  cp fpgaload.out ~titan5/lrose/bin/fpgaload
-  chown titan5.titan5 ~titan5/lrose/bin/fpgaload
-
-# Then perform the following copies
-
-  cd /usr/local/ReadyFlow/src
-  rsync -av 1.0/include/* /usr/local/ReadyFlow/include/
-  rsync -av 1.0/x86_64/include/* /usr/local/ReadyFlow/include/
-  rsync -av 1.0/x86_64/lib/*7142* /usr/local/ReadyFlow/lib
-
-# you can then remove the ReadyFlow source directory, which is proprietary
-# and cannot be distributed
-
-  /bin/rm -rf /usr/local/ReadyFlow/src
+  cp fpgaload.out ~/lrose/bin/fpgaload
 
 # Install Acromag PMC730 driver
 # -----------------------------

@@ -22,7 +22,7 @@ setenv CVSROOT :pserver:dixon@localhost:/cvs
 # Set the build environment
 
 setenv LANG C
-setenv HOST_OS LINUX_CX11
+setenv HOST_OS LINUX_QT5
 setenv GCC_WARNINGS "-Wall"
 
 setenv LROSE_CORE_DIR $HOME/git/lrose-core
@@ -86,6 +86,7 @@ setenv PYTHONPATH :$HOME/anaconda2/pkgs:
 
 # JAVA
 
+setenv WORK ${HOME}
 setenv CLASSPATH .:$WORK/java/ext_lib/jdom/jdom_b9/jdom.jar:$WORK/java/ext_lib/jai/jai-1_1_1_01/jai_codec.jar:$WORK/java/src:$WORK/java/src/junit3.8.1/junit.jar
 
 setenv JAVA_HOME /usr/java/latest

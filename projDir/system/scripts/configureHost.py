@@ -191,10 +191,11 @@ def main():
     # create symlinks for parameter files
     # from data tree back into the template
 
+    os.chdir(projDir)
     debugStr = ""
     if (options.debug):
         debugStr = " --debug"
-    cmd = "createParamLinks.py --templateDir " + \
+    cmd = "./system/scripts/createParamLinks.py --templateDir " + \
           templateDataDir + " --installDir " + installDataDir + debugStr
     runCommand(cmd)
     

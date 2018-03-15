@@ -326,40 +326,31 @@ set
 # Compile dowdrx
 # --------------
 
-  cd
-  cd git/titan-dowdrx/src/dowdrx
+  cd ~/git/titan-dowdrx/src/dowdrx
   scons -u -j 8
   cp dowdrx ~/cvs/bin
 
 # Compile pentek utilities
 # ------------------------
 
-  cd
-  cd git/titan-dowdrx/src/Pentek7142/test
+  cd ~/git/titan-dowdrx/src/Pentek7142/test
   scons -u
   cp toggle_7142_leds ~/lrose/bin
 
-# Install the DowControl GUI
-# --------------------------
+# Build the java DowControl GUI
+# -----------------------------
 
-# Check out the GUI
-
-  cd ~/cvs
-  cvs co java/src/edu/ucar/rap/titan
-
-# Build the GUI
-
-  cd java/src/edu/ucar/rap/titan/DowControl
+  cd ~/git/titan-dowdrx/java/src/edu/ucar/rap/titan/DowControl
   ant dist
 
 # Configure project
 # -----------------
 
-  sudo mkdir /data
-  sudo chown titan5 /data
+  sudo mkdir -p /data/dow
+  sudo chown titan5 /data/dow
 
-  cd projects/titan/dow/dualFreq/system/scripts
-  ./configure_host
+  cd ~/git/titan-cswr/projDir/system/scripts
+  ./configureHost.py
 
 # select host type 'drx'
 

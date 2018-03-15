@@ -153,7 +153,25 @@ def main():
     removeSymlink(controlDir, "data_list")
     cmd = "ln -s data_list." + hostType + " data_list"
     runCommand(cmd)
+
+    # make link to radar_info in systems/params
+
+    radar_name = {}
+    radar_name['drx6'] = 'dow6'
+    radar_name['drx7'] = 'dow7'
+    radar_name['drx8'] = 'dow8'
+    radar_name['drxr'] = 'dowr'
+    radar_name['mgen6'] = 'dow6'
+    radar_name['mgen7'] = 'dow7'
+    radar_name['mgen8'] = 'dow8'
+    radar_name['mgenr'] = 'dowr'
     
+    sParamsDir = os.path.join(projDir, 'system/params')
+    os.chdir(sParamsDir)
+    removeSymlink(sParamsDir, "radar_info")
+    cmd = "ln -s radar_info." + radar_name[hostType] + " radar_info"
+    runCommand(cmd)
+
     ############################################
     # data dir - specific to the host type
     # populate installed data dir /data/spol

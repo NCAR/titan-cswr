@@ -41,8 +41,7 @@ setenv RAP_SHARED_INC_DIR $RAP_INC_DIR
 setenv RAP_SHARED_LIB_DIR $RAP_LIB_DIR
 setenv RAP_SHARED_BIN_DIR $RAP_BIN_DIR
 
-setenv WINDRIVER_DIR /opt/WinDriver1031_64
-setenv READYFLOW_7142_428_LINUX /usr/local/ReadyFlow/src/1.0
+setenv READYFLOW_7142_428_LINUX ${HOME}/git/titan-dowdrx/src/ReadyFlow/linux/1.0
 
 # runtime
 
@@ -74,15 +73,15 @@ endif
 
 # LD_LIBRARY_PATH
 
-setenv LD_LIBRARY_PATH /usr/local/ReadyFlow/lib:/usr/local/gcc/lib:/usr/local/dcs/lib:/usr/local/lib:/usr/local/netcdf/lib:$HOME/cvs/lib
+setenv LD_LIBRARY_PATH ${READYFLOW_7142_428_LINUX}/lib:/usr/local/gcc/lib:/usr/local/dcs/lib:/usr/local/lib:/usr/local/netcdf/lib:${HOME}/lrose/lib
 
 # LD_RUN_PATH
 
-setenv LD_RUN_PATH /usr/local/lib:/usr/local/gcc/lib:/usr/local/dcs/lib:/usr/local/lib:/usr/local/netcdf/lib:/usr/local/hdf5/lib
+setenv LD_RUN_PATH /usr/local/lib:/usr/local/gcc/lib:/usr/local/dcs/lib:/usr/local/lib:${HOME}/lrose/lib
 
 # PYTHON PATH
 
-setenv PYTHONPATH :$HOME/anaconda2/pkgs:
+setenv PYTHONPATH :${HOME}/anaconda2/pkgs:
 
 # JAVA
 
@@ -97,12 +96,12 @@ setenv ANT_HOME /usr/local/ant
 /bin/mkdir -p ${PROJ_DIR}/junk/scripts
 
 set path=( . $RAP_BIN_DIR $RAP_MAKE_BIN_DIR ~/bin )
-set path=( $path $HOME/anaconda/bin )
+set path=( $path ${HOME}/anaconda2/bin )
 set path=( $path $PROJ_DIR/*/scripts $PROJ_DIR/script_bin )
 
 set path=( $path $ANT_HOME/bin )
 set path=( $path $JAVA_HOME/bin )
-set path=( $path /usr/local/jdk/bin /usr/local/lib/gcc-lib /usr/lib /bin /usr/bin /usr/sbin /usr/bsd /usr/bin/X11 /opt/bin /usr/local/bin )
+set path=( $path /usr/local/lib/gcc-lib /usr/lib /bin /usr/bin /usr/sbin /usr/bsd /usr/bin/X11 /opt/bin /usr/local/bin )
 set path=( $path /usr/local/dcs/bin )
 #pcr path for dreader and solo3
 set path=( $path /home/titan5/src/dreader/bin  /home/titan5/src/bin )
@@ -137,17 +136,9 @@ if ($?prompt) then
     alias catw 'cat `which \!*`'
     alias lessw 'less `which \!*`'
 
-#      qmake - make for Qt
-
-#      alias qmake 'qmake-qt4'
-
-#     temporary settings: suspend file substitution, set alias alias
-
-#	set noglob  
-
     alias sc source ~/.cshrc
 
-#     working directories
+#   working directories
 
     alias cddow 'cd ~/svn/dow/src'
     alias cdhcr 'cd ~/svn/dow/src/hcrdrx'
@@ -182,6 +173,16 @@ if ($?prompt) then
 
     alias m 'more'
 
+#   d. git
+
+    alias gstat 'git status'
+    alias gcom 'git commit -am \!*'
+    alias gpush 'git push'
+    alias gpull 'git pull'
+    alias gdiff 'git diff '
+    alias gdt 'git difftool -g -y '
+    alias glol 'git log --graph --decorate --pretty=oneline --abbrev-commit --all'
+
 #   f. Job control
 
     alias psd 'ps -ef | grep dixon'
@@ -205,14 +206,6 @@ if ($?prompt) then
     alias mv 'mv -i'
     alias cp 'cp -i' 
 
-#
-# cvs
-#
-
-    alias gate 'ssh -L 2401:cvs.rap.ucar.edu:2401 -L 8888:svn.eol.ucar.edu:80 dixon@gate.ucar.edu'
-    alias cvssh 'ssh -a -X -C -R 2401:cvs:2401 aoaws@mail.aoaws.caa.gov.tw'
-    alias cvsdow 'ssh -p 22 -a -XY -R 2401:cvs:2401 -R 8888:svn.eol.ucar.edu:80 tita5@128.117.47.93'
-    alias cvscswr 'ssh -p 22 -a -XY -R 2401:cvs:2401 titan5@71.33.231.78'
     alias sshcswr 'ssh -p 22 -a -XY titan5@71.33.231.78'
     alias mgen 'ssh -a -X -C -R 2401:localhost:2401 titan5@mgen'
     alias pgen 'ssh -a -X -C -R 2401:localhost:2401 titan5@pgen'

@@ -2,7 +2,8 @@
 
 cd ${PROJ_DIR}/gui/params
 
-java -jar $HOME/cvs/java/dist/lib/DowControl.jar -instance ${radar_name} \
+java -jar ${HOME}/git/titan-dowdrx/java/dist/lib/DowControl.jar \
+    -instance ${radar_name} \
      -params DowControl.30.calib.${radar_name} |& \
      LogFilter -d $ERRORS_LOG_DIR -p DowControl -i calib.${radar_name} &
 

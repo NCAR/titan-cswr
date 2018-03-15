@@ -343,6 +343,9 @@ set
   cd ~/git/titan-dowdrx/java/src/edu/ucar/rap/titan/DowControl
   ant dist
 
+  cd ~/git/titan-dowdrx/java/src/edu/ucar/rap/titan/RapidDowControl
+  ant dist
+
 # Configure project
 # -----------------
 

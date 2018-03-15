@@ -2,9 +2,10 @@
 
 cd ${PROJ_DIR}/gui/params
 
-java -jar $HOME/cvs/java/dist/lib/RapidDowControl.jar -instance ops \
-     -params RapidDowControl.ops |& \
-     LogFilter -d $ERRORS_LOG_DIR -p DowControl -i ops &
+java -jar ${HOME}/git/titan-dowdrx/java/dist/lib/RapidDowControl.jar \
+    -instance ops \
+    -params RapidDowControl.ops |& \
+    LogFilter -d $ERRORS_LOG_DIR -p DowControl -i ops &
 
 
 

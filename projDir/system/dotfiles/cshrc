@@ -85,11 +85,11 @@ setenv PYTHONPATH :${HOME}/anaconda2/pkgs:
 
 # JAVA
 
-setenv WORK ${HOME}
-setenv CLASSPATH .:$WORK/java/ext_lib/jdom/jdom_b9/jdom.jar:$WORK/java/ext_lib/jai/jai-1_1_1_01/jai_codec.jar:$WORK/java/src:$WORK/java/src/junit3.8.1/junit.jar
-
 setenv JAVA_HOME /usr/java/latest
 setenv ANT_HOME /usr/local/ant
+
+setenv JAVA_LIB_DIR ${HOME}/git/titan-dowdrx/java/dist/lib
+setenv CLASSPATH .:${JAVA_LIB_DIR}/jdom.jar:JAVA_LIB_DIR/jai_codec.jar:$JAVA_LIB_DIR/junit.jar
 
 # PATH
 

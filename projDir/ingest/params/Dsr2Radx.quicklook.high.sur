@@ -845,7 +845,7 @@ check_min_rays_in_sweep = TRUE;
 // Type: int
 //
 
-min_rays_in_sweep = 360;
+min_rays_in_sweep = 700;
 
 //======================================================================
 //

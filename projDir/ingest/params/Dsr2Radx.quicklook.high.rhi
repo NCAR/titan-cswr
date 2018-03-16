@@ -640,7 +640,7 @@ convert_to_finest_gate_geometry = FALSE;
 // Type: boolean
 //
 
-convert_to_specified_output_gate_geometry = FALSE;
+convert_to_specified_output_gate_geometry = TRUE;
 
 ///////////// output_start_range_km ///////////////////
 //
@@ -844,7 +844,7 @@ check_min_rays_in_sweep = TRUE;
 // Type: int
 //
 
-min_rays_in_sweep = 100;
+min_rays_in_sweep = 140;
 
 //======================================================================
 //

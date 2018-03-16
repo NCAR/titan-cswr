@@ -10,146 +10,160 @@
 # 
 #   Install good Nvidia graphics card, e.g. GeForce GT 610
 # 
-# Install OS
-# ----------
+
+# Install OS from USB
+# -------------------
 # 
-# The following notes are from the install for Scientific LINUX 6.4:
+# The following notes are from the install for Scientific LINUX 7.4:
 # 
-#   Install with basic video driver
 #   English keyboard
-#   Basic storage device
-#   Discard data on RAID
-#   Hostname: mgen
-#   Time: Etc/UTC
+#   Time: GMT
+#   Hostname: mgen6, mgen7 etc.
 #   
 #   Create custom disk partition layout:
 # 
-#    /      50 GB
-#    /root  500 MB
-#    /swap  16 GB
-#    /home  rest
+#    /swap      16 GB
+#    /boot      1  GB
+#    /boot-EFI  1  GB
+#    /          50 GB
+#    /home      50 GB
+#    /data      the rest
 # 
-#   Software development workstation
-#   Customize:
-#     Basic system: add yum repos
-#     Virtualization: turn all off
-#     Desktops: add KDE
-#     Apps: add office
-# 
-#   Install:
-#     If dependency errors occur, ignore and go on.
-# 
+#   Type of install:
+#     KDE Plasma workstation
+#     add development tools
+#     add open office
+#
 #   After install:
 #   
 #     Perform software update from menu.
 #   
-#   Firewall:
-#
-#     Open port range 5432 - 5500
-#     (Also on mgen).
-# 
 #   Add titan5 user:
 # 
 #     Add user titan5
 #     Change titan5 shell to /bin/csh using 'chsh'.
-# 
-
-# install extra repos
-# -------------------
-
-  rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
-
-  rpm --import http://elrepo.org/RPM-GPG-KEY-elrepo.org
-  rpm -Uvh http://elrepo.org/elrepo-release-6-5.el6.elrepo.noarch.rpm
 
 # Install packages
 # ----------------
 
-# You will need:
-# 
-#     cvs
-#     svn
-#     scons
-#     ftp
-#    
-#     gcc
-#     g++
-#     gfortran
-#     Xvfb (virtual X server)
-#     gnuplot
-#     ImageMagick-devel
-#     ImageMagick-c++-devel
-# 
-#     fftw3-devel development (for radar moments)
-#     log4cpp-devel
-#     expat-devel (for udunits)
-#     jasper-devel (for grib2)
-# 
-#     glibc-devel
-#     libX11-devel (for X)
-#     libXext-devel (if available)
-#     bzip2-devel (for NEXRAD decompression)
-#     zlib-devel
-#     libpng-devel
-#     libtiff-devel
-#     qt4-devel (for Qt apps)
-#     qwt-devel (for tcpscope)
-#     glut-devel (for Open GL)
-#     flex-devel
-#     compat-libstdc++-296.i686 (32-bit compat)
-#     compat-libstdc++-33.i686  (32-bit compat)
-#     boost-devel
-#
-#     hdf5
-#     netcdf
-#     udunits2
-#
-#     perl.Env
-#     xorg-x11-fonts-misc
-#     xorg-x11-fonts-75dpi
-#     xorg-x11-fonts-100dpi
+# You can install these with these commands
 
-# You can install these with this command
+yum install -y epel-release
 
-  yum install -y cvs svn scons ftp gcc gcc-c++ gcc-gfortran Xvfb fftw3-devel log4cpp-devel expat-devel jasper-devel glibc-devel libX11-devel libXext-devel bzip2-devel zlib-devel libpng-devel libtiff-devel qt4-devel qwt-devel glut-devel flex-devel compat-libstdc++-296.i686 compat-libstdc++-33.i686 boost-devel hdf5 netcdf udunits2 perl-Env xorg-x11-fonts-misc xorg-x11-fonts-75dpi xorg-x11-fonts-100dpi emacs git tkcvs kernel-devel gnuplot ImageMagick-devel ImageMagick-c++-devel
+yum install -y \
+tcsh perl perl-Env ftp git svn cvs tkcvs emacs tkcvs m4 \
+gcc gcc-c++ gcc-gfortran glibc-devel libX11-devel libXext-devel \
+libpng-devel libtiff-devel jasper-devel zlib-devel bzip2-devel expat-devel \
+flex-devel fftw3-devel bzip2-devel jasper-devel qt5-qtbase-devel xrdb \
+Xvfb xorg-x11-fonts-misc xorg-x11-fonts-75dpi xorg-x11-fonts-100dpi \
+gnuplot ImageMagick-devel ImageMagick-c++-devel log4cpp-devel \
+qwt-devel glut-devel compat-libstdc++-296.i686 \
+compat-libstdc++-33.i686 boost-devel \
+perl-Env kernel-devel gnuplot scons
 
-# NOTE: the following is included for information only.
-# You do not necessarily need to do this.
-#
-# To install the equivalent of ia32-libs, you can do the following:
+# Install 32-bit packages if you want CIDD
+# ----------------------------------------
 
-#  yum -y install --skip-broken glibc.i686 arts.i686 audiofile.i686 bzip2-libs.i686 cairo.i686 cyrus-sasl-lib.i686 dbus-libs.i686 directfb.i686 esound-libs.i686 fltk.i686 freeglut.i686 gtk2.i686 hal-libs.i686 imlib.i686 lcms-libs.i686 lesstif.i686 libacl.i686 libao.i686 libattr.i686 libcap.i686 libdrm.i686 libexif.i686 libgnomecanvas.i686 libICE.i686 libieee1284.i686 libsigc++20.i686 libSM.i686 libtool-ltdl.i686 libusb.i686 libwmf.i686 libwmf-lite.i686 libX11.i686 libXau.i686 libXaw.i686 libXcomposite.i686 libXdamage.i686 libXdmcp.i686 libXext.i686 libXfixes.i686 libxkbfile.i686 libxml2.i686 libXmu.i686 libXp.i686 libXpm.i686 libXScrnSaver.i686 libxslt.i686 libXt.i686 libXtst.i686 libXv.i686 libXxf86vm.i686 lzo.i686 mesa-libGL.i686 mesa-libGLU.i686 nas-libs.i686 nss_ldap.i686 cdk.i686 openldap.i686 pam.i686 popt.i686 pulseaudio-libs.i686 sane-backends-libs-gphoto2.i686 sane-backends-libs.i686 SDL.i686 svgalib.i686 unixODBC.i686 zlib.i686 compat-expat1.i686 compat-libstdc++-33.i686 openal-soft.i686 alsa-oss-libs.i686 redhat-lsb.i686 alsa-plugins-pulseaudio.i686 alsa-plugins-oss.i686 alsa-lib.i686 nspluginwrapper.i686 libXv.i686 libXScrnSaver.i686 qt.i686 qt-x11.i686 pulseaudio-libs.i686 pulseaudio-libs-glib2.i686 alsa-plugins-pulseaudio.i686
+# do the following for 32-bit runtime support
 
   yum install -y glibc-devel.i686 libX11-devel.i686 libXext-devel.i686 libjpeg-devel.i686 libpng-devel.i686 libstdc++-devel.i686 libtiff-devel.i686
 
+# do the following for 32-bit compile support for CIDD
+
+#  yum -y install --skip-broken glibc.i686 arts.i686 audiofile.i686 bzip2-libs.i686 cairo.i686 cyrus-sasl-lib.i686 dbus-libs.i686 directfb.i686 esound-libs.i686 fltk.i686 freeglut.i686 gtk2.i686 hal-libs.i686 imlib.i686 lcms-libs.i686 lesstif.i686 libacl.i686 libao.i686 libattr.i686 libcap.i686 libdrm.i686 libexif.i686 libgnomecanvas.i686 libICE.i686 libieee1284.i686 libsigc++20.i686 libSM.i686 libtool-ltdl.i686 libusb.i686 libwmf.i686 libwmf-lite.i686 libX11.i686 libXau.i686 libXaw.i686 libXcomposite.i686 libXdamage.i686 libXdmcp.i686 libXext.i686 libXfixes.i686 libxkbfile.i686 libxml2.i686 libXmu.i686 libXp.i686 libXpm.i686 libXScrnSaver.i686 libxslt.i686 libXt.i686 libXtst.i686 libXv.i686 libXxf86vm.i686 lzo.i686 mesa-libGL.i686 mesa-libGLU.i686 nas-libs.i686 nss_ldap.i686 cdk.i686 openldap.i686 pam.i686 popt.i686 pulseaudio-libs.i686 sane-backends-libs-gphoto2.i686 sane-backends-libs.i686 SDL.i686 svgalib.i686 unixODBC.i686 zlib.i686 compat-expat1.i686 compat-libstdc++-33.i686 openal-soft.i686 alsa-oss-libs.i686 redhat-lsb.i686 alsa-plugins-pulseaudio.i686 alsa-plugins-oss.i686 alsa-lib.i686 nspluginwrapper.i686 libXv.i686 libXScrnSaver.i686 qt.i686 qt-x11.i686 pulseaudio-libs.i686 pulseaudio-libs-glib2.i686 alsa-plugins-pulseaudio.i686
+
+# Install google-chrome
+# ---------------------
+
+# create repo file, with google-chrome details:
+
+  touch /etc/yum.repos.d/google-chrome.repo
+
+# edit the file, to contain the following contents:
+
+[google-chrome]
+name=google-chrome
+baseurl=http://dl.google.com/linux/chrome/rpm/stable/$basearch
+enabled=1
+gpgcheck=1
+gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub
+
+# install chrome
+
+  yum install google-chrome-stable
+
+# Install NVIDIA driver
+# ---------------------
 #
+# See:
+#
+#  https://www.dedoimedo.com/computers/centos-7-nvidia-second.html
+#  http://elrepo.org/tiki/tiki-index.php
+
+  rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+  yum install -y http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
+  yum install -y nvidia-detect.x86_64
+  yum install -y kmod-nvidia-340xx.x86_64 nvidia-x11-drv-340xx.x86_64
+
+# this last step takes a while
+
+  reboot
+
+# Alternative - install vendor NVIDIA driver:
+#  
+#  yum install nvidia-x11-drv
+
+# QT
+# --
+
 # Make link for qmake
-#
+
   cd /usr/bin
-  ln -s qmake-qt4 qmake
+  ln -s qmake-qt5 qmake
 
-# Video driver
-# ------------
+# Install anaconda for python 2.7
+---------------------------------
 
-Install vendor NVIDIA driver:
-  
-  yum install nvidia-x11-drv
+Go to the anaconda web site:
+
+  https://www.continuum.io/downloads
+
+download anaconda2 and install in $HOME.
+
+# disable unwanted services - firewall
+--------------------------------------
+
+  systemctl disable ip6tables
+  systemctl disable iptables
+  systemctl disable firewalld
+
+# disable SELINUX
+-----------------
+
+In
+
+  /etc/sysconfig/selinux
+
+set
+
+  SELINUX=disabled
 
 # Install Java JDK
-#  ----------------
+# ----------------
 
 # Download Java JDK tar file from Oracle.
 
 # For example: 
 
-  jdk-7u45-linux-x64.tar.gz
+  jdk-8u72-linux-x64.tar.gz
 
 # As root:
 
   mkdir /usr/java
   cd /usr/java
-  cp jdk-7u45-linux-x64.tar.gz .
-  ln -s jdk1.7.0_45 latest
+  cp jdk-8u72-linux-x64.tar.gz .
+  tar xvfz jdk-8u72-linux-x64.tar.gz
+  ln -s jdk1.8.0_72 latest
 
 # So that you can reference java using:
 
@@ -159,85 +173,67 @@ Install vendor NVIDIA driver:
 
   setenv JAVA_HOME /usr/java/latest
 
-# Check out dow project from cvs
-# ------------------------------
+# Install ant
+# -----------
 
-  setenv CVSROOT :pserver:dixon@localhost:/cvs
-  alias cvs 'cvs -d :pserver:dixon@localhost:/cvs \!*'
-  cvs login
+# Download ant from:
 
-  mkdir cvs
-  cd cvs
-  cvs co projects/titan/dow
-  cvd co distribs/lrose
-  ./distribs/lrose/do_src_checkout
+  http://ant.apache.org
 
-# Download and build netcdf / hdf5
-# --------------------------------
+# Normally we grab the .gz file, e.g. apache-ant-1.9.4-bin.tar.gz
+# Untar the file and copy the contents to
 
-  ftp ftp.rap.ucar.edu
- 
-# log in as anonymous
+  /usr/local/ant
 
-  cd pub/titan/netcdf
-  prompt
-  mget *
-  quit
+# Check out LROSE
+# ---------------
 
-# install in /usr/local
+  mkdir ~/git
+  cd ~/git
+  git clone https://github.com/ncar/lrose-core
+  git clone https://github.com/ncar/lrose-netcdf
 
-  chmod +x ./build_netcdf
-  sudo ./build_netcdf /usr/local
-
-# Download and build tdrp
-# -----------------------
-
-  ftp ftp.rap.ucar.edu
- 
-# log in as anonymous
-
-  cd pub/titan/tdrp
-  prompt
-  mget *
-  quit
-
-# install in /usr/local
-
-  chmod +x ./build_tdrp
-  sudo ./build_netcdf /usr/local
-
-# Check out titan distribution
+# Check out titan cswr project
 # ----------------------------
 
+  cd ~/git
+  git clone https://github.com/ncar/titan-cswr
+
+# set up cshrc file
+# -----------------
+
   cd
-  mkdir cvs
-  cd cvs
-  cvs co distribs/titan
-  ./distribs/titan/do_checkout
+  rm .cshrc
+  ln -s git/titan-cswr/projDir/system/dotfiles/cshrc .cshrc
+  source ~/.cshrc
+
+# Build LROSE
+# -----------
+
+  cd ~/git/lrose-netcdf
+  ./build_and_install_netcdf
+
+  cd ~/git/lrose-core
+  ./build/build_lrose.ncar
+  
+# Link /usr/local/lrose
+# ---------------------
+
+# As root:
+
+  cd /usr/local
+  ln -s ~titan5/lrose
 
 # Configure project
 # -----------------
 
-  sudo mkdir /data
-  sudo chown titan5 /data
+  sudo mkdir -p /data/dow
+  sudo chown titan5 /data/dow
 
-  cd projects/titan/dow/dualFreq/system/scripts
-  ./configure_host
+  cd ~/git/titan-cswr/projDir/system/scripts
+  ./configureHost.py
 
 # select host type 'drx'
 
-  source ~/.cshcr
-
-# build titan
-# -----------
-
-  cd ~/cvs
-  ./distribs/titan/copy_build_scripts_and_docs 
-  touch ~/.titan_build_env
-  ./build_titan
-
-# check for compile errors, install packages as appropriate
-
-
-
+  source ~/.cshrc
 

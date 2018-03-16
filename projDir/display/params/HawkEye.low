@@ -172,6 +172,15 @@ fields = {
   }
   ,
   {
+    label = "DBZHCA",
+    raw_name = "DBZHC",
+    filtered_name = "DBZHC_F",
+    units = "dBZ",
+    color_map = "dbz_kak.colors",
+    shortcut = "a"
+  }
+  ,
+  {
     label = "DBZVC",
     raw_name = "DBZVC",
     filtered_name = "DBZVC_F",

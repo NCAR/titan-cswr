@@ -333,6 +333,20 @@ primary_prt_secs = 0.001;
 
 georef_time_margin_secs = 1;
 
+///////////// use_secondary_georeference //////////////
+//
+// If true, use the secondary georeference packet.
+//
+// By default, we use the primary georeference packet. And most mobile 
+//   radars only have one georeference. For those radars that have 2 
+//   georef devices, set this to true to use the secondary reference.
+//
+//
+// Type: boolean
+//
+
+use_secondary_georeference = FALSE;
+
 ///////////// check_radar_id //////////////////////////
 //
 // Option to check the radar ID in the time series data stream.
@@ -1300,6 +1314,32 @@ override_cal_zdr_correction = FALSE;
 
 zdr_correction_db = 0;
 
+///////////// threshold_zdr_using_snr /////////////////
+//
+// Option to threshold ZDR using SNR.
+//
+// If true, we will only compute ZDR if the SNR in both the H and V 
+//   co-polar channels exceeds this value. See 'min_snr_db_for_zdr'.
+//
+//
+// Type: boolean
+//
+
+threshold_zdr_using_snr = FALSE;
+
+///////////// min_snr_db_for_zdr //////////////////////
+//
+// Min SNR for computing ZDR (dB).
+//
+// If the SNR is below this threshold for either the H or V co-polar 
+//   channels, ZDR will be set to missing. See 'threshold_zdr_using_snr'.
+//
+//
+// Type: double
+//
+
+min_snr_db_for_zdr = -7;
+
 ///////////// override_cal_ldr_corrections ////////////
 //
 // Option to override the LDR corrections in the calibration data.
@@ -1336,6 +1376,36 @@ ldr_correction_db_h = 0;
 //
 
 ldr_correction_db_v = 0;
+
+///////////// threshold_ldr_using_snr /////////////////
+//
+// Option to threshold LDR using SNR.
+//
+// If true, we will only compute LDR if the SNR in both the co- and 
+//   cross-polar channels exceeds this value. Since the cross-polar 
+//   channel is generally the weaker channel, it is the SNR on the 
+//   cross-polar channel that will be limiting. See 'min_snr_db_for_ldr'.
+//
+//
+// Type: boolean
+//
+
+threshold_ldr_using_snr = FALSE;
+
+///////////// min_snr_db_for_ldr //////////////////////
+//
+// Min SNR for computing LDR (dB).
+//
+// For LDR, the cross polar channel is the weaker return. Therefore 
+//   effectively this threshold will be applied to the cross channel. If 
+//   the SNR is below this threshold for either the co- or cross-polar 
+//   channels, LDR will be set to missing. See 'threshold_ldr_using_snr'.
+//
+//
+// Type: double
+//
+
+min_snr_db_for_ldr = -7;
 
 ///////////// override_cal_system_phidp ///////////////
 //
@@ -3267,6 +3337,70 @@ phidp_sdev_interest_weight = 0;
 
 //======================================================================
 //
+// RHOHV TEST to AUGMENT CMD.
+//
+// If clutter is present the RHOHV value should increase after 
+//   application of the clutter filter. We can use a RHOHV test to locate 
+//   gates at which CMD fails to identify weak clutter. This allows us to 
+//   improve clutter identification in cases with low CSR.
+//
+//======================================================================
+ 
+///////////// apply_rhohv_test_after_cmd //////////////
+//
+// Apply the RHOHV test after filtering based on CMD.
+//
+// This allows us to identify areas of weak clutter contamination that 
+//   CMD missed.
+//
+//
+// Type: boolean
+//
+
+apply_rhohv_test_after_cmd = FALSE;
+
+///////////// rhohv_test_min_rhohv ////////////////////
+//
+// Min RHOHV for application of the RHOHV test.
+//
+// If RHOHV is less than this, no weather is likely to be present. 
+//   Therefore do not apply the test to this gate.
+//
+//
+// Type: double
+//
+
+rhohv_test_min_rhohv = 0.5;
+
+///////////// rhohv_test_max_rhohv ////////////////////
+//
+// Max RHOHV for application of the RHOHV test.
+//
+// If RHOHV is greater than this, the weather return is highly coherent, 
+//   so clutter contamination is unlikely.
+//
+//
+// Type: double
+//
+
+rhohv_test_max_rhohv = 0.98;
+
+///////////// rhohv_improvement_factor_threshold //////
+//
+// The RHOHV improvment factor is a measure of the change in RHOHV 
+//   towards 1.0.
+//
+// The RHOHV test identifies clutter if the improvement factor exceeds 
+//   this value.
+//
+//
+// Type: double
+//
+
+rhohv_improvement_factor_threshold = 4;
+
+//======================================================================
+//
 // OUTPUT TO DSRADAR FMQ.
 //
 //======================================================================
@@ -3755,7 +3889,7 @@ max_sweeps_in_vol_for_antenna_direction_change = 32;
 // Type: boolean
 //
 
-use_volume_info_from_time_series = FALSE;
+use_volume_info_from_time_series = TRUE;
 
 ///////////// set_end_of_vol_from_elev_angle //////////
 //
@@ -3798,7 +3932,7 @@ vol_starts_at_bottom = TRUE;
 // Type: double
 //
 
-elev_change_for_end_of_vol = 0.25;
+elev_change_for_end_of_vol = 0.1;
 
 ///////////// min_beams_per_vol ///////////////////////
 //

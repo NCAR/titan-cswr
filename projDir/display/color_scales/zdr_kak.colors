@@ -1,0 +1,40 @@
+# NAME zdr.colors
+
+-10	-3	gray70
+-3	-2	maroon
+-2	-1.5	dark orchid
+-1.5	-1	Blue
+-1	-0.5 	royal blue
+-0.5	-0.25	deep sky blue
+-0.25	-0.1 	cyan
+-0.1    0.1	gray20
+0.1 	0.25	DarkGreen
+0.25	0.5	ForestGreen
+0.5	1.0	YellowGreen
+1.0	1.5	Gold
+1.5 	2  	Yellow
+2	2.5	Orange
+2.5	3 	OrangeRed
+3 	4       Red
+4 	7       Pink
+7	99	gray70
+
+
+#-4.0 	-3.0    cyan	
+#-3.0 	-2.0    aquamarine	
+#-2.0 	-1.0 	medium spring green
+#-1.0 	-0.5 	forest green
+#-0.5	-0.2    wheat	
+#-0.2 	-0.1 	tan2
+#-0.1	0.0 	gold1
+#0.0	0.1	yellow
+#0.1 	0.2 	salmon1
+#0.2 	0.5 	tomato
+#0.5 	1.0     brown1	
+#1.0 	2.0 	red
+#2.0 	3.0 	firebrick
+#3.0 	4.0   orchid 	
+#4.0 	5.0    midnight blue	
+#5.0 	6.0 	blue4
+#6.0 	8.0 	medium blue
+#8.0 	20.0 	royal blue

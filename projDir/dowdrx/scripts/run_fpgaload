@@ -1,6 +1,6 @@
 #! /bin/csh -f
 
-echo 1 | fpgaload ~/svn/dow/src/bitstream/sd3c-ddc10.mcs
-echo 2 | fpgaload ~/svn/dow/src/bitstream/sd3c-ddc10.mcs
+echo 1 | fpgaload ~/git/titan-dowdrx/bitstream/sd3c-ddc10.mcs
+echo 2 | fpgaload ~/git/titan-dowdrx/bitstream/sd3c-ddc10.mcs
 
 

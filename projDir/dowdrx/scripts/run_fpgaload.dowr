@@ -1,7 +1,7 @@
 #! /bin/csh -f
 
 snuff rapidrx
-echo 1 | fpgaload ~/svn/dow/src/bitstream/sd3c-ddc6_sync.mcs
-echo 2 | fpgaload ~/svn/dow/src/bitstream/sd3c-ddc6_sync.mcs
+echo 1 | fpgaload ~/git/titan-dowdrx/bitstream/sd3c-ddc6_sync.mcs
+echo 2 | fpgaload ~/git/titan-dowdrx/bitstream/sd3c-ddc6_sync.mcs
 
 

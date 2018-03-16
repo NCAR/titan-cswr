@@ -1,0 +1,9 @@
+#! /bin/csh
+
+GetGpsPosn.py --instance primary \
+    --outputDir $DATA_DIR/gps \
+    --tmpDir $DATA_DIR/tmp \
+    --fileName GPS_POSN \
+    --sleepSecs 0.5 \
+    --debug
+

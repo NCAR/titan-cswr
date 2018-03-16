@@ -179,7 +179,7 @@ Each line entry should be formatted as follows:
 # ========================
 ##1000ns 1000 PRF, 1/1, 150m, 120km,  7.9m/s : dowdrx30.1000.1000.1_1.150m
 #1000ns 1000 PRF, 1/1,  75m, 112km,  7.9m/s : dowdrx30.1000.1000.1_1.75m
-##1000ns 1000 PRF, 2/3, 150m, 120km, 15.9m/s : dowdrx30.1000.1000.2_3.150m
+1000ns 1000 PRF, 2/3, 150m, 120km, 15.9m/s : dowdrx30.1000.1000.2_3.150m
 #1000ns 1000 PRF, 2/3,  75m, 112km, 15.9m/s : dowdrx30.1000.1000.2_3.75m
 #1000ns 1111 PRF, 3/4, 150m, 134km, 26.4m/s : dowdrx30.1000.1111.3_4.150m
 #1000ns 1111 PRF, 3/4,  75m, 112km, 26.4m/s : dowdrx30.1000.1111.3_4.75m
@@ -200,35 +200,35 @@ Each line entry should be formatted as follows:
 #667ns  1666 PRF, 4/5, 100m,  89km, 52.9m/s : dowdrx30.667.1666.4_5.100m
 #667ns  1666 PRF, 4/5,  50m,  75km, 52.9m/s : dowdrx30.667.1666.4_5.50m
 #667ns  1400 PRF, 3/4, 100m,  89km, 39.7m/s : dowdrx30.667.1400.3_4.100m
-#500ns  2000 PRF, 1/1,  75m,  74km, 15.9m/s : dowdrx30.500.2000.1_1.75m
+500ns  2000 PRF, 1/1,  75m,  74km, 15.9m/s : dowdrx30.500.2000.1_1.75m
 #500ns  2500 PRF, 2/3,  75m,  59km, 39.7m/s : dowdrx30.500.2500.2_3.75m
 333ns  2500 PRF, 2/3,  50m,  50km, 39.7m/s : dowdrx30.333.2500.2_3.50m
 333ns  1666 PRF, 2/3,  50m,  50km, 26.6m/s : dowdrx30.333.1666.2_3.50m
-#500ns  2500 PRF, 2/3,  50m,  59km, 39.7m/s : dowdrx30.500.2500.2_3.50m
+500ns  2500 PRF, 2/3,  50m,  59km, 39.7m/s : dowdrx30.500.2500.2_3.50m
 #500ns  2000 PRF, 3/4,  75m,  74km, 47.6m/s : dowdrx30.500.2000.3_4.75m
 #500ns  1666 PRF, 3/4,  75m,  89km, 39.7m/s : dowdrx30.500.1666.3_4.75m
 #500ns  2222 PRF, 4/5,  75m,  66km, 70.5m/s : dowdrx30.500.2222.4_5.75m
-#333ns  3000 PRF, 1/1,  50m,  49km, 23.8m/s : dowdrx30.333.3000.1_1.50m
+333ns  3000 PRF, 1/1,  50m,  49km, 23.8m/s : dowdrx30.333.3000.1_1.50m
 #333ns  3000 PRF, 1/1,  25m,  28km, 23.8m/s : dowdrx30.333.3000.1_1.25m
 #333ns  3300 PRF, 2/3,  50m,  49km, 47.6m/s : dowdrx30.333.3300.2_3.50m
 #333ns  3300 PRF, 2/3,  25m,  35km, 47.6m/s : dowdrx30.333.3300.2_3.25m
 #333ns  3745 PRF, 2/3,  50m,  39km, 59.5m/s : dowdrx30.333.3745.2_3.50m
 #333ns  3745 PRF, 2/3,  25m,  28km, 59.5m/s : dowdrx30.333.3745.2_3.25m
-##333ns  3000 PRF, 3/4,  50m,  49km, 71.4m/s : dowdrx30.333.3000.3_4.50m
+333ns  3000 PRF, 3/4,  50m,  49km, 71.4m/s : dowdrx30.333.3000.3_4.50m
 #333ns  3000 PRF, 3/4,  25m,  33km, 71.4m/s : dowdrx30.333.3000.3_4.25m
 #333ns  3000 PRF, 4/5,  50m,  40km, 95.2m/s : dowdrx30.333.3000.4_5.50m
 #333ns  3000 PRF, 4/5,  25m,  32km, 95.2m/s : dowdrx30.333.3000.4_5.25m
-##167ns  3000 PRF, 4/5,  25m,  32km, 95.2m/s : dowdrx30.167.3000.4_5.25m
-##167ns  3000 PRF, 4/5,  12m,  10km, 95.2m/s : dowdrx30.167.3000.4_5.12m
-##167ns  3200 PRF, 3/4,  12m,  10km, 75.3m/s : dowdrx30.167.3200.3_4.12m
-##167ns  3200 PRF, 3/4,  25m,  20km, 75.3m/s : dowdrx30.167.3200.3_4.25m
+167ns  3000 PRF, 4/5,  25m,  32km, 95.2m/s : dowdrx30.167.3000.4_5.25m
+167ns  3000 PRF, 4/5,  12m,  10km, 95.2m/s : dowdrx30.167.3000.4_5.12m
+167ns  3200 PRF, 3/4,  12m,  10km, 75.3m/s : dowdrx30.167.3200.3_4.12m
+167ns  3200 PRF, 3/4,  25m,  20km, 75.3m/s : dowdrx30.167.3200.3_4.25m
 167ns  4000 PRF, 3/4,  12m,  10km, 94.2m/s : dowdrx30.167.4000.3_4.12m
-###167ns  4000 PRF, 3/4,  25m,  20km, 94.2m/s : dowdrx30.167.4000.3_4.25m
-##167ns  5000 PRF, 3/4,  12m,  10km, 117.7m/s : dowdrx30.167.5000.3_4.12m
-##167ns  5000 PRF, 3/4,  25m,  20km, 117.7m/s : dowdrx30.167.5000.3_4.25m
-##167ns  5000 PRF, 2/3,  12m,  10km, 78.5m/s : dowdrx30.167.5000.2_3.12m
+167ns  4000 PRF, 3/4,  25m,  20km, 94.2m/s : dowdrx30.167.4000.3_4.25m
+167ns  5000 PRF, 3/4,  12m,  10km, 117.7m/s : dowdrx30.167.5000.3_4.12m
+167ns  5000 PRF, 3/4,  25m,  20km, 117.7m/s : dowdrx30.167.5000.3_4.25m
+167ns  5000 PRF, 2/3,  12m,  10km, 78.5m/s : dowdrx30.167.5000.2_3.12m
 ##167ns  5000 PRF, 2/3,  25m,  20km, 78.5m/s : dowdrx30.167.5000.2_3.25m
-###167ns  4000 PRF, 3/4,  12m,  10km, 94.2m/s : dowdrx30.default
+167ns  4000 PRF, 3/4,  12m,  10km, 94.2m/s : dowdrx30.default
 1000ns 1000 PRF, 1/1, 150m, solar,  7.9m/s : dowdrx30.1000.calib
 #500ns  1000 PRF, 4/5,  75m,  66km, 31.6m/s : dowdrx30.test.500.1000.4_5.75</value>
       </param>
@@ -252,7 +252,7 @@ Each line entry should be formatted as follows:
           Normally this will be set to false. If the developer makes changes this may be set to true while the changes are made and then back to false when done.
           ]]>
         </info>
-        <value>true</value>
+        <value>false</value>
       </param>
 
       <param name="xx" type="Integer">
@@ -263,7 +263,7 @@ Each line entry should be formatted as follows:
           This the the X offset, in pixels, from the main frame of the application.
           ]]>
         </info>
-        <value>39</value>
+        <value>167</value>
       </param>
 
       <param name="yy" type="Integer">
@@ -274,19 +274,19 @@ Each line entry should be formatted as follows:
           This the the Y offset, in pixels, from the main frame of the application.
           ]]>
         </info>
-        <value>383</value>
+        <value>176</value>
       </param>
 
       <param name="width" type="Integer">
         <label>Width</label>
         <description>The window width in pixels</description>
-        <value>571</value>
+        <value>626</value>
       </param>
 
       <param name="height" type="Integer">
         <label>Height</label>
         <description>The window height in pixels</description>
-        <value>616</value>
+        <value>555</value>
       </param>
 
       <param name="startVisible" type="Boolean">
@@ -417,7 +417,7 @@ Each line entry should be formatted as follows:
           This the the Y offset, in pixels, from the main frame of the application.
           ]]>
         </info>
-        <value>183</value>
+        <value>200</value>
       </param>
 
       <param name="width" type="Integer">

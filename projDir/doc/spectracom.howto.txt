@@ -4,8 +4,7 @@ SPECTRACOM howto
 1. Setting DHCP off
 -------------------
 
-On dow7 the IP is 192.168.0.204.
-On dow6 the IP is 192.168.0.224.
+The IP is 10.3.3.60.
 
 Set this up via the front panel.
 
@@ -32,8 +31,7 @@ Hit X to exit DHCP menu.
 
 Go up, select IPADDR.
 
-Then set IP to 192.169.0.204/24 for DOW7
-            to 192.169.0.224/24 for DOW6
+Then set IP to 10.3.3.60.
 
 3. Set up remote ssh access
 ---------------------------
@@ -42,8 +40,7 @@ Bring up the Spectracom web page in Firefox.
 
 In your browser, go to:
 
-  ntp6 (on dow6)
-  ntp7 (on dow7)
+  ntp or 10.3.3.60
 
 Confirm security exception in Firefox.
 
@@ -82,8 +79,7 @@ key displayed.
 
 From the command line, do:
 
-  ssh spadmin@ntp6 (DOW6)
-  ssh spadmin@ntp7 (DOW7)
+  ssh spadmin@ntp
 
 and you should get straight in.
 

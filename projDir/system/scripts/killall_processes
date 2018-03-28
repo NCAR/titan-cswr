@@ -5,7 +5,7 @@
 # ~/projDir/bin
 #
 
-foreach dir (~/cvs/bin*)
+foreach dir (~/lrose/bin*)
   if (-d $dir) then
     cd $dir
     foreach file (*)

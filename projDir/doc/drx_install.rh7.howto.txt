@@ -140,6 +140,20 @@ set
 
   SELINUX=disabled
 
+# set up chronyd
+----------------
+
+# Edit:
+
+  /etc/chrony.conf
+
+# and at the top set:
+
+  server ntp iburst
+  server 0.centos.pool.ntp.org iburst
+  server 1.centos.pool.ntp.org iburst
+  etc ...
+
 # Install Java JDK
 # ----------------
 

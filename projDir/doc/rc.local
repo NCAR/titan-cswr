@@ -1,0 +1,28 @@
+#!/bin/bash
+# THIS FILE IS ADDED FOR COMPATIBILITY PURPOSES
+#
+# It is highly advisable to create own systemd services or udev rules
+# to run scripts during boot instead of using this file.
+#
+# In contrast to previous versions due to parallel execution during boot
+# this script will NOT be run after all other services.
+#
+# Please note that you must run 'chmod +x /etc/rc.d/rc.local' to ensure
+# that this script will be executed during boot.
+
+touch /var/lock/subsys/local
+
+# Win driver
+
+rmmod windrvr6
+/usr/local/WinDriver1150_64/redist/wdreg windrvr6 auto
+chmod 666 /dev/windrvr6
+
+ #Acromag apmc730
+ if [ ! -r /dev/apmc730_0 ]; then
+   /bin/mknod -m 666 /dev/apmc730_0 c 46 0 #(1st PMC board)
+   /bin/mknod -m 666 /dev/apmc730_1 c 46 1 #(2nd PMC board)
+   /bin/mknod -m 666 /dev/apmc730_2 c 46 2 #(3rd PMC board)
+   /bin/mknod -m 666 /dev/apmc730_3 c 46 3 #(4th PMC board)
+ fi
+ /usr/sbin/modprobe apmc730

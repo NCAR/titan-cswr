@@ -329,7 +329,7 @@ set
 
   cd ~/git/titan-dowdrx/src/dowdrx
   scons -u -j 8
-  cp dowdrx ~/cvs/bin
+  cp dowdrx ~/lrose/bin
 
 # Compile pentek utilities
 # ------------------------

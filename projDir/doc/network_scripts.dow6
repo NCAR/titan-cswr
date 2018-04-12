@@ -1,0 +1,12 @@
+# Network details for DRX hosts
+-------------------------------
+
+eth0 - whatever
+IPADDR=10.3.3.30
+GATEWAY=10.3.3.1
+NETMASK=255.255.255.128
+DNS1=208.67.222.222
+DNS2=208.67.220.220
+HWADDR=F8:0F:41:F2:56:E9 - whatever
+UUID=5fb06bd0-0bb0-7ffb-45f1-d6edd65f3e03 - whatever
+

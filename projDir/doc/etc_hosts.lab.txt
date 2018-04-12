@@ -1,43 +1,18 @@
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
-#
-# cswr testing
-#
 
-192.168.4.241    labtitan
+# generic - all trucks use the same internal addresses 
 
-192.168.4.200     mgen0
-192.168.4.101     mgen1 ts7800
-192.168.4.102     mgen2
-
-192.168.4.201     drx7
-192.168.4.202     mgen7
-192.168.4.203     hiq7
-192.168.4.204     ntp7
-192.168.4.205     siggen7
-
-192.168.4.211    drx5  # drx
-192.168.4.212    mgen5  # mgen
-192.168.4.213    hiq5   # hiq
-192.168.4.214    ntp5   # ntp
-192.168.4.215    siggen5 # siggen
-
-192.168.4.221    drx6    # drx
-192.168.4.222    mgen6   mgen
-192.168.4.223    hiq6    # hiq
-192.168.4.224    ntp6    # ntp
-192.168.4.225    siggen6 # siggen
-
-192.168.4.242    spoldrx # spol drx
-192.168.4.243    spoldrx2 # spol drx2
-192.168.4.180    angles  # spol angle board
-
-192.168.4.231     drx8   drx
-192.168.4.232     mgen8 mgenr
-192.168.4.233     hiq8  hiq
-192.168.4.234     ntp8  ntp
-192.168.4.235     siggen8 siggen
+10.3.3.10  hiq antcon
+#10.3.3.20  drx
+192.168.4.104  drx
+#10.3.3.30  mgen
+192.168.4.102 mgen
+10.3.3.40  nas gateway
+10.3.3.50  siggen
+#10.3.3.60  ntp spectracom
+192.168.4.60  ntp spectracom
 
 10.3.4.20 drx10g
 10.3.4.30 mgen10g
-
+ 

@@ -22,12 +22,14 @@ dowdrx       ops     start_dowdrx.ops    kill_dowdrx    localhost
 #DowSendFreq   ops     start_DowSendFreq.ops  snuff_inst   localhost
 ###############################################################################
 # MERGE SCAN INFO FROM HIQ - ops
+# Comment this section out for simulated angles
 #
 TsTcp2Fmq       hiq         start_TsTcp2Fmq.hiq           snuff_inst    localhost
 TsScanInfoMerge high        start_TsScanInfoMerge.high    snuff_inst    localhost
 TsScanInfoMerge low         start_TsScanInfoMerge.low     snuff_inst    localhost
 ###############################################################################
 # SIMULATED ANGLES - lab
+# Uncomment for simulated angles
 #
 #Fmq2Fmq     sim.high        start_Fmq2Fmq.sim.high         snuff_inst    localhost
 #Fmq2Fmq     sim.low         start_Fmq2Fmq.sim.low          snuff_inst    localhost

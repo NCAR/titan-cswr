@@ -63,7 +63,10 @@
 #
 #   After install:
 #   
-#     Perform software update from menu.
+#     Perform software update from menu, or:
+
+  yum update -y
+  
 #   
 #   Add titan5 user:
 # 

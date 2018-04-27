@@ -204,7 +204,7 @@ operate_high_frequency = TRUE;
 // Type: int
 //
 
-pentek_address_high = 1;
+pentek_address_high = $(PENTEK_ADDRESS_HIGH);
 
 ///////////// operate_low_frequency ///////////////////
 //
@@ -224,7 +224,7 @@ operate_low_frequency = TRUE;
 // Type: int
 //
 
-pentek_address_low = 2;
+pentek_address_low = $(PENTEK_ADDRESS_LOW);
 
 ///////////// start_on_1pps ///////////////////////////
 //

@@ -24,6 +24,7 @@ setenv LOW_FREQ                   9.40e9
 setenv HIGH_FREQ_GHZ              9.55
 setenv LOW_FREQ_GHZ               9.40
 
+
 ##########################################################
 # calibration - 2013/11/25 edited 20150330 TM ZDR from KAK
 
@@ -54,6 +55,9 @@ setenv TWO_WAY_WAVEGUIDE_LOSS_V_DB 2.0
 
 setenv PENTEK_ADDRESS_HIGH 2
 setenv PENTEK_ADDRESS_LOW 1
+
+setenv XMIT_RCV_MODE_HIGH DP_H_ONLY_FIXED_HV
+setenv XMIT_RCV_MODE_LOW  DP_V_ONLY_FIXED_HV
 
 setenv MAX_DUTY_CYCLE 0.00101
 setenv MAX_N_GATES 1000

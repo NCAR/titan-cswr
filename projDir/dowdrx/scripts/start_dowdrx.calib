@@ -5,6 +5,6 @@ cd $PROJ_DIR/dowdrx/params/${radar_name}
 running "dowdrx"
 if ($status == 1) then
   $PROJ_DIR/dowdrx/scripts/run_fpgaload.${radar_name}
-  dowdrx -params dowdrx30.1000.calib --debug all |& \
+  dowdrx -params dowdrx30.500.calib --debug all |& \
       LogFilter -d $ERRORS_LOG_DIR -p dowdrx -i calib &
 endif

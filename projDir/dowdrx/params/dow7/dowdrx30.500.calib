@@ -599,7 +599,19 @@ burst_n_pulses_for_props = 500;
 // Type: boolean
 //
 
-afc_enabled = FALSE;
+afc_enabled = TRUE;
+
+///////////// afc_keep_osc_default_freq ///////////////
+//
+// Force the AFC to maintain the default frequency.
+//
+// This is used when there is no burst - e.g. for cals.
+//
+//
+// Type: boolean
+//
+
+afc_keep_osc_default_freq = TRUE;
 
 ///////////// IF_stage1_hz ////////////////////////////
 //

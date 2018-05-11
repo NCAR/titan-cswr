@@ -168,7 +168,7 @@ antenna_beam_width_v = 1;
 // Type: double
 //
 
-antenna_gain_h = 44.0;
+antenna_gain_h = 44;
 
 ///////////// antenna_gain_v //////////////////////////
 //
@@ -178,7 +178,7 @@ antenna_gain_h = 44.0;
 // Type: double
 //
 
-antenna_gain_v = 44.0;
+antenna_gain_v = 44;
 
 //======================================================================
 //
@@ -293,7 +293,7 @@ pentek_sampling_frequency_hz = 1.2e+08;
 // Type: double
 //
 
-prt_sec = 0.0003333333333;
+prt_sec = 0.000333333;
 
 ///////////// prt_is_staggered ////////////////////////
 //
@@ -373,7 +373,7 @@ max_duty_cycle = $(MAX_DUTY_CYCLE);
 // Type: double
 //
 
-tx_nominal_pulse_width = 0.1666666666667e-06;
+tx_nominal_pulse_width = 1.66667e-07;
 
 ///////////// tx_mod_width_stretch_high ///////////////
 //
@@ -468,7 +468,7 @@ n_gates = $(MAX_N_GATES);
 // Type: double
 //
 
-rx_gate_width = 0.1666666666667e-06;
+rx_gate_width = 1.66667e-07;
 
 //======================================================================
 //
@@ -599,7 +599,19 @@ burst_n_pulses_for_props = 500;
 // Type: boolean
 //
 
-afc_enabled = FALSE;
+afc_enabled = TRUE;
+
+///////////// afc_keep_osc_default_freq ///////////////
+//
+// Force the AFC to maintain the default frequency.
+//
+// This is used when there is no burst - e.g. for cals.
+//
+//
+// Type: boolean
+//
+
+afc_keep_osc_default_freq = TRUE;
 
 ///////////// IF_stage1_hz ////////////////////////////
 //
@@ -907,7 +919,7 @@ filter_directory_path = "$(PROJ_DIR)/dowdrx/params/filters";
 
 gaussian_filters = {
   {
-    pulse_width = 3.3e-7,
+    pulse_width = 3.3e-07,
     name = "DOW8_0_33.gcf"
   }
   ,

@@ -1361,37 +1361,37 @@ debug_auto_detection = FALSE;
 
 output_fields = {
   {
-    dsr_name = "DBZHC",
-    output_name = "DBZHC",
-    long_name = "DBZHC",
-    standard_name = "DBZHC",
+    dsr_name = "$(DBZH_LOW)",
+    output_name = "$(DBZH_LOW)",
+    long_name = "$(DBZH_LOW)",
+    standard_name = "$(DBZH_LOW)",
     output_units = "dBZ",
     output_encoding = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "DBZHC_F",
-    output_name = "DBZHC_F",
-    long_name = "DBZHC_F",
-    standard_name = "DBZHC_F",
+    dsr_name = "$(DBZH_LOW)_F",
+    output_name = "$(DBZH_LOW)_F",
+    long_name = "$(DBZH_LOW)_F",
+    standard_name = "$(DBZH_LOW)_F",
     output_units = "dBZ",
     output_encoding = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "DBZVC",
-    output_name = "DBZVC",
-    long_name = "DBZVC",
-    standard_name = "DBZVC",
+    dsr_name = "$(DBZV_LOW)",
+    output_name = "$(DBZV_LOW)",
+    long_name = "$(DBZV_LOW)",
+    standard_name = "$(DBZV_LOW)",
     output_units = "dBZ",
     output_encoding = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "DBZVC_F",
-    output_name = "DBZVC_F",
-    long_name = "DBZVC_F",
-    standard_name = "DBZVC_F",
+    dsr_name = "$(DBZV_LOW)_F",
+    output_name = "$(DBZV_LOW)_F",
+    long_name = "$(DBZV_LOW)_F",
+    standard_name = "$(DBZV_LOW)_F",
     output_units = "dBZ",
     output_encoding = OUTPUT_SHORT
   }
@@ -1523,73 +1523,73 @@ output_fields = {
   }
   ,
   {
-    dsr_name = "SNRHC",
-    output_name = "SNRHC",
-    long_name = "SNRHC",
-    standard_name = "SNRHC",
+    dsr_name = "$(SNRH_LOW)",
+    output_name = "$(SNRH_LOW)",
+    long_name = "$(SNRH_LOW)",
+    standard_name = "$(SNRH_LOW)",
     output_units = "dB",
     output_encoding = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "SNRHC_F",
-    output_name = "SNRHC_F",
-    long_name = "SNRHC_F",
-    standard_name = "SNRHC_F",
+    dsr_name = "$(SNRH_LOW)_F",
+    output_name = "$(SNRH_LOW)_F",
+    long_name = "$(SNRH_LOW)_F",
+    standard_name = "$(SNRH_LOW)_F",
     output_units = "dB",
     output_encoding = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "SNRVC",
-    output_name = "SNRVC",
-    long_name = "SNRVC",
-    standard_name = "SNRVC",
+    dsr_name = "$(SNRV_LOW)",
+    output_name = "$(SNRV_LOW)",
+    long_name = "$(SNRV_LOW)",
+    standard_name = "$(SNRV_LOW)",
     output_units = "dB",
     output_encoding = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "SNRVC_F",
-    output_name = "SNRVC_F",
-    long_name = "SNRVC_F",
-    standard_name = "SNRVC_F",
+    dsr_name = "$(SNRV_LOW)_F",
+    output_name = "$(SNRV_LOW)_F",
+    long_name = "$(SNRV_LOW)_F",
+    standard_name = "$(SNRV_LOW)_F",
     output_units = "dB",
     output_encoding = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "DBMHC",
-    output_name = "DBMHC",
-    long_name = "DBMHC",
-    standard_name = "DBMHC",
+    dsr_name = "$(DBMH_LOW)",
+    output_name = "$(DBMH_LOW)",
+    long_name = "$(DBMH_LOW)",
+    standard_name = "$(DBMH_LOW)",
     output_units = "dBm",
     output_encoding = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "DBMHC_F",
-    output_name = "DBMHC_F",
-    long_name = "DBMHC_F",
-    standard_name = "DBMHC_F",
+    dsr_name = "$(DBMH_LOW)_F",
+    output_name = "$(DBMH_LOW)_F",
+    long_name = "$(DBMH_LOW)_F",
+    standard_name = "$(DBMH_LOW)_F",
     output_units = "dBm",
     output_encoding = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "DBMVC",
-    output_name = "DBMVC",
-    long_name = "DBMVC",
-    standard_name = "DBMVC",
+    dsr_name = "$(DBMV_LOW)",
+    output_name = "$(DBMV_LOW)",
+    long_name = "$(DBMV_LOW)",
+    standard_name = "$(DBMV_LOW)",
     output_units = "dBm",
     output_encoding = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "DBMVC_F",
-    output_name = "DBMVC_F",
-    long_name = "DBMVC_F",
-    standard_name = "DBMVC_F",
+    dsr_name = "$(DBMV_LOW)_F",
+    output_name = "$(DBMV_LOW)_F",
+    long_name = "$(DBMV_LOW)_F",
+    standard_name = "$(DBMV_LOW)_F",
     output_units = "dBm",
     output_encoding = OUTPUT_SHORT
   }

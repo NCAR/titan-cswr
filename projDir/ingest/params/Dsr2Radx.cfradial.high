@@ -249,6 +249,141 @@ elevation_offset = 0;
 
 //======================================================================
 //
+// OPTION TO OVERRIDE INSTRUMENT TYPE, PLATFORM TYPE AND PRIMARY AXIS.
+//
+// This applies to read operations.
+//
+//======================================================================
+ 
+///////////// override_instrument_type ////////////////
+//
+// Option to override instrument type on read.
+//
+// If true, the file will be read in, the instrument type will be 
+//   changed, and then any post-read processing will be performed.
+//
+//
+// Type: boolean
+//
+
+override_instrument_type = FALSE;
+
+///////////// instrument_type /////////////////////////
+//
+// Specify the instrument type. See override_instrument_type.
+//
+//
+// Type: enum
+// Options:
+//     INSTRUMENT_RADAR
+//     INSTRUMENT_LIDAR
+//
+
+instrument_type = INSTRUMENT_RADAR;
+
+///////////// override_platform_type //////////////////
+//
+// Option to override platform type on read. If true, the file will be 
+//   read in, the platform type will be changed, and then any post-read 
+//   processing will be performed.
+//
+// 	PLATFORM_FIXED  - radar is in a fixed location
+// 	PLATFORM_VEHICLE -  radar is mounted on a land vehicle
+// 	PLATFORM_SHIP - radar is mounted on a ship
+// 	PLATFORM_AIRCRAFT_FORE - forward-looking on aircraft
+// 	PLATFORM_AIRCRAFT_AFT - backward-looking on aircraft
+// 	PLATFORM_AIRCRAFT_TAIL - tail - e.g. ELDORA
+// 	PLATFORM_AIRCRAFT_BELLY -  belly radar on aircraft
+// 	PLATFORM_AIRCRAFT_ROOF - roof radar on aircraft
+// 	PLATFORM_AIRCRAFT_NOSE - radar in nose radome on aircraft
+// 	PLATFORM_SATELLITE_ORBIT - orbiting satellite
+// 	PLATFORM_SATELLITE_GEOSTAT - geostationary satellite.
+//
+//
+// Type: boolean
+//
+
+override_platform_type = FALSE;
+
+///////////// platform_type ///////////////////////////
+//
+// Platform type.
+//
+// See override_platform_type.
+//
+//
+// Type: enum
+// Options:
+//     PLATFORM_FIXED
+//     PLATFORM_VEHICLE
+//     PLATFORM_SHIP
+//     PLATFORM_AIRCRAFT_FORE
+//     PLATFORM_AIRCRAFT_AFT
+//     PLATFORM_AIRCRAFT_TAIL
+//     PLATFORM_AIRCRAFT_BELLY
+//     PLATFORM_AIRCRAFT_ROOF
+//     PLATFORM_AIRCRAFT_NOSE
+//     PLATFORM_SATELLITE_ORBIT
+//     PLATFORM_SATELLITE_GEOSTAT
+//
+
+platform_type = PLATFORM_FIXED;
+
+///////////// override_primary_axis ///////////////////
+//
+// Option to override primary axis on read. If true, the file will be 
+//   read in, the primary axis will be changed, and then any post-read 
+//   processing will be performed.
+//
+// 	PRIMARY_AXIS_Z - vertical
+// 	PRIMARY_AXIS_Y - longitudinal axis of platform
+// 	PRIMARY_AXIS_X - lateral axis of platform
+// 	PRIMARY_AXIS_Z_PRIME - inverted vertical
+// 	PRIMARY_AXIS_Y_PRIME - ELDORA, HRD tail
+// 	PRIMARY_AXIS_X_PRIME - translated lateral.
+//
+//
+// Type: boolean
+//
+
+override_primary_axis = FALSE;
+
+///////////// primary_axis ////////////////////////////
+//
+// Platform type.
+//
+// See override_primary_axis.
+//
+//
+// Type: enum
+// Options:
+//     PRIMARY_AXIS_Z
+//     PRIMARY_AXIS_Y
+//     PRIMARY_AXIS_X
+//     PRIMARY_AXIS_Z_PRIME
+//     PRIMARY_AXIS_Y_PRIME
+//     PRIMARY_AXIS_X_PRIME
+//
+
+primary_axis = PRIMARY_AXIS_Z;
+
+///////////// apply_georeference_corrections //////////
+//
+// Option to apply the georeference info for moving platforms.
+//
+// For moving platforms, measured georeference information is sometimes 
+//   available. If this is set to true, the georeference data is applied 
+//   and appropriate corrections made. If possible, Earth-centric azimuth 
+//   and elevation angles will be computed.
+//
+//
+// Type: boolean
+//
+
+apply_georeference_corrections = FALSE;
+
+//======================================================================
+//
 // CENSORING OUTPUT FIELDS.
 //
 // You have the option of censoring the output data fields - i.e. 
@@ -416,7 +551,8 @@ filter_using_elev = FALSE;
 //
 // Minimum valid elevation for rays (deg).
 //
-// If the elevation is below this value, the ray is ignored.
+// If the elevation is below this value, the ray is ignored. Applies 
+//   only if filter_using_elev is true.
 //
 //
 // Type: double
@@ -428,7 +564,8 @@ specified_min_elev = -10;
 //
 // Maximum valid elevation for rays (deg).
 //
-// If the elevation is above this value, the ray is ignored.
+// If the elevation is above this value, the ray is ignored. Applies 
+//   only if filter_using_elev is true.
 //
 //
 // Type: double
@@ -453,7 +590,8 @@ filter_using_sweep_number = FALSE;
 //
 // Minimum valid sweep number for rays.
 //
-// If the sweep number is below this value, the ray is ignored.
+// If the sweep number is below this value, the ray is ignored. Applies 
+//   only if filter_using_sweep_number is true.
 //
 //
 // Type: int
@@ -465,13 +603,45 @@ specified_min_sweep_number = 0;
 //
 // Maximum valid sweep number for rays.
 //
-// If the sweep number is above this value, the ray is ignored.
+// If the sweep number is above this value, the ray is ignored. Applies 
+//   only if filter_using_sweep_number is true.
 //
 //
 // Type: int
 //
 
 specified_max_sweep_number = 999;
+
+///////////// filter_using_sweep_number_list //////////
+//
+// Option to filter data based on sweep numbers in the list.
+//
+// If TRUE, the program will use only ray data with a sweep number that 
+//   is in the specified list.
+//
+//
+// Type: boolean
+//
+
+filter_using_sweep_number_list = FALSE;
+
+///////////// specified_sweep_number_list /////////////
+//
+// List of valid sweep numbers.
+//
+// If the sweep number is not in this list, the ray is ignored. Applies 
+//   only if filter_using_sweep_number_list is true.
+//
+//
+// Type: int
+// 1D array - variable length.
+//
+
+specified_sweep_number_list = {
+ 0,
+ 1,
+ 2
+};
 
 //======================================================================
 //
@@ -505,6 +675,20 @@ filter_antenna_stationary = FALSE;
 //
 
 min_angle_change_for_moving_antenna = 0.05;
+
+///////////// clear_transition_flag_on_all_rays ///////
+//
+// Option to clear the transition flag on all rays.
+//
+// If true, for all rays on which the transition flag is set, this flag 
+//   will be removed, so that all rays are considered to be NOT in 
+//   transition.
+//
+//
+// Type: boolean
+//
+
+clear_transition_flag_on_all_rays = FALSE;
 
 ///////////// filter_antenna_transitions //////////////
 //
@@ -548,7 +732,11 @@ filter_when_scan_pointing = TRUE;
 
 //======================================================================
 //
-// CONVERTING ALL RAYS TO SAME GATE GEOMETRY.
+// OUTPUT GATE GEOMETRY.
+//
+// You can only choose one range geometry remapping option. If none are 
+//   picked, all rays which do not match the predominant geometry will be 
+//   discarded.
 //
 //======================================================================
  
@@ -557,14 +745,76 @@ filter_when_scan_pointing = TRUE;
 // Option to convert all rays to predominant geometry.
 //
 // If true, all rays will be converted to the predominant gate geometry 
-//   - i.e. start_range and gate_spacing. If false, all rays which do not 
-//   match the predominant geometry will be discarded.
+//   - i.e. start_range and gate_spacing.
 //
 //
 // Type: boolean
 //
 
 convert_to_predominant_gate_geometry = TRUE;
+
+///////////// convert_to_finest_gate_geometry /////////
+//
+// Option to convert all rays to finest range gate spacing.
+//
+// If true, all rays will be converted to the finest gate spacing.
+//
+//
+// Type: boolean
+//
+
+convert_to_finest_gate_geometry = FALSE;
+
+///////////// convert_to_specified_output_gate_geometry 
+//
+// Option to convert all rays to a specified gate geometry.
+//
+// See 'specified_start_range_k', 'specified_gate_spacing_km' and 
+//   'interpolate_to_specified_gate_geometry'.
+//
+//
+// Type: boolean
+//
+
+convert_to_specified_output_gate_geometry = FALSE;
+
+///////////// output_start_range_km ///////////////////
+//
+// Start range for specified remapping (km).
+//
+// See 'convert_to_specified_gate_geometry'.
+//
+//
+// Type: double
+//
+
+output_start_range_km = 0.1;
+
+///////////// output_gate_spacing_km //////////////////
+//
+// Gate spacing for specified remapping (km).
+//
+// See 'convert_to_specified_gate_geometry'.
+//
+//
+// Type: double
+//
+
+output_gate_spacing_km = 0.2;
+
+///////////// interpolate_to_output_gate_geometry /////
+//
+// Option to use interpolation when converting to the specified gate 
+//   geometry.
+//
+// If false, nearest neighbor mapping is used. See 
+//   'convert_to_specified_gate_geometry'.
+//
+//
+// Type: boolean
+//
+
+interpolate_to_output_gate_geometry = FALSE;
 
 //======================================================================
 //
@@ -734,6 +984,56 @@ min_rays_in_sweep = 20;
 
 //======================================================================
 //
+// COMPUTING FIXED ANGLES FROM RAYS.
+//
+// NOTE: if the antenna control system does not point the antenna 
+//   correctly, there will be an offset between the fixed (commanded) 
+//   angles and the measured antenna angles. This option allows you to 
+//   re-compute the fixed angles so that they are derived from the 
+//   measured angles.
+//
+//======================================================================
+ 
+///////////// compute_ppi_fixed_angles_from_measured_elevation 
+//
+// Option to recompute the fixed angles from the measured angles for PPI 
+//   sweeps - i.e. surveillance and sector mode.
+//
+// See NOTE above.
+//
+//
+// Type: boolean
+//
+
+compute_ppi_fixed_angles_from_measured_elevation = FALSE;
+
+///////////// compute_rhi_fixed_angles_from_measured_azimuth 
+//
+// Option to recompute the fixed angles from the measured angles for RHI 
+//   sweeps.
+//
+// See NOTE above.
+//
+//
+// Type: boolean
+//
+
+compute_rhi_fixed_angles_from_measured_azimuth = FALSE;
+
+///////////// use_mean_to_compute_fixed_angles ////////
+//
+// Option to use mean to compute the fixed angles. This is the default.
+//
+// If false, uses the median.
+//
+//
+// Type: boolean
+//
+
+use_mean_to_compute_fixed_angles = TRUE;
+
+//======================================================================
+//
 // INCREMENTING SWEEP NUMBERS BASED ON MODE CHANGES.
 //
 //======================================================================
@@ -774,25 +1074,119 @@ increment_sweep_num_when_prt_mode_changes = FALSE;
 //
 // OPTION TO ADJUST SWEEP LIMITS USING FIXED AND MEASURED ANGLES.
 //
-//======================================================================
- 
-///////////// adjust_sweep_limits_using_angles ////////
-//
-// Adjust the limits of sweeps, by comparing the measured angles to the 
-//   fixed angles.
-//
 // Sometimes the transitions from one fixed angle to another are not 
 //   accurately described by the scan flags, and as a result rays are not 
 //   correctly assigned to the sweeps. This option goes through the volume 
 //   in ray order, and adjusts the way rays are associated with each 
 //   sweep. It does this by comparing the actual angle with the fixed 
-//   angle, and minimizes the angular difference.
+//   angle, and minimizes the angular difference at the transition from 
+//   one sweep to the next.
+//
+//======================================================================
+ 
+///////////// adjust_sur_sweep_limits_using_angles ////
+//
+// Adjust the limits of sweeps in surveillance mode.
+//
+// We compare the actual angle with the fixed angle, and minimize the 
+//   angular difference at the transition from one sweep to the next.
 //
 //
 // Type: boolean
 //
 
-adjust_sweep_limits_using_angles = TRUE;
+adjust_sur_sweep_limits_using_angles = FALSE;
+
+///////////// adjust_sector_sweep_limits_using_angles /
+//
+// Adjust the limits of sweeps in sector mode.
+//
+// We compare the actual angle with the fixed angle, and minimize the 
+//   angular difference at the transition from one sweep to the next.
+//
+//
+// Type: boolean
+//
+
+adjust_sector_sweep_limits_using_angles = FALSE;
+
+///////////// adjust_rhi_sweep_limits_using_angles ////
+//
+// Adjust the limits of sweeps in RHI mode.
+//
+// We compare the actual angle with the fixed angle, and minimize the 
+//   angular difference at the transition from one sweep to the next.
+//
+//
+// Type: boolean
+//
+
+adjust_rhi_sweep_limits_using_angles = FALSE;
+
+//======================================================================
+//
+// OPTION TO MAKE SURVEILLANCE SWEEP TRANSITIONS OCCUR AT A SPECIFIED 
+//   AZIMUTH.
+//
+//======================================================================
+ 
+///////////// force_sur_sweep_transitions_at_fixed_azimuth 
+//
+// Adjust the limits of surveillance sweeps, changing the sweep number 
+//   when the azimuth crosses the specified value.
+//
+// Sometimes the transitions from one fixed angle to another are not 
+//   accurately described by the scan flags, and as a result rays are not 
+//   correctly assigned to the sweeps. This option goes through a 
+//   surveillance volume in ray order, and adjusts the way rays are 
+//   associated with each sweep. It forces a change in sweep when the 
+//   azimuth transitions across 'sur_sweep_transitions_azimuth_deg'.
+//
+// NOTE: this applies in surveillance mode only, and will override 
+//   'adjust_sur_sweep_limits_using_angles' if both are set to TRUE. It 
+//   has no effect on sweeps from RHI or SECTOR modes.
+//
+//
+// Type: boolean
+//
+
+force_sur_sweep_transitions_at_fixed_azimuth = FALSE;
+
+///////////// sur_sweep_transitions_azimuth_deg ///////
+//
+// Azimuth to be used for forcing surveillance sweep transitions (deg).
+//
+// See 'adjust_sur_sweep_limits_to_fixed_azimuth'.
+//
+//
+// Type: double
+//
+
+sur_sweep_transitions_azimuth_deg = 0;
+
+//======================================================================
+//
+// TRIM SURVEILLANCE SWEEPS TO SPAN ONLY 360 DEG.
+//
+//======================================================================
+ 
+///////////// trim_surveillance_sweeps_to_360deg //////
+//
+// Option to trip surveillance sweeps so that they only cover 360 
+//   degrees.
+//
+// Some sweeps will have rays which cover more than a 360-degree 
+//   rotation. Often these include antenna transitions. If this is set to 
+//   true, rays are trimmed off either end of the sweep to limit the 
+//   coverage to 360 degrees. The median elevation angle is computed and 
+//   the end ray which deviates from the median in elevation is trimmed 
+//   first.
+//
+//
+// Type: boolean
+//
+
+trim_surveillance_sweeps_to_360deg = FALSE;
 
 //======================================================================
 //
@@ -804,15 +1198,27 @@ adjust_sweep_limits_using_angles = TRUE;
 //
 // Decision type for end-of-volume.
 //
-// If END_OF_VOL_FLAG, the end-of-volume flag in the data will be used 
-//   to trigger the end of volume. If CHANGE_IN_VOL_NUM, and end of volume 
-//   will be assumed when the volume number changes from one ray to the 
-//   next. If CHANGE_IN_SWEEP_NUM, then each sweep will be written out as 
-//   a separate volume. If LAST_SWEEP_IN_VOL, the end of the sweep number 
-//   given by 'last_sweep_in_vol' will be used  to trigger the 
-//   end-of-volume. If AUTOMATIC, this program will determine the 
-//   end-of-volume condition by using the antenna-angle information. If 
-//   ELAPSED_TIME, and end-of-volume will be triggered after 
+
+// END_OF_VOL_FLAG: the end-of-volume flag in the data will be used to 
+//   trigger the end of volume.
+//
+// CHANGE_IN_VOL_NUM: an end of volume will be assumed when the volume 
+//   number changes from one ray to the next.
+//
+// CHANGE_IN_SWEEP_NUM: each sweep will be written out as a separate 
+//   volume.
+//
+// EVERY_360_DEG: the volume will end after every 360 degree sweep. The 
+//   azimuth at which the vol changes is specified by 
+//   az_for_end_of_vol_360.
+//
+// LAST_SWEEP_IN_VOL: the end of the sweep number given by 
+//   'last_sweep_in_vol' will be used  to trigger the end-of-volume.
+//
+// AUTOMATIC: end-of-volume condition will be determined from the 
+//   antenna-angle information.
+//
+// ELAPSED_TIME: an end-of-volume will be triggered after 
 //   'nsecs_per_volume' seconds.
 //
 //
@@ -821,6 +1227,7 @@ adjust_sweep_limits_using_angles = TRUE;
 //     END_OF_VOL_FLAG
 //     CHANGE_IN_VOL_NUM
 //     CHANGE_IN_SWEEP_NUM
+//     EVERY_360_DEG
 //     LAST_SWEEP_IN_VOL
 //     AUTOMATIC
 //     ELAPSED_TIME
@@ -839,6 +1246,19 @@ end_of_vol_decision = END_OF_VOL_FLAG;
 //
 
 last_sweep_in_vol = 0;
+
+///////////// az_for_end_of_vol_360 ///////////////////
+//
+// Azimuth at which the volume changes.
+//
+// An end-of-vol is triggered every time the antenna moves across this 
+//   azimuth.
+//
+//
+// Type: double
+//
+
+az_for_end_of_vol_360 = 0;
 
 ///////////// write_end_of_vol_when_data_stops ////////
 //
@@ -1113,37 +1533,37 @@ debug_auto_detection = FALSE;
 
 output_fields = {
   {
-    dsr_name = "DBZHC",
-    output_name = "DBZHC",
-    long_name = "DBZHC",
-    standard_name = "DBZHC",
+    dsr_name = "$(DBZH_HIGH)",
+    output_name = "$(DBZH_HIGH)",
+    long_name = "$(DBZH_HIGH)",
+    standard_name = "$(DBZH_HIGH)",
     output_units = "dBZ",
     output_encoding = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "DBZHC_F",
-    output_name = "DBZHC_F",
-    long_name = "DBZHC_F",
-    standard_name = "DBZHC_F",
+    dsr_name = "$(DBZH_HIGH)_F",
+    output_name = "$(DBZH_HIGH)_F",
+    long_name = "$(DBZH_HIGH)_F",
+    standard_name = "$(DBZH_HIGH)_F",
     output_units = "dBZ",
     output_encoding = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "DBZVC",
-    output_name = "DBZVC",
-    long_name = "DBZVC",
-    standard_name = "DBZVC",
+    dsr_name = "$(DBZV_HIGH)",
+    output_name = "$(DBZV_HIGH)",
+    long_name = "$(DBZV_HIGH)",
+    standard_name = "$(DBZV_HIGH)",
     output_units = "dBZ",
     output_encoding = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "DBZVC_F",
-    output_name = "DBZVC_F",
-    long_name = "DBZVC_F",
-    standard_name = "DBZVC_F",
+    dsr_name = "$(DBZV_HIGH)_F",
+    output_name = "$(DBZV_HIGH)_F",
+    long_name = "$(DBZV_HIGH)_F",
+    standard_name = "$(DBZV_HIGH)_F",
     output_units = "dBZ",
     output_encoding = OUTPUT_SHORT
   }
@@ -1275,73 +1695,73 @@ output_fields = {
   }
   ,
   {
-    dsr_name = "SNRHC",
-    output_name = "SNRHC",
-    long_name = "SNRHC",
-    standard_name = "SNRHC",
+    dsr_name = "$(SNRH_HIGH)",
+    output_name = "$(SNRH_HIGH)",
+    long_name = "$(SNRH_HIGH)",
+    standard_name = "$(SNRH_HIGH)",
     output_units = "dB",
     output_encoding = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "SNRHC_F",
-    output_name = "SNRHC_F",
-    long_name = "SNRHC_F",
-    standard_name = "SNRHC_F",
+    dsr_name = "$(SNRH_HIGH)_F",
+    output_name = "$(SNRH_HIGH)_F",
+    long_name = "$(SNRH_HIGH)_F",
+    standard_name = "$(SNRH_HIGH)_F",
     output_units = "dB",
     output_encoding = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "SNRVC",
-    output_name = "SNRVC",
-    long_name = "SNRVC",
-    standard_name = "SNRVC",
+    dsr_name = "$(SNRV_HIGH)",
+    output_name = "$(SNRV_HIGH)",
+    long_name = "$(SNRV_HIGH)",
+    standard_name = "$(SNRV_HIGH)",
     output_units = "dB",
     output_encoding = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "SNRVC_F",
-    output_name = "SNRVC_F",
-    long_name = "SNRVC_F",
-    standard_name = "SNRVC_F",
+    dsr_name = "$(SNRV_HIGH)_F",
+    output_name = "$(SNRV_HIGH)_F",
+    long_name = "$(SNRV_HIGH)_F",
+    standard_name = "$(SNRV_HIGH)_F",
     output_units = "dB",
     output_encoding = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "DBMHC",
-    output_name = "DBMHC",
-    long_name = "DBMHC",
-    standard_name = "DBMHC",
+    dsr_name = "$(DBMH_HIGH)",
+    output_name = "$(DBMH_HIGH)",
+    long_name = "$(DBMH_HIGH)",
+    standard_name = "$(DBMH_HIGH)",
     output_units = "dBm",
     output_encoding = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "DBMHC_F",
-    output_name = "DBMHC_F",
-    long_name = "DBMHC_F",
-    standard_name = "DBMHC_F",
+    dsr_name = "$(DBMH_HIGH)_F",
+    output_name = "$(DBMH_HIGH)_F",
+    long_name = "$(DBMH_HIGH)_F",
+    standard_name = "$(DBMH_HIGH)_F",
     output_units = "dBm",
     output_encoding = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "DBMVC",
-    output_name = "DBMVC",
-    long_name = "DBMVC",
-    standard_name = "DBMVC",
+    dsr_name = "$(DBMV_HIGH)",
+    output_name = "$(DBMV_HIGH)",
+    long_name = "$(DBMV_HIGH)",
+    standard_name = "$(DBMV_HIGH)",
     output_units = "dBm",
     output_encoding = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "DBMVC_F",
-    output_name = "DBMVC_F",
-    long_name = "DBMVC_F",
-    standard_name = "DBMVC_F",
+    dsr_name = "$(DBMV_HIGH)_F",
+    output_name = "$(DBMV_HIGH)_F",
+    long_name = "$(DBMV_HIGH)_F",
+    standard_name = "$(DBMV_HIGH)_F",
     output_units = "dBm",
     output_encoding = OUTPUT_SHORT
   }
@@ -1511,12 +1931,24 @@ append_year_dir_to_output_dir = FALSE;
 
 separate_output_dirs_by_scan_type = TRUE;
 
+///////////// write_surveillance_files ////////////////
+//
+// Option to write out files for surveillance mode.
+//
+// Only applies if 'separate_output_dirs_by_scan_type' is true.
+//
+//
+// Type: boolean
+//
+
+write_surveillance_files = TRUE;
+
 ///////////// surveillance_subdir /////////////////////
 //
 // The directory path for surveillance scan files.
 //
-// See 'separate_by_scan_type'. If the scan mode is surveillance, this 
-//   subdirectory will be created under the ouput dir.
+// See 'separate_output_dirs_by_scan_type'. If the scan mode is 
+//   surveillance, this subdirectory will be created under the ouput dir.
 //
 //
 // Type: string
@@ -1524,12 +1956,24 @@ separate_output_dirs_by_scan_type = TRUE;
 
 surveillance_subdir = "sur";
 
+///////////// write_sector_files //////////////////////
+//
+// Option to write out files for sector mode.
+//
+// Only applies if 'separate_output_dirs_by_scan_type' is true.
+//
+//
+// Type: boolean
+//
+
+write_sector_files = TRUE;
+
 ///////////// sector_subdir ///////////////////////////
 //
 // The directory path for sector scan files.
 //
-// See 'separate_by_scan_type'. If the scan mode is sector, this 
-//   subdirectory will be created under the ouput dir.
+// See 'separate_output_dirs_by_scan_type'. If the scan mode is sector, 
+//   this subdirectory will be created under the ouput dir.
 //
 //
 // Type: string
@@ -1537,12 +1981,24 @@ surveillance_subdir = "sur";
 
 sector_subdir = "sec";
 
+///////////// write_rhi_files /////////////////////////
+//
+// Option to write out files for rhi mode.
+//
+// Only applies if 'separate_output_dirs_by_scan_type' is true.
+//
+//
+// Type: boolean
+//
+
+write_rhi_files = TRUE;
+
 ///////////// rhi_subdir //////////////////////////////
 //
 // The directory path for rhi files.
 //
-// See 'separate_by_scan_type'. If the scan mode is rhi, this 
-//   subdirectory will be created under the ouput dir.
+// See 'separate_output_dirs_by_scan_type'. If the scan mode is rhi, 
+//   this subdirectory will be created under the ouput dir.
 //
 //
 // Type: string
@@ -1550,44 +2006,30 @@ sector_subdir = "sec";
 
 rhi_subdir = "rhi";
 
+///////////// write_vert_files ////////////////////////
+//
+// Option to write out files for vertical pointing mode.
+//
+// Only applies if 'separate_output_dirs_by_scan_type' is true.
+//
+//
+// Type: boolean
+//
+
+write_vert_files = TRUE;
+
 ///////////// vert_subdir /////////////////////////////
 //
 // The directory path for vert scan files.
 //
-// See 'separate_by_scan_type'. If the scan mode is vert, this 
-//   subdirectory will be created under the ouput dir.
+// See 'separate_output_dirs_by_scan_type'. If the scan mode is vert, 
+//   this subdirectory will be created under the ouput dir.
 //
 //
 // Type: string
 //
 
 vert_subdir = "vert";
-
-///////////// sun_subdir //////////////////////////////
-//
-// The directory path for sun scan files.
-//
-// See 'separate_by_scan_type'. If the scan mode is sun, this 
-//   subdirectory will be created under the ouput dir.
-//
-//
-// Type: string
-//
-
-sun_subdir = "sun";
-
-///////////// solar_scan_name /////////////////////////
-//
-// Optionally specify the scan name for the solar scan.
-//
-// If the scan name from the antenna controller matches this string, it 
-//   will be assumed that this is a solar scan.
-//
-//
-// Type: string
-//
-
-solar_scan_name = "Solar";
 
 ///////////// min_elevation_for_vert_files ////////////
 //
@@ -1619,6 +2061,142 @@ min_elevation_for_vert_files = 80;
 
 min_vert_fraction_for_vert_files = 0.2;
 
+///////////// write_sun_files /////////////////////////
+//
+// Option to write out files for sun scan mode.
+//
+// Only applies if 'separate_output_dirs_by_scan_type' is true.
+//
+//
+// Type: boolean
+//
+
+write_sun_files = TRUE;
+
+///////////// sun_subdir //////////////////////////////
+//
+// The directory path for sun scan files.
+//
+// See 'separate_output_dirs_by_scan_type'. If the scan mode is sun, 
+//   this subdirectory will be created under the ouput dir.
+//
+//
+// Type: string
+//
+
+sun_subdir = "sun";
+
+///////////// solar_scan_name /////////////////////////
+//
+// Optionally specify the scan name for the solar scan.
+//
+// If the scan name from the antenna controller matches this string, it 
+//   will be assumed that this is a solar scan.
+//
+//
+// Type: string
+//
+
+solar_scan_name = "Solar";
+
+//======================================================================
+//
+// OUTPUT FILE NAME OPTIONS.
+//
+//======================================================================
+ 
+///////////// output_filename_prefix //////////////////
+//
+// Optional prefix for output filename.
+//
+// If empty, the standard prefix will be used.
+//
+//
+// Type: string
+//
+
+output_filename_prefix = "";
+
+///////////// include_instrument_name_in_file_name ////
+//
+// Option to include the instrument name in the file name.
+//
+// Default is true. Only applies to CfRadial files. If true, the 
+//   instrument name will be included just before the volume number in the 
+//   output file name.
+//
+//
+// Type: boolean
+//
+
+include_instrument_name_in_file_name = TRUE;
+
+///////////// include_site_name_in_file_name //////////
+//
+// Option to include the site name in the file name.
+//
+// Only applies to CfRadial files. If true, the site name will be 
+//   included just before the volume number in the output file name.
+//
+//
+// Type: boolean
+//
+
+include_site_name_in_file_name = FALSE;
+
+///////////// include_subsecs_in_file_name ////////////
+//
+// Option to include sub-seconds in date-time part of file name.
+//
+// Default is true. Only applies to CfRadial files. If true, the 
+//   millisecs of the start and end time will be included in the file 
+//   name.
+//
+//
+// Type: boolean
+//
+
+include_subsecs_in_file_name = TRUE;
+
+///////////// include_scan_type_in_file_name //////////
+//
+// Option to include the scan type in the file name.
+//
+// Default is true. Only applies to CfRadial files. If true, the scan 
+//   type (SUR, SEC, RHI, VER etc) will be included in the file name.
+//
+//
+// Type: boolean
+//
+
+include_scan_type_in_file_name = TRUE;
+
+///////////// include_vol_num_in_file_name ////////////
+//
+// Option to include the volume number in the file name.
+//
+// Default is false. Only applies to CfRadial files. If true, the volume 
+//   number is included in the file name, preceded by '_v'.
+//
+//
+// Type: boolean
+//
+
+include_vol_num_in_file_name = FALSE;
+
+///////////// use_hyphen_in_file_name_datetime_part ///
+//
+// Option to use a hyphen between date and time in filename.
+//
+// Default is false. Only applies to CfRadial files. Normally an 
+//   underscore is used.
+//
+//
+// Type: boolean
+//
+
+use_hyphen_in_file_name_datetime_part = FALSE;
+
 //======================================================================
 //
 // REGISTERING LATEST DATA INFO.
@@ -1646,7 +2224,7 @@ write_master_ldata_info = FALSE;
 // Option to write latest_data_info for each data set.
 //
 // Writes a latest_data_info file for each data set written, including 
-//   the separate directories for surveillance, sector and RHI as 
+//   the separate directories for surveillance, sector, rhi etc. as 
 //   appropriate. If write_master_ldata_info is true, you may consider 
 //   turning this off.
 //

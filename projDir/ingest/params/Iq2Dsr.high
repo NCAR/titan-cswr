@@ -776,7 +776,7 @@ elevation_offset = 0;
 //          DP_ALT_HV_CO_ONLY
 //          DP_ALT_HV_CO_CROSS
 //          DP_ALT_HV_FIXED_HV
-//          DP_SIM_HV_FIXED_HV
+//          $(XMIT_RCV_MODE_HIGH)
 //          DP_SIM_HV_SWITCHED_HV
 //          DP_H_ONLY_FIXED_HV
 //          DP_V_ONLY_FIXED_HV
@@ -812,7 +812,7 @@ moments_params = {
     min_antenna_rate_for_indexing = 1,
     window = WINDOW_RECT,
     switching_receiver = FALSE,
-    xmit_rcv_mode = DP_SIM_HV_FIXED_HV,
+    xmit_rcv_mode = $(XMIT_RCV_MODE_HIGH),
     apply_clutter_filter = TRUE,
     apply_sz = FALSE,
     change_velocity_sign = FALSE,
@@ -838,7 +838,7 @@ moments_params = {
     min_antenna_rate_for_indexing = 1,
     window = WINDOW_RECT,
     switching_receiver = FALSE,
-    xmit_rcv_mode = DP_SIM_HV_FIXED_HV,
+    xmit_rcv_mode = $(XMIT_RCV_MODE_HIGH),
     apply_clutter_filter = TRUE,
     apply_sz = FALSE,
     change_velocity_sign = FALSE,
@@ -864,7 +864,7 @@ moments_params = {
     min_antenna_rate_for_indexing = 1,
     window = WINDOW_RECT,
     switching_receiver = FALSE,
-    xmit_rcv_mode = DP_SIM_HV_FIXED_HV,
+    xmit_rcv_mode = $(XMIT_RCV_MODE_HIGH),
     apply_clutter_filter = TRUE,
     apply_sz = FALSE,
     change_velocity_sign = FALSE,
@@ -3621,8 +3621,8 @@ output_fields = {
   }
   ,
   {
-    id = SNRHC,
-    name = "SNRHC",
+    id = $(SNRH_HIGH),
+    name = "$(SNRH_HIGH)",
     units = "dB",
     scale = 0.01,
     bias = -320,
@@ -3631,8 +3631,8 @@ output_fields = {
   }
   ,
   {
-    id = SNRVC,
-    name = "SNRVC",
+    id = $(SNRV_HIGH),
+    name = "$(SNRV_HIGH)",
     units = "dB",
     scale = 0.01,
     bias = -320,
@@ -3641,8 +3641,8 @@ output_fields = {
   }
   ,
   {
-    id = DBMHC,
-    name = "DBMHC",
+    id = $(DBMH_HIGH),
+    name = "$(DBMH_HIGH)",
     units = "dBm",
     scale = 0.01,
     bias = -320,
@@ -3651,8 +3651,8 @@ output_fields = {
   }
   ,
   {
-    id = DBMVC,
-    name = "DBMVC",
+    id = $(DBMV_HIGH),
+    name = "$(DBMV_HIGH)",
     units = "dBm",
     scale = 0.01,
     bias = -320,
@@ -3661,8 +3661,8 @@ output_fields = {
   }
   ,
   {
-    id = DBZHC,
-    name = "DBZHC",
+    id = $(DBZH_HIGH),
+    name = "$(DBZH_HIGH)",
     units = "dBZ",
     scale = 0.01,
     bias = -320,
@@ -3671,8 +3671,8 @@ output_fields = {
   }
   ,
   {
-    id = DBZVC,
-    name = "DBZVC",
+    id = $(DBZV_HIGH),
+    name = "$(DBZV_HIGH)",
     units = "dBZ",
     scale = 0.01,
     bias = -320,

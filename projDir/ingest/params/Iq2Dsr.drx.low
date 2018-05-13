@@ -2807,8 +2807,8 @@ output_fields = {
   }
   ,
   {
-    id = SNRHC,
-    name = "SNRHC",
+    id = $(SNRV_LOW),
+    name = "$(SNRV_LOW)",
     units = "dB",
     scale = 0.01,
     bias = -320,
@@ -2817,8 +2817,8 @@ output_fields = {
   }
   ,
   {
-    id = DBMHC,
-    name = "DBMHC",
+    id = $(DBMV_LOW),
+    name = "$(DBMV_LOW)",
     units = "dBm",
     scale = 0.01,
     bias = -320,
@@ -2827,8 +2827,8 @@ output_fields = {
   }
   ,
   {
-    id = DBZHC,
-    name = "DBZHC",
+    id = $(DBZV_LOW),
+    name = "$(DBZV_LOW)",
     units = "dBZ",
     scale = 0.01,
     bias = -320,

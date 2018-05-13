@@ -352,8 +352,8 @@ color_scale_dir = "$(PROJ_DIR)/display/color_scales";
 
 fields = {
   {
-    label = "DBZHC",
-    raw_name = "DBZHC",
+    label = "$(DBZH_HIGH)",
+    raw_name = "$(DBZH_HIGH)",
     filtered_name = "",
     units = "dBZ",
     color_map = "dbz.colors",
@@ -415,8 +415,8 @@ fields = {
   }
   ,
   {
-    label = "SNRHC",
-    raw_name = "SNRHC",
+    label = "$(SNRH_HIGH)",
+    raw_name = "$(SNRH_HIGH)",
     filtered_name = "",
     units = "m/s",
     color_map = "snr.colors",
@@ -424,8 +424,8 @@ fields = {
   }
   ,
   {
-    label = "DBMHC",
-    raw_name = "DBMHC",
+    label = "$(DBMH_HIGH)",
+    raw_name = "$(DBMH_HIGH)",
     filtered_name = "",
     units = "m/s",
     color_map = "dbm.colors",

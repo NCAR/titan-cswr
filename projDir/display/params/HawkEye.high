@@ -352,27 +352,27 @@ color_scale_dir = "$(PROJ_DIR)/display/color_scales";
 
 fields = {
   {
-    label = "DBZHC",
-    raw_name = "DBZHC",
-    filtered_name = "DBZHC_F",
+    label = "$(DBZH_HIGH)",
+    raw_name = "$(DBZH_HIGH)",
+    filtered_name = "$(DBZH_HIGH)_F",
     units = "dBZ",
     color_map = "dbz.colors",
     shortcut = "1"
   }
   ,
   {
-    label = "DBZHCA",
-    raw_name = "DBZHC",
-    filtered_name = "DBZHC_F",
+    label = "$(DBZH_HIGH)A",
+    raw_name = "$(DBZH_HIGH)",
+    filtered_name = "$(DBZH_HIGH)_F",
     units = "dBZ",
     color_map = "dbz_kak.colors",
     shortcut = "a"
   }
   ,
   {
-    label = "DBZVC",
-    raw_name = "DBZVC",
-    filtered_name = "DBZVC_F",
+    label = "$(DBZV_HIGH)",
+    raw_name = "$(DBZV_HIGH)",
+    filtered_name = "$(DBZV_HIGH)_F",
     units = "dBZ",
     color_map = "dbz.colors",
     shortcut = "2"
@@ -433,18 +433,18 @@ fields = {
   }
   ,
   {
-    label = "ZDR",
-    raw_name = "ZDR",
-    filtered_name = "ZDR_F",
+    label = "$(POWER_DIFF_HIGH)",
+    raw_name = "$(POWER_DIFF_HIGH)",
+    filtered_name = "$(POWER_DIFF_HIGH)_F",
     units = "dB",
     color_map = "zdr_kak.colors",
     shortcut = "9"
   }
   ,
   {
-    label = "ZDRM",
-    raw_name = "ZDRM",
-    filtered_name = "ZDRM_F",
+    label = "$(POWER_DIFF_HIGH)M",
+    raw_name = "$(POWER_DIFF_HIGH)M",
+    filtered_name = "$(POWER_DIFF_HIGH)M_F",
     units = "dB",
     color_map = "zdr.colors",
     shortcut = "0"
@@ -478,36 +478,36 @@ fields = {
   }
   ,
   {
-    label = "SNRHC",
-    raw_name = "SNRHC",
-    filtered_name = "SNRHC_F",
+    label = "$(SNRH_HIGH)",
+    raw_name = "$(SNRH_HIGH)",
+    filtered_name = "$(SNRH_HIGH)_F",
     units = "dB",
     color_map = "snr.colors",
     shortcut = "r"
   }
   ,
   {
-    label = "SNRVC",
-    raw_name = "SNRVC",
-    filtered_name = "SNRVC_F",
+    label = "$(SNRV_HIGH)",
+    raw_name = "$(SNRV_HIGH)",
+    filtered_name = "$(SNRV_HIGH)_F",
     units = "dB",
     color_map = "snr.colors",
     shortcut = "t"
   }
   ,
   {
-    label = "DBMHC",
-    raw_name = "DBMHC",
-    filtered_name = "DBMHC_F",
+    label = "$(DBMH_HIGH)",
+    raw_name = "$(DBMH_HIGH)",
+    filtered_name = "$(DBMH_HIGH)_F",
     units = "dBm",
     color_map = "dbm.colors",
     shortcut = "y"
   }
   ,
   {
-    label = "DBMVC",
-    raw_name = "DBMVC",
-    filtered_name = "DBMVC_F",
+    label = "$(DBMV_HIGH)",
+    raw_name = "$(DBMV_HIGH)",
+    filtered_name = "$(DBMV_HIGH)_F",
     units = "dBm",
     color_map = "dbm.colors",
     shortcut = "u"
@@ -541,9 +541,9 @@ fields = {
   }
   ,
   {
-    label = "DBMHC-SUN",
-    raw_name = "DBMHC",
-    filtered_name = "DBMHC_F",
+    label = "$(DBMH_HIGH)-SUN",
+    raw_name = "$(DBMH_HIGH)",
+    filtered_name = "$(DBMH_HIGH)_F",
     units = "dBm",
     color_map = "sunscan_dbm.colors",
     shortcut = "s"

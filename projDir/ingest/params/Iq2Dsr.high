@@ -3721,8 +3721,8 @@ output_fields = {
   }
   ,
   {
-    id = ZDR,
-    name = "ZDR",
+    id = $(POWER_DIFF_HIGH),
+    name = "$(POWER_DIFF_HIGH)",
     units = "dB",
     scale = 0.001,
     bias = -32,
@@ -3731,8 +3731,8 @@ output_fields = {
   }
   ,
   {
-    id = ZDRM,
-    name = "ZDRM",
+    id = $(POWER_DIFF_HIGH)M,
+    name = "$(POWER_DIFF_HIGH)M",
     units = "dB",
     scale = 0.001,
     bias = -32,

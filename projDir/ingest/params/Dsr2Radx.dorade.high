@@ -1432,37 +1432,37 @@ output_fields = {
   }
   ,
   {
-    dsr_name = "ZDR",
-    output_name = "ZDR",
-    long_name = "ZDR",
-    standard_name = "ZDR",
+    dsr_name = "$(POWER_DIFF_HIGH)",
+    output_name = "$(POWER_DIFF_HIGH)",
+    long_name = "$(POWER_DIFF_HIGH)",
+    standard_name = "$(POWER_DIFF_HIGH)",
     output_units = "dB",
     output_encoding = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "ZDR_F",
-    output_name = "ZDR_F",
-    long_name = "ZDR_F",
-    standard_name = "ZDR_F",
+    dsr_name = "$(POWER_DIFF_HIGH)_F",
+    output_name = "$(POWER_DIFF_HIGH)_F",
+    long_name = "$(POWER_DIFF_HIGH)_F",
+    standard_name = "$(POWER_DIFF_HIGH)_F",
     output_units = "dB",
     output_encoding = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "ZDRM",
-    output_name = "ZDRM",
-    long_name = "ZDRM",
-    standard_name = "ZDRM",
+    dsr_name = "$(POWER_DIFF_HIGH)M",
+    output_name = "$(POWER_DIFF_HIGH)M",
+    long_name = "$(POWER_DIFF_HIGH)M",
+    standard_name = "$(POWER_DIFF_HIGH)M",
     output_units = "dB",
     output_encoding = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "ZDRM_F",
-    output_name = "ZDRM_F",
-    long_name = "ZDRM_F",
-    standard_name = "ZDRM_F",
+    dsr_name = "$(POWER_DIFF_HIGH)M_F",
+    output_name = "$(POWER_DIFF_HIGH)M_F",
+    long_name = "$(POWER_DIFF_HIGH)M_F",
+    standard_name = "$(POWER_DIFF_HIGH)M_F",
     output_units = "dB",
     output_encoding = OUTPUT_SHORT
   }

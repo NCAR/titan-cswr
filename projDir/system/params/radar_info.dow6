@@ -79,6 +79,9 @@ setenv DBMV_LOW DBMVC
 setenv SNRH_LOW SNRHX
 setenv SNRV_LOW SNRVC
 
+setenv POWER_DIFF_HIGH LDRH
+setenv POWER_DIFF_LOW LDRV
+
 ########################
 # transmitter settings
 

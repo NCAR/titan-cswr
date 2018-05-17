@@ -177,12 +177,12 @@ Each line entry should be formatted as follows:
         <value># ========================
 # DRX configuration
 # ========================
-1000ns pulse, 1000 PRF, no  stagger, 150m gate  :  dowdrx.1000.calib
-833ns  pulse, 1200 PRF, no  stagger, 125m gate  :  dowdrx.833.calib
-667ns  pulse, 1500 PRF, no  stagger, 100m gate  :  dowdrx.667.calib
-500ns  pulse, 2000 PRF, no  stagger, 75m  gate  :  dowdrx.500.calib
-333ns  pulse, 3000 PRF, no  stagger, 50m  gate  :  dowdrx.333.calib
-167ns  pulse, 3000 PRF, no  stagger, 25m  gate  :  dowdrx.167.calib
+1000ns pulse, 1000 PRF, no  stagger, 150m gate  :  dowdrx30.1000.calib
+833ns  pulse, 1200 PRF, no  stagger, 125m gate  :  dowdrx30.833.calib
+667ns  pulse, 1500 PRF, no  stagger, 100m gate  :  dowdrx30.667.calib
+500ns  pulse, 2000 PRF, no  stagger, 75m  gate  :  dowdrx30.500.calib
+333ns  pulse, 3000 PRF, no  stagger, 50m  gate  :  dowdrx30.333.calib
+167ns  pulse, 3000 PRF, no  stagger, 25m  gate  :  dowdrx30.167.calib
 </value>
       </param>
 

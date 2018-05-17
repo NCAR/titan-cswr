@@ -306,7 +306,7 @@ prt_sec = 0.001;
 // Type: boolean
 //
 
-prt_is_staggered = FALSE;
+prt_is_staggered = TRUE;
 
 ///////////// staggered_prt_ratio /////////////////////
 //

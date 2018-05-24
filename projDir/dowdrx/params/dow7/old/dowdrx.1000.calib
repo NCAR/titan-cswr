@@ -239,7 +239,7 @@ prt_sec = 0.001;
 // Type: boolean
 //
 
-prt_is_staggered = FALSE;
+prt_is_staggered = TRUE;
 
 ///////////// staggered_prt_ratio /////////////////////
 //
@@ -254,7 +254,7 @@ prt_is_staggered = FALSE;
 //     STAGGER_4_5
 //
 
-staggered_prt_ratio = STAGGER_4_5;
+staggered_prt_ratio = STAGGER_2_3;
 
 ///////////// tx_mode /////////////////////////////////
 //

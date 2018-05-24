@@ -2,11 +2,11 @@
 # site-specific parameters - DOW7
 #############################################
 
-setenv PROJECT_NAME               "PurRad"
+setenv PROJECT_NAME               "GRAINEX"
 
 # location
 
-setenv SITE_NAME                  "WLafayette"
+setenv SITE_NAME                  "NorthEast"
 setenv RADAR_NAME                 "DOW7"
 setenv radar_name                 "dow7"
 setenv RADAR_LAT                  40.0352

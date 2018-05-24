@@ -198,8 +198,8 @@ Each line entry should be formatted as follows:
 #667ns  1666 PRF, 3/4,  50m,  75km, 39.7m/s : dowdrx30.667.1666.3_4.50m
 #667ns  1666 PRF, 4/5, 100m,  89km, 52.9m/s : dowdrx30.667.1666.4_5.100m
 #667ns  1666 PRF, 4/5,  50m,  75km, 52.9m/s : dowdrx30.667.1666.4_5.50m
-#500ns  2000 PRF, 1/1,  75m,  74km, 15.9m/s : dowdrx30.500.2000.1_1.75m
-#500ns  2500 PRF, 2/3,  75m,  59km, 39.7m/s : dowdrx30.500.2500.2_3.75m
+500ns  2000 PRF, 1/1,  75m,  74km, 15.9m/s : dowdrx30.500.2000.1_1.75m
+500ns  2500 PRF, 2/3,  75m,  59km, 39.7m/s : dowdrx30.500.2500.2_3.75m
 #417ns  2500 PRF, 2/3,  75m,  59km, 39.7m/s : dowdrx30.417.2500.2_3.62m-test
 #417ns  1000 PRF, 1/1,  75m,  59km, 39.7m/s : dowdrx30.417.1000.1_1.62m-test
 #500ns  2000 PRF, 3/4,  75m,  74km, 47.6m/s : dowdrx30.500.2000.3_4.75m
@@ -217,7 +217,7 @@ Each line entry should be formatted as follows:
 #333ns  3000 PRF, 4/5,  25m,  32km, 95.2m/s : dowdrx30.333.3000.4_5.25m
 #SNOWIE
 333ns  2500 PRF, 2/3,  50m,  50km, 39.7m/s : dowdrx30.333.2500.2_3.50m
-333ns  1666 PRF, 2/3,  50m,  50km, 26.3m/s : dowdrx30.333.1666.2_3.50m
+#333ns  1666 PRF, 2/3,  50m,  50km, 26.3m/s : dowdrx30.333.1666.2_3.50m
 #tornado
 #167ns  3000 PRF, 4/5,  25m,  20km, 95.2m/s : dowdrx30.167.3000.4_5.25m
 #167ns  5000 PRF, 2/3,  25m,  20km, 78.9m/s : dowdrx30.167.5000.2_3.25m
@@ -235,7 +235,7 @@ Each line entry should be formatted as follows:
 #167ns  5000 PRF, 2/3,  12m,  10km, 78.9m/s : dowdrx30.167.5000.2_3.12m
 
 #333ns  3000 PRF, 4/5,  50m,  49km, 95.2m/s : dowdrx30.default
-1000ns 1000 PRF, 1/1, 150m, solar,  7.9m/s : dowdrx30.1000.calib
+1000ns 1000 PRF, 2/3, 150m, solar,  7.9m/s : dowdrx30.1000.calib
 </value>
       </param>
 
@@ -269,7 +269,7 @@ Each line entry should be formatted as follows:
           This the the X offset, in pixels, from the main frame of the application.
           ]]>
         </info>
-        <value>287</value>
+        <value>-11</value>
       </param>
 
       <param name="yy" type="Integer">
@@ -280,7 +280,7 @@ Each line entry should be formatted as follows:
           This the the Y offset, in pixels, from the main frame of the application.
           ]]>
         </info>
-        <value>178</value>
+        <value>66</value>
       </param>
 
       <param name="width" type="Integer">
@@ -312,7 +312,7 @@ Each line entry should be formatted as follows:
 
     <!-- ====== start of collection status ====== -->
 
-    <param name="status" type="Collection" view_x="38" view_y="596" view_width="684" view_height="368">
+    <param name="status" type="Collection" view_x="-98" view_y="454" view_width="684" view_height="368">
       <label>Status panel</label>
       <description>Status panel</description>
 
@@ -382,6 +382,39 @@ Each line entry should be formatted as follows:
         <value>0.1</value>
       </param>
 
+      <param name="nominalIf2FreqHz" type="Double">
+        <label>Nominal frequency for IF2 (hz).</label>
+        <description>Set this to the expected IF frequency.</description>
+        <info>
+          <![CDATA[
+          When tracking is operational, the measured IF should be close to this value.
+          ]]>
+        </info>
+        <value>3.0E7</value>
+      </param>
+
+      <param name="showHighFreq" type="Boolean">
+        <label>Show status for high frequency</label>
+        <description>For a single frequency system, this is normally true.</description>
+        <info>
+          <![CDATA[
+          For dual frequency system, we show both the high and low frequency status in this panel. For single frequency systems, we normally only use the high frequency data stream.
+          ]]>
+        </info>
+        <value>true</value>
+      </param>
+
+      <param name="showLowFreq" type="Boolean">
+        <label>Show status for low frequency</label>
+        <description>For a single frequency system, this is normally false.</description>
+        <info>
+          <![CDATA[
+          For dual frequency system, we show both the low and low frequency status in this panel, so set this true. For single frequency systems, we normally only use the high frequency data stream, so set this to false.
+          ]]>
+        </info>
+        <value>true</value>
+      </param>
+
       <param name="fontSize" type="Float">
         <label>Font size</label>
         <description>Font size for pos and time</description>
@@ -412,7 +445,7 @@ Each line entry should be formatted as follows:
           This the the X offset, in pixels, from the main frame of the application.
           ]]>
         </info>
-        <value>206</value>
+        <value>353</value>
       </param>
 
       <param name="yy" type="Integer">
@@ -423,7 +456,7 @@ Each line entry should be formatted as follows:
           This the the Y offset, in pixels, from the main frame of the application.
           ]]>
         </info>
-        <value>223</value>
+        <value>249</value>
       </param>
 
       <param name="width" type="Integer">
@@ -489,7 +522,7 @@ Each line entry should be formatted as follows:
       <param name="infoX" type="Integer">
         <label>Info window X</label>
         <description>The X location of the Info window</description>
-        <value>800</value>
+        <value>780</value>
       </param>
 
       <param name="infoY" type="Integer">

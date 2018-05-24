@@ -233,7 +233,7 @@ set
   cd ~/git/titan-cswr/projDir/system/scripts
   ./configureHost.py
 
-# select host type 'drx'
+# select host type 'mgen'
 
   source ~/.cshrc
 

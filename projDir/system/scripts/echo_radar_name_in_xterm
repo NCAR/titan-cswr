@@ -1,0 +1,6 @@
+#! /bin/csh
+
+xterm -title $RADAR_NAME -bg black -fg yellow -font 8x13bold -g 27x2-0+40 -e echo_radar_name
+
+
+

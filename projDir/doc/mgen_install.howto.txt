@@ -43,6 +43,31 @@
 #     Add user titan5
 #     Change titan5 shell to /bin/csh using 'chsh'.
 
+# Checking the MegaRaid
+# ---------------------
+
+# If the mgen is using a MegaRaid, you can check this device either at
+# boot time via the bios, or using a runtime app.
+
+# To download and install the app:
+# (as root)
+
+  cd /tmp
+  wget http://www.avagotech.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/8-07-14_MegaCLI.zip
+  unzip 8-07-14_MegaCLI.zip
+  cd Linux
+  yum install -y MegaCli-8.07.14-1.noarch.rpm
+
+# To run the app
+#
+# List all properties:
+
+  /opt/MegaRAID/MegaCli/MegaCli64 -AdpAllInfo -aAll
+
+# List the log
+
+  /opt/MegaRAID/MegaCli/MegaCli64 -AdpAlILog -aAll
+
 # Install packages
 # ----------------
 

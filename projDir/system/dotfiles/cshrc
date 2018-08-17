@@ -96,6 +96,7 @@ setenv CLASSPATH .:${JAVA_LIB_DIR}/jdom.jar:JAVA_LIB_DIR/jai_codec.jar:$JAVA_LIB
 /bin/mkdir -p ${PROJ_DIR}/junk/scripts
 
 set path=( . $RAP_BIN_DIR $RAP_MAKE_BIN_DIR ~/bin )
+set path=( $path ${HOME}/cidd/bin )
 set path=( $path ${HOME}/anaconda2/bin )
 set path=( $path $PROJ_DIR/*/scripts $PROJ_DIR/script_bin )
 

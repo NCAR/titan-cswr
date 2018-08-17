@@ -67,6 +67,10 @@
 # List the log
 
   /opt/MegaRAID/MegaCli/MegaCli64 -AdpAlILog -aAll
+  
+# list virtual drive information
+
+  /opt/MegaRAID/MegaCli/MegaCli64 -LDInfo -LALL -aALL
 
 # Install packages
 # ----------------

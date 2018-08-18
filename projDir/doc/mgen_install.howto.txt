@@ -119,7 +119,7 @@ perl-Env kernel-devel gnuplot scons
       libXScrnSaver.i686 qt.i686 qt-x11.i686 pulseaudio-libs.i686 \
       pulseaudio-libs-glib2.i686 alsa-plugins-pulseaudio.i686 \
       jasper-devel.i686 zlib-devel.i686 bzip2-devel.i686 expat-devel.i686 \
-      flex-devel.i686 fftw3-devel.i686
+      flex-devel.i686 fftw-devel.i686
 
 # Install google-chrome
 # ---------------------

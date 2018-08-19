@@ -1,0 +1,7 @@
+#! /bin/csh
+#
+# Start MegaRaid GUI
+
+/usr/local/MegaRAID\ Storage\ Manager/startupui.sh &
+
+

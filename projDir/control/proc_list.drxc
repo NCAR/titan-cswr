@@ -1,0 +1,52 @@
+##############################################################################
+# SYSTEM processes
+#
+DsServerMgr   primary    start_DsServerMgr         snuff_inst        localhost
+#Scout         primary    start_Scout               kill_Scout        localhost
+DataMapper    primary    start_DataMapper          kill_DataMapper   localhost
+#
+###############################################################################
+# GPS POSITION
+#
+GetGpsPosn.py  primary  start_GetGpsPosn.primary    snuff_inst    localhost
+###############################################################################
+# dowdrx
+#
+dowdrx       ops     start_dowdrx.ops    kill_dowdrx    localhost
+#
+# simulate in lab - AFC off, PRF 1000 fixed
+#dowdrx        lab     start_dowdrx.lab    kill_dowdrx    localhost
+#
+# Send frequencies to magnetron controller
+#
+#DowSendFreq   ops     start_DowSendFreq.ops  snuff_inst   localhost
+###############################################################################
+# MERGE SCAN INFO FROM HIQ - ops
+# Comment this section out for simulated angles
+#
+TsTcp2Fmq       hiq         start_TsTcp2Fmq.hiq           snuff_inst    localhost
+TsScanInfoMerge high        start_TsScanInfoMerge.high    snuff_inst    localhost
+TsScanInfoMerge low         start_TsScanInfoMerge.low     snuff_inst    localhost
+###############################################################################
+# SIMULATED ANGLES - lab
+# Uncomment for simulated angles
+#
+#Fmq2Fmq     sim.high        start_Fmq2Fmq.sim.high         snuff_inst    localhost
+#Fmq2Fmq     sim.low         start_Fmq2Fmq.sim.low          snuff_inst    localhost
+###############################################################################
+# Copy time series across to mgen
+Fmq2Fmq         high        start_Fmq2Fmq.high            snuff_inst    localhost
+Fmq2Fmq         low         start_Fmq2Fmq.low             snuff_inst    localhost
+###############################################################################
+# single pol MOMENTS for Hawkeye on DRX
+#
+Iq2Dsr    drx.high        start_Iq2Dsr.drx.high     snuff_inst    localhost
+Iq2Dsr    drx.low         start_Iq2Dsr.drx.low      snuff_inst    localhost
+###############################################################################
+# angle server for GUI
+#
+RadxMon        server     start_RadxMon.server       snuff_inst    localhost
+###############################################################################
+# RADAR MONITOR display
+RadMon     drx.high     start_RadMon.drx.high          snuff_inst    localhost
+RadMon     drx.low      start_RadMon.drx.low           snuff_inst    localhost

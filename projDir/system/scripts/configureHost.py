@@ -78,8 +78,8 @@ def main():
 
     # get the host type interactively
 
-    hostTypes = [ 'mgen6', 'mgen7', 'mgen8', 'mgenr',
-                  'drx6', 'drx7', 'drx8', 'drxr' ]
+    hostTypes = [ 'mgen6', 'mgen7', 'mgen8', 'mgenr', 'mgenc',
+                  'drx6', 'drx7', 'drx8', 'drxr', 'drxc' ]
 
     print ""
     print "Choose host type from the following list"
@@ -161,10 +161,12 @@ def main():
     radar_name['drx7'] = 'dow7'
     radar_name['drx8'] = 'dow8'
     radar_name['drxr'] = 'dowr'
+    radar_name['drxc'] = 'cow1'
     radar_name['mgen6'] = 'dow6'
     radar_name['mgen7'] = 'dow7'
     radar_name['mgen8'] = 'dow8'
     radar_name['mgenr'] = 'dowr'
+    radar_name['mgenc'] = 'cow1'
     
     sParamsDir = os.path.join(projDir, 'system/params')
     os.chdir(sParamsDir)

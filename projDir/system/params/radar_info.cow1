@@ -1,0 +1,178 @@
+#############################################
+# site-specific parameters - COW1
+#############################################
+
+setenv PROJECT_NAME               "RELAMPAGO"
+
+#############################################
+# location
+
+setenv SITE_NAME                  "CORDOBA"
+
+setenv RADAR_NAME                 "COW1"
+setenv radar_name                 "cow1"
+setenv RADAR_LAT                  40.0
+setenv RADAR_LON                  -105.0
+setenv RADAR_ALT_KM               0.360
+setenv RADAR_ALT_M                360
+setenv TRUCK_HEADING_DEG          0
+
+#############################################
+# operating frequency
+
+setenv HIGH_FREQ                  5.55e9
+setenv LOW_FREQ                   5.40e9
+setenv HIGH_FREQ_GHZ              5.55
+setenv LOW_FREQ_GHZ               5.40
+
+##########################################################
+# calibration
+
+setenv HIGH_COUPLER_LOSS_H_DB     30.00
+setenv HIGH_COUPLER_LOSS_V_DB     30.00
+setenv LOW_COUPLER_LOSS_H_DB      30.00
+setenv LOW_COUPLER_LOSS_V_DB      30.00
+
+setenv HIGH_XMIT_POWER_H_DBM      87.0
+setenv HIGH_XMIT_POWER_V_DBM      87.0
+setenv LOW_XMIT_POWER_H_DBM       87.0
+setenv LOW_XMIT_POWER_V_DBM       87.0
+
+setenv HIGH_ZDR_CORRECTION_DB        0
+setenv HIGH_SYSTEM_PHIDP_DEG         0
+setenv LOW_ZDR_CORRECTION_DB         0
+setenv LOW_SYSTEM_PHIDP_DEG          0
+
+setenv ANTENNA_GAIN_H_DB          44.3
+setenv ANTENNA_GAIN_V_DB          44.3
+
+setenv TWO_WAY_WAVEGUIDE_LOSS_H_DB 2.0
+setenv TWO_WAY_WAVEGUIDE_LOSS_V_DB 2.0
+
+#############################################
+
+# DOWDRX for COW1
+
+setenv PENTEK_ADDRESS_HIGH 1
+setenv PENTEK_ADDRESS_LOW 2
+
+setenv XMIT_RCV_MODE_HIGH DP_SIM_HV_FIXED_HV
+setenv XMIT_RCV_MODE_LOW  DP_SIM_HV_FIXED_HV
+
+# fields for COW1
+
+setenv DBZH_HIGH DBZHC
+setenv DBZV_HIGH DBZVC
+
+setenv DBMH_HIGH DBMHC
+setenv DBMV_HIGH DBMVC
+
+setenv SNRH_HIGH SNRHC
+setenv SNRV_HIGH SNRVC
+
+setenv DBZH_LOW DBZHC
+setenv DBZV_LOW DBZVC
+
+setenv DBMH_LOW DBMHC
+setenv DBMV_LOW DBMVC
+
+setenv SNRH_LOW SNRHC
+setenv SNRV_LOW SNRVC
+
+setenv POWER_DIFF_HIGH ZDR
+setenv POWER_DIFF_LOW ZDR
+
+########################
+# transmitter settings
+
+setenv MAX_DUTY_CYCLE 0.00101
+setenv MAX_N_GATES 1000
+
+setenv TX_MOD_WIDTH_STRETCH_HIGH_1000  0.0e-07
+setenv TX_MOD_WIDTH_STRETCH_HIGH_833   0.0e-07
+setenv TX_MOD_WIDTH_STRETCH_HIGH_667   0.0e-07
+setenv TX_MOD_WIDTH_STRETCH_HIGH_500   0.0e-07
+setenv TX_MOD_WIDTH_STRETCH_HIGH_333   0.0e-07
+setenv TX_MOD_WIDTH_STRETCH_HIGH_167   0.0e-07
+
+setenv TX_MOD_WIDTH_STRETCH_LOW_1000  0.0e-07
+setenv TX_MOD_WIDTH_STRETCH_LOW_833   0.0e-07
+setenv TX_MOD_WIDTH_STRETCH_LOW_667   0.0e-07
+setenv TX_MOD_WIDTH_STRETCH_LOW_500   0.0e-07
+setenv TX_MOD_WIDTH_STRETCH_LOW_333   0.0e-07
+setenv TX_MOD_WIDTH_STRETCH_LOW_167   0.0e-07
+
+setenv TX_DELAY_HIGH_1000  1.0e-7
+setenv TX_DELAY_HIGH_833   1.0e-7
+setenv TX_DELAY_HIGH_667   1.0e-7
+setenv TX_DELAY_HIGH_500   1.0e-7
+setenv TX_DELAY_HIGH_333   1.0e-7
+setenv TX_DELAY_HIGH_167   1.0e-7
+
+setenv TX_PULSE_SEPARATION_1000 10e-07
+setenv TX_PULSE_SEPARATION_833  10e-07
+setenv TX_PULSE_SEPARATION_667  10e-07
+setenv TX_PULSE_SEPARATION_500  10e-07
+setenv TX_PULSE_SEPARATION_333  10e-07
+setenv TX_PULSE_SEPARATION_167  5e-07
+
+setenv TX_TO_RX_DELAY_HIGH_1000 5.10e-06
+setenv TX_TO_RX_DELAY_HIGH_833  5.10e-06
+setenv TX_TO_RX_DELAY_HIGH_667  5.10e-06
+setenv TX_TO_RX_DELAY_HIGH_500  5.10e-06
+setenv TX_TO_RX_DELAY_HIGH_333  5.10e-06
+setenv TX_TO_RX_DELAY_HIGH_167  5.10e-06
+
+setenv TX_TO_RX_DELAY_LOW_1000 5.15e-06
+setenv TX_TO_RX_DELAY_LOW_833  5.15e-06
+setenv TX_TO_RX_DELAY_LOW_667  5.15e-06
+setenv TX_TO_RX_DELAY_LOW_500  5.15e-06
+setenv TX_TO_RX_DELAY_LOW_333  5.15e-06
+setenv TX_TO_RX_DELAY_LOW_167  5.15e-06
+
+setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_1000 6e-07
+setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_833  6e-07
+setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_667  6e-07
+setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_500  6e-07
+setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_333  6e-07
+setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_167  6e-07
+
+setenv TX_TO_BURST_SAMPLE_DELAY_LOW_1000 6e-07
+setenv TX_TO_BURST_SAMPLE_DELAY_LOW_833  6e-07
+setenv TX_TO_BURST_SAMPLE_DELAY_LOW_667  6e-07
+setenv TX_TO_BURST_SAMPLE_DELAY_LOW_500  6e-07
+setenv TX_TO_BURST_SAMPLE_DELAY_LOW_333  6e-07
+setenv TX_TO_BURST_SAMPLE_DELAY_LOW_167  6e-07
+
+setenv BURST_SAMPLE_WIDTH_STRETCH_HIGH_1000 1.0e-6
+setenv BURST_SAMPLE_WIDTH_STRETCH_HIGH_833 1.166666667e-6
+setenv BURST_SAMPLE_WIDTH_STRETCH_HIGH_667 1.333333333e-6
+setenv BURST_SAMPLE_WIDTH_STRETCH_HIGH_500 1.5e-6
+setenv BURST_SAMPLE_WIDTH_STRETCH_HIGH_333 0.666666667e-6
+setenv BURST_SAMPLE_WIDTH_STRETCH_HIGH_167 0.833333333e-6
+
+setenv BURST_SAMPLE_WIDTH_STRETCH_LOW_1000 1.0e-6
+setenv BURST_SAMPLE_WIDTH_STRETCH_LOW_833 1.166666667e-6
+setenv BURST_SAMPLE_WIDTH_STRETCH_LOW_667 1.333333333e-6
+setenv BURST_SAMPLE_WIDTH_STRETCH_LOW_500 1.5e-6
+setenv BURST_SAMPLE_WIDTH_STRETCH_LOW_333 0.666666667e-6
+setenv BURST_SAMPLE_WIDTH_STRETCH_LOW_167 0.833333333e-6
+
+# FMQ for dowdrx
+#   for ops, no_angles
+#   for sim, with_angles
+
+setenv DOWDRX_FMQ_HIGH ${DATA_DIR}/fmq/ts/shmem_high_no_angles_10100
+setenv DOWDRX_FMQ_LOW  ${DATA_DIR}/fmq/ts/shmem_low_no_angles_10200
+
+#setenv DOWDRX_FMQ_HIGH ${DATA_DIR}/fmq/ts/shmem_high_with_angles_10300
+#setenv DOWDRX_FMQ_LOW  ${DATA_DIR}/fmq/ts/shmem_low_with_angles_10400
+
+# simulate angles
+#   for ops, false
+#   for sim, true
+
+setenv SIM_ANTENNA_ANGLES          "false"
+#setenv SIM_ANTENNA_ANGLES          "true"
+
+#############################################

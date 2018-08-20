@@ -9,4 +9,5 @@ fmq/ts/wband/shmem_10000        60   120
 fmq/moments/wband/shmem_21000   60   120
 cfradial/covar/wband            120  300
 cfradial/moments/wband          120  300
-spdb/monitor/hcr                60   120
+spdb/monitor/high               60   120
+spdb/monitor/low                60   120

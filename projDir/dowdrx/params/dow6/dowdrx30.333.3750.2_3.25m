@@ -293,7 +293,7 @@ pentek_sampling_frequency_hz = 1.2e+08;
 // Type: double
 //
 
-prt_sec = 0.0003333333;
+prt_sec = 0.0002666667;
 
 ///////////// prt_is_staggered ////////////////////////
 //
@@ -468,7 +468,7 @@ n_gates = $(MAX_N_GATES);
 // Type: double
 //
 
-rx_gate_width = 0.3333333333e-06;
+rx_gate_width = 0.1666666666667e-06;
 
 //======================================================================
 //

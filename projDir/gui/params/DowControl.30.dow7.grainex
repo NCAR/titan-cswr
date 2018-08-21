@@ -179,20 +179,20 @@ Each line entry should be formatted as follows:
 # ========================
 #1000ns 1000 PRF, 1/1, 150m, 120km,  7.9m/s : dowdrx30.1000.1000.1_1.150m
 #1000ns 1000 PRF, 1/1,  75m, 112km,  7.9m/s : dowdrx30.1000.1000.1_1.75m
-1000ns 1000 PRF, 2/3, 150m, 120km, 15.9m/s : dowdrx30.1000.1000.2_3.150m
-1000ns 1000 PRF, 2/3,  75m, 75km, 15.9m/s : dowdrx30.1000.1000.2_3.75m
+#1000ns 1000 PRF, 2/3, 150m, 120km, 15.9m/s : dowdrx30.1000.1000.2_3.150m
+#1000ns 1000 PRF, 2/3,  75m, 112km, 15.9m/s : dowdrx30.1000.1000.2_3.75m
 #1000ns 1111 PRF, 3/4, 150m, 134km, 26.4m/s : dowdrx30.1000.1111.3_4.150m
 #1000ns 1111 PRF, 3/4,  75m, 112km, 26.4m/s : dowdrx30.1000.1111.3_4.75m
 #1000ns 1000 PRF, 4/5, 150m, 120km, 31.7m/s : dowdrx30.1000.1000.4_5.150m
 #1000ns 1000 PRF, 4/5,  75m, 112km, 31.7m/s : dowdrx30.1000.1000.4_5.75m
 #1000ns 1000 PRF, 1/1, 150m, solar,  7.9m/s : dowdrx30.1000.calib
 #833ns  1200 PRF, 1/1, 125m, 112km,  9.5m/s : dowdrx30.833.1200.1_1.125m
-833ns  1250 PRF, 2/3, 125m, 100km, 19.8m/s : dowdrx30.833.1250.2_3.125m
+#833ns  1250 PRF, 2/3, 125m, 100km, 19.8m/s : dowdrx30.833.1250.2_3.125m
 #833ns  1200 PRF, 3/4, 125m, 124km, 28.6m/s : dowdrx30.833.1200.3_4.125m
 #833ns  1250 PRF, 4/5, 125m, 119km, 39.7m/s : dowdrx30.833.1250.4_5.125m
 #667ns  1450 PRF, 1/1, 100m, 102km, 11.4m/s : dowdrx30.667.1450.1_1.100m
 #667ns  1450 PRF, 1/1,  50m, 102km, 11.4m/s : dowdrx30.667.1450.1_1.50m
-667ns  1666 PRF, 2/3, 100m,  89km, 26.4m/s : dowdrx30.667.1666.2_3.100m
+#667ns  1666 PRF, 2/3, 100m,  89km, 26.4m/s : dowdrx30.667.1666.2_3.100m
 #667ns  1666 PRF, 2/3,  50m,  75km, 26.4m/s : dowdrx30.667.1666.2_3.50m
 #667ns  1666 PRF, 3/4, 100m,  89km, 39.7m/s : dowdrx30.667.1666.3_4.100m
 #667ns  1666 PRF, 3/4,  50m,  75km, 39.7m/s : dowdrx30.667.1666.3_4.50m
@@ -205,11 +205,11 @@ Each line entry should be formatted as follows:
 #500ns  2000 PRF, 3/4,  75m,  74km, 47.6m/s : dowdrx30.500.2000.3_4.75m
 #500ns  1666 PRF, 3/4,  75m,  89km, 39.7m/s : dowdrx30.500.1666.3_4.75m
 #500ns  2222 PRF, 4/5,  75m,  66km, 70.5m/s : dowdrx30.500.2222.4_5.75m
-333ns  3000 PRF, 1/1,  50m,  49km, 23.8m/s : dowdrx30.333.3000.1_1.50m
-333ns  3000 PRF, 1/1,  25m,  25km, 23.8m/s : dowdrx30.333.3000.1_1.25m
+#333ns  3000 PRF, 1/1,  50m,  49km, 23.8m/s : dowdrx30.333.3000.1_1.50m
+#333ns  3000 PRF, 1/1,  25m,  28km, 23.8m/s : dowdrx30.333.3000.1_1.25m
 #333ns  3300 PRF, 2/3,  50m,  49km, 47.6m/s : dowdrx30.333.3300.2_3.50m
 #333ns  3300 PRF, 2/3,  25m,  35km, 47.6m/s : dowdrx30.333.3300.2_3.25m
-333ns  3750 PRF, 2/3,  50m,  39km, 59.5m/s : dowdrx30.333.3750.2_3.50m
+#333ns  3745 PRF, 2/3,  50m,  39km, 59.5m/s : dowdrx30.333.3745.2_3.50m
 #333ns  3745 PRF, 2/3,  25m,  28km, 59.5m/s : dowdrx30.333.3745.2_3.25m
 #333ns  3000 PRF, 3/4,  50m,  49km, 71.4m/s : dowdrx30.333.3000.3_4.50m
 #333ns  3000 PRF, 3/4,  25m,  33km, 71.4m/s : dowdrx30.333.3000.3_4.25m
@@ -220,7 +220,7 @@ Each line entry should be formatted as follows:
 #333ns  1666 PRF, 2/3,  50m,  50km, 26.3m/s : dowdrx30.333.1666.2_3.50m
 #tornado
 #167ns  3000 PRF, 4/5,  25m,  20km, 95.2m/s : dowdrx30.167.3000.4_5.25m
-167ns  5000 PRF, 2/3,  25m,  20km, 78.9m/s : dowdrx30.167.5000.2_3.25m
+#167ns  5000 PRF, 2/3,  25m,  20km, 78.9m/s : dowdrx30.167.5000.2_3.25m
 #167ns  3200 PRF, 3/4,  25m,  20km, 75.7m/s : dowdrx30.167.3200.3_4.25m
 #167ns  3200 PRF, 3/4,  25m,  20km, 75.7m/s : dowdrx30.167.3200.3_4.25m
 #167ns  4000 PRF, 3/4,  25m,  20km, 94.7m/s : dowdrx30.167.4000.3_4.25m
@@ -286,13 +286,13 @@ Each line entry should be formatted as follows:
       <param name="width" type="Integer">
         <label>Width</label>
         <description>The window width in pixels</description>
-        <value>591</value>
+        <value>540</value>
       </param>
 
       <param name="height" type="Integer">
         <label>Height</label>
         <description>The window height in pixels</description>
-        <value>496</value>
+        <value>214</value>
       </param>
 
       <param name="startVisible" type="Boolean">
@@ -445,7 +445,7 @@ Each line entry should be formatted as follows:
           This the the X offset, in pixels, from the main frame of the application.
           ]]>
         </info>
-        <value>386</value>
+        <value>349</value>
       </param>
 
       <param name="yy" type="Integer">
@@ -456,7 +456,7 @@ Each line entry should be formatted as follows:
           This the the Y offset, in pixels, from the main frame of the application.
           ]]>
         </info>
-        <value>157</value>
+        <value>694</value>
       </param>
 
       <param name="width" type="Integer">

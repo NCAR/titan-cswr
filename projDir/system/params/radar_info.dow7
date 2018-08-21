@@ -2,11 +2,11 @@
 # site-specific parameters - DOW7
 #############################################
 
-setenv PROJECT_NAME               "GRAINEX"
+setenv PROJECT_NAME               "RELAMPAGO"
 
 # location
 
-setenv SITE_NAME                  "NorthEast"
+setenv SITE_NAME                  "Argentina"
 setenv RADAR_NAME                 "DOW7"
 setenv radar_name                 "dow7"
 setenv RADAR_LAT                  40.0352
@@ -128,17 +128,17 @@ setenv TX_TO_RX_DELAY_LOW_500  5.15e-06
 setenv TX_TO_RX_DELAY_LOW_333  5.15e-06
 setenv TX_TO_RX_DELAY_LOW_167  5.15e-06
 
-setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_1000 7e-07
+setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_1000 7.5e-07
 setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_833  6e-07
 setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_667  6e-07
-setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_500  6e-07
+setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_500  5.2e-07
 setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_333  6e-07
 setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_167  9e-07
 
-setenv TX_TO_BURST_SAMPLE_DELAY_LOW_1000 7e-07
+setenv TX_TO_BURST_SAMPLE_DELAY_LOW_1000 7.5e-07
 setenv TX_TO_BURST_SAMPLE_DELAY_LOW_833  6e-07
 setenv TX_TO_BURST_SAMPLE_DELAY_LOW_667  6e-07
-setenv TX_TO_BURST_SAMPLE_DELAY_LOW_500  6e-07
+setenv TX_TO_BURST_SAMPLE_DELAY_LOW_500  5.2e-07
 setenv TX_TO_BURST_SAMPLE_DELAY_LOW_333  6e-07
 setenv TX_TO_BURST_SAMPLE_DELAY_LOW_167  6e-07
 

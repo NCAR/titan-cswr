@@ -23,8 +23,6 @@ dorade/quicklook/low/sur
 time_series/save/high
 time_series/save/low
 
-time_series/vert/high
-time_series/vert/low
+time_series/sunscan/high
+time_series/sunscan/low
 
-time_series/sunscan/high
-time_series/sunscan/high

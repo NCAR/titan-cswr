@@ -17,9 +17,9 @@ Dsr2Radx    dorade.low     start_Dsr2Radx.dorade.low      snuff_inst
 ###############################################################################
 # Merging moments
 #
-#DsrMerge  ops                start_DsrMerge.ops                snuff_inst 
-#Dsr2Radx  cfradial.combined  start_Dsr2Radx.cfradial.combined  snuff_inst 
-#Dsr2Radx  dorade.combined    start_Dsr2Radx.dorade.combined    snuff_inst 
+##DsrMerge  ops                start_DsrMerge.ops                snuff_inst 
+##Dsr2Radx  cfradial.combined  start_Dsr2Radx.cfradial.combined  snuff_inst 
+##Dsr2Radx  dorade.combined    start_Dsr2Radx.dorade.combined    snuff_inst 
 ###############################################################################
 # Time series recording
 #
@@ -41,10 +41,10 @@ RadMon         low        start_RadMon.low           snuff_inst
 ###############################################################################
 # QUICKLOOK DATA
 #
-Dsr2Radx  quicklook.high.sur   start_Dsr2Radx.quicklook.high.sur  snuff_inst    
-Dsr2Radx  quicklook.high.rhi   start_Dsr2Radx.quicklook.high.rhi  snuff_inst    
-Dsr2Radx  quicklook.low.sur    start_Dsr2Radx.quicklook.low.sur   snuff_inst    
-Dsr2Radx  quicklook.low.rhi    start_Dsr2Radx.quicklook.low.rhi   snuff_inst    
+##Dsr2Radx  quicklook.high.sur   start_Dsr2Radx.quicklook.high.sur  snuff_inst    
+##Dsr2Radx  quicklook.high.rhi   start_Dsr2Radx.quicklook.high.rhi  snuff_inst    
+##Dsr2Radx  quicklook.low.sur    start_Dsr2Radx.quicklook.low.sur   snuff_inst    
+##Dsr2Radx  quicklook.low.rhi    start_Dsr2Radx.quicklook.low.rhi   snuff_inst    
 ###############################################################################
 # Creating quicklook images
 #

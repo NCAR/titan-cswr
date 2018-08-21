@@ -32,7 +32,7 @@
 //     DEBUG_EXTRA
 //
 
-debug = DEBUG_VERBOSE;
+!debug = DEBUG_NORM;
 
 ///////////// instance ////////////////////////////////
 //

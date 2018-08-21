@@ -1,3 +1,3 @@
 #! /bin/csh
 
-xterm -title TsPrint-high -bg black -fg cyan -font 8x13bold -sb -sl 2000 -g 130x10-0+30 -e "TsPrint -fmq $DATA_DIR/fmq/ts/shmem_high_with_angles_10300 -nsamples 3000 -dual -missing" &
+xterm -title TsPrint-high -bg black -fg cyan -font 8x13bold -sb -sl 2000 -g 130x10-0+150 -e "TsPrint -fmq $DATA_DIR/fmq/ts/shmem_high_with_angles_10300 -nsamples 3000 -dual -missing" &

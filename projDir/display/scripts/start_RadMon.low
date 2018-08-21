@@ -1,4 +1,4 @@
 #! /bin/csh -f
 
-xterm -title RadMon-low -bg black -fg green -font 8x13bold -g  82x3-0+100 -e "RadMon -params $PROJ_DIR/display/params/RadMon.low " &
+xterm -title RadMon-low -bg black -fg green -font 8x13bold -g  82x3-0+70 -e "RadMon -params $PROJ_DIR/display/params/RadMon.low " &
 

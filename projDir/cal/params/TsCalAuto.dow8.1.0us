@@ -122,7 +122,7 @@ siggen_ip_address = "siggen";
 // Type: double
 //
 
-siggen_max_power = -20;
+siggen_max_power = 0;
 
 ///////////// siggen_min_power ////////////////////////
 //

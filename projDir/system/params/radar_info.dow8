@@ -3,12 +3,12 @@
 #
 #############################################
 
-setenv PROJECT_NAME               "PECAN"
+setenv PROJECT_NAME               "RELAMPAGO"
 
 # NAME etc
 # Location is generally overridden by GPS
 
-setenv SITE_NAME                  "PECAN"
+setenv SITE_NAME                  "ARGENTINA"
 setenv RADAR_NAME                 "DOW8"
 setenv radar_name                 "dow8"
 setenv RADAR_LAT                  40.0352
@@ -33,12 +33,16 @@ setenv DOW8_TWO_WAY_WAVEGUIDE_LOSS_H_DB  2.0
 
 setenv MAX_DUTY_CYCLE 0.00101
 
-setenv TX_MOD_WIDTH_STRETCH_HIGH_1000  0.05e-6
+#match tx
+
+setenv TX_MOD_WIDTH_STRETCH_HIGH_1000  0.02e-6
 setenv TX_MOD_WIDTH_STRETCH_HIGH_833   0.05e-6
 setenv TX_MOD_WIDTH_STRETCH_HIGH_667   0.04e-6
 setenv TX_MOD_WIDTH_STRETCH_HIGH_500   0.03e-6
-setenv TX_MOD_WIDTH_STRETCH_HIGH_333   0.01e-6
-setenv TX_MOD_WIDTH_STRETCH_HIGH_167   0.00e-6
+setenv TX_MOD_WIDTH_STRETCH_HIGH_333   0.065e-6
+setenv TX_MOD_WIDTH_STRETCH_HIGH_167   0.100e-6
+#setenv TX_MOD_WIDTH_STRETCH_HIGH_167   0.00e-6
+
 
 setenv TX_DELAY_HIGH_1000  1.0e-7
 setenv TX_DELAY_HIGH_833   1.0e-7
@@ -47,17 +51,21 @@ setenv TX_DELAY_HIGH_500   1.0e-7
 setenv TX_DELAY_HIGH_333   1.0e-7
 setenv TX_DELAY_HIGH_167   1.0e-7
 
-setenv TX_TO_RX_DELAY_HIGH_1000 5e-07
-setenv TX_TO_RX_DELAY_HIGH_833 5e-07
-setenv TX_TO_RX_DELAY_HIGH_667 5e-07
-setenv TX_TO_RX_DELAY_HIGH_500 5e-07
-setenv TX_TO_RX_DELAY_HIGH_333 5e-07
-setenv TX_TO_RX_DELAY_HIGH_167 5e-07
+#g0
 
-setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_1000 0.5e-6
+setenv TX_TO_RX_DELAY_HIGH_1000 3.25e-06
+setenv TX_TO_RX_DELAY_HIGH_833 3.25e-06
+setenv TX_TO_RX_DELAY_HIGH_667 3.30e-06
+setenv TX_TO_RX_DELAY_HIGH_500 3.40e-06
+setenv TX_TO_RX_DELAY_HIGH_333 4.25e-06
+setenv TX_TO_RX_DELAY_HIGH_167 4.25e-06
+
+#center pulse
+
+setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_1000 0.61e-6
 setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_833 0.5e-6
 setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_667 0.5e-6
-setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_500 0.5e-6
+setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_500 0.12e-6
 setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_333 0.5e-6
 setenv TX_TO_BURST_SAMPLE_DELAY_HIGH_167 0.5e-6
 

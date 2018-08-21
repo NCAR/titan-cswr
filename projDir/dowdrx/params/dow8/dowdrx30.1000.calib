@@ -323,7 +323,7 @@ prt_is_staggered = TRUE;
 //     STAGGER_4_5
 //
 
-staggered_prt_ratio = STAGGER_4_5;
+staggered_prt_ratio = STAGGER_2_3;
 
 ///////////// tx_mode /////////////////////////////////
 //

@@ -35,7 +35,7 @@ debug = DEBUG_NORM;
 // Type: string
 //
 
-instance = "low.0.8us";
+instance = "low.0.667us";
 
 ///////////// register_with_procmap ///////////////////
 //
@@ -194,7 +194,7 @@ xmitPowerDbmV = $(LOW_XMIT_POWER_V_DBM);
 // Type: double
 //
 
-pulseWidthUs = 0.8;
+pulseWidthUs = 0.667;
 
 ///////////// beamWidthDegH ///////////////////////////
 //
@@ -396,7 +396,7 @@ noise_region_max_power = -105;
 // Type: string
 //
 
-output_dir = "$(DATA_DIR)/$(RADAR_NAME)/cal/low/calib_0.8us";
+output_dir = "$(DATA_DIR)/$(RADAR_NAME)/cal/low/calib_0.667us";
 
 ///////////// plot_script /////////////////////////////
 //

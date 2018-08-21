@@ -356,7 +356,7 @@ fields = {
     raw_name = "$(DBZH_HIGH)",
     filtered_name = "",
     units = "dBZ",
-    color_map = "dbz.colors",
+    color_map = "kak_2_dbz.colors",
     shortcut = "1"
   }
   ,
@@ -410,7 +410,7 @@ fields = {
     raw_name = "WIDTH",
     filtered_name = "",
     units = "m/s",
-    color_map = "width.colors",
+    color_map = "kak_width.colors",
     shortcut = "7"
   }
   ,
@@ -428,7 +428,7 @@ fields = {
     raw_name = "$(DBMH_HIGH)",
     filtered_name = "",
     units = "m/s",
-    color_map = "dbm.colors",
+    color_map = "dbm.colors.kak2",
     shortcut = "9"
   }
   ,
@@ -437,7 +437,7 @@ fields = {
     raw_name = "VELPS",
     filtered_name = "",
     units = "m/s",
-    color_map = "vel35.colors",
+    color_map = "vel25.colors",
     shortcut = "q"
   }
   ,
@@ -446,7 +446,7 @@ fields = {
     raw_name = "VELPL",
     filtered_name = "",
     units = "m/s",
-    color_map = "vel35.colors",
+    color_map = "vel25.colors",
     shortcut = "w"
   }
   ,

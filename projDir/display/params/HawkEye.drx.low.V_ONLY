@@ -352,11 +352,11 @@ color_scale_dir = "$(PROJ_DIR)/display/color_scales";
 
 fields = {
   {
-    label = "$(DBZV_LOW)",
-    raw_name = "$(DBZV_LOW)",
+    label = "DBZVC",
+    raw_name = "DBZVC",
     filtered_name = "",
     units = "dBZ",
-    color_map = "kak_2_dbz.colors",
+    color_map = "dbz.colors",
     shortcut = "1"
   }
   ,
@@ -410,13 +410,13 @@ fields = {
     raw_name = "WIDTH",
     filtered_name = "",
     units = "m/s",
-    color_map = "kak_width.colors",
+    color_map = "width.colors",
     shortcut = "7"
   }
   ,
   {
-    label = "$(SNRV_LOW)",
-    raw_name = "$(SNRV_LOW)",
+    label = "SNRVC",
+    raw_name = "SNRVC",
     filtered_name = "",
     units = "m/s",
     color_map = "snr.colors",
@@ -424,11 +424,11 @@ fields = {
   }
   ,
   {
-    label = "$(DBMV_LOW)",
-    raw_name = "$(DBMV_LOW)",
+    label = "DBMVC",
+    raw_name = "DBMVC",
     filtered_name = "",
     units = "m/s",
-    color_map = "dbm.colors.kak",
+    color_map = "dbm.colors",
     shortcut = "9"
   }
   ,

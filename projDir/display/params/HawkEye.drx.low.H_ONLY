@@ -57,7 +57,7 @@ register_with_procmap = FALSE;
 // Type: string
 //
 
-instance = "drx.low";
+instance = "drx.high";
 
 //======================================================================
 //
@@ -100,7 +100,7 @@ input_mode = DSR_FMQ_INPUT;
 // Type: string
 //
 
-input_fmq_url = "$(DATA_DIR)/fmq/moments/shmem_drx_low_30200";
+input_fmq_url = "$(DATA_DIR)/fmq/moments/shmem_drx_high_30100";
 
 ///////////// seek_to_start_of_fmq ////////////////////
 //
@@ -352,11 +352,11 @@ color_scale_dir = "$(PROJ_DIR)/display/color_scales";
 
 fields = {
   {
-    label = "$(DBZV_LOW)",
-    raw_name = "$(DBZV_LOW)",
+    label = "DBZHC",
+    raw_name = "DBZHC",
     filtered_name = "",
     units = "dBZ",
-    color_map = "kak_2_dbz.colors",
+    color_map = "dbz.colors",
     shortcut = "1"
   }
   ,
@@ -410,13 +410,13 @@ fields = {
     raw_name = "WIDTH",
     filtered_name = "",
     units = "m/s",
-    color_map = "kak_width.colors",
+    color_map = "width.colors",
     shortcut = "7"
   }
   ,
   {
-    label = "$(SNRV_LOW)",
-    raw_name = "$(SNRV_LOW)",
+    label = "SNRHC",
+    raw_name = "SNRHC",
     filtered_name = "",
     units = "m/s",
     color_map = "snr.colors",
@@ -424,11 +424,11 @@ fields = {
   }
   ,
   {
-    label = "$(DBMV_LOW)",
-    raw_name = "$(DBMV_LOW)",
+    label = "DBMHC",
+    raw_name = "DBMHC",
     filtered_name = "",
     units = "m/s",
-    color_map = "dbm.colors.kak",
+    color_map = "dbm.colors",
     shortcut = "9"
   }
   ,
@@ -615,7 +615,7 @@ main_window_height = 550;
 // Type: int
 //
 
-main_window_start_x = 1000;
+main_window_start_x = 0;
 
 ///////////// main_window_start_y /////////////////////
 //
@@ -625,7 +625,7 @@ main_window_start_x = 1000;
 // Type: int
 //
 
-main_window_start_y = 1000;
+main_window_start_y = 0;
 
 ///////////// color_scale_width ///////////////////////
 //

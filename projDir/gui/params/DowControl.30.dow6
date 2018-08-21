@@ -154,7 +154,7 @@
 
     <!-- ====== start of collection control ====== -->
 
-    <param name="control" type="Collection" view_x="36" view_y="69" view_width="765" view_height="714">
+    <param name="control" type="Collection" view_x="0" view_y="212" view_width="765" view_height="714">
       <label>Control panel</label>
       <description>Control panel</description>
 
@@ -179,57 +179,59 @@ Each line entry should be formatted as follows:
 # ========================
 ##1000ns 1000 PRF, 1/1, 150m, 120km,  7.9m/s : dowdrx30.1000.1000.1_1.150m
 #1000ns 1000 PRF, 1/1,  75m, 112km,  7.9m/s : dowdrx30.1000.1000.1_1.75m
-1000ns 1000 PRF, 2/3, 150m, 120km, 15.9m/s : dowdrx30.1000.1000.2_3.150m
-#1000ns 1000 PRF, 2/3,  75m, 112km, 15.9m/s : dowdrx30.1000.1000.2_3.75m
+1000ns 1000 PRF, 2/3, 150m, 148km, 15.9m/s : dowdrx30.1000.1000.2_3.150m
+1000ns 1000 PRF, 2/3,  75m, 112km, 15.9m/s : dowdrx30.1000.1000.2_3.75m
 #1000ns 1111 PRF, 3/4, 150m, 134km, 26.4m/s : dowdrx30.1000.1111.3_4.150m
 #1000ns 1111 PRF, 3/4,  75m, 112km, 26.4m/s : dowdrx30.1000.1111.3_4.75m
 ##1000ns 1000 PRF, 4/5, 150m, 120km, 31.7m/s : dowdrx30.1000.1000.4_5.150m
 #1000ns 1000 PRF, 4/5,  75m, 112km, 31.7m/s : dowdrx30.1000.1000.4_5.75m
 #1000ns 1000 PRF, 1/1, 150m, solar,  7.9m/s : dowdrx30.1000.calib
 #833ns  1200 PRF, 1/1, 125m, 100km,  9.5m/s : dowdrx30.833.1200.1_1.125m
-##833ns  1250 PRF, 2/3, 125m, 100km, 19.8m/s : dowdrx30.833.1250.2_3.125m
+833ns  1250 PRF, 2/3, 125m, 118km, 19.8m/s : dowdrx30.833.1250.2_3.125m
 #833ns  1200 PRF, 3/4, 125m, 100km, 28.6m/s : dowdrx30.833.1200.3_4.125m
 #833ns  1120 PRF, 3/4, 125m, 100km, 28.6m/s : dowdrx30.833.1120.3_4.125m
 ##833ns  1250 PRF, 4/5, 125m, 100km, 39.7m/s : dowdrx30.833.1250.4_5.125m
 #667ns  1450 PRF, 1/1, 100m, 102km, 11.4m/s : dowdrx30.667.1450.1_1.100m
 #667ns  1450 PRF, 1/1,  50m, 102km, 11.4m/s : dowdrx30.667.1450.1_1.50m
-#667ns  1666 PRF, 2/3, 100m,  89km, 26.4m/s : dowdrx30.667.1666.2_3.100m
+667ns  1666 PRF, 2/3, 100m,  88km, 26.4m/s : dowdrx30.667.1666.2_3.100m
+667ns  1200 PRF, 2/3, 100m,  100km, 18.8m/s : dowdrx30.667.1200.2_3.100m
 #667ns  1666 PRF, 2/3,  50m,  75km, 26.4m/s : dowdrx30.667.1666.2_3.50m
 #667ns  1666 PRF, 3/4, 100m,  89km, 39.7m/s : dowdrx30.667.1666.3_4.100m
 #667ns  1666 PRF, 3/4,  50m,  75km, 39.7m/s : dowdrx30.667.1666.3_4.50m
 #667ns  1666 PRF, 4/5, 100m,  89km, 52.9m/s : dowdrx30.667.1666.4_5.100m
 #667ns  1666 PRF, 4/5,  50m,  75km, 52.9m/s : dowdrx30.667.1666.4_5.50m
 #667ns  1400 PRF, 3/4, 100m,  89km, 39.7m/s : dowdrx30.667.1400.3_4.100m
+#500ns  1666 PRF, 1/1,  75m,  74km, 15.9m/s : dowdrx30.500.1666.1_1.75m
 500ns  2000 PRF, 1/1,  75m,  74km, 15.9m/s : dowdrx30.500.2000.1_1.75m
-#500ns  2500 PRF, 2/3,  75m,  59km, 39.7m/s : dowdrx30.500.2500.2_3.75m
-333ns  2500 PRF, 2/3,  50m,  50km, 39.7m/s : dowdrx30.333.2500.2_3.50m
-333ns  1666 PRF, 2/3,  50m,  50km, 26.6m/s : dowdrx30.333.1666.2_3.50m
-500ns  2500 PRF, 2/3,  50m,  59km, 39.7m/s : dowdrx30.500.2500.2_3.50m
+500ns  2500 PRF, 2/3,  75m,  58km, 39.7m/s : dowdrx30.500.2500.2_3.75m
+333ns  2500 PRF, 2/3,  50m,  50km, 39.0m/s : dowdrx30.333.2500.2_3.50m
+##333ns  1666 PRF, 2/3,  50m,  50km, 26.6m/s : dowdrx30.333.1666.2_3.50m
+#500ns  2500 PRF, 2/3,  50m,  50km, 39.7m/s : dowdrx30.500.2500.2_3.50m
 #500ns  2000 PRF, 3/4,  75m,  74km, 47.6m/s : dowdrx30.500.2000.3_4.75m
 #500ns  1666 PRF, 3/4,  75m,  89km, 39.7m/s : dowdrx30.500.1666.3_4.75m
 #500ns  2222 PRF, 4/5,  75m,  66km, 70.5m/s : dowdrx30.500.2222.4_5.75m
-333ns  3000 PRF, 1/1,  50m,  49km, 23.8m/s : dowdrx30.333.3000.1_1.50m
+##333ns  3000 PRF, 1/1,  50m,  49km, 23.8m/s : dowdrx30.333.3000.1_1.50m
 #333ns  3000 PRF, 1/1,  25m,  28km, 23.8m/s : dowdrx30.333.3000.1_1.25m
-#333ns  3300 PRF, 2/3,  50m,  49km, 47.6m/s : dowdrx30.333.3300.2_3.50m
+##333ns  3300 PRF, 2/3,  50m,  49km, 47.6m/s : dowdrx30.333.3300.2_3.50m
 #333ns  3300 PRF, 2/3,  25m,  35km, 47.6m/s : dowdrx30.333.3300.2_3.25m
-#333ns  3745 PRF, 2/3,  50m,  39km, 59.5m/s : dowdrx30.333.3745.2_3.50m
+333ns  3750 PRF, 2/3,  50m,  38km, 59.5m/s : dowdrx30.333.3750.2_3.50m
 #333ns  3745 PRF, 2/3,  25m,  28km, 59.5m/s : dowdrx30.333.3745.2_3.25m
-333ns  3000 PRF, 3/4,  50m,  49km, 71.4m/s : dowdrx30.333.3000.3_4.50m
+##333ns  3000 PRF, 3/4,  50m,  49km, 71.4m/s : dowdrx30.333.3000.3_4.50m
 #333ns  3000 PRF, 3/4,  25m,  33km, 71.4m/s : dowdrx30.333.3000.3_4.25m
-#333ns  3000 PRF, 4/5,  50m,  40km, 95.2m/s : dowdrx30.333.3000.4_5.50m
+#333ns  3000 PRF, 2/3,  50m,  48km, 47.1m/s : dowdrx30.333.3000.2_3.50m
 #333ns  3000 PRF, 4/5,  25m,  32km, 95.2m/s : dowdrx30.333.3000.4_5.25m
-167ns  3000 PRF, 4/5,  25m,  32km, 95.2m/s : dowdrx30.167.3000.4_5.25m
-167ns  3000 PRF, 4/5,  12m,  10km, 95.2m/s : dowdrx30.167.3000.4_5.12m
-167ns  3200 PRF, 3/4,  12m,  10km, 75.3m/s : dowdrx30.167.3200.3_4.12m
-167ns  3200 PRF, 3/4,  25m,  20km, 75.3m/s : dowdrx30.167.3200.3_4.25m
-167ns  4000 PRF, 3/4,  12m,  10km, 94.2m/s : dowdrx30.167.4000.3_4.12m
-167ns  4000 PRF, 3/4,  25m,  20km, 94.2m/s : dowdrx30.167.4000.3_4.25m
-167ns  5000 PRF, 3/4,  12m,  10km, 117.7m/s : dowdrx30.167.5000.3_4.12m
-167ns  5000 PRF, 3/4,  25m,  20km, 117.7m/s : dowdrx30.167.5000.3_4.25m
-167ns  5000 PRF, 2/3,  12m,  10km, 78.5m/s : dowdrx30.167.5000.2_3.12m
-##167ns  5000 PRF, 2/3,  25m,  20km, 78.5m/s : dowdrx30.167.5000.2_3.25m
-167ns  4000 PRF, 3/4,  12m,  10km, 94.2m/s : dowdrx30.default
-1000ns 1000 PRF, 1/1, 150m, solar,  7.9m/s : dowdrx30.1000.calib
+##167ns  3000 PRF, 4/5,  25m,  32km, 95.2m/s : dowdrx30.167.3000.4_5.25m
+##167ns  3000 PRF, 4/5,  12m,  10km, 95.2m/s : dowdrx30.167.3000.4_5.12m
+##167ns  3200 PRF, 3/4,  12m,  10km, 75.3m/s : dowdrx30.167.3200.3_4.12m
+##167ns  3200 PRF, 3/4,  25m,  20km, 75.3m/s : dowdrx30.167.3200.3_4.25m
+##167ns  4000 PRF, 3/4,  12m,  10km, 94.2m/s : dowdrx30.167.4000.3_4.12m
+##167ns  4000 PRF, 3/4,  25m,  20km, 94.2m/s : dowdrx30.167.4000.3_4.25m
+##167ns  5000 PRF, 3/4,  12m,  10km, 117.7m/s : dowdrx30.167.5000.3_4.12m
+##167ns  5000 PRF, 3/4,  25m,  20km, 117.7m/s : dowdrx30.167.5000.3_4.25m
+##167ns  5000 PRF, 2/3,  12m,  10km, 78.5m/s : dowdrx30.167.5000.2_3.12m
+167ns  5000 PRF, 2/3,  25m,  21km, 78.5m/s : dowdrx30.167.5000.2_3.25m
+500ns  2000 PRF, 1/1,  75m,  74km, 15.9m/s : dowdrx30.default
+1000ns 1000 PRF, 2/3, 150m, solar,  7.9m/s : dowdrx30.1000.calib
 #500ns  1000 PRF, 4/5,  75m,  66km, 31.6m/s : dowdrx30.test.500.1000.4_5.75</value>
       </param>
 
@@ -263,7 +265,7 @@ Each line entry should be formatted as follows:
           This the the X offset, in pixels, from the main frame of the application.
           ]]>
         </info>
-        <value>167</value>
+        <value>404</value>
       </param>
 
       <param name="yy" type="Integer">
@@ -274,7 +276,7 @@ Each line entry should be formatted as follows:
           This the the Y offset, in pixels, from the main frame of the application.
           ]]>
         </info>
-        <value>176</value>
+        <value>96</value>
       </param>
 
       <param name="width" type="Integer">
@@ -306,7 +308,7 @@ Each line entry should be formatted as follows:
 
     <!-- ====== start of collection status ====== -->
 
-    <param name="status" type="Collection" view_x="38" view_y="596" view_width="684" view_height="368">
+    <param name="status" type="Collection" view_x="63" view_y="70" view_width="684" view_height="368">
       <label>Status panel</label>
       <description>Status panel</description>
 
@@ -362,7 +364,7 @@ Each line entry should be formatted as follows:
           If the error exceeds this this limit, red text is used to indicate a problem.
           ]]>
         </info>
-        <value>100000.0</value>
+        <value>10000.0</value>
       </param>
 
       <param name="maxDutyCycle" type="Double">
@@ -374,6 +376,39 @@ Each line entry should be formatted as follows:
           ]]>
         </info>
         <value>0.1</value>
+      </param>
+
+      <param name="nominalIf2FreqHz" type="Double">
+        <label>Nominal frequency for IF2 (hz).</label>
+        <description>Set this to the expected IF frequency.</description>
+        <info>
+          <![CDATA[
+          When tracking is operational, the measured IF should be close to this value.
+          ]]>
+        </info>
+        <value>3.0E7</value>
+      </param>
+
+      <param name="showHighFreq" type="Boolean">
+        <label>Show status for high frequency</label>
+        <description>For a single frequency system, this is normally true.</description>
+        <info>
+          <![CDATA[
+          For dual frequency system, we show both the high and low frequency status in this panel. For single frequency systems, we normally only use the high frequency data stream.
+          ]]>
+        </info>
+        <value>true</value>
+      </param>
+
+      <param name="showLowFreq" type="Boolean">
+        <label>Show status for low frequency</label>
+        <description>For a single frequency system, this is normally false.</description>
+        <info>
+          <![CDATA[
+          For dual frequency system, we show both the low and low frequency status in this panel, so set this true. For single frequency systems, we normally only use the high frequency data stream, so set this to false.
+          ]]>
+        </info>
+        <value>true</value>
       </param>
 
       <param name="fontSize" type="Float">
@@ -406,7 +441,7 @@ Each line entry should be formatted as follows:
           This the the X offset, in pixels, from the main frame of the application.
           ]]>
         </info>
-        <value>106</value>
+        <value>64</value>
       </param>
 
       <param name="yy" type="Integer">
@@ -417,7 +452,7 @@ Each line entry should be formatted as follows:
           This the the Y offset, in pixels, from the main frame of the application.
           ]]>
         </info>
-        <value>200</value>
+        <value>167</value>
       </param>
 
       <param name="width" type="Integer">

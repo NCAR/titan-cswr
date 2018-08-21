@@ -55,7 +55,7 @@ beam_count_for_debug_print = 15;
 // Type: string
 //
 
-instance = "high";
+instance = "low";
 
 //======================================================================
 //
@@ -129,7 +129,7 @@ mode = FMQ;
 // Type: string
 //
 
-input_fmq = "$(DATA_DIR)/fmq/ts/shmem_high_with_angles_10300";
+input_fmq = "$(DATA_DIR)/fmq/ts/shmem_low_with_angles_10400";
 
 ///////////// position_fmq_at_start ///////////////////
 //
@@ -776,7 +776,7 @@ elevation_offset = 0;
 //          DP_ALT_HV_CO_ONLY
 //          DP_ALT_HV_CO_CROSS
 //          DP_ALT_HV_FIXED_HV
-//          $(XMIT_RCV_MODE_HIGH)
+//          DP_SIM_HV_FIXED_HV
 //          DP_SIM_HV_SWITCHED_HV
 //          DP_H_ONLY_FIXED_HV
 //          DP_V_ONLY_FIXED_HV
@@ -812,7 +812,7 @@ moments_params = {
     min_antenna_rate_for_indexing = 1,
     window = WINDOW_RECT,
     switching_receiver = FALSE,
-    xmit_rcv_mode = $(XMIT_RCV_MODE_HIGH),
+    xmit_rcv_mode = DP_V_ONLY_FIXED_HV,
     apply_clutter_filter = FALSE,
     apply_sz = FALSE,
     change_velocity_sign = FALSE,
@@ -838,7 +838,7 @@ moments_params = {
     min_antenna_rate_for_indexing = 1,
     window = WINDOW_RECT,
     switching_receiver = FALSE,
-    xmit_rcv_mode = $(XMIT_RCV_MODE_HIGH),
+    xmit_rcv_mode = DP_V_ONLY_FIXED_HV,
     apply_clutter_filter = FALSE,
     apply_sz = FALSE,
     change_velocity_sign = FALSE,
@@ -864,7 +864,7 @@ moments_params = {
     min_antenna_rate_for_indexing = 1,
     window = WINDOW_RECT,
     switching_receiver = FALSE,
-    xmit_rcv_mode = $(XMIT_RCV_MODE_HIGH),
+    xmit_rcv_mode = DP_V_ONLY_FIXED_HV,
     apply_clutter_filter = FALSE,
     apply_sz = FALSE,
     change_velocity_sign = FALSE,
@@ -1143,7 +1143,7 @@ spectrum_width_method = WIDTH_METHOD_R0R1;
 // Type: string
 //
 
-startup_cal_file = "$(DATA_DIR)/$(RADAR_NAME)/cal/high/calib_0.5us/TsCalAuto.default.xml";
+startup_cal_file = "$(DATA_DIR)/$(RADAR_NAME)/cal/low/calib_0.5us/TsCalAuto.default.xml";
 
 ///////////// set_cal_by_pulse_width //////////////////
 //
@@ -1207,65 +1207,65 @@ set_cal_by_pulse_width = TRUE;
 pulse_width_cals = {
   {
     pulse_width_us = 0.167,
-    cal_dir = "$(DATA_DIR)/$(RADAR_NAME)/cal/high/calib_0.167us",
+    cal_dir = "$(DATA_DIR)/$(RADAR_NAME)/cal/low/calib_0.167us",
     check_xmit_rcv_mode = FALSE,
     xmit_rcv_mode = SINGLE_POL,
-    zdr_correction_db = $(HIGH_ZDR_CORRECTION_DB),
-    system_phidp_deg = $(HIGH_SYSTEM_PHIDP_DEG)
+    zdr_correction_db = $(LOW_ZDR_CORRECTION_DB),
+    system_phidp_deg = $(LOW_SYSTEM_PHIDP_DEG)
   }
   ,
   {
     pulse_width_us = 0.333,
-    cal_dir = "$(DATA_DIR)/$(RADAR_NAME)/cal/high/calib_0.333us",
+    cal_dir = "$(DATA_DIR)/$(RADAR_NAME)/cal/low/calib_0.333us",
     check_xmit_rcv_mode = FALSE,
     xmit_rcv_mode = SINGLE_POL,
-    zdr_correction_db = $(HIGH_ZDR_CORRECTION_DB),
-    system_phidp_deg = $(HIGH_SYSTEM_PHIDP_DEG)
+    zdr_correction_db = $(LOW_ZDR_CORRECTION_DB),
+    system_phidp_deg = $(LOW_SYSTEM_PHIDP_DEG)
   }
   ,
   {
     pulse_width_us = 0.4,
-    cal_dir = "$(DATA_DIR)/$(RADAR_NAME)/cal/high/calib_0.4us",
+    cal_dir = "$(DATA_DIR)/$(RADAR_NAME)/cal/low/calib_0.4us",
     check_xmit_rcv_mode = FALSE,
     xmit_rcv_mode = SINGLE_POL,
-    zdr_correction_db = $(HIGH_ZDR_CORRECTION_DB),
-    system_phidp_deg = $(HIGH_SYSTEM_PHIDP_DEG)
+    zdr_correction_db = $(LOW_ZDR_CORRECTION_DB),
+    system_phidp_deg = $(LOW_SYSTEM_PHIDP_DEG)
   }
   ,
   {
     pulse_width_us = 0.5,
-    cal_dir = "$(DATA_DIR)/$(RADAR_NAME)/cal/high/calib_0.5us",
+    cal_dir = "$(DATA_DIR)/$(RADAR_NAME)/cal/low/calib_0.5us",
     check_xmit_rcv_mode = FALSE,
     xmit_rcv_mode = SINGLE_POL,
-    zdr_correction_db = $(HIGH_ZDR_CORRECTION_DB),
-    system_phidp_deg = $(HIGH_SYSTEM_PHIDP_DEG)
+    zdr_correction_db = $(LOW_ZDR_CORRECTION_DB),
+    system_phidp_deg = $(LOW_SYSTEM_PHIDP_DEG)
   }
   ,
   {
     pulse_width_us = 0.6,
-    cal_dir = "$(DATA_DIR)/$(RADAR_NAME)/cal/high/calib_0.6us",
+    cal_dir = "$(DATA_DIR)/$(RADAR_NAME)/cal/low/calib_0.6us",
     check_xmit_rcv_mode = FALSE,
     xmit_rcv_mode = SINGLE_POL,
-    zdr_correction_db = $(HIGH_ZDR_CORRECTION_DB),
-    system_phidp_deg = $(HIGH_SYSTEM_PHIDP_DEG)
+    zdr_correction_db = $(LOW_ZDR_CORRECTION_DB),
+    system_phidp_deg = $(LOW_SYSTEM_PHIDP_DEG)
   }
   ,
   {
     pulse_width_us = 0.833,
-    cal_dir = "$(DATA_DIR)/$(RADAR_NAME)/cal/high/calib_0.833us",
+    cal_dir = "$(DATA_DIR)/$(RADAR_NAME)/cal/low/calib_0.833us",
     check_xmit_rcv_mode = FALSE,
     xmit_rcv_mode = SINGLE_POL,
-    zdr_correction_db = $(HIGH_ZDR_CORRECTION_DB),
-    system_phidp_deg = $(HIGH_SYSTEM_PHIDP_DEG)
+    zdr_correction_db = $(LOW_ZDR_CORRECTION_DB),
+    system_phidp_deg = $(LOW_SYSTEM_PHIDP_DEG)
   }
   ,
   {
     pulse_width_us = 1,
-    cal_dir = "$(DATA_DIR)/$(RADAR_NAME)/cal/high/calib_1.0us",
+    cal_dir = "$(DATA_DIR)/$(RADAR_NAME)/cal/low/calib_1.0us",
     check_xmit_rcv_mode = FALSE,
     xmit_rcv_mode = SINGLE_POL,
-    zdr_correction_db = $(HIGH_ZDR_CORRECTION_DB),
-    system_phidp_deg = $(HIGH_SYSTEM_PHIDP_DEG)
+    zdr_correction_db = $(LOW_ZDR_CORRECTION_DB),
+    system_phidp_deg = $(LOW_SYSTEM_PHIDP_DEG)
   }
 };
 
@@ -1306,7 +1306,7 @@ use_cal_from_time_series = FALSE;
 // Type: boolean
 //
 
-override_cal_dbz_correction = FALSE;
+override_cal_dbz_correction = TRUE;
 
 ///////////// dbz_correction //////////////////////////
 //
@@ -1318,7 +1318,7 @@ override_cal_dbz_correction = FALSE;
 // Type: double
 //
 
-dbz_correction = 0;
+dbz_correction = 1.5;
 
 ///////////// override_cal_zdr_correction /////////////
 //
@@ -1343,7 +1343,7 @@ override_cal_zdr_correction = TRUE;
 // Type: double
 //
 
-zdr_correction_db = $(HIGH_ZDR_CORRECTION_DB);
+zdr_correction_db = $(LOW_ZDR_CORRECTION_DB);
 
 ///////////// override_cal_ldr_corrections ////////////
 //
@@ -1405,7 +1405,7 @@ override_cal_system_phidp = TRUE;
 // Type: double
 //
 
-system_phidp_deg = $(HIGH_SYSTEM_PHIDP_DEG);
+system_phidp_deg = $(LOW_SYSTEM_PHIDP_DEG);
 
 ///////////// change_phidp_sign ///////////////////////
 //
@@ -2897,7 +2897,7 @@ min_snr_for_windfarm_clutter_check = 10;
 // Type: double
 //
 
-min_cpa_for_windfarm_clutter_check = 0.25;
+min_cpa_for_windfarm_clutter_check = 0.5;
 
 ///////////// apply_db_for_db_correction //////////////
 //
@@ -3324,7 +3324,7 @@ phidp_sdev_interest_weight = 1;
 // Type: string
 //
 
-output_fmq_url = "$(DATA_DIR)/fmq/moments/shmem_high_20100";
+output_fmq_url = "$(DATA_DIR)/fmq/moments/shmem_low_20200";
 
 ///////////// output_fmq_size /////////////////////////
 //
@@ -3621,8 +3621,8 @@ output_fields = {
   }
   ,
   {
-    id = $(SNRH_HIGH),
-    name = "$(SNRH_HIGH)",
+    id = SNRHX,
+    name = "SNRHX",
     units = "dB",
     scale = 0.01,
     bias = -320,
@@ -3631,8 +3631,8 @@ output_fields = {
   }
   ,
   {
-    id = $(SNRV_HIGH),
-    name = "$(SNRV_HIGH)",
+    id = SNRVC,
+    name = "SNRVC",
     units = "dB",
     scale = 0.01,
     bias = -320,
@@ -3641,8 +3641,8 @@ output_fields = {
   }
   ,
   {
-    id = $(DBMH_HIGH),
-    name = "$(DBMH_HIGH)",
+    id = DBMHX,
+    name = "DBMHX",
     units = "dBm",
     scale = 0.01,
     bias = -320,
@@ -3651,8 +3651,8 @@ output_fields = {
   }
   ,
   {
-    id = $(DBMV_HIGH),
-    name = "$(DBMV_HIGH)",
+    id = DBMVC,
+    name = "DBMVC",
     units = "dBm",
     scale = 0.01,
     bias = -320,
@@ -3661,8 +3661,8 @@ output_fields = {
   }
   ,
   {
-    id = $(DBZH_HIGH),
-    name = "$(DBZH_HIGH)",
+    id = DBZHX,
+    name = "DBZHX",
     units = "dBZ",
     scale = 0.01,
     bias = -320,
@@ -3671,8 +3671,8 @@ output_fields = {
   }
   ,
   {
-    id = $(DBZV_HIGH),
-    name = "$(DBZV_HIGH)",
+    id = DBZVC,
+    name = "DBZVC",
     units = "dBZ",
     scale = 0.01,
     bias = -320,
@@ -3720,56 +3720,66 @@ output_fields = {
     write_filtered = FALSE
   }
   ,
+//  {
+//    id = ZDR,
+//    name = "ZDR",
+//    units = "dB",
+//    scale = 0.001,
+//    bias = -32,
+//    write_unfiltered = TRUE,
+//    write_filtered = FALSE
+//  }
+//  ,
+//  {
+//    id = ZDRM,
+//    name = "ZDRM",
+//    units = "dB",
+//    scale = 0.001,
+//    bias = -32,
+//    write_unfiltered = TRUE,
+//    write_filtered = FALSE
+//  }
+//  ,
   {
-    id = $(POWER_DIFF_HIGH),
-    name = "$(POWER_DIFF_HIGH)",
-    units = "dB",
-    scale = 0.001,
-    bias = -32,
-    write_unfiltered = TRUE,
-    write_filtered = FALSE
-  }
-  ,
-  {
-    id = $(POWER_DIFF_HIGH)M,
-    name = "$(POWER_DIFF_HIGH)M",
-    units = "dB",
-    scale = 0.001,
-    bias = -32,
-    write_unfiltered = TRUE,
-    write_filtered = FALSE
-  }
-  ,
-  {
-    id = RHOHV,
-    name = "RHOHV",
+    id = LDRVM,
+    name = "LDRVM",
     units = "",
-    scale = 0.0001,
-    bias = -1,
+    scale = 0.01,
+    bias = -320,
     write_unfiltered = TRUE,
     write_filtered = FALSE
   }
   ,
   {
-    id = PHIDP,
-    name = "PHIDP",
-    units = "deg",
-    scale = 0.06,
-    bias = -200,
+    id = LDRV,
+    name = "LDRV",
+    units = "",
+    scale = 0.01,
+    bias = -320,
     write_unfiltered = TRUE,
     write_filtered = FALSE
   }
   ,
-  {
-    id = KDP,
-    name = "KDP",
-    units = "deg/km",
-    scale = 0.001,
-    bias = -32,
-    write_unfiltered = TRUE,
-    write_filtered = FALSE
-  }
-  ,
+//  {
+//    id = PHIDP,
+//    name = "PHIDP",
+//    units = "deg",
+//    scale = 0.06,
+//    bias = -200,
+//    write_unfiltered = TRUE,
+//    write_filtered = FALSE
+//  }
+//  ,
+//  {
+//    id = KDP,
+//    name = "KDP",
+//    units = "deg/km",
+//    scale = 0.001,
+//    bias = -32,
+//    write_unfiltered = TRUE,
+//    write_filtered = FALSE
+//  }
+//  ,
   {
     id = CMD_FLAG,
     name = "CMD_FLAG",
@@ -3909,7 +3919,6 @@ delay_tilt_start_msg_during_ant_trans = FALSE;
 //
 
 set_end_of_sweep_when_antenna_changes_direction = TRUE;
-
 ///////////// required_delta_angle_for_antenna_direction_change 
 //
 // The required angle difference for detecting direction change (deg).
@@ -3921,7 +3930,7 @@ set_end_of_sweep_when_antenna_changes_direction = TRUE;
 // Type: double
 //
 
-required_delta_angle_for_antenna_direction_change = 0.5;
+required_delta_angle_for_antenna_direction_change = 0.25;
 
 ///////////// min_rays_in_sweep_for_antenna_direction_change 
 //

@@ -776,7 +776,7 @@ elevation_offset = 0;
 //          DP_ALT_HV_CO_ONLY
 //          DP_ALT_HV_CO_CROSS
 //          DP_ALT_HV_FIXED_HV
-//          $(XMIT_RCV_MODE_HIGH)
+//          DP_SIM_HV_FIXED_HV
 //          DP_SIM_HV_SWITCHED_HV
 //          DP_H_ONLY_FIXED_HV
 //          DP_V_ONLY_FIXED_HV
@@ -812,7 +812,7 @@ moments_params = {
     min_antenna_rate_for_indexing = 1,
     window = WINDOW_RECT,
     switching_receiver = FALSE,
-    xmit_rcv_mode = $(XMIT_RCV_MODE_HIGH),
+    xmit_rcv_mode = DP_H_ONLY_FIXED_HV,
     apply_clutter_filter = FALSE,
     apply_sz = FALSE,
     change_velocity_sign = FALSE,
@@ -838,7 +838,7 @@ moments_params = {
     min_antenna_rate_for_indexing = 1,
     window = WINDOW_RECT,
     switching_receiver = FALSE,
-    xmit_rcv_mode = $(XMIT_RCV_MODE_HIGH),
+    xmit_rcv_mode = DP_H_ONLY_FIXED_HV,
     apply_clutter_filter = FALSE,
     apply_sz = FALSE,
     change_velocity_sign = FALSE,
@@ -864,7 +864,7 @@ moments_params = {
     min_antenna_rate_for_indexing = 1,
     window = WINDOW_RECT,
     switching_receiver = FALSE,
-    xmit_rcv_mode = $(XMIT_RCV_MODE_HIGH),
+    xmit_rcv_mode = DP_H_ONLY_FIXED_HV,
     apply_clutter_filter = FALSE,
     apply_sz = FALSE,
     change_velocity_sign = FALSE,
@@ -1143,7 +1143,7 @@ spectrum_width_method = WIDTH_METHOD_R0R1;
 // Type: string
 //
 
-startup_cal_file = "$(DATA_DIR)/$(RADAR_NAME)/cal/high/calib_0.5us/TsCalAuto.default.xml";
+startup_cal_file = "$(DATA_DIR)/$(RADAR_NAME)/cal/high/calib_0.333us/TsCalAuto.default.xml";
 
 ///////////// set_cal_by_pulse_width //////////////////
 //
@@ -3621,8 +3621,8 @@ output_fields = {
   }
   ,
   {
-    id = $(SNRH_HIGH),
-    name = "$(SNRH_HIGH)",
+    id = SNRHC,
+    name = "SNRHC",
     units = "dB",
     scale = 0.01,
     bias = -320,
@@ -3631,8 +3631,8 @@ output_fields = {
   }
   ,
   {
-    id = $(SNRV_HIGH),
-    name = "$(SNRV_HIGH)",
+    id = SNRVX,
+    name = "SNRVX",
     units = "dB",
     scale = 0.01,
     bias = -320,
@@ -3641,8 +3641,8 @@ output_fields = {
   }
   ,
   {
-    id = $(DBMH_HIGH),
-    name = "$(DBMH_HIGH)",
+    id = DBMHC,
+    name = "DBMHC",
     units = "dBm",
     scale = 0.01,
     bias = -320,
@@ -3651,8 +3651,8 @@ output_fields = {
   }
   ,
   {
-    id = $(DBMV_HIGH),
-    name = "$(DBMV_HIGH)",
+    id = DBMVX,
+    name = "DBMVX",
     units = "dBm",
     scale = 0.01,
     bias = -320,
@@ -3661,8 +3661,8 @@ output_fields = {
   }
   ,
   {
-    id = $(DBZH_HIGH),
-    name = "$(DBZH_HIGH)",
+    id = DBZHC,
+    name = "DBZHC",
     units = "dBZ",
     scale = 0.01,
     bias = -320,
@@ -3671,8 +3671,8 @@ output_fields = {
   }
   ,
   {
-    id = $(DBZV_HIGH),
-    name = "$(DBZV_HIGH)",
+    id = DBZVX,
+    name = "DBZVX",
     units = "dBZ",
     scale = 0.01,
     bias = -320,
@@ -3720,56 +3720,66 @@ output_fields = {
     write_filtered = FALSE
   }
   ,
+//  {
+//    id = ZDR,
+//    name = "ZDR",
+//    units = "dB",
+//    scale = 0.001,
+//    bias = -32,
+//    write_unfiltered = TRUE,
+//    write_filtered = FALSE
+//  }
+//  ,
+//  {
+//    id = ZDRM,
+//    name = "ZDRM",
+//    units = "dB",
+//    scale = 0.001,
+//    bias = -32,
+//    write_unfiltered = TRUE,
+//    write_filtered = FALSE
+//  }
+//  ,
   {
-    id = $(POWER_DIFF_HIGH),
-    name = "$(POWER_DIFF_HIGH)",
-    units = "dB",
-    scale = 0.001,
-    bias = -32,
-    write_unfiltered = TRUE,
-    write_filtered = FALSE
-  }
-  ,
-  {
-    id = $(POWER_DIFF_HIGH)M,
-    name = "$(POWER_DIFF_HIGH)M",
-    units = "dB",
-    scale = 0.001,
-    bias = -32,
-    write_unfiltered = TRUE,
-    write_filtered = FALSE
-  }
-  ,
-  {
-    id = RHOHV,
-    name = "RHOHV",
+    id = LDRHM,
+    name = "LDRHM",
     units = "",
-    scale = 0.0001,
-    bias = -1,
+    scale = 0.01,
+    bias = -320,
     write_unfiltered = TRUE,
     write_filtered = FALSE
   }
   ,
   {
-    id = PHIDP,
-    name = "PHIDP",
-    units = "deg",
-    scale = 0.06,
-    bias = -200,
+    id = LDRH,
+    name = "LDRH",
+    units = "",
+    scale = 0.01,
+    bias = -320,
     write_unfiltered = TRUE,
     write_filtered = FALSE
   }
   ,
-  {
-    id = KDP,
-    name = "KDP",
-    units = "deg/km",
-    scale = 0.001,
-    bias = -32,
-    write_unfiltered = TRUE,
-    write_filtered = FALSE
-  }
-  ,
+//  {
+//    id = PHIDP,
+//    name = "PHIDP",
+//    units = "deg",
+//    scale = 0.06,
+//    bias = -200,
+//    write_unfiltered = TRUE,
+//    write_filtered = FALSE
+//  }
+//  ,
+//  {
+//    id = KDP,
+//    name = "KDP",
+//    units = "deg/km",
+//    scale = 0.001,
+//    bias = -32,
+//    write_unfiltered = TRUE,
+//    write_filtered = FALSE
+//  }
+//  ,
   {
     id = CMD_FLAG,
     name = "CMD_FLAG",

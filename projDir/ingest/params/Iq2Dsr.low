@@ -813,7 +813,7 @@ moments_params = {
     window = WINDOW_RECT,
     switching_receiver = FALSE,
     xmit_rcv_mode = $(XMIT_RCV_MODE_LOW),
-    apply_clutter_filter = TRUE,
+    apply_clutter_filter = FALSE,
     apply_sz = FALSE,
     change_velocity_sign = FALSE,
     proc_flags = PROC_FLAGS_NONE,
@@ -839,7 +839,7 @@ moments_params = {
     window = WINDOW_RECT,
     switching_receiver = FALSE,
     xmit_rcv_mode = $(XMIT_RCV_MODE_LOW),
-    apply_clutter_filter = TRUE,
+    apply_clutter_filter = FALSE,
     apply_sz = FALSE,
     change_velocity_sign = FALSE,
     proc_flags = PROC_FLAGS_NONE,
@@ -865,7 +865,7 @@ moments_params = {
     window = WINDOW_RECT,
     switching_receiver = FALSE,
     xmit_rcv_mode = $(XMIT_RCV_MODE_LOW),
-    apply_clutter_filter = TRUE,
+    apply_clutter_filter = FALSE,
     apply_sz = FALSE,
     change_velocity_sign = FALSE,
     proc_flags = PROC_FLAGS_NONE,
@@ -3617,7 +3617,7 @@ output_fields = {
     scale = 0.0001,
     bias = -0.01,
     write_unfiltered = TRUE,
-    write_filtered = TRUE
+    write_filtered = FALSE
   }
   ,
   {
@@ -3627,7 +3627,7 @@ output_fields = {
     scale = 0.01,
     bias = -320,
     write_unfiltered = TRUE,
-    write_filtered = TRUE
+    write_filtered = FALSE
   }
   ,
   {
@@ -3637,7 +3637,7 @@ output_fields = {
     scale = 0.01,
     bias = -320,
     write_unfiltered = TRUE,
-    write_filtered = TRUE
+    write_filtered = FALSE
   }
   ,
   {
@@ -3647,7 +3647,7 @@ output_fields = {
     scale = 0.01,
     bias = -320,
     write_unfiltered = TRUE,
-    write_filtered = TRUE
+    write_filtered = FALSE
   }
   ,
   {
@@ -3657,7 +3657,7 @@ output_fields = {
     scale = 0.01,
     bias = -320,
     write_unfiltered = TRUE,
-    write_filtered = TRUE
+    write_filtered = FALSE
   }
   ,
   {
@@ -3667,7 +3667,7 @@ output_fields = {
     scale = 0.01,
     bias = -320,
     write_unfiltered = TRUE,
-    write_filtered = TRUE
+    write_filtered = FALSE
   }
   ,
   {
@@ -3677,7 +3677,7 @@ output_fields = {
     scale = 0.01,
     bias = -320,
     write_unfiltered = TRUE,
-    write_filtered = TRUE
+    write_filtered = FALSE
   }
   ,
   {
@@ -3687,7 +3687,7 @@ output_fields = {
     scale = 0.01,
     bias = -320,
     write_unfiltered = TRUE,
-    write_filtered = TRUE
+    write_filtered = FALSE
   }
   ,
   {
@@ -3697,7 +3697,7 @@ output_fields = {
     scale = 0.01,
     bias = -320,
     write_unfiltered = TRUE,
-    write_filtered = TRUE
+    write_filtered = FALSE
   }
   ,
   {
@@ -3707,7 +3707,7 @@ output_fields = {
     scale = 0.01,
     bias = -320,
     write_unfiltered = TRUE,
-    write_filtered = TRUE
+    write_filtered = FALSE
   }
   ,
   {
@@ -3717,7 +3717,7 @@ output_fields = {
     scale = 0.001,
     bias = -0.01,
     write_unfiltered = TRUE,
-    write_filtered = TRUE
+    write_filtered = FALSE
   }
   ,
   {
@@ -3727,7 +3727,7 @@ output_fields = {
     scale = 0.001,
     bias = -32,
     write_unfiltered = TRUE,
-    write_filtered = TRUE
+    write_filtered = FALSE
   }
   ,
   {
@@ -3737,7 +3737,7 @@ output_fields = {
     scale = 0.001,
     bias = -32,
     write_unfiltered = TRUE,
-    write_filtered = TRUE
+    write_filtered = FALSE
   }
   ,
   {
@@ -3747,7 +3747,7 @@ output_fields = {
     scale = 0.0001,
     bias = -1,
     write_unfiltered = TRUE,
-    write_filtered = TRUE
+    write_filtered = FALSE
   }
   ,
   {
@@ -3757,7 +3757,7 @@ output_fields = {
     scale = 0.06,
     bias = -200,
     write_unfiltered = TRUE,
-    write_filtered = TRUE
+    write_filtered = FALSE
   }
   ,
   {
@@ -3767,7 +3767,7 @@ output_fields = {
     scale = 0.001,
     bias = -32,
     write_unfiltered = TRUE,
-    write_filtered = TRUE
+    write_filtered = FALSE
   }
   ,
   {

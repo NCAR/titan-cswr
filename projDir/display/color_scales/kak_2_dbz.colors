@@ -1,0 +1,23 @@
+# NAME rep.dbz.colors
+# awdl 	1/13/1994 10:18:23
+#MIN     MAX     NAME        COLOR LABEL
+-20 	-15 	dim gray 	
+-15 	-10 	gray21 	
+-10 	-5 	dark slate gray
+-5      0       light sea green 	
+0 	5 	cyan	
+5 	8 	medium spring green	
+8 	11 	lime green 	
+11 	14 	dark green 	
+14 	17 	yellow 	
+17 	20 	gold1 	
+20 	23 	goldenrod1 	
+23 	26 	orange 	
+26 	29 	dark orange 	
+29 	32 	brown1 	
+32 	35 	red 	
+35 	38 	red3 	
+38 	41 	dark orchid	
+41 	44 	DeepPink1 	
+44 	47 	magenta 	
+47 	50 	snow 	

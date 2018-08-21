@@ -1,0 +1,9 @@
+#! /bin/csh -f
+
+cd $PROJ_DIR/dowdrx/params/${radar_name}
+
+running "cowdrx"
+if ($status == 1) then
+  $PROJ_DIR/dowdrx/scripts/run_fpgaload.${radar_name}
+  dowdrx -params cowdrx.test --debug all
+endif

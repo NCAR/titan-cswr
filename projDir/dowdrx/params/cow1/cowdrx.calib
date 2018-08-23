@@ -1,5 +1,5 @@
 /**********************************************************************
- * TDRP params for ./cowdrx
+ * TDRP params for cowdrx
  **********************************************************************/
 
 //======================================================================
@@ -373,7 +373,7 @@ max_duty_cycle = 0.002;
 // Type: double
 //
 
-tx_nominal_pulse_width = 10e-07;
+tx_nominal_pulse_width = 1e-06;
 
 ///////////// tx_mod_width_stretch_high ///////////////
 //
@@ -468,7 +468,7 @@ n_gates = 490;
 // Type: double
 //
 
-rx_gate_width = 10e-07;
+rx_gate_width = 1e-06;
 
 //======================================================================
 //
@@ -1217,6 +1217,57 @@ gui_tcp_port = 5630;
 
 //======================================================================
 //
+// COMPUTING ANTENNA SCAN DATA.
+//
+// The Rapid DOW scans only in surveillance mode. All sweeps end at the 
+//   same azimuth, generally when the antenna is pointing over the truck 
+//   cab (0 deg measured). Some antenna scan strategies will be at a 
+//   single elevation only, and others will have 2 elevation angles, i.e. 
+//   2 sets of sweeps per volume. For every antenna sweep there is are 6 
+//   sweeps, one for each frequency.
+//
+//======================================================================
+ 
+///////////// sweep_transition_azimuth_deg ////////////
+//
+// Azimuth to be used for ending one sweep and starting the next (deg).
+//
+// Generally this is set to 0 - i.e. over the cab.
+//
+//
+// Type: double
+//
+
+sweep_transition_azimuth_deg = 0;
+
+///////////// scan_starts_at_bottom ///////////////////
+//
+// Volume scan starts low, and elevation angles increase.
+//
+// Some scans are top down - if so, set this to false.
+//
+//
+// Type: boolean
+//
+
+scan_starts_at_bottom = TRUE;
+
+///////////// delta_elevation_for_end_of_volume ///////
+//
+// Change in elevation angle to indicate end of volume condition (deg).
+//
+// The end of volume is triggered when the elevation angle is at least 
+//   this amount from the top or bottom of the scan, depending on whether 
+//   the scan is bottom-up or top-down.
+//
+//
+// Type: double
+//
+
+delta_elevation_for_end_of_volume = 5;
+
+//======================================================================
+//
 // SIMULATE ANTENNA ANGLES.
 //
 // Useful for testing when not attached to a real antenna.
@@ -1236,45 +1287,49 @@ gui_tcp_port = 5630;
 
 simulate_antenna_angles = FALSE;
 
-///////////// sim_n_elevations ////////////////////////
+///////////// sim_elev_angles /////////////////////////
 //
-// Number of elevation angles to simulate.
+// Elevation angles for simulation (deg).
 //
-//
-// Type: int
-//
-
-sim_n_elevations = 5;
-
-///////////// sim_start_elevation /////////////////////
-//
-// Starting elevation angle for simulation (deg).
+// Simulation only supported in surveillance mode.
 //
 //
 // Type: double
+// 1D array - variable length.
 //
 
-sim_start_elevation = 1;
-
-///////////// sim_delta_elevation /////////////////////
-//
-// Delta elevation angle for simulation (deg).
-//
-//
-// Type: double
-//
-
-sim_delta_elevation = 2;
+sim_elev_angles = {
+ 0.5,
+ 1.5,
+ 2.5,
+ 3.5,
+ 5,
+ 7.5,
+ 10,
+ 15,
+ 20,
+ 30
+};
 
 ///////////// sim_azimuth_rate ////////////////////////
 //
-// Azimuth rate for simulation (deg/s).
+// Antenna scan rate in azimuth for simulation (deg/s).
 //
 //
 // Type: double
 //
 
 sim_azimuth_rate = 30;
+
+///////////// sim_elevation_rate //////////////////////
+//
+// Antenna scan rate in elevation for simulation (deg/s).
+//
+//
+// Type: double
+//
+
+sim_elevation_rate = 5;
 
 //======================================================================
 //

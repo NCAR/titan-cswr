@@ -28,10 +28,10 @@ setenv LOW_FREQ_GHZ               5.40
 ##########################################################
 # calibration
 
-setenv HIGH_COUPLER_LOSS_H_DB     30.00
-setenv HIGH_COUPLER_LOSS_V_DB     30.00
-setenv LOW_COUPLER_LOSS_H_DB      30.00
-setenv LOW_COUPLER_LOSS_V_DB      30.00
+setenv HIGH_COUPLER_LOSS_H_DB     4.8
+setenv HIGH_COUPLER_LOSS_V_DB     4.8
+setenv LOW_COUPLER_LOSS_H_DB      4.8
+setenv LOW_COUPLER_LOSS_V_DB      4.8
 
 setenv HIGH_XMIT_POWER_H_DBM      87.0
 setenv HIGH_XMIT_POWER_V_DBM      87.0
@@ -43,8 +43,8 @@ setenv HIGH_SYSTEM_PHIDP_DEG         0
 setenv LOW_ZDR_CORRECTION_DB         0
 setenv LOW_SYSTEM_PHIDP_DEG          0
 
-setenv ANTENNA_GAIN_H_DB          44.3
-setenv ANTENNA_GAIN_V_DB          44.3
+setenv ANTENNA_GAIN_H_DB          42.5
+setenv ANTENNA_GAIN_V_DB          42.5
 
 setenv TWO_WAY_WAVEGUIDE_LOSS_H_DB 2.0
 setenv TWO_WAY_WAVEGUIDE_LOSS_V_DB 2.0
@@ -162,11 +162,11 @@ setenv BURST_SAMPLE_WIDTH_STRETCH_LOW_167 0.833333333e-6
 #   for ops, no_angles
 #   for sim, with_angles
 
-setenv DOWDRX_FMQ_HIGH ${DATA_DIR}/fmq/ts/shmem_high_no_angles_10100
-setenv DOWDRX_FMQ_LOW  ${DATA_DIR}/fmq/ts/shmem_low_no_angles_10200
+#setenv DOWDRX_FMQ_HIGH ${DATA_DIR}/fmq/ts/shmem_high_no_angles_10100
+#setenv DOWDRX_FMQ_LOW  ${DATA_DIR}/fmq/ts/shmem_low_no_angles_10200
 
-#setenv DOWDRX_FMQ_HIGH ${DATA_DIR}/fmq/ts/shmem_high_with_angles_10300
-#setenv DOWDRX_FMQ_LOW  ${DATA_DIR}/fmq/ts/shmem_low_with_angles_10400
+setenv DOWDRX_FMQ_HIGH ${DATA_DIR}/fmq/ts/shmem_high_with_angles_10300
+setenv DOWDRX_FMQ_LOW  ${DATA_DIR}/fmq/ts/shmem_low_with_angles_10400
 
 # simulate angles
 #   for ops, false

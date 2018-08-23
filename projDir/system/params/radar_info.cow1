@@ -28,10 +28,10 @@ setenv LOW_FREQ_GHZ               5.40
 ##########################################################
 # calibration
 
-setenv HIGH_COUPLER_LOSS_H_DB     4.8
-setenv HIGH_COUPLER_LOSS_V_DB     4.8
-setenv LOW_COUPLER_LOSS_H_DB      4.8
-setenv LOW_COUPLER_LOSS_V_DB      4.8
+setenv HIGH_COUPLER_LOSS_H_DB     1.2
+setenv HIGH_COUPLER_LOSS_V_DB     1.2
+setenv LOW_COUPLER_LOSS_H_DB      1.2
+setenv LOW_COUPLER_LOSS_V_DB      1.2
 
 setenv HIGH_XMIT_POWER_H_DBM      87.0
 setenv HIGH_XMIT_POWER_V_DBM      87.0

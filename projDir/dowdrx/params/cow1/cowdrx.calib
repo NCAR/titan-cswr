@@ -865,7 +865,8 @@ ts_length = 256;
 // Type: double
 //
 
-iqcount_scale_for_mw_high = 9700;
+// iqcount_scale_for_mw_high = 9700;
+iqcount_scale_for_mw_high = 9150;
 
 ///////////// iqcount_scale_for_mw_low ////////////////
 //
@@ -883,7 +884,8 @@ iqcount_scale_for_mw_high = 9700;
 // Type: double
 //
 
-iqcount_scale_for_mw_low = 9700;
+// iqcount_scale_for_mw_low = 9700;
+iqcount_scale_for_mw_low = 9260;
 
 ///////////// filter_directory_path ///////////////////
 //

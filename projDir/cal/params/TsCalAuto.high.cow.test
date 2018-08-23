@@ -365,7 +365,7 @@ systemPhidpDeg = -70;
 // Type: double
 //
 
-linear_region_min_power = -80;
+linear_region_min_power = -85;
 
 ///////////// linear_region_max_power /////////////////
 //
@@ -381,7 +381,7 @@ linear_region_max_power = -40;
 // Type: double
 //
 
-noise_region_max_power = -115;
+noise_region_max_power = -120;
 
 //======================================================================
 //

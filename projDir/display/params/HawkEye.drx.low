@@ -352,6 +352,15 @@ color_scale_dir = "$(PROJ_DIR)/display/color_scales";
 
 fields = {
   {
+    label = "$(DBZH_LOW)",
+    raw_name = "$(DBZH_LOW)",
+    filtered_name = "",
+    units = "dBZ",
+    color_map = "kak_2_dbz.colors",
+    shortcut = "1"
+  }
+  ,
+  {
     label = "$(DBZV_LOW)",
     raw_name = "$(DBZV_LOW)",
     filtered_name = "",
@@ -415,12 +424,30 @@ fields = {
   }
   ,
   {
+    label = "$(SNRH_LOW)",
+    raw_name = "$(SNRH_LOW)",
+    filtered_name = "",
+    units = "m/s",
+    color_map = "snr.colors",
+    shortcut = "8"
+  }
+  ,
+  {
     label = "$(SNRV_LOW)",
     raw_name = "$(SNRV_LOW)",
     filtered_name = "",
     units = "m/s",
     color_map = "snr.colors",
     shortcut = "8"
+  }
+  ,
+  {
+    label = "$(DBMH_LOW)",
+    raw_name = "$(DBMH_LOW)",
+    filtered_name = "",
+    units = "m/s",
+    color_map = "dbm.colors.kak",
+    shortcut = "9"
   }
   ,
   {

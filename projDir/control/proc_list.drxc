@@ -2,7 +2,6 @@
 # SYSTEM processes
 #
 DsServerMgr   primary    start_DsServerMgr         snuff_inst        localhost
-#Scout         primary    start_Scout               kill_Scout        localhost
 DataMapper    primary    start_DataMapper          kill_DataMapper   localhost
 #
 ###############################################################################
@@ -10,16 +9,17 @@ DataMapper    primary    start_DataMapper          kill_DataMapper   localhost
 #
 GetGpsPosn.py  primary  start_GetGpsPosn.primary    snuff_inst    localhost
 ###############################################################################
-# dowdrx
+# cowdrx
 #
+# ==>> ops <<==
 # cowdrx       ops     start_cowdrx.ops    kill_cowdrx    localhost
 #
-# simulate in lab - AFC off, PRF 1000 fixed
+# ==>> simulate in lab - AFC off, PRF 1000 fixed <<==
 cowdrx        lab     start_cowdrx.lab    kill_cowdrx    localhost
 #
 # Send frequencies to magnetron controller
 #
-#DowSendFreq   ops     start_DowSendFreq.ops  snuff_inst   localhost
+# DowSendFreq   ops     start_DowSendFreq.ops  snuff_inst   localhost
 #
 ###############################################################################
 # Copy time series across to mgen
@@ -28,13 +28,13 @@ cowdrx        lab     start_cowdrx.lab    kill_cowdrx    localhost
 ###############################################################################
 # single pol MOMENTS for Hawkeye on DRX
 #
-Iq2Dsr    cdrx.high        start_Iq2Dsr.cdrx.high     snuff_inst    localhost
-Iq2Dsr    cdrx.low         start_Iq2Dsr.cdrx.low      snuff_inst    localhost
+Iq2Dsr    drxc.high        start_Iq2Dsr.drxc.high     snuff_inst    localhost
+Iq2Dsr    drxc.low         start_Iq2Dsr.drxc.low      snuff_inst    localhost
 ###############################################################################
 # angle server for GUI
 #
 RadxMon        server     start_RadxMon.server       snuff_inst    localhost
 ###############################################################################
 # RADAR MONITOR display
-RadMon     cdrx.high     start_RadMon.cdrx.high      snuff_inst    localhost
-RadMon     cdrx.low      start_RadMon.cdrx.low       snuff_inst    localhost
+RadMon     drx.high     start_RadMon.drx.high      snuff_inst    localhost
+RadMon     drx.low      start_RadMon.drx.low       snuff_inst    localhost

@@ -42,7 +42,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "ops";
+instance = "lab";
 
 //======================================================================
 //
@@ -293,7 +293,7 @@ pentek_sampling_frequency_hz = 1.2e+08;
 // Type: double
 //
 
-prt_sec = 0.0005;
+prt_sec = 0.001;
 
 ///////////// prt_is_staggered ////////////////////////
 //
@@ -354,7 +354,7 @@ tx_mode = TX_SIM_HV;
 // Type: double
 //
 
-max_duty_cycle = 0.001;
+max_duty_cycle = 0.0011;
 
 //======================================================================
 //
@@ -373,7 +373,7 @@ max_duty_cycle = 0.001;
 // Type: double
 //
 
-tx_nominal_pulse_width = 5e-07;
+tx_nominal_pulse_width = 1e-06;
 
 ///////////// tx_mod_width_stretch_high ///////////////
 //
@@ -453,7 +453,7 @@ tx_pulse_separation = 2e-07;
 // Type: int
 //
 
-n_gates = 400;
+n_gates = 1000;
 
 ///////////// rx_gate_width ///////////////////////////
 //
@@ -468,7 +468,7 @@ n_gates = 400;
 // Type: double
 //
 
-rx_gate_width = 5e-07;
+rx_gate_width = 1e-06;
 
 //======================================================================
 //
@@ -611,7 +611,7 @@ afc_enabled = TRUE;
 // Type: boolean
 //
 
-afc_keep_osc_default_freq = FALSE;
+afc_keep_osc_default_freq = TRUE;
 
 ///////////// IF_stage1_hz ////////////////////////////
 //
@@ -865,7 +865,7 @@ ts_length = 256;
 // Type: double
 //
 
-iqcount_scale_for_mw_high = 9700;
+iqcount_scale_for_mw_high = 9200;
 
 ///////////// iqcount_scale_for_mw_low ////////////////
 //
@@ -883,7 +883,7 @@ iqcount_scale_for_mw_high = 9700;
 // Type: double
 //
 
-iqcount_scale_for_mw_low = 9700;
+iqcount_scale_for_mw_low = 9200;
 
 ///////////// filter_directory_path ///////////////////
 //

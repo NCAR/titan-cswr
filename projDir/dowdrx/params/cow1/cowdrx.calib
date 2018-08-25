@@ -42,7 +42,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "cal";
+instance = "calib";
 
 //======================================================================
 //

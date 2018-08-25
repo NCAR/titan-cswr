@@ -4,6 +4,5 @@ cd $PROJ_DIR/dowdrx/params/${radar_name}
 
 running "cowdrx"
 if ($status == 1) then
-  $PROJ_DIR/dowdrx/scripts/run_fpgaload.${radar_name}
-  dowdrx -params cowdrx.calib --debug all
+  cowdrx -params cowdrx.calib --debug all
 endif

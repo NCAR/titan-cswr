@@ -196,6 +196,9 @@ def main():
 
     # create symlink to logs
 
+    cmd = "mkdir -p " + installDataDir + " data/logs"
+    runCommand(cmd)
+
     os.chdir(projDir)
     removeSymlink(projDir, "logs")
     if (os.path.exists('logs') == False):

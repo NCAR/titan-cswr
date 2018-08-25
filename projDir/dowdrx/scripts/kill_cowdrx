@@ -1,0 +1,4 @@
+#! /bin/csh -f
+
+snuff_slow cowdrx
+

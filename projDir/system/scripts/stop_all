@@ -22,6 +22,7 @@ kill_SymprodServers
 # shut down dowdrx
 
 kill_dowdrx
+kill_cowdrx
 kill_rapidrx
 
 # kill all processes

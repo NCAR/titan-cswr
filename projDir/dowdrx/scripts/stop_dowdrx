@@ -1,6 +1,0 @@
-#! /bin/csh -f
-
-running "dowdrx"
-if ($status == 0) then
-    snuff_drx dowdrx
-endif

@@ -15,7 +15,7 @@ GetGpsPosn.py  primary  start_GetGpsPosn.primary    snuff_inst    localhost
 # cowdrx       ops     start_cowdrx.ops    kill_cowdrx    localhost
 #
 # ==>> simulate in lab - AFC off, PRF 1000 fixed <<==
-cowdrx        lab     start_cowdrx.lab    kill_cowdrx    localhost
+#cowdrx        lab     start_cowdrx.lab    kill_cowdrx    localhost
 #
 # Send frequencies to magnetron controller
 #

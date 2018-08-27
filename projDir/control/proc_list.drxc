@@ -12,6 +12,7 @@ GetGpsPosn.py  primary  start_GetGpsPosn.primary    snuff_inst    localhost
 # cowdrx
 #
 # ==>> ops <<==
+# ==>> default is - PRF 1000 fixed, 1000 gates <<==
 # cowdrx       ops     start_cowdrx.ops    kill_cowdrx    localhost
 #
 # ==>> simulate in lab - AFC off, PRF 1000 fixed <<==

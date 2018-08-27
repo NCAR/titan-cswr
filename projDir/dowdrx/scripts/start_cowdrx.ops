@@ -1,0 +1,9 @@
+#! /bin/csh -f
+
+cd $PROJ_DIR/dowdrx/params/${radar_name}
+
+running "cowdrx"
+if ($status == 1) then
+  cowdrx -params cowdrx.default --debug all|& \
+      LogFilter -d $ERRORS_LOG_DIR -p cowdrx -i ops &
+endif

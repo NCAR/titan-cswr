@@ -86,7 +86,7 @@ setenv POWER_DIFF_LOW ZDR
 # transmitter settings
 
 setenv MAX_DUTY_CYCLE 0.0011
-setenv MAX_N_GATES 1200
+setenv MAX_N_GATES 2000
 
 setenv TX_MOD_WIDTH_STRETCH_HIGH_1000  0.0e-07
 setenv TX_MOD_WIDTH_STRETCH_HIGH_833   0.0e-07

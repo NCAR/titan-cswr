@@ -611,7 +611,7 @@ afc_enabled = TRUE;
 // Type: boolean
 //
 
-afc_keep_osc_default_freq = TRUE;
+afc_keep_osc_default_freq = $(AFC_KEEP_OSC_DEFAULT_FREQ);
 
 ///////////// IF_stage1_hz ////////////////////////////
 //

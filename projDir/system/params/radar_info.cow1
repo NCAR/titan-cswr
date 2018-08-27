@@ -168,6 +168,14 @@ setenv BURST_SAMPLE_WIDTH_STRETCH_LOW_167 0.833333333e-6
 setenv DOWDRX_FMQ_HIGH ${DATA_DIR}/fmq/ts/shmem_high_with_angles_10300
 setenv DOWDRX_FMQ_LOW  ${DATA_DIR}/fmq/ts/shmem_low_with_angles_10400
 
+# Is AFC active?
+# In the lab we don't have a burst, so we use the default frequency
+
+# ops mode
+#setenv AFC_KEEP_OSC_DEFAULT_FREQ "false"
+# lab mode
+setenv AFC_KEEP_OSC_DEFAULT_FREQ "true"
+
 # simulate angles
 #   for ops, false
 #   for sim, true

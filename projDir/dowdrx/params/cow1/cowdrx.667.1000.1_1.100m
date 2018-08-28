@@ -1399,7 +1399,7 @@ test_start_az = 0;
 // Type: double
 //
 
-test_end_az = 10;
+test_end_az = 90;
 
 ///////////// test_az_secs_per_rev ////////////////////
 //

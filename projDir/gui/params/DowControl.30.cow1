@@ -198,7 +198,10 @@ Each line entry should be formatted as follows:
 1333ns  750 PRF, 2/3, 100m, 199km,  20.3m/s : cowdrx.1333.750.2_3.100m
 1333ns  750 PRF, 4/5, 100m, 199km,  40.5m/s : cowdrx.1333.750.4_5.100m
 1000ns 1000 PRF, 1/1, 150m, 149km,  13.5m/s : cowdrx.default
-1000ns 1000 PRF, 2/3, 150m, 149km,  27.0m/s : cowdrx.1000.calib
+1333ns calibration                          : cowdrx.1333.calib
+1000ns calibration                          : cowdrx.1000.calib
+667ns  calibration                          : cowdrx.667.calib
+500ns  calibration                          : cowdrx.500.calib
 </value>
       </param>
 

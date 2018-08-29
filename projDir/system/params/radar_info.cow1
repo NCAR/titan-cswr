@@ -28,6 +28,12 @@ setenv LOW_FREQ_GHZ               5.40
 ##########################################################
 # calibration
 
+# NCAR Agilent
+setenv SIGGEN_PORT 7777
+
+# CSWR Schwartz
+# setenv SIGGEN_PORT 5025
+
 setenv HIGH_COUPLER_LOSS_H_DB     4.8
 setenv HIGH_COUPLER_LOSS_V_DB     4.8
 setenv LOW_COUPLER_LOSS_H_DB      4.8
@@ -48,6 +54,15 @@ setenv ANTENNA_GAIN_V_DB          42.5
 
 setenv TWO_WAY_WAVEGUIDE_LOSS_H_DB 2.0
 setenv TWO_WAY_WAVEGUIDE_LOSS_V_DB 2.0
+
+# Is AFC active?
+# In the lab we don't have a burst,
+# so we use the default frequency
+
+# ops mode
+#setenv AFC_KEEP_OSC_DEFAULT_FREQ "false"
+# lab mode
+setenv AFC_KEEP_OSC_DEFAULT_FREQ "true"
 
 #############################################
 
@@ -187,14 +202,6 @@ setenv BURST_SAMPLE_WIDTH_STRETCH_LOW_167 0.833333333e-6
 
 setenv DOWDRX_FMQ_HIGH ${DATA_DIR}/fmq/ts/shmem_high_with_angles_10300
 setenv DOWDRX_FMQ_LOW  ${DATA_DIR}/fmq/ts/shmem_low_with_angles_10400
-
-# Is AFC active?
-# In the lab we don't have a burst, so we use the default frequency
-
-# ops mode
-#setenv AFC_KEEP_OSC_DEFAULT_FREQ "false"
-# lab mode
-setenv AFC_KEEP_OSC_DEFAULT_FREQ "true"
 
 # simulate angles
 #   for ops, false

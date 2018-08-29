@@ -13,7 +13,7 @@ GetGpsPosn.py  primary  start_GetGpsPosn.primary    snuff_inst    localhost
 #
 # ==>> ops <<==
 # ==>> default is - PRF 1000 fixed, 1000 gates <<==
-# cowdrx       ops     start_cowdrx.ops    kill_cowdrx    localhost
+cowdrx       ops     start_cowdrx.ops    kill_cowdrx    localhost
 #
 # ==>> simulate in lab - AFC off, PRF 1000 fixed <<==
 #cowdrx        lab     start_cowdrx.lab    kill_cowdrx    localhost
@@ -24,8 +24,8 @@ GetGpsPosn.py  primary  start_GetGpsPosn.primary    snuff_inst    localhost
 #
 ###############################################################################
 # Copy time series across to mgen
-#Fmq2Fmq         high        start_Fmq2Fmq.high            snuff_inst    localhost
-#Fmq2Fmq         low         start_Fmq2Fmq.low             snuff_inst    localhost
+Fmq2Fmq         high        start_Fmq2Fmq.high            snuff_inst    localhost
+Fmq2Fmq         low         start_Fmq2Fmq.low             snuff_inst    localhost
 ###############################################################################
 # single pol MOMENTS for Hawkeye on DRX
 #

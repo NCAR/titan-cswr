@@ -408,7 +408,7 @@ Each line entry should be formatted as follows:
           This the the X offset, in pixels, from the main frame of the application.
           ]]>
         </info>
-        <value>447</value>
+        <value>364</value>
       </param>
 
       <param name="yy" type="Integer">

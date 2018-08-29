@@ -293,7 +293,7 @@ pentek_sampling_frequency_hz = 1.2e+08;
 // Type: double
 //
 
-prt_sec = 0.0008;
+prt_sec = 0.001;
 
 ///////////// prt_is_staggered ////////////////////////
 //
@@ -323,7 +323,7 @@ prt_is_staggered = TRUE;
 //     STAGGER_4_5
 //
 
-staggered_prt_ratio = STAGGER_3_4;
+staggered_prt_ratio = STAGGER_4_5;
 
 ///////////// tx_mode /////////////////////////////////
 //
@@ -373,7 +373,7 @@ max_duty_cycle = $(MAX_DUTY_CYCLE);
 // Type: double
 //
 
-tx_nominal_pulse_width = 0.667e-06;
+tx_nominal_pulse_width = 1e-06;
 
 ///////////// tx_mod_width_stretch_high ///////////////
 //
@@ -388,7 +388,7 @@ tx_nominal_pulse_width = 0.667e-06;
 // Type: double
 //
 
-tx_mod_width_stretch_high = $(TX_MOD_WIDTH_STRETCH_HIGH_667);
+tx_mod_width_stretch_high = $(TX_MOD_WIDTH_STRETCH_HIGH_1000);
 
 ///////////// tx_delay_high ///////////////////////////
 //
@@ -402,7 +402,7 @@ tx_mod_width_stretch_high = $(TX_MOD_WIDTH_STRETCH_HIGH_667);
 // Type: double
 //
 
-tx_delay_high = $(TX_DELAY_HIGH_667);
+tx_delay_high = $(TX_DELAY_HIGH_1000);
 
 ///////////// tx_mod_width_stretch_low ////////////////
 //
@@ -417,7 +417,7 @@ tx_delay_high = $(TX_DELAY_HIGH_667);
 // Type: double
 //
 
-tx_mod_width_stretch_low = $(TX_MOD_WIDTH_STRETCH_LOW_667);
+tx_mod_width_stretch_low = $(TX_MOD_WIDTH_STRETCH_LOW_1000);
 
 ///////////// tx_pulse_separation /////////////////////
 //
@@ -433,7 +433,7 @@ tx_mod_width_stretch_low = $(TX_MOD_WIDTH_STRETCH_LOW_667);
 // Type: double
 //
 
-tx_pulse_separation = $(TX_PULSE_SEPARATION_667);
+tx_pulse_separation = $(TX_PULSE_SEPARATION_1000);
 
 //======================================================================
 //
@@ -468,7 +468,7 @@ n_gates = $(MAX_N_GATES);
 // Type: double
 //
 
-rx_gate_width = 0.667e-06;
+rx_gate_width = 0.5e-06;
 
 //======================================================================
 //
@@ -487,7 +487,7 @@ rx_gate_width = 0.667e-06;
 // Type: double
 //
 
-tx_to_rx_delay_high = $(TX_TO_RX_DELAY_HIGH_667);
+tx_to_rx_delay_high = $(TX_TO_RX_DELAY_HIGH_1000);
 
 ///////////// tx_to_rx_delay_low //////////////////////
 //
@@ -500,7 +500,7 @@ tx_to_rx_delay_high = $(TX_TO_RX_DELAY_HIGH_667);
 // Type: double
 //
 
-tx_to_rx_delay_low = $(TX_TO_RX_DELAY_LOW_667);
+tx_to_rx_delay_low = $(TX_TO_RX_DELAY_LOW_1000);
 
 //======================================================================
 //
@@ -522,7 +522,7 @@ tx_to_rx_delay_low = $(TX_TO_RX_DELAY_LOW_667);
 // Type: double
 //
 
-tx_to_burst_sample_delay_high = $(TX_TO_BURST_SAMPLE_DELAY_HIGH_667);
+tx_to_burst_sample_delay_high = $(TX_TO_BURST_SAMPLE_DELAY_HIGH_1000);
 
 ///////////// burst_sample_width_stretch_high /////////
 //
@@ -537,7 +537,7 @@ tx_to_burst_sample_delay_high = $(TX_TO_BURST_SAMPLE_DELAY_HIGH_667);
 // Type: double
 //
 
-burst_sample_width_stretch_high = $(BURST_SAMPLE_WIDTH_STRETCH_HIGH_667);
+burst_sample_width_stretch_high = $(BURST_SAMPLE_WIDTH_STRETCH_HIGH_1000);
 
 ///////////// tx_to_burst_sample_delay_low ////////////
 //
@@ -550,7 +550,7 @@ burst_sample_width_stretch_high = $(BURST_SAMPLE_WIDTH_STRETCH_HIGH_667);
 // Type: double
 //
 
-tx_to_burst_sample_delay_low = $(TX_TO_BURST_SAMPLE_DELAY_LOW_667);
+tx_to_burst_sample_delay_low = $(TX_TO_BURST_SAMPLE_DELAY_LOW_1000);
 
 ///////////// burst_sample_width_stretch_low //////////
 //
@@ -565,7 +565,7 @@ tx_to_burst_sample_delay_low = $(TX_TO_BURST_SAMPLE_DELAY_LOW_667);
 // Type: double
 //
 
-burst_sample_width_stretch_low = $(BURST_SAMPLE_WIDTH_STRETCH_LOW_667);
+burst_sample_width_stretch_low = $(BURST_SAMPLE_WIDTH_STRETCH_LOW_1000);
 
 ///////////// burst_n_pulses_for_props ////////////////
 //
@@ -1399,7 +1399,7 @@ test_start_az = 0;
 // Type: double
 //
 
-test_end_az = 90;
+test_end_az = 10;
 
 ///////////// test_az_secs_per_rev ////////////////////
 //

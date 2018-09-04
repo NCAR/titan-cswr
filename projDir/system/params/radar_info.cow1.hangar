@@ -60,9 +60,9 @@ setenv TWO_WAY_WAVEGUIDE_LOSS_V_DB 2.0
 # so we use the default frequency
 
 # ops mode
-#setenv AFC_KEEP_OSC_DEFAULT_FREQ "false"
+setenv AFC_KEEP_OSC_DEFAULT_FREQ "false"
 # lab mode
-setenv AFC_KEEP_OSC_DEFAULT_FREQ "true"
+#setenv AFC_KEEP_OSC_DEFAULT_FREQ "true"
 
 #############################################
 
@@ -101,7 +101,7 @@ setenv POWER_DIFF_LOW ZDR
 # transmitter settings
 
 setenv MAX_DUTY_CYCLE 0.0011
-setenv MAX_N_GATES 3000
+setenv MAX_N_GATES 2000
 
 setenv TX_MOD_WIDTH_STRETCH_HIGH_1500  0.0e-07
 setenv TX_MOD_WIDTH_STRETCH_HIGH_1333  0.0e-07

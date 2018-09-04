@@ -29,10 +29,10 @@ setenv LOW_FREQ_GHZ               5.40
 # calibration
 
 # NCAR Agilent
-#setenv SIGGEN_PORT 7777
+setenv SIGGEN_PORT 7777
 
 # CSWR Schwartz
-setenv SIGGEN_PORT 5025
+#setenv SIGGEN_PORT 5025
 
 setenv HIGH_COUPLER_LOSS_H_DB     4.8
 setenv HIGH_COUPLER_LOSS_V_DB     4.8
@@ -101,7 +101,7 @@ setenv POWER_DIFF_LOW ZDR
 # transmitter settings
 
 setenv MAX_DUTY_CYCLE 0.0011
-setenv MAX_N_GATES 3000
+setenv MAX_N_GATES 2000
 
 setenv TX_MOD_WIDTH_STRETCH_HIGH_1500  0.0e-07
 setenv TX_MOD_WIDTH_STRETCH_HIGH_1333  0.0e-07
@@ -204,7 +204,7 @@ setenv DOWDRX_FMQ_LOW  ${DATA_DIR}/fmq/ts/shmem_low_with_angles_10400
 #   for ops, false
 #   for sim, true
 
-setenv SIM_ANTENNA_ANGLES          "false"
-#setenv SIM_ANTENNA_ANGLES          "true"
+#setenv SIM_ANTENNA_ANGLES          "false"
+setenv SIM_ANTENNA_ANGLES          "true"
 
 #############################################

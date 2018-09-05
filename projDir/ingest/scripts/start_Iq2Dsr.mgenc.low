@@ -1,0 +1,10 @@
+#! /bin/csh
+
+cd $PROJ_DIR/ingest/params
+
+running "Iq2Dsr -params Iq2Dsr.mgenc.low"
+if ($status == 1) then
+  Iq2Dsr -params Iq2Dsr.mgenc.low |& \
+    LogFilter -d $ERRORS_LOG_DIR -p Iq2Dsr -i mgenc.low &
+endif
+

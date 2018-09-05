@@ -8,8 +8,8 @@ DsFileDist    quicklook  start_DsFileDist.quicklook  snuff_inst
 ###############################################################################
 # MOMENTS
 #
-Iq2Dsr      high           start_Iq2Dsr.high              snuff_inst    
-Iq2Dsr      low            start_Iq2Dsr.low               snuff_inst    
+Iq2Dsr      mgenc.high     start_Iq2Dsr.mgenc.high              snuff_inst    
+Iq2Dsr      mgenc.low      start_Iq2Dsr.mgenc.low               snuff_inst    
 Dsr2Radx    cfradial.high  start_Dsr2Radx.cfradial.high   snuff_inst    
 Dsr2Radx    cfradial.low   start_Dsr2Radx.cfradial.low    snuff_inst    
 Dsr2Radx    dorade.high    start_Dsr2Radx.dorade.high     snuff_inst    

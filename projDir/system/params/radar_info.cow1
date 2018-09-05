@@ -60,9 +60,9 @@ setenv TWO_WAY_WAVEGUIDE_LOSS_V_DB 2.0
 # so we use the default frequency
 
 # ops mode
-#setenv AFC_KEEP_OSC_DEFAULT_FREQ "false"
+setenv AFC_KEEP_OSC_DEFAULT_FREQ "false"
 # lab mode
-setenv AFC_KEEP_OSC_DEFAULT_FREQ "true"
+#setenv AFC_KEEP_OSC_DEFAULT_FREQ "true"
 
 #############################################
 
@@ -116,7 +116,7 @@ setenv TX_MOD_WIDTH_STRETCH_LOW_1500  0.0e-07
 setenv TX_MOD_WIDTH_STRETCH_LOW_1333  0.0e-07
 setenv TX_MOD_WIDTH_STRETCH_LOW_1000  0.0e-07
 setenv TX_MOD_WIDTH_STRETCH_LOW_833   0.0e-07
-setenv TX_MOD_WIDTH_STRETCH_LOW_667   0.0e-07
+setenv TX_MOD_WIDTH_STRETCH_LOW_667   2.5e-07
 setenv TX_MOD_WIDTH_STRETCH_LOW_500   0.0e-07
 setenv TX_MOD_WIDTH_STRETCH_LOW_333   0.0e-07
 setenv TX_MOD_WIDTH_STRETCH_LOW_167   0.0e-07

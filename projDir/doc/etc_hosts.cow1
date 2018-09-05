@@ -1,0 +1,18 @@
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+# generic - all trucks use the same internal addresses 
+
+10.3.3.10  hiq
+10.3.3.20  drx
+#192.168.4.220  drx
+10.3.3.30  mgen
+#192.168.4.230 mgen
+10.3.3.40  nas gateway
+10.3.3.50  siggen
+#192.168.4.99  siggen
+10.3.3.60  ntp spectracom
+#192.168.4.60  ntp spectracom
+10.3.3.80  ant antcon
+
+ 

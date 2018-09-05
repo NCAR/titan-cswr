@@ -197,7 +197,7 @@ def compileDriveList():
         tokens = line.split()
         if (tokens[0].find('/dev') >= 0):
             partition = tokens[5]
-            if (partition.find('DOW') >= 0):
+            if ((partition.find('DOW') >= 0) or (partition.find('COW') >= 0)):
                 driveList.append(partition)
                 deviceName = tokens[0]
                 deviceTable[partition] = deviceName

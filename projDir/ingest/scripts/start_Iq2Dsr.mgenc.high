@@ -1,0 +1,10 @@
+#! /bin/csh
+
+cd $PROJ_DIR/ingest/params
+
+running "Iq2Dsr -params Iq2Dsr.mgenc.high"
+if ($status == 1) then
+  Iq2Dsr -params Iq2Dsr.mgenc.high |& \
+    LogFilter -d $ERRORS_LOG_DIR -p Iq2Dsr -i mgenc.high &
+endif
+

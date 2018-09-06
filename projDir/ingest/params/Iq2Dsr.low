@@ -1123,7 +1123,7 @@ compute_velocity_corrected_for_platform_motion = FALSE;
 //     WIDTH_METHOD_HYBRID
 //
 
-spectrum_width_method = WIDTH_METHOD_R0R1;
+spectrum_width_method = WIDTH_METHOD_HYBRID;
 
 //======================================================================
 //

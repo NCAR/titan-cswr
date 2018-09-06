@@ -813,7 +813,7 @@ moments_params = {
     window = WINDOW_RECT,
     switching_receiver = FALSE,
     xmit_rcv_mode = $(XMIT_RCV_MODE_HIGH),
-    apply_clutter_filter = FALSE,
+    apply_clutter_filter = TRUE,
     apply_sz = FALSE,
     change_velocity_sign = FALSE,
     proc_flags = PROC_FLAGS_NONE,
@@ -839,7 +839,7 @@ moments_params = {
     window = WINDOW_RECT,
     switching_receiver = FALSE,
     xmit_rcv_mode = $(XMIT_RCV_MODE_HIGH),
-    apply_clutter_filter = FALSE,
+    apply_clutter_filter = TRUE,
     apply_sz = FALSE,
     change_velocity_sign = FALSE,
     proc_flags = PROC_FLAGS_NONE,
@@ -865,7 +865,7 @@ moments_params = {
     window = WINDOW_RECT,
     switching_receiver = FALSE,
     xmit_rcv_mode = $(XMIT_RCV_MODE_HIGH),
-    apply_clutter_filter = FALSE,
+    apply_clutter_filter = TRUE,
     apply_sz = FALSE,
     change_velocity_sign = FALSE,
     proc_flags = PROC_FLAGS_NONE,
@@ -1123,7 +1123,7 @@ compute_velocity_corrected_for_platform_motion = FALSE;
 //     WIDTH_METHOD_HYBRID
 //
 
-spectrum_width_method = WIDTH_METHOD_R0R1;
+spectrum_width_method = WIDTH_METHOD_HYBRID;
 
 //======================================================================
 //
@@ -1224,15 +1224,6 @@ pulse_width_cals = {
   }
   ,
   {
-    pulse_width_us = 0.4,
-    cal_dir = "$(DATA_DIR)/$(RADAR_NAME)/cal/high/calib_0.4us",
-    check_xmit_rcv_mode = FALSE,
-    xmit_rcv_mode = SINGLE_POL,
-    zdr_correction_db = $(HIGH_ZDR_CORRECTION_DB),
-    system_phidp_deg = $(HIGH_SYSTEM_PHIDP_DEG)
-  }
-  ,
-  {
     pulse_width_us = 0.5,
     cal_dir = "$(DATA_DIR)/$(RADAR_NAME)/cal/high/calib_0.5us",
     check_xmit_rcv_mode = FALSE,
@@ -1242,8 +1233,8 @@ pulse_width_cals = {
   }
   ,
   {
-    pulse_width_us = 0.6,
-    cal_dir = "$(DATA_DIR)/$(RADAR_NAME)/cal/high/calib_0.6us",
+    pulse_width_us = 0.667,
+    cal_dir = "$(DATA_DIR)/$(RADAR_NAME)/cal/high/calib_0.667us",
     check_xmit_rcv_mode = FALSE,
     xmit_rcv_mode = SINGLE_POL,
     zdr_correction_db = $(HIGH_ZDR_CORRECTION_DB),
@@ -1262,6 +1253,24 @@ pulse_width_cals = {
   {
     pulse_width_us = 1,
     cal_dir = "$(DATA_DIR)/$(RADAR_NAME)/cal/high/calib_1.0us",
+    check_xmit_rcv_mode = FALSE,
+    xmit_rcv_mode = SINGLE_POL,
+    zdr_correction_db = $(HIGH_ZDR_CORRECTION_DB),
+    system_phidp_deg = $(HIGH_SYSTEM_PHIDP_DEG)
+  }
+  ,
+  {
+    pulse_width_us = 1.167,
+    cal_dir = "$(DATA_DIR)/$(RADAR_NAME)/cal/high/calib_1.167us",
+    check_xmit_rcv_mode = FALSE,
+    xmit_rcv_mode = SINGLE_POL,
+    zdr_correction_db = $(HIGH_ZDR_CORRECTION_DB),
+    system_phidp_deg = $(HIGH_SYSTEM_PHIDP_DEG)
+  }
+  ,
+  {
+    pulse_width_us = 1.333,
+    cal_dir = "$(DATA_DIR)/$(RADAR_NAME)/cal/high/calib_1.333us",
     check_xmit_rcv_mode = FALSE,
     xmit_rcv_mode = SINGLE_POL,
     zdr_correction_db = $(HIGH_ZDR_CORRECTION_DB),
@@ -1417,7 +1426,7 @@ system_phidp_deg = $(HIGH_SYSTEM_PHIDP_DEG);
 // Type: boolean
 //
 
-change_phidp_sign = TRUE;
+change_phidp_sign = FALSE;
 
 //======================================================================
 //
@@ -3617,7 +3626,7 @@ output_fields = {
     scale = 0.0001,
     bias = -0.01,
     write_unfiltered = TRUE,
-    write_filtered = FALSE
+    write_filtered = TRUE
   }
   ,
   {
@@ -3627,7 +3636,7 @@ output_fields = {
     scale = 0.01,
     bias = -320,
     write_unfiltered = TRUE,
-    write_filtered = FALSE
+    write_filtered = TRUE
   }
   ,
   {
@@ -3637,7 +3646,7 @@ output_fields = {
     scale = 0.01,
     bias = -320,
     write_unfiltered = TRUE,
-    write_filtered = FALSE
+    write_filtered = TRUE
   }
   ,
   {
@@ -3647,7 +3656,7 @@ output_fields = {
     scale = 0.01,
     bias = -320,
     write_unfiltered = TRUE,
-    write_filtered = FALSE
+    write_filtered = TRUE
   }
   ,
   {
@@ -3657,7 +3666,7 @@ output_fields = {
     scale = 0.01,
     bias = -320,
     write_unfiltered = TRUE,
-    write_filtered = FALSE
+    write_filtered = TRUE
   }
   ,
   {
@@ -3667,7 +3676,7 @@ output_fields = {
     scale = 0.01,
     bias = -320,
     write_unfiltered = TRUE,
-    write_filtered = FALSE
+    write_filtered = TRUE
   }
   ,
   {
@@ -3677,7 +3686,7 @@ output_fields = {
     scale = 0.01,
     bias = -320,
     write_unfiltered = TRUE,
-    write_filtered = FALSE
+    write_filtered = TRUE
   }
   ,
   {
@@ -3687,7 +3696,7 @@ output_fields = {
     scale = 0.01,
     bias = -320,
     write_unfiltered = TRUE,
-    write_filtered = FALSE
+    write_filtered = TRUE
   }
   ,
   {
@@ -3697,7 +3706,7 @@ output_fields = {
     scale = 0.01,
     bias = -320,
     write_unfiltered = TRUE,
-    write_filtered = FALSE
+    write_filtered = TRUE
   }
   ,
   {
@@ -3707,7 +3716,7 @@ output_fields = {
     scale = 0.01,
     bias = -320,
     write_unfiltered = TRUE,
-    write_filtered = FALSE
+    write_filtered = TRUE
   }
   ,
   {
@@ -3717,7 +3726,7 @@ output_fields = {
     scale = 0.001,
     bias = -0.01,
     write_unfiltered = TRUE,
-    write_filtered = FALSE
+    write_filtered = TRUE
   }
   ,
   {
@@ -3727,7 +3736,7 @@ output_fields = {
     scale = 0.001,
     bias = -32,
     write_unfiltered = TRUE,
-    write_filtered = FALSE
+    write_filtered = TRUE
   }
   ,
   {
@@ -3737,7 +3746,7 @@ output_fields = {
     scale = 0.001,
     bias = -32,
     write_unfiltered = TRUE,
-    write_filtered = FALSE
+    write_filtered = TRUE
   }
   ,
   {
@@ -3747,7 +3756,7 @@ output_fields = {
     scale = 0.0001,
     bias = -1,
     write_unfiltered = TRUE,
-    write_filtered = FALSE
+    write_filtered = TRUE
   }
   ,
   {
@@ -3757,7 +3766,7 @@ output_fields = {
     scale = 0.06,
     bias = -200,
     write_unfiltered = TRUE,
-    write_filtered = FALSE
+    write_filtered = TRUE
   }
   ,
   {
@@ -3767,7 +3776,7 @@ output_fields = {
     scale = 0.001,
     bias = -32,
     write_unfiltered = TRUE,
-    write_filtered = FALSE
+    write_filtered = TRUE
   }
   ,
   {
@@ -3777,7 +3786,7 @@ output_fields = {
     scale = 1,
     bias = -100,
     write_unfiltered = TRUE,
-    write_filtered = FALSE
+    write_filtered = TRUE
   }
   ,
   {
@@ -3787,7 +3796,7 @@ output_fields = {
     scale = 0.001,
     bias = -0.01,
     write_unfiltered = TRUE,
-    write_filtered = FALSE
+    write_filtered = TRUE
   }
   ,
   {
@@ -3797,7 +3806,7 @@ output_fields = {
     scale = 0.0001,
     bias = -1,
     write_unfiltered = TRUE,
-    write_filtered = FALSE
+    write_filtered = TRUE
   }
   ,
   {
@@ -3807,7 +3816,7 @@ output_fields = {
     scale = 0.01,
     bias = -320,
     write_unfiltered = TRUE,
-    write_filtered = FALSE
+    write_filtered = TRUE
   }
   ,
   {
@@ -3817,7 +3826,7 @@ output_fields = {
     scale = 0.1,
     bias = -0.1,
     write_unfiltered = TRUE,
-    write_filtered = FALSE
+    write_filtered = TRUE
   }
   ,
   {
@@ -3827,7 +3836,7 @@ output_fields = {
     scale = 0.01,
     bias = -0.1,
     write_unfiltered = TRUE,
-    write_filtered = FALSE
+    write_filtered = TRUE
   }
   ,
   {
@@ -3837,7 +3846,7 @@ output_fields = {
     scale = 0.0001,
     bias = -1,
     write_unfiltered = TRUE,
-    write_filtered = FALSE
+    write_filtered = TRUE
   }
   ,
   {
@@ -3847,7 +3856,7 @@ output_fields = {
     scale = 0.001,
     bias = -32,
     write_unfiltered = TRUE,
-    write_filtered = FALSE
+    write_filtered = TRUE
   }
   ,
   {
@@ -3857,7 +3866,7 @@ output_fields = {
     scale = 0.02,
     bias = -640,
     write_unfiltered = TRUE,
-    write_filtered = FALSE
+    write_filtered = TRUE
   }
 };
 

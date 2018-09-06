@@ -500,7 +500,7 @@ fields = {
     raw_name = "$(DBMH_LOW)",
     filtered_name = "$(DBMH_LOW)_F",
     units = "dBm",
-    color_map = "dbm.colors",
+    color_map = "dbm.colors.kak2",
     shortcut = "y"
   }
   ,
@@ -509,7 +509,7 @@ fields = {
     raw_name = "$(DBMV_LOW)",
     filtered_name = "$(DBMV_LOW)_F",
     units = "dBm",
-    color_map = "dbm.colors",
+    color_map = "dbm.colors.kak2",
     shortcut = "u"
   }
   ,

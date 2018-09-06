@@ -293,7 +293,7 @@ pentek_sampling_frequency_hz = 1.2e+08;
 // Type: double
 //
 
-prt_sec = 8.33333333333333e-4;
+prt_sec = 0.001;
 
 ///////////// prt_is_staggered ////////////////////////
 //
@@ -306,7 +306,7 @@ prt_sec = 8.33333333333333e-4;
 // Type: boolean
 //
 
-prt_is_staggered = TRUE;
+prt_is_staggered = FALSE;
 
 ///////////// staggered_prt_ratio /////////////////////
 //
@@ -373,7 +373,7 @@ max_duty_cycle = $(MAX_DUTY_CYCLE);
 // Type: double
 //
 
-tx_nominal_pulse_width = 0.666666667e-06;
+tx_nominal_pulse_width = 0.667e-06;
 
 ///////////// tx_mod_width_stretch_high ///////////////
 //
@@ -468,7 +468,7 @@ n_gates = $(MAX_N_GATES);
 // Type: double
 //
 
-rx_gate_width = 0.6666666666667e-06;
+rx_gate_width = 0.667e-06;
 
 //======================================================================
 //
@@ -550,7 +550,8 @@ burst_sample_width_stretch_high = $(BURST_SAMPLE_WIDTH_STRETCH_HIGH_667);
 // Type: double
 //
 
-tx_to_burst_sample_delay_low = $(TX_TO_BURST_SAMPLE_DELAY_LOW_667);
+// tx_to_burst_sample_delay_low = $(TX_TO_BURST_SAMPLE_DELAY_LOW_667);
+tx_to_burst_sample_delay_low = 6.0e-7;
 
 ///////////// burst_sample_width_stretch_low //////////
 //
@@ -565,7 +566,8 @@ tx_to_burst_sample_delay_low = $(TX_TO_BURST_SAMPLE_DELAY_LOW_667);
 // Type: double
 //
 
-burst_sample_width_stretch_low = $(BURST_SAMPLE_WIDTH_STRETCH_LOW_667);
+// /burst_sample_width_stretch_low = $(BURST_SAMPLE_WIDTH_STRETCH_LOW_667);
+burst_sample_width_stretch_low = 2.5e-6;
 
 ///////////// burst_n_pulses_for_props ////////////////
 //
@@ -581,6 +583,20 @@ burst_sample_width_stretch_low = $(BURST_SAMPLE_WIDTH_STRETCH_LOW_667);
 //
 
 burst_n_pulses_for_props = 500;
+
+///////////// burst_width_require_edge_detection //////
+//
+// Require detection of rising and falling edges for width computation.
+//
+// If false, the pulse width will be reported even if no edges are seen. 
+//   This is useful for testing when a CW signal is injected into the 
+//   burst channel, and the signal is not modulated to simulate a burst.
+//
+//
+// Type: boolean
+//
+
+burst_width_require_edge_detection = FALSE;
 
 //======================================================================
 //
@@ -700,7 +716,7 @@ afc_frequency_step_hz = 10000;
 // Type: double
 //
 
-afc_burst_power_threshold_dbm = -20;
+afc_burst_power_threshold_dbm = -35;
 
 ///////////// afc_wait_msecs //////////////////////////
 //

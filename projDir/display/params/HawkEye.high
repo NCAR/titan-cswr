@@ -356,7 +356,7 @@ fields = {
     raw_name = "$(DBZH_HIGH)",
     filtered_name = "$(DBZH_HIGH)_F",
     units = "dBZ",
-    color_map = "dbz.colors",
+    color_map = "dbz_kak.colors",
     shortcut = "1"
   }
   ,
@@ -500,7 +500,7 @@ fields = {
     raw_name = "$(DBMH_HIGH)",
     filtered_name = "$(DBMH_HIGH)_F",
     units = "dBm",
-    color_map = "dbm.colors",
+    color_map = "dbm.colors.kak2",
     shortcut = "y"
   }
   ,
@@ -509,7 +509,7 @@ fields = {
     raw_name = "$(DBMV_HIGH)",
     filtered_name = "$(DBMV_HIGH)_F",
     units = "dBm",
-    color_map = "dbm.colors",
+    color_map = "dbm.colors.kak2",
     shortcut = "u"
   }
   ,

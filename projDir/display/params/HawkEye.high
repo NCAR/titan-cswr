@@ -354,9 +354,9 @@ fields = {
   {
     label = "$(DBZH_HIGH)",
     raw_name = "$(DBZH_HIGH)",
-    filtered_name = "$(DBZH_HIGH)_F",
+    filtered_name = "DBZHC_F",
     units = "dBZ",
-    color_map = "dbz.colors",
+    color_map = "kak_2_dbz.colors",
     shortcut = "1"
   }
   ,
@@ -365,7 +365,7 @@ fields = {
     raw_name = "$(DBZH_HIGH)",
     filtered_name = "$(DBZH_HIGH)_F",
     units = "dBZ",
-    color_map = "dbz_kak.colors",
+    color_map = "kak_2_dbz.colors",
     shortcut = "a"
   }
   ,
@@ -428,7 +428,7 @@ fields = {
     raw_name = "WIDTH",
     filtered_name = "WIDTH_F",
     units = "m/s",
-    color_map = "width.colors",
+    color_map = "kak_width.colors",
     shortcut = "8"
   }
   ,
@@ -536,7 +536,7 @@ fields = {
     raw_name = "NCP",
     filtered_name = "NCP_F",
     units = "",
-    color_map = "ncp.colors",
+    color_map = "kak_ncp2.colors",
     shortcut = "p"
   }
   ,

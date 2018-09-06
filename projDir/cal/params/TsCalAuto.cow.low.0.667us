@@ -708,7 +708,7 @@ snr_for_mds = -6;
 // Type: string
 //
 
-output_dir = "$(DATA_DIR)/$(RADAR_NAME)/cal/low/calib_0.5us";
+output_dir = "$(DATA_DIR)/$(RADAR_NAME)/cal/low/calib_0.667us";
 
 ///////////// output_file_label ///////////////////////
 //

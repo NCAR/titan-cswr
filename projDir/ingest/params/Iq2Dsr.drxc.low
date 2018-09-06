@@ -1236,6 +1236,24 @@ pulse_width_cals = {
     zdr_correction_db = $(LOW_ZDR_CORRECTION_DB),
     system_phidp_deg = $(LOW_SYSTEM_PHIDP_DEG)
   }
+  ,
+  {
+    pulse_width_us = 1.167,
+    cal_dir = "$(DATA_DIR)/$(RADAR_NAME)/cal/low/calib_1.167us",
+    check_xmit_rcv_mode = FALSE,
+    xmit_rcv_mode = $(XMIT_RCV_MODE_LOW),
+    zdr_correction_db = $(LOW_ZDR_CORRECTION_DB),
+    system_phidp_deg = $(LOW_SYSTEM_PHIDP_DEG)
+  }
+  ,
+  {
+    pulse_width_us = 1.333,
+    cal_dir = "$(DATA_DIR)/$(RADAR_NAME)/cal/low/calib_1.333us",
+    check_xmit_rcv_mode = FALSE,
+    xmit_rcv_mode = $(XMIT_RCV_MODE_LOW),
+    zdr_correction_db = $(LOW_ZDR_CORRECTION_DB),
+    system_phidp_deg = $(LOW_SYSTEM_PHIDP_DEG)
+  }
 };
 
 ///////////// cal_recheck_period //////////////////////

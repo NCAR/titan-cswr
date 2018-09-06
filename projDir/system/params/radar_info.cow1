@@ -44,10 +44,10 @@ setenv HIGH_XMIT_POWER_V_DBM      87.0
 setenv LOW_XMIT_POWER_H_DBM       87.0
 setenv LOW_XMIT_POWER_V_DBM       87.0
 
-setenv HIGH_ZDR_CORRECTION_DB        0
-setenv HIGH_SYSTEM_PHIDP_DEG         0
-setenv LOW_ZDR_CORRECTION_DB         0
-setenv LOW_SYSTEM_PHIDP_DEG          0
+setenv HIGH_ZDR_CORRECTION_DB      -0.4
+setenv HIGH_SYSTEM_PHIDP_DEG       0
+setenv LOW_ZDR_CORRECTION_DB       0
+setenv LOW_SYSTEM_PHIDP_DEG        0
 
 setenv ANTENNA_GAIN_H_DB          42.5
 setenv ANTENNA_GAIN_V_DB          42.5

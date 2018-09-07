@@ -209,4 +209,8 @@ setenv DOWDRX_FMQ_LOW  ${DATA_DIR}/fmq/ts/shmem_low_with_angles_10400
 setenv SIM_ANTENNA_ANGLES          "false"
 #setenv SIM_ANTENNA_ANGLES          "true"
 
+# How far does the antenna need to drop to trigger an end of vol?
+
+setenv DELTA_ELEV_FOR_END_OF_VOL 2
+
 #############################################

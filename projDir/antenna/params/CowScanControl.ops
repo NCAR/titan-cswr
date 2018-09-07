@@ -129,66 +129,6 @@ start_reading_at_fmq_start = FALSE;
 
 //======================================================================
 //
-// FMQ OUTPUT for scan flags.
-//
-// We write the scan flags to this FMQ.
-//
-//======================================================================
- 
-///////////// scan_flag_fmq_path //////////////////////
-//
-// Name of scan flag fmq.
-//
-// We write the scan flags to this FMQ in XML format.
-//
-//
-// Type: string
-//
-
-scan_flag_fmq_path = "$(DATA_DIR)/fmq/scan_flags";
-
-///////////// scan_flag_fmq_size //////////////////////
-//
-// Size of output FMQ, in bytes.
-//
-// This is the total size of the output FMQ buffer. Some of this buffer 
-//   will be used for control bytes (12 bytes per message).
-//
-//
-// Type: int
-//
-
-scan_flag_fmq_size = 2000000;
-
-///////////// scan_flag_fmq_nslots ////////////////////
-//
-// Number of slots in scan flag FMQ.
-//
-// The number of slots corresponds to the maximum number of messages 
-//   which may be written to the buffer before overwrites occur. However, 
-//   overwrites may occur sooner if the size is not set large enough.
-//
-//
-// Type: int
-//
-
-scan_flag_fmq_nslots = 1000;
-
-///////////// data_mapper_report_interval /////////////
-//
-// Number of seconds between reports to DataMapper.
-//
-// If > 0, the program will register with the DataMapper when the output 
-//   FMQ is written to. If <= 0, registration will not be performed.
-//
-//
-// Type: int
-//
-
-data_mapper_report_interval = 5;
-
-//======================================================================
-//
 // RUN ON A SCHEDULE.
 //
 // Option to run the scans on a time-based schedule.
@@ -219,7 +159,7 @@ run_scans_on_schedule = TRUE;
 // Type: int
 //
 
-scan_schedule_interval_secs = 60;
+scan_schedule_interval_secs = 300;
 
 ///////////// scan_schedule_max_wait_secs /////////////
 //
@@ -231,7 +171,7 @@ scan_schedule_interval_secs = 60;
 // Type: int
 //
 
-scan_schedule_max_wait_secs = 10;
+scan_schedule_max_wait_secs = 300;
 
 //======================================================================
 //
@@ -326,13 +266,13 @@ scan_sequence = {
     el_rate_deg_per_sec = 20,
     start_az_deg = 340,
     end_az_deg = 20,
-    delta_az_deg = 1,
-    start_el_deg = 1,
-    end_el_deg = 10,
-    delta_el_deg = 1,
-    n_sweeps = 1,
-    angle_list = "0.5,1.0,1.5,2.0",
-    transition_tolerance_deg = 0.35,
+    delta_az_deg = -999,
+    start_el_deg = -999,
+    end_el_deg = -999,
+    delta_el_deg = -999,
+    n_sweeps = 6,
+    angle_list = "1,2,3,4,5,6",
+    transition_tolerance_deg = -999,
     nsecs_wait = 0
   }
   ,
@@ -342,13 +282,13 @@ scan_sequence = {
     el_rate_deg_per_sec = 20,
     start_az_deg = 340,
     end_az_deg = 20,
-    delta_az_deg = 1,
-    start_el_deg = 1,
-    end_el_deg = 10,
-    delta_el_deg = 1,
-    n_sweeps = 1,
-    angle_list = "1.0,4.0,10.0,15.0",
-    transition_tolerance_deg = 0.35,
+    delta_az_deg = -999,
+    start_el_deg = -999,
+    end_el_deg = -999,
+    delta_el_deg = -999,
+    n_sweeps = 6,
+    angle_list = "1,2,3,4,5,6",
+    transition_tolerance_deg = -999,
     nsecs_wait = 0
   }
   ,
@@ -357,14 +297,14 @@ scan_sequence = {
     az_rate_deg_per_sec = 20,
     el_rate_deg_per_sec = 20,
     start_az_deg = 340,
-    end_az_deg = 20,
-    delta_az_deg = 1,
-    start_el_deg = 5,
-    end_el_deg = 10,
-    delta_el_deg = 1,
+    end_az_deg = -999,
+    delta_az_deg = -999,
+    start_el_deg = 3,
+    end_el_deg = -999,
+    delta_el_deg = -999,
     n_sweeps = 1,
-    angle_list = "90.0,90.0",
-    transition_tolerance_deg = 0.35,
+    angle_list = "",
+    transition_tolerance_deg = -999,
     nsecs_wait = 1
   }
   ,
@@ -374,13 +314,13 @@ scan_sequence = {
     el_rate_deg_per_sec = 20,
     start_az_deg = 340,
     end_az_deg = 20,
-    delta_az_deg = 1,
-    start_el_deg = 1,
-    end_el_deg = 10,
-    delta_el_deg = 1,
+    delta_az_deg = -999,
+    start_el_deg = -999,
+    end_el_deg = -999,
+    delta_el_deg = -999,
     n_sweeps = 1,
     angle_list = "90.0,90.0",
-    transition_tolerance_deg = 0.35,
+    transition_tolerance_deg = -999,
     nsecs_wait = 0
   }
 };

@@ -1295,7 +1295,7 @@ scan_starts_at_bottom = TRUE;
 // Type: double
 //
 
-delta_elevation_for_end_of_volume = 5;
+delta_elevation_for_end_of_volume = $(DELTA_ELEV_FOR_END_OF_VOL);
 
 //======================================================================
 //

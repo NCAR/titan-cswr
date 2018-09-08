@@ -88,8 +88,10 @@ Xvfb xorg-x11-fonts-misc xorg-x11-fonts-75dpi xorg-x11-fonts-100dpi \
 gnuplot ImageMagick-devel ImageMagick-c++-devel log4cpp-devel \
 qwt-devel glut-devel compat-libstdc++-296.i686 \
 compat-libstdc++-33.i686 boost-devel \
-perl-Env kernel-devel gnuplot scons
+perl-Env kernel-devel gnuplot scons \
+libX11-devel gtk+-devel gtkmm24-devel glib-devel glibmm24-devel
 
+#
 # Install 32-bit packages if you want CIDD
 # ----------------------------------------
 

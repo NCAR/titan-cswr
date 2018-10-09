@@ -1,0 +1,4 @@
+#! /bin/csh -f
+
+xterm -title Dsr2Radx-low -bg black -fg orange -font 8x13bold -g 80x30-0+450 -e "tail -f /tmp/Dsr2Radx.analysis.OlympexSol.low.log " &
+

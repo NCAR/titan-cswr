@@ -1,0 +1,44 @@
+#!/bin/tcsh
+
+setenv PROJ MARVELOUS 
+
+setenv IN_PATH /media/DOW7_007/data
+
+setenv OUT_PATH /media/DOW7_007/data
+
+setenv CALIB_FILE calib_0.5us
+setenv INDEXED_RES 0.2
+
+foreach iop(MARVELOUS)
+
+set iop_file = IOPdir_${RADAR_NAME}/${PROJ}/$iop
+
+# Read lat, lon, alt, heading as env variables
+
+echo sourcing $iop_file
+source $iop_file
+echo Rotation ${TRUCK_HEADING_DEG}
+echo IOP is ${IOP_NAME} and date is ${DATE_STR}
+
+set iqline = ${IN_PATH}/${iop}/${RADAR_NAME}/time_series
+echo Input path $iqline
+
+../scripts/start_Dsr2Radx.analysis.dow8 $iop_file
+
+echo starting "Iq2Dsr -params Iq2Dsr.analysis.dow8 -f  "
+set logfile = "/tmp/Iq2Dsr.analysis.dow8.log"
+
+echo output will be in $logfile
+echo Iq2Dsr is running ...........
+echo Do not close window ...........
+rm -f $logfile
+
+foreach fpath ($iqline/sunscan/dow8) #$iqline/save/dow8 $iqline/vert/dow8 
+  echo fpath $fpath
+
+  Iq2Dsr -params Iq2Dsr.analysis.dow8-R0 -f  $fpath/${DATE_STR}/2*ts >>& $logfile
+end
+
+sleep 60
+
+end

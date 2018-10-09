@@ -1,0 +1,14 @@
+#! /bin/csh
+
+#cd $PROJ_DIR/analysis/params
+
+#echo sourcing $1
+source $1
+
+snuff "Dsr2Radx -params Dsr2Radx.analysis.combined"
+snuff "Iq2Dsr -params Iq2Dsr.analysis.combined"
+snuff "watch_Dsr2Radx.analysis.combined"
+
+Dsr2Radx -params ../params/Dsr2Radx.analysis.combined -debug >& /tmp/Dsr2Radx.analysis.combined.log &
+
+watch_Dsr2Radx.analysis.combined

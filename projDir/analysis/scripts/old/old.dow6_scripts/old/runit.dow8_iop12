@@ -1,0 +1,36 @@
+#!/bin/tcsh
+
+foreach iop(IOP12-20150619)
+# IOP12-20150619 IOP08-20150610 IOP11-20150616)
+#IOP31-20150715 IOP08-20150610 IOP12-20150619 IOP11-20150616 IOP15-20150624 IOP20-20150705 IOP27-20150712)
+
+set day = `echo $iop | cut -f 2 -d '-'`
+set jiop = `echo $iop | cut -f 1 -d '-'`
+echo "day = $day"
+echo "jiop = $jiop"
+
+set iop_file = IOPdir_${RADAR_NAME}/$jiop
+
+# Read lat, lon, alt, heading as env variables
+
+echo source $iop_file
+source $iop_file
+
+##set iqline = /mnt/PECAN-A?/$day/${RADAR_NAME}/time_series/save
+set iqline = /mnt/PECAN-A2/$day/${RADAR_NAME}/time_series/save
+echo $iqline
+../scripts/start_Dsr2Radx.analysis.dow8 $iop_file
+
+echo starting "Iq2Dsr -params Iq2Dsr.analysis.dow8-R0 -f  $iqline/* $iqline/dow8/2015*/20*"
+set logfile = "/tmp/Iq2Dsr.analysis.dow8-R0.log"
+
+echo output will be in $logfile
+echo Iq2Dsr is running ...........
+echo Do not close window ...........
+
+Iq2Dsr -params Iq2Dsr.analysis.dow8-R0 -f  $iqline/* $iqline/* $iqline/dow8/2015*/* >& $logfile
+#Iq2Dsr -params Iq2Dsr.analysis.dow8-R0 -f  $iqline/dow8/2015*/20150716_04* >& $logfile
+
+sleep 60
+
+end

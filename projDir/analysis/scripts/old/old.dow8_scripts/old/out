@@ -1,0 +1,214 @@
+33c33
+< debug = DEBUG_NORM;
+---
+> debug = DEBUG_OFF;
+512,514c512
+< //pcr
+< //override_gate_geometry = FALSE;
+< override_gate_geometry = TRUE;
+---
+> override_gate_geometry = FALSE;
+526,528c524
+< //pcr
+< //gate_spacing_meters = 150;
+< gate_spacing_meters = 75;
+---
+> gate_spacing_meters = 150;
+540,542c536
+< //pcr
+< //start_range_meters = -550;
+< start_range_meters = -580;
+---
+> start_range_meters = 0;
+568a563,620
+> ///////////// apply_azimuth_offset ////////////////////
+> //
+> // Option to apply an offset to the azimuth values.
+> //
+> // If TRUE, this offset will be ADDED to the measured azimuth angles. 
+> //   This is useful, for example, in the case of a mobile platform which 
+> //   is not set up oriented to true north. Suppose you have a truck (like 
+> //   the DOWs) which is oriented off true north. Then if you add in the 
+> //   truck HEADING relative to true north, the measured azimuth angles 
+> //   will be adjusted by the heading, to give azimuth relative to TRUE 
+> //   north.
+> //
+> //
+> // Type: boolean
+> //
+> 
+> apply_azimuth_offset = FALSE;
+> 
+> ///////////// azimuth_offset //////////////////////////
+> //
+> // Azimuth offset (degrees).
+> //
+> // See 'apply_azimuth_offset'. This value will be ADDED to the measured 
+> //   azimuths.
+> //
+> //
+> // Type: double
+> //
+> 
+> azimuth_offset = 0;
+> 
+> ///////////// apply_elevation_offset //////////////////
+> //
+> // Option to apply an offset to the elevation values.
+> //
+> // If TRUE, this offset will be ADDED to the measured elevation angles. 
+> //   This is useful to correct for a systematic bias in measured elevation 
+> //   angles.
+> //
+> //
+> // Type: boolean
+> //
+> 
+> apply_elevation_offset = FALSE;
+> 
+> ///////////// elevation_offset ////////////////////////
+> //
+> // Elevation offset (degrees).
+> //
+> // See 'apply_elevation_offset'. This value will be ADDED to the 
+> //   measured elevations.
+> //
+> //
+> // Type: double
+> //
+> 
+> elevation_offset = 0;
+> 
+777a830,844
+> ///////////// control_xmit_rcv_mode_from_time_series //
+> //
+> // Option to control the xmit/rcv mode by using the xmit_rcv_mode value 
+> //   in the time series.
+> //
+> // If true, the moments will be computed according to the xmit_rcv_mode 
+> //   value in the time series. If false, the xmit_rcv_mode in the 
+> //   moments_params will be used.
+> //
+> //
+> // Type: boolean
+> //
+> 
+> control_xmit_rcv_mode_from_time_series = FALSE;
+> 
+797c864
+< ///////////// control_xmit_rcv_mode_from_time_series //
+---
+> ///////////// discard_non_indexed_beams ///////////////
+799,800c866
+< // Option to control the xmit/rcv mode by using the xmit_rcv_mode value 
+< //   in the time series.
+---
+> // Option to discard beams that cannot indexed.
+802,804c868,872
+< // If true, the moments will be computed according to the xmit_rcv_mode 
+< //   value in the time series. If false, the xmit_rcv_mode in the 
+< //   moments_params will be used.
+---
+> // Sometimes, when the antenna moves too slowly, it is not possible to 
+> //   index the beams. In this case we normally revert to non-indexed 
+> //   beams, so that we can at least get some beams from the system. If 
+> //   this parameter is true, we will discard non-indexed beams and only 
+> //   include indexed beams in the output data.
+810c878
+< control_xmit_rcv_mode_from_time_series = FALSE;
+---
+> discard_non_indexed_beams = FALSE;
+879d946
+< //discard_beams_with_missing_pulses = FALSE;
+948a1016,1033
+> ///////////// spectrum_width_method ///////////////////
+> //
+> // Method for computing spectrum width.
+> //
+> // R0R1 is the default. For staggered we use R0Rm in this case. 
+> //   Otherwise we use R1R2 if applicable. For staggered, we use the hybrid 
+> //   if R0R1 is not selected.
+> //
+> //
+> // Type: enum
+> // Options:
+> //     WIDTH_METHOD_R0R1
+> //     WIDTH_METHOD_R1R2
+> //     WIDTH_METHOD_HYBRID
+> //
+> 
+> spectrum_width_method = WIDTH_METHOD_R0R1;
+> 
+967,968d1051
+< //pcr
+< //startup_cal_file = "$(DATA_DIR)/$(RADAR_NAME)/cal/high/calib_1.0us/TsCalAuto.default.xml";
+1111a1195,1219
+> ///////////// override_cal_dbz_correction /////////////
+> //
+> // Option to override the DBZ correction in the calibration data.
+> //
+> // If true, we will override the DBZ correction in the calibration 
+> //   files. See 'dbz_correction'.
+> //
+> //
+> // Type: boolean
+> //
+> 
+> override_cal_dbz_correction = FALSE;
+> 
+> ///////////// dbz_correction //////////////////////////
+> //
+> // DBZ correction to be applied to all calibrations (dB).
+> //
+> // See 'override_cal_dbz_correction'.
+> //
+> //
+> // Type: double
+> //
+> 
+> dbz_correction = 0;
+> 
+1818,1819d1925
+< //pcr by dir M Dixon Feb 11, 2016
+< //use_estimated_noise_for_noise_subtraction = TRUE;
+3000c3106
+< output_fmq_url = "$(DATA_DIR)/fmq/moments/analysis_dow8";
+---
+> output_fmq_url = "/tmp/fmq/moments/analysis_dow8";
+3203a3310,3312
+> //          NCP_PRT_LONG
+> //          NCP_PRT_SHORT
+> //          NCP_TRIP_FLAG
+3284a3394,3397
+> //          LAG0_HC_SHORT_DB
+> //          LAG0_VC_SHORT_DB
+> //          LAG0_HC_LONG_DB
+> //          LAG0_VC_LONG_DB
+3300a3414,3429
+> //          LAG1_HC_LONG_DB
+> //          LAG1_HC_LONG_PHASE
+> //          LAG1_VC_LONG_DB
+> //          LAG1_VC_LONG_PHASE
+> //          LAG1_HC_SHORT_DB
+> //          LAG1_HC_SHORT_PHASE
+> //          LAG1_VC_SHORT_DB
+> //          LAG1_VC_SHORT_PHASE
+> //          LAG1_HC_LONG_TO_SHORT_DB
+> //          LAG1_HC_LONG_TO_SHORT_PHASE
+> //          LAG1_VC_LONG_TO_SHORT_DB
+> //          LAG1_VC_LONG_TO_SHORT_PHASE
+> //          LAG1_HC_SHORT_TO_LONG_DB
+> //          LAG1_HC_SHORT_TO_LONG_PHASE
+> //          LAG1_VC_SHORT_TO_LONG_DB
+> //          LAG1_VC_SHORT_TO_LONG_PHASE
+3310a3440,3443
+> //          RVVHH0_LONG_DB
+> //          RVVHH0_LONG_PHASE
+> //          RVVHH0_SHORT_DB
+> //          RVVHH0_SHORT_PHASE
+3528,3530c3661
+< //pcr
+< //set_end_of_sweep_when_antenna_changes_direction = FALSE;
+< set_end_of_sweep_when_antenna_changes_direction = TRUE;
+---
+> set_end_of_sweep_when_antenna_changes_direction = FALSE;

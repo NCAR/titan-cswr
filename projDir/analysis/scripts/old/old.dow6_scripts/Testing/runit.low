@@ -1,0 +1,48 @@
+#!/bin/tcsh
+
+setenv PROJ Testing
+
+setenv IN_PATH /mnt/DOW-Testing-A2/
+
+setenv OUT_PATH /mnt/DOW-Testing-A2/
+
+setenv CALIB_DATE 20170811
+setenv CALIB_FILE calib_0.5us
+setenv INDEXED_RES 1
+setenv TRANS_DATE 20171002
+
+foreach iop(20170927)
+
+set iop_file = IOPdir_${RADAR_NAME}/${PROJ}/${iop}
+setenv IOP_NAME ${iop}
+
+# Read lat, lon, alt, heading as env variables
+
+echo sourcing $iop_file
+source $iop_file
+echo "IOP: "${iop}
+echo "Rotation Angle: "${TRUCK_HEADING_DEG}
+echo "Latitude: "${RADAR_LAT}
+echo "Longitude: "${RADAR_LON}
+echo "Altitude: "${RADAR_ALT_M}
+
+set iqline = ${IN_PATH}${iop}/${RADAR_NAME}/time_series
+echo Input path $iqline
+
+start_Dsr2Radx.analysis.low $iop_file
+
+echo starting "Iq2Dsr -params Iq2Dsr.analysis.low -f  "
+set logfile = "/tmp/Iq2Dsr.analysis.low.log"
+
+echo output will be in $logfile
+echo Iq2Dsr is running ...........
+echo Do not close window ...........
+rm -f $logfile
+
+foreach fpath ($iqline/sunscan/low $iqline/save/low $iqline/vert/low)
+  echo fpath $fpath
+
+  Iq2Dsr -params ../params/Iq2Dsr.analysis.low -f  $fpath/*/2*ts >>& $logfile
+end
+
+end

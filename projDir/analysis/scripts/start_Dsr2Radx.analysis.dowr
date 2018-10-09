@@ -1,0 +1,10 @@
+#! /bin/csh
+
+source $2
+cd $PROJ_DIR/analysis/params
+setenv FREQ_NUM $1
+
+Dsr2Radx -params Dsr2Radx.analysis.dowr -debug >& /tmp/Dsr2Radx.analysis.dowr_$1.log &
+
+../scripts/watch_Dsr2Radx.analysis.dowr_$1
+

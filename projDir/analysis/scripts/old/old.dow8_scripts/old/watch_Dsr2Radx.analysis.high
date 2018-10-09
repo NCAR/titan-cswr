@@ -1,0 +1,4 @@
+#! /bin/csh -f
+
+xterm -title Dsr2Radx-high -bg black -fg cyan -font 8x13bold -g 80x30-0+0 -e "tail -f /tmp/Dsr2Radx.analysis.high.log " &
+

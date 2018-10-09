@@ -1,0 +1,4 @@
+#! /bin/csh -f
+
+xterm -title Dsr2Radx-dow8 -bg black -fg yellow -font 8x13bold -g 80x30-0+0 -e "tail -f /tmp/Dsr2Radx.analysis.dow8.log " &
+

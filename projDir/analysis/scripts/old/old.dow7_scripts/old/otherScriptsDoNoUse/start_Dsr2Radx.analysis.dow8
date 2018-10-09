@@ -1,0 +1,11 @@
+#! /bin/csh
+
+cd $PROJ_DIR/analysis/params
+snuff Dsr2Radx
+
+running "Dsr2Radx -params Dsr2Radx.analysis.dow8"
+if ($status == 1) then
+  Dsr2Radx -params Dsr2Radx.analysis.dow8 -debug >& /tmp/Dsr2Radx.analysis.dow8.log &
+endif
+
+watch_Dsr2Radx.analysis.dow8

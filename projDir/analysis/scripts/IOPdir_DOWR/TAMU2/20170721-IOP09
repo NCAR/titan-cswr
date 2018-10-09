@@ -1,0 +1,5 @@
+setenv TRUCK_HEADING_DEG          0
+setenv RADAR_LAT                  29.281402
+setenv RADAR_LON                  -94.866074
+setenv RADAR_ALT_KM               0.002
+setenv RADAR_ALT_M                2

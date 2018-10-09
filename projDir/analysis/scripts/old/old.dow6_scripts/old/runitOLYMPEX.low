@@ -1,0 +1,54 @@
+#!/bin/tcsh
+
+setenv PROJ OLYMPEX
+
+setenv IN_PATH /mnt/OLYMPEX-A1/FieldArchive
+
+setenv CALIB_FILE calib_0.5us
+setenv INDEXED_RES 1
+
+#IOP20151106-14Z IOP20151107-04Z IOP20151108-04Z IOP20151111-00z IOP20151112-15Z IOP20151114-15Z IOP20151116-15Z IOP20151118-21Z IOP20151123-12Z IOP20151130-18Z IOP20151201-15Z IOP20151202-21Z IOP20151205-12Z IOP20151208-06Z IOP20151210-10Z IOP20151212-12Z IOP20151217-03Z IOP20160104-14Z IOP20160105-14Z IOP20160106-08Z IOP20160111-14Z IOP20160112-14Z IOP20160115-12Z
+
+foreach iop(IOP20151112-15Z)
+
+setenv OUT_PATH /home/titan5/Desktop/OLYMPEX-calissue/trans_swps/low/
+
+set iop_file = IOPdir_DOW6/${PROJ}/$iop.txt
+
+# Read lat, lon, alt, heading as env variables
+
+echo sourcing $iop_file
+source $iop_file
+echo Rotation ${TRUCK_HEADING_DEG}
+echo IOP is $iop
+
+set iqline = ${IN_PATH}/DOW6_$iop/time_series
+echo Input path $iqline
+
+../scripts/start_Dsr2Radx.analysis.low $iop_file
+
+echo starting "Iq2Dsr -params Iq2Dsr.analysis.low -f  "
+set logfile = "/tmp/Iq2Dsr.analysis.low.log"
+
+echo output will be in $logfile
+echo Iq2Dsr is running ...........
+echo Do not close window ...........
+rm -f $logfile
+
+foreach fpath ($iqline/save/low/2* $iqline/vert/low/2*)
+  echo fpath $fpath
+  
+  Iq2Dsr -params Iq2Dsr.analysis.low -f  $fpath/20151113_221*ts >>& $logfile
+end
+
+sleep 60
+
+end
+
+
+
+
+
+
+
+

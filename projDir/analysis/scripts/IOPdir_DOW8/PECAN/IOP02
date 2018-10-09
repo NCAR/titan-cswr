@@ -1,0 +1,7 @@
+setenv TRUCK_HEADING_DEG          177.85
+setenv RADAR_LAT                  38.451216
+setenv RADAR_LON                  -99.742834
+setenv RADAR_ALT_KM               0.667
+setenv RADAR_ALT_M                667
+setenv IOP_NAME                   IOP02
+setenv DATE_STR                   20150602

@@ -1,0 +1,52 @@
+#!/bin/tcsh
+
+foreach iop(IOP06-20150607 IOP07-20150609 IOP09-20150611 IOP22-20150708 IOP25-20150710 IOP14-20150623 IOP18-20150703)
+#foreach iop(IOP12-20150619 IOP16-20150625 IOP31-20150715 IOP08-20150610 IOP11-20150616 IOP15-20150624 IOP20-20150705 IOP27-20150712)
+
+set day = `echo $iop | cut -f 2 -d '-'`
+set jiop = `echo $iop | cut -f 1 -d '-'`
+echo "day = $day"
+echo "jiop = $jiop"
+
+set iop_file = IOPdir_${RADAR_NAME}/$jiop
+
+# Read lat, lon, alt, heading as env variables
+
+echo source $iop_file
+source $iop_file
+
+#set line = ' output_dir = "/mnt/PECAN-EditD1/'
+#set line2 = "$line"$iop
+#set line3 = "$line2"'/DOW6/trans_swps/low",'
+#sed -i '1337d' Dsr2Radx.analysis.low
+#sed -i "1337i$line3" Dsr2Radx.analysis.low
+#vi Dsr2Radx.analysis.low
+#exit
+
+#set disk = A1
+set iqline = /mnt/PECAN-A?/$day/${RADAR_NAME}/time_series/save
+#if(! -d $iqline)then
+#  set disk = A2
+#  set iqline = /mnt/PECAN-$disk/$day/${RADAR_NAME}/time_series/save
+#  if(! -d $iqline)then
+#    set disk = A3
+#    set iqline = /mnt/PECAN-$disk/$day/${RADAR_NAME}/time_series/save
+#  endif
+#endif
+
+../scripts/start_Dsr2Radx.analysis.low $iop_file
+
+#echo $iqline/low
+
+echo starting "Iq2Dsr -params Iq2Dsr.analysis.low -f  $iqline/low/* $iqline/low/2015*/*"
+set logfile = "/tmp/Iq2Dsr.analysis.low.log"
+
+echo output will be in $logfile
+echo Iq2Dsr is running ...........
+echo Do not close window ...........
+
+Iq2Dsr -params Iq2Dsr.analysis.low -f  $iqline/low/* $iqline/low/2015*/* >& $logfile
+
+sleep 60
+
+end

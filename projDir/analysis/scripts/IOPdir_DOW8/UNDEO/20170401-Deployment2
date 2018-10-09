@@ -1,0 +1,7 @@
+setenv TRUCK_HEADING_DEG          90
+setenv RADAR_LAT                  31.422196
+setenv RADAR_LON                  -99.598826
+setenv RADAR_ALT_KM               0.469
+setenv RADAR_ALT_M                469
+setenv IOP_NAME                   UNDEO
+setenv DATE_STR                   20170401

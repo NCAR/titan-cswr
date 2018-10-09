@@ -1,0 +1,14 @@
+#! /bin/csh
+
+cd $PROJ_DIR/analysis/params
+
+echo sourcing $1
+source $1
+
+snuff "Dsr2Radx -params Dsr2Radx.analysis.OLYMPEX.high"
+snuff "Iq2Dsr -params Iq2Dsr.analysis.OLYMPEX.high"
+snuff "watch_Dsr2Radx.analysis.high"
+
+Dsr2Radx -params Dsr2Radx.analysis.OLYMPEX.high -debug >& /tmp/Dsr2Radx.analysis.OLYMPEX.high.log &
+
+watch_Dsr2Radx.analysis.high

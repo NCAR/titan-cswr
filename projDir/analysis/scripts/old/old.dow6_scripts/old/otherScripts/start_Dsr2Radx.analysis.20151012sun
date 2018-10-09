@@ -1,0 +1,17 @@
+#! /bin/csh
+
+cd $PROJ_DIR/analysis/params
+snuff Dsr2Radx
+
+running "Dsr2Radx -params Dsr2Radx.analysis.high.20151012sun"
+if ($status == 1) then
+  Dsr2Radx -params Dsr2Radx.analysis.high.20151012sun -debug >& /tmp/Dsr2Radx.analysis.high.log &
+endif
+
+running "Dsr2Radx -params Dsr2Radx.analysis.low.20151012sun"
+if ($status == 1) then
+  Dsr2Radx -params Dsr2Radx.analysis.low.20151012sun -debug >& /tmp/Dsr2Radx.analysis.low.log &
+endif
+
+watch_Dsr2Radx.analysis.high
+watch_Dsr2Radx.analysis.low

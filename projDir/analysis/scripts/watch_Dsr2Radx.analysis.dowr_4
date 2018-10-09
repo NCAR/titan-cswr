@@ -1,0 +1,4 @@
+#! /bin/csh -f
+
+xterm -title Dsr2Radx-dowr_4 -bg black -fg green -font 8x13bold -g 76x27-0+0 -e "tail -f /tmp/Dsr2Radx.analysis.dowr_4.log " &
+

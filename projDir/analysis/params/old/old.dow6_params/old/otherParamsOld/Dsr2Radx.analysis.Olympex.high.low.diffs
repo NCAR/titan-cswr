@@ -1,0 +1,123 @@
+47c47
+< instance = "analysis.high";
+---
+> instance = "analysis.low";
+79c79
+< input_fmq_url = "$(DATA_DIR)/fmq/moments/analysis_high";
+---
+> input_fmq_url = "$(DATA_DIR)/fmq/moments/analysis_low";
+437c437
+< specified_max_elev = 93;
+---
+> specified_max_elev = 90;
+733c733
+< min_rays_in_sweep = 20;
+---
+> min_rays_in_sweep = 100;
+830c830
+< end_of_vol_decision = CHANGE_IN_SWEEP_NUM ;
+---
+> end_of_vol_decision = CHANGE_IN_SWEEP_NUM;
+888c888
+< min_rays_in_vol = 20;
+---
+> min_rays_in_vol = 180;
+1052c1052
+< min_rays_per_ppi_vol = 30;
+---
+> min_rays_per_ppi_vol = 180;
+1143,1160c1143,1160
+<   // {
+<   // dsr_name = "VELH",
+<   // output_name = "VELH",
+<   //  long_name = "VELH",
+<   // standard_name = "VELH",
+<   // output_units = "m/s",
+<   // output_encoding = OUTPUT_SHORT
+<   // }
+<   // ,
+<   // {
+<   // dsr_name = "VELV",
+<   // output_name = "VELV",
+<   // long_name = "VELV",
+<   // standard_name = "VELV",
+<   // output_units = "m/s",
+<   // output_encoding = OUTPUT_SHORT
+<   // }
+<   // ,
+---
+>  // {
+>  //   dsr_name = "VELH",
+>  //   output_name = "VELH",
+>  //   long_name = "VELH",
+>  //  standard_name = "VELH",
+>  //   output_units = "m/s",
+>  //   output_encoding = OUTPUT_SHORT
+>  // }
+>  // ,
+>  // {
+>  //   dsr_name = "VELV",
+>  //   output_name = "VELV",
+>  //   long_name = "VELV",
+>  //   standard_name = "VELV",
+>  //   output_units = "m/s",
+>  //   output_encoding = OUTPUT_SHORT
+>  // }
+>  // ,
+1268,1285d1267
+<   // ,
+<   // {
+<   //  dsr_name = "NCP",
+<   //  output_name = "NCP",
+<   //  long_name = "NCP",
+<   //  standard_name = "NCP",
+<   //  output_units = "",
+<   //  output_encoding = OUTPUT_SHORT
+<   //}
+<   // ,
+<   // {
+<   // dsr_name = "NCPH",
+<   //  output_name = "NCPH",
+<   //  long_name = "NCPH",
+<   //  standard_name = "NCPH",
+<   //  output_units = "",
+<   //  output_encoding = OUTPUT_SHORT
+<   // }
+1288,1291c1270,1273
+<     dsr_name = "NCPV",
+<     output_name = "NCPV",
+<     long_name = "NCPV",
+<     standard_name = "NCPV",
+---
+>     dsr_name = "NCP",
+>     output_name = "NCP",
+>     long_name = "NCP",
+>     standard_name = "NCP",
+1294a1277,1294
+>  // ,
+>  // {
+>  //   dsr_name = "NCPH",
+>  //   output_name = "NCPH",
+>  //   long_name = "NCPH",
+>  //   standard_name = "NCPH",
+>  //   output_units = "",
+>  //   output_encoding = OUTPUT_SHORT
+>  // }
+>  // ,
+>  // {
+>  //   dsr_name = "NCPV",
+>  //   output_name = "NCPV",
+>  //   long_name = "NCPV",
+>  //   standard_name = "NCPV",
+>  //   output_units = "",
+>  //   output_encoding = OUTPUT_SHORT
+>  // }
+1333c1333
+<     output_dir = "/media/DOW7_004/data/OLYMPEX/DOW6/trans_swps/high",
+---
+>     output_dir = "/media/DOW7_004/data/OLYMPEX/DOW6/trans_swps/low",
+1535,1536c1535
+< //pcr write_master_ldata_info = FALSE;
+< write_master_ldata_info = TRUE;
+---
+> write_master_ldata_info = FALSE;

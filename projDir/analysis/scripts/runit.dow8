@@ -1,0 +1,54 @@
+#!/bin/tcsh
+
+setenv PROJ GRAINEX
+
+setenv IN_PATH /mnt/GRAINEX-A1/FieldArchive/
+
+setenv OUT_PATH /mnt/GRAINEX-A2/Edits/
+
+setenv CALIB_DATE 20180526
+setenv CALIB_FILE calib_0.5us
+setenv INDEXED_RES 0.5
+setenv TRANS_DATE 20181003
+
+foreach iop(20180602-IOP1.04)
+
+# 20180716-IOP2.01 20180717-IOP2.02 20180718-IOP2.03 20180719-IOP2.04 20180720-IOP2.05 20180721-IOP2.06 20180722-IOP2.07 20180723-IOP2.08 20180724-IOP2.09 20180725-IOP2.10 20180726-IOP2.11 20180727-IOP2.12 20180728-IOP2.13 20180729-IOP2.14
+
+# 20180530-IOP1.01 20180531-IOP1.02 20180601-IOP1.03 20180602-IOP1.04 20180603-IOP1.05 20180604-IOP1.06 20180605-IOP1.07 20180606-IOP1.08 20180607-IOP1.09 20180608-IOP1.10 20180609-IOP1.11 20180610-IOP1.12 20180611-IOP1.13 20180612-IOP1.14 20180613-IOP1.15)
+
+set iop_file = IOPdir_${RADAR_NAME}/${PROJ}/${PROJ}-1
+setenv IOP_NAME ${iop}
+
+# Read lat, lon, alt, heading as env variables
+
+echo sourcing $iop_file
+source $iop_file
+echo "IOP: "${iop}
+echo "Rotation Angle: "${TRUCK_HEADING_DEG}
+echo "Latitude: "${RADAR_LAT}
+echo "Longitude: "${RADAR_LON}
+echo "Altitude: "${RADAR_ALT_M}
+
+set iqline = ${IN_PATH}${iop}/${RADAR_NAME}/time_series
+echo Input path $iqline
+
+start_Dsr2Radx.analysis.dow8 $iop_file
+
+echo starting "Iq2Dsr -params Iq2Dsr.analysis.dow8 -f  "
+set logfile = "/tmp/Iq2Dsr.analysis.dow8.log"
+
+echo output will be in $logfile
+echo Iq2Dsr is running ...........
+echo Do not close window ...........
+rm -f $logfile
+
+foreach fpath ($iqline/sunscan/dow8 $iqline/save/dow8 $iqline/vert/dow8)
+  echo fpath $fpath
+
+  Iq2Dsr -params ../params/Iq2Dsr.analysis.dow8 -f  $fpath/*/2*s >>& $logfile
+end
+
+sleep 60
+
+end

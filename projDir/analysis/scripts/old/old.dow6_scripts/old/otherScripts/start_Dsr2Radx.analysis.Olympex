@@ -1,0 +1,17 @@
+#! /bin/csh
+
+cd $PROJ_DIR/analysis/params
+snuff Dsr2Radx
+
+#pcr running "Dsr2Radx -params Dsr2Radx.analysis.Olympex.high"
+#if ($status == 1) then
+#  Dsr2Radx -params Dsr2Radx.analysis.Olympex.high -debug >& /tmp/Dsr2Radx.analysis.Olympex.high.log &
+#endif
+
+running "Dsr2Radx -params Dsr2Radx.analysis.Olympex.low"
+if ($status == 1) then
+  Dsr2Radx -params Dsr2Radx.analysis.Olympex.low -debug >& /tmp/Dsr2Radx.analysis.Olympex.low.log &
+endif
+
+#pcr watch_Dsr2Radx.analysis.Olympex.high
+watch_Dsr2Radx.analysis.Olympex.low

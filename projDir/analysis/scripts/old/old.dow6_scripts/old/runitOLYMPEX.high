@@ -1,0 +1,44 @@
+#!/bin/tcsh
+
+setenv PROJ OLYMPEX
+
+setenv IN_PATH /mnt/titan5/OLYMPEX-A1/Archive
+
+setenv CALIB_FILE calib_0.5us
+setenv INDEXED_RES 0.25
+
+foreach iop(IOP20151106-14Z IOP20151107-04Z IOP20151108-04Z IOP20151111-00z IOP20151112-15Z IOP20151114-15Z IOP20151116-15Z IOP20151118-21Z IOP20151123-12Z IOP20151130-18Z IOP20151201-15Z IOP20151202-21Z IOP20151205-12Z IOP20151208-06Z IOP20151210-10Z IOP20151212-12Z IOP20151217-03Z IOP20160104-14Z IOP20160105-14Z IOP20160106-08Z IOP20160111-14Z IOP20160112-14Z IOP20160115-12Z)
+
+setenv OUT_PATH /mnt/titan5/OLYMPEX-A1/Edits/$iop/20160928/trans_swps/high/
+
+set iop_file = IOPdir_${RADAR_NAME}/${PROJ}/$iop.txt
+
+# Read lat, lon, alt, heading as env variables
+
+echo sourcing $iop_file
+source $iop_file
+echo Rotation ${TRUCK_HEADING_DEG}
+echo IOP is $iop
+
+set iqline = ${IN_PATH}/DOW6_$iop/time_series
+echo Input path $iqline
+
+../scripts/start_Dsr2Radx.analysis.high $iop_file
+
+echo starting "Iq2Dsr -params Iq2Dsr.analysis.high -f  "
+set logfile = "/tmp/Iq2Dsr.analysis.high.log"
+
+echo output will be in $logfile
+echo Iq2Dsr is running ...........
+echo Do not close window ...........
+rm -f $logfile
+
+foreach fpath ($iqline/save/high/2* $iqline/vert/high/2*)
+  echo fpath $fpath
+
+  Iq2Dsr -params Iq2Dsr.analysis.high -f  $fpath/2*ts >>& $logfile
+end
+
+sleep 60
+
+end

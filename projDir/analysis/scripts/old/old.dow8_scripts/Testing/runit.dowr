@@ -1,0 +1,37 @@
+#!/bin/tcsh
+
+#sudo ln -sf radar_info.dowr radar_info
+
+setenv PROJ Testing
+setenv IN_PATH /mnt/DOW-Testing-A2/
+setenv OUT_PATH /mnt/DOW-Testing-A2/
+setenv CALIB_DATE 20170630
+setenv CALIB_FILE calib_450ns
+setenv INDEXED_RES 0.2
+setenv TRANS_DATE 20170703
+
+foreach iop (20170630)
+
+set iop_file = ../params/IOPdir_${RADAR_NAME}/${PROJ}/$iop
+setenv IOP_NAME ${iop}
+
+source $iop_file
+echo "IOP: "${iop}
+echo "Rotation Angle: "${TRUCK_HEADING_DEG}
+echo "Latitude: "${RADAR_LAT}
+echo "Longitude: "${RADAR_LON}
+echo "Altitude: "${RADAR_ALT_M}
+
+set iqline = ${IN_PATH}${iop}/${RADAR_NAME}/time_series/save/dowr
+
+foreach freq (1 2 3 4 5 6)
+  start_Dsr2Radx.analysis.dowr $freq $iop_file
+end
+
+foreach freq (1 2 3 4 5 6)
+  set logfile = /tmp/Iq2Dsr.analysis.dowr_$freq.log
+  rm -f $logfile
+  start_Iq2Dsr.analysis.dowr $freq $logfile $iqline
+end
+
+end

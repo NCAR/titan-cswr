@@ -1,0 +1,17 @@
+#! /bin/csh
+
+#cd $PROJ_DIR/analysis/params
+
+#echo sourcing $1
+source $1
+
+snuff "Dsr2Radx -params ../params/Dsr2Radx.analysis.dow6low"
+snuff "Iq2Dsr -params ../params/Iq2Dsr.analysis.dow6low"
+snuff "watch_Dsr2Radx.analysis.low"
+snuff "xterm -title Dsr2Radx-low"
+
+sleep 3
+
+Dsr2Radx -params ../params/Dsr2Radx.analysis.dow6low -debug >& /tmp/Dsr2Radx.analysis.low.log &
+
+watch_Dsr2Radx.analysis.low

@@ -1,7 +1,0 @@
-#! /bin/csh
-
-cd $PROJ_DIR/analysis/params
-setenv FREQ_NUM $1
-
-Iq2Dsr -params Iq2Dsr.analysis.dowr -debug
-

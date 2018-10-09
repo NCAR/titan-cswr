@@ -1,0 +1,52 @@
+#!/bin/tcsh
+
+setenv PROJ SNOWIE
+
+setenv IN_PATH /mnt/SNOWIE-A1/FieldArchive/
+
+setenv OUT_PATH /mnt/SNOWIE-A1/Edits/
+
+setenv CALIB_DATE 20170316
+setenv CALIB_FILE calib_0.333us
+setenv INDEXED_RES 0.2
+setenv TRANS_DATE 20171215
+
+foreach iop (20170309-IOP23)
+
+# 20170119-IOP05 20170119-IOP06 20170131-IOP09 20170304-IOP19 20170107-IOP01 20170108-IOP02 20170111-IOP03 20170118-IOP04 20170121-IOP07 20170122-IOP08 20170131-IOP09 20170202-Recon 20170203-IOP10 20170204-IOP11 20170207-IOP12 20170208-Recon 20170216-IOP13 20170218-IOP14 20170219-IOP15 20170220-IOP16 20170221-IOP17 20170222-IOP18 20170305-IOP20 20170307-IOP21 20170309-IOP22 20170309-IOP23 20170316-IOP24
+
+setenv IOP_NAME ${iop}
+set iop_file = IOPdir_${RADAR_NAME}/${PROJ}/${PROJ}
+
+start_Dsr2Radx.analysis.high.rhi $iop_file
+
+# Read lat, lon, alt, heading as env variables
+
+echo sourcing $iop_file
+source $iop_file
+echo "IOP: "${iop}
+echo "Rotation: "${TRUCK_HEADING_DEG}
+echo "Latitude: "${RADAR_LAT}
+echo "Longitude: "${RADAR_LON}
+echo "Altitude: "${RADAR_ALT_M}
+
+set iqline = ${IN_PATH}${iop}/${RADAR_NAME}/time_series
+echo Input path $iqline
+
+echo starting "Iq2Dsr -params Iq2Dsr.analysis.high -f  "
+set logfile = "/tmp/Iq2Dsr.analysis.high.log"
+
+echo output will be in $logfile
+echo Iq2Dsr is running ...........
+echo Do not close window ...........
+rm -f $logfile
+
+foreach fpath ($iqline/save/high/rhi)
+  echo fpath $fpath
+
+  Iq2Dsr -params ../params/Iq2Dsr.analysis.high -f  $fpath/20170309_201*ts >>& $logfile
+end
+
+sleep 60
+
+end

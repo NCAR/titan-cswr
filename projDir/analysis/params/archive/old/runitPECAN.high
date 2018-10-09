@@ -1,0 +1,44 @@
+#!/bin/tcsh
+
+setenv PROJ PECAN 
+
+setenv IN_PATH /mnt/PECAN-A1/FieldArchive/
+
+setenv OUT_PATH ~/Desktop/Test2/
+
+setenv CALIB_FILE calib_0.5us
+setenv INDEXED_RES 0.5
+
+foreach iop(IOP14)
+
+set iop_file = IOPdir_${RADAR_NAME}/${PROJ}/$iop
+
+# Read lat, lon, alt, heading as env variables
+
+echo sourcing $iop_file
+source $iop_file
+echo Rotation ${TRUCK_HEADING_DEG}
+echo IOP is ${IOP_NAME} and date is ${DATE_STR}
+
+set iqline = ${IN_PATH}/${DATE_STR}/${RADAR_NAME}/time_series
+echo Input path $iqline
+
+../scripts/start_Dsr2Radx.analysis.high $iop_file
+
+echo starting "Iq2Dsr -params Iq2Dsr.analysis.high -f  "
+set logfile = "/tmp/Iq2Dsr.analysis.high.log"
+
+echo output will be in $logfile
+echo Iq2Dsr is running ...........
+echo Do not close window ...........
+rm -f $logfile
+
+foreach fpath ($iqline/save/high $iqline/vert/high)
+  echo fpath $fpath
+
+  Iq2Dsr -params Iq2Dsr.analysis.high -f  $fpath/20150624_023*ts >>& $logfile
+end
+
+sleep 60
+
+end

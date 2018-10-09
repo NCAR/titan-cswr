@@ -1,0 +1,48 @@
+#!/bin/tcsh
+
+setenv PROJ TWIRL
+
+setenv IN_PATH /mnt/CSWR-A1/${PROJ}/
+
+setenv OUT_PATH /mnt/CSWR-A1/${PROJ}/Edits/
+
+setenv CALIB_FILE calib_0.5us
+setenv INDEXED_RES 0.2
+
+foreach iop(20160509_Wynnewood_OK)
+
+set iop_file = IOPdir_${RADAR_NAME}/${PROJ}/20160509.txt
+setenv IOP_NAME ${iop}
+
+# Read lat, lon, alt, heading as env variables
+
+echo sourcing $iop_file
+source $iop_file
+echo "IOP: "${iop}
+echo "Rotation: "${TRUCK_HEADING_DEG}
+echo "Latitude: "${RADAR_LAT}
+echo "Longitude: "${RADAR_LON}
+echo "Altitude: "${RADAR_ALT_M}
+
+set iqline = ${IN_PATH}${iop}/${RADAR_NAME}/time_series
+echo Input path $iqline
+
+../scripts/start_Dsr2Radx.analysis.SNOWIE.low $iop_file
+
+echo starting "Iq2Dsr -params Iq2Dsr.analysis.SNOWIE.low -f  "
+set logfile = "/tmp/Iq2Dsr.analysis.low.log"
+
+echo output will be in $logfile
+echo Iq2Dsr is running ...........
+echo Do not close window ...........
+rm -f $logfile
+
+foreach fpath ($iqline/save/low $iqline/vert/low $iqline/sunscan/low)
+  echo fpath $fpath
+
+  Iq2Dsr -params Iq2Dsr.analysis.TWIRLtest.low -f  $fpath/20160509_220*ts >>& $logfile
+end
+
+sleep 60
+
+end

@@ -1,0 +1,58 @@
+#!/bin/tcsh
+
+##setenv PROJ OLYMPEX
+ setenv PROJ TWIRL
+
+
+##setenv IN_PATH /mnt/titan5/OLYMPEX-A2/UIUC/DOW6_
+##setenv IN_PATH /mnt/titan5/OLYMPEX-A1/DOW6_
+#setenv IN_PATH /mnt/TWIRL-A1/
+setenv IN_PATH /media/DOW7_003/data/
+##setenv IN_PATH /mnt/CSWR-A2/MASCRAD-2015/
+
+
+##setenv OUT_PATH /mnt/titan5/OLYMPEX-EditA1/UIUC/
+##setenv OUT_PATH /mnt/titan5/OLYMPEX-EditA1/${PROJ}/
+setenv OUT_PATH ${IN_PATH} 
+
+setenv CALIB_FILE calib_0.5us
+setenv INDEXED_RES 0.5
+
+
+foreach iop(20160530)
+
+echo iop is $iop
+
+setenv IOP_NAME  $iop
+set iop_file = IOPdir_${RADAR_NAME}/${PROJ}/${IOP_NAME}.txt
+
+# Read lat, lon, alt, heading as env variables
+
+echo sourcing $iop_file
+source $iop_file
+echo Rotation ${TRUCK_HEADING_DEG}
+
+#set iqline = /mnt/PECAN-A?/$day/${RADAR_NAME}/time_series/save
+#set iqline = /mnt/titan5/OLYMPEX-A1/$iop/time_series
+set iqline = ${IN_PATH}$iop/${RADAR_NAME}/time_series
+echo Input line $iqline
+
+../scripts/start_Dsr2Radx.analysis.low $iop_file
+
+echo starting "Iq2Dsr -params Iq2Dsr.analysis.low -f  $iqline/low/* $iqline/low/201*/*"
+set logfile = "/tmp/Iq2Dsr.analysis.low.log"
+
+echo output will be in $logfile
+echo Iq2Dsr is running ...........
+echo Do not close window ...........
+rm -f $logfile
+
+foreach fpath ($iqline/save/low/2* $iqline/vert/low/2*)
+  echo fpath $fpath
+#  Iq2Dsr -params Iq2Dsr.analysis.low -f  $fpath/20160509_220[0-3]*ts >>& $logfile
+  Iq2Dsr -params Iq2Dsr.analysis.low -f  $fpath/2*ts >>& $logfile
+end
+
+sleep 60
+
+end

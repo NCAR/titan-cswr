@@ -1,0 +1,48 @@
+#!/bin/tcsh
+
+setenv PROJ TWIRL
+
+setenv IN_PATH /mnt/Projects-A1/TWIRL/FieldArchive/
+
+setenv OUT_PATH /mnt/Projects-A1/TWIRL/Edits/
+
+setenv CALIB_DATE 20160504
+setenv CALIB_FILE calib_0.5us
+setenv INDEXED_RES 0.2
+setenv TRANS_DATE 20170712
+
+foreach iop(20160509_Wynnewood_OK)
+
+set iop_file = IOPdir_"${RADAR_NAME}/${PROJ}/20160509.txt"
+setenv IOP_NAME ${iop}
+
+# Read lat, lon, alt, heading as env variables
+
+echo sourcing $iop_file
+source $iop_file
+echo "IOP: "${iop}
+echo "Rotation: "${TRUCK_HEADING_DEG}
+echo "Latitude: "${RADAR_LAT}
+echo "Longitude: "${RADAR_LON}
+echo "Altitude: "${RADAR_ALT_M}
+
+set iqline = ${IN_PATH}${iop}/${RADAR_NAME}/time_series
+echo Input path $iqline
+
+../scripts/start_Dsr2Radx.analysis.SNOWIE.high $iop_file
+
+echo starting "Iq2Dsr -params Iq2Dsr.analysis.SNOWIE.high -f  "
+set logfile = "/tmp/Iq2Dsr.analysis.high.log"
+
+echo output will be in $logfile
+echo Iq2Dsr is running ...........
+echo Do not close window ...........
+rm -f $logfile
+
+foreach fpath ($iqline/save/high $iqline/vert/high $iqline/sunscan/high)
+  echo fpath $fpath
+
+  Iq2Dsr -params Iq2Dsr.analysis.TWIRL.high -f  $fpath/20160509_220*ts >>& $logfile
+end
+
+end

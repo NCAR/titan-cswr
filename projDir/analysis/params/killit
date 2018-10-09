@@ -1,7 +1,0 @@
-#!/bin/tcsh
-
- snuff runit.high runit.low runit.dow8 runitproj.high runitproj.low
- snuff Iq2Dsr
- snuff Dsr2Radx
- snuff xterm
-

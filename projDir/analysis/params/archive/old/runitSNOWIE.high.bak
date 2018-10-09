@@ -1,0 +1,48 @@
+#!/bin/tcsh
+
+setenv PROJ SNOWIE
+
+setenv IN_PATH /mnt/SNOWIE-A1/FieldArchive/
+
+setenv OUT_PATH /mnt/SNOWIE-A1/Edits/
+
+setenv CALIB_FILE calib_0.333us
+setenv INDEXED_RES 0.2
+
+foreach iop(20170118-IOP04)
+
+set iop_file = IOPdir_${RADAR_NAME}/${PROJ}/${PROJ}
+setenv IOP_NAME ${iop}
+
+# Read lat, lon, alt, heading as env variables
+
+echo sourcing $iop_file
+source $iop_file
+echo "IOP: "${iop}
+echo "Rotation: "${TRUCK_HEADING_DEG}
+echo "Latitude: "${RADAR_LAT}
+echo "Longitude: "${RADAR_LON}
+echo "Altitude: "${RADAR_ALT_M}
+
+set iqline = ${IN_PATH}${iop}/${RADAR_NAME}/time_series
+echo Input path $iqline
+
+../scripts/start_Dsr2Radx.analysis.SNOWIE.high $iop_file
+
+echo starting "Iq2Dsr -params Iq2Dsr.analysis.SNOWIE.high -f  "
+set logfile = "/tmp/Iq2Dsr.analysis.high.log"
+
+echo output will be in $logfile
+echo Iq2Dsr is running ...........
+echo Do not close window ...........
+rm -f $logfile
+
+foreach fpath ($iqline/save/high $iqline/vert/high $iqline/sunscan/high)
+  echo fpath $fpath
+
+  Iq2Dsr -v -params Iq2Dsr.analysis.SNOWIE.high -f  $fpath/20170118_2153*ts >>& $logfile
+end
+
+sleep 60
+
+end

@@ -76,7 +76,8 @@ procmap_register_interval = 60;
 // Type: string
 //
 
-input_fmq_url = "$(DATA_DIR)/fmq/moments/analysis_high";
+// input_fmq_url = "/tmp/fmq/moments/analysis_high/shmem_20001";
+input_fmq_url = "/tmp/fmq/moments/analysis_high/moments";
 
 ///////////// seek_to_end_of_input ////////////////////
 //
@@ -1157,12 +1158,13 @@ force_sur_sweep_transitions_at_fixed_azimuth = TRUE;
 // Azimuth to be used for forcing surveillance sweep transitions (deg).
 //
 // See 'adjust_sur_sweep_limits_to_fixed_azimuth'.
+// Any azimuth_offset will be applied before this check.
 //
 //
 // Type: double
 //
 
-sur_sweep_transitions_azimuth_deg = 80.0;
+sur_sweep_transitions_azimuth_deg = 125.0;
 
 //======================================================================
 //

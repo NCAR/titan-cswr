@@ -3591,7 +3591,8 @@ rhohv_improvement_factor_threshold = 4;
 // Type: string
 //
 
-output_fmq_url = "$(DATA_DIR)/fmq/moments/analysis_high";
+// output_fmq_url = "/tmp/fmq/moments/analysis_high/shmem_20001";
+output_fmq_url = "/tmp/fmq/moments/analysis_high/moments";
 
 ///////////// output_fmq_size /////////////////////////
 //

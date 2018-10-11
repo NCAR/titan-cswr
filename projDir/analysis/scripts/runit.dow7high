@@ -9,7 +9,7 @@ setenv OUT_PATH /mnt/GRAINEX-A2/Edits/
 setenv CALIB_DATE 20180526
 setenv CALIB_FILE calib_0.5us
 setenv INDEXED_RES 0.5
-setenv TRANS_DATE 20181009_B
+setenv TRANS_DATE 20181009
 
 foreach iop(20180602-IOP1.04)
 

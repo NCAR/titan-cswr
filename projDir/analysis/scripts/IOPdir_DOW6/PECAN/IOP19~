@@ -1,7 +1,0 @@
-setenv TRUCK_HEADING_DEG          87.44
-setenv RADAR_LAT                  39.015499
-setenv RADAR_LON                  -99.588842
-setenv RADAR_ALT_KM               0.711
-setenv RADAR_ALT_M                711
-setenv IOP_NAME                   UFO09
-setenv DATE_STR                   20150702

@@ -20,7 +20,7 @@ foreach iop(20180603-IOP1.05)
 set iop_file = IOPdir_${RADAR_NAME}/${PROJ}/${PROJ}-1
 setenv IOP_NAME ${iop}
 
-start_Dsr2Radx.analysis.dow6high $iop_file
+start_Dsr2Radx.analysis.dow6sector $iop_file
 
 # Read lat, lon, alt, heading as env variables
 
@@ -35,7 +35,7 @@ echo "Altitude: "${RADAR_ALT_M}
 set iqline = ${IN_PATH}${iop}/${RADAR_NAME}/time_series
 echo Input path $iqline
 
-echo starting "Iq2Dsr -params Iq2Dsr.analysis.dow6high -f  "
+echo starting "Iq2Dsr -params Iq2Dsr.analysis.dow6sector -f  "
 set logfile = "/tmp/Iq2Dsr.analysis.high.log"
 
 echo output will be in $logfile

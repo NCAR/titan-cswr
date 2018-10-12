@@ -1,0 +1,4 @@
+#!/bin/tcsh
+
+mount -t nfs 192.168.31.14:/volume1/GRAINEX-A1/ /mnt/GRAINEX-A1/
+mount -t nfs 192.168.31.14:/volume2/GRAINEX-A2/ /mnt/GRAINEX-A2/

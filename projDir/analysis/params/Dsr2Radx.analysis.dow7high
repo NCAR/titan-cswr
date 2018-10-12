@@ -76,8 +76,7 @@ procmap_register_interval = 60;
 // Type: string
 //
 
-// input_fmq_url = "/tmp/fmq/moments/analysis_high/shmem_20001";
-input_fmq_url = "/tmp/fmq/moments/analysis_high/moments";
+input_fmq_url = "/tmp/fmq/moments/analysis_high";
 
 ///////////// seek_to_end_of_input ////////////////////
 //
@@ -200,7 +199,8 @@ radar_location = {
 //   the DOWs) which is oriented off true north. Then if you add in the 
 //   truck HEADING relative to true north, the measured azimuth angles 
 //   will be adjusted by the heading, to give azimuth relative to TRUE 
-//   north.
+//   north. The offset is applied as the rays are read in - i.e. all other 
+//   operations use the updated azimuths.
 //
 //
 // Type: boolean
@@ -227,7 +227,8 @@ azimuth_offset = $(TRUCK_HEADING_DEG);
 //
 // If TRUE, this offset will be ADDED to the measured elevation angles. 
 //   This is useful to correct for a systematic bias in measured elevation 
-//   angles.
+//   angles. The offset is applied as the rays are read in - i.e. all 
+//   other operations use the updated elevations.
 //
 //
 // Type: boolean
@@ -1157,14 +1158,14 @@ force_sur_sweep_transitions_at_fixed_azimuth = TRUE;
 //
 // Azimuth to be used for forcing surveillance sweep transitions (deg).
 //
-// See 'adjust_sur_sweep_limits_to_fixed_azimuth'.
-// Any azimuth_offset will be applied before this check.
+// See 'adjust_sur_sweep_limits_to_fixed_azimuth'. Any azimuth_offset 
+//   will be applied before this check.
 //
 //
 // Type: double
 //
 
-sur_sweep_transitions_azimuth_deg = 125.0;
+sur_sweep_transitions_azimuth_deg = 125;
 
 //======================================================================
 //
@@ -1597,24 +1598,6 @@ output_fields = {
     output_encoding = OUTPUT_SHORT
   }
   ,
-//  {
-//    dsr_name = "WIDTH_PRT_SHORT",
-//    output_name = "WIDTH_SHORT_PRT",
-//    long_name = "WIDTH_SHORT_PRT",
-//    standard_name = "WIDTH_SHORT_PRT",
-//    output_units = "m/s",
-//    output_encoding = OUTPUT_SHORT
-//  }
-//  ,
-//  {
-//    dsr_name = "WIDTH_PRT_LONG",
-//    output_name = "WIDTH_LONG_PRT",
-//    long_name = "WIDTH_LONG_PRT",
-//    standard_name = "WIDTH_LONG_PRT",
-//    output_units = "m/s",
-//    output_encoding = OUTPUT_SHORT
-//  }
-//  ,
   {
     dsr_name = "WIDTH_F",
     output_name = "WIDTH_F",
@@ -1624,33 +1607,6 @@ output_fields = {
     output_encoding = OUTPUT_SHORT
   }
   ,
-//  {
-//    dsr_name = "WIDTH_PRT_SHORT_F",
-//    output_name = "WID_S_F",
-//    long_name = "WIDTH_SHORT_PRT_F",
-//    standard_name = "WIDTH_SHORT_PRT_F",
-//    output_units = "m/s",
-//    output_encoding = OUTPUT_SHORT
-//  }
-//  ,
-//  {
-//    dsr_name = "WIDTH_PRT_LONG_F",
-//    output_name = "WID_L_F",
-//    long_name = "WIDTH_LONG_PRT_F",
-//    standard_name = "WIDTH_LONG_PRT_F",
-//    output_units = "m/s",
-//    output_encoding = OUTPUT_SHORT
-//  }
-//  ,
-//  {
-//    dsr_name = "ZDR",
-//    output_name = "ZDR",
-//    long_name = "ZDR",
-//    standard_name = "ZDR",
-//    output_units = "dB",
-//    output_encoding = OUTPUT_SHORT
-//  }
-//  ,
   {
     dsr_name = "ZDRM",
     output_name = "ZDRM",
@@ -1759,24 +1715,6 @@ output_fields = {
     output_encoding = OUTPUT_SHORT
   }
   ,
-//  {
-//    dsr_name = "VELPS",
-//    output_name = "VS1",
-//    long_name = "VELPS",
-//    standard_name = "VELPS",
-//    output_units = "m/s",
-//    output_encoding = OUTPUT_SHORT
-//  }
-//  ,
-//  {
-//    dsr_name = "VELPL",
-//    output_name = "VL1",
-//    long_name = "VELPL",
-//    standard_name = "VELPL",
-//    output_units = "m/s",
-//    output_encoding = OUTPUT_SHORT
-//  }
-//  ,
   {
     dsr_name = "NCP",
     output_name = "NCP",
@@ -1785,15 +1723,6 @@ output_fields = {
     output_units = "",
     output_encoding = OUTPUT_SHORT
   }
-//  ,
-//  {
-//    dsr_name = "NCP_TRIP_FLAG",
-//    output_name = "TRIP_FLAG",
-//    long_name = "NCP_TRIP_FLAG",
-//    standard_name = "NCP_TRIP_FLAG",
-//    output_units = "",
-//    output_encoding = OUTPUT_SHORT
-//  }
 };
 
 //======================================================================
@@ -1833,7 +1762,6 @@ output_fields = {
 output_data_set = {
   {
     output_dir = "$(OUT_PATH)$(IOP_NAME)/$(RADAR_NAME)/trans_swps/$(TRANS_DATE)/high/",
-    // output_dir = "/tmp/trans_swps/$(TRANS_DATE)/high/",
     format = OUTPUT_FORMAT_DORADE
   }
 };
@@ -2193,7 +2121,7 @@ use_hyphen_in_file_name_datetime_part = FALSE;
 // Type: boolean
 //
 
-write_master_ldata_info = FALSE;
+write_master_ldata_info = TRUE;
 
 ///////////// write_individual_ldata_info /////////////
 //
@@ -2208,7 +2136,20 @@ write_master_ldata_info = FALSE;
 // Type: boolean
 //
 
-write_individual_ldata_info = TRUE;
+write_individual_ldata_info = FALSE;
+
+///////////// register_with_data_mapper ///////////////
+//
+// Option to register the latest_data_info with the data mapper.
+//
+// If true, contacts the DataMapper using TCP, to update the latest time 
+//   for this data set.
+//
+//
+// Type: boolean
+//
+
+register_with_data_mapper = FALSE;
 
 //======================================================================
 //

@@ -76,7 +76,7 @@ procmap_register_interval = 60;
 // Type: string
 //
 
-input_fmq_url = "$(DATA_DIR)/fmq/moments/analysis_high";
+input_fmq_url = "/tmp/fmq/moments/analysis_high";
 
 ///////////// seek_to_end_of_input ////////////////////
 //
@@ -199,7 +199,8 @@ radar_location = {
 //   the DOWs) which is oriented off true north. Then if you add in the 
 //   truck HEADING relative to true north, the measured azimuth angles 
 //   will be adjusted by the heading, to give azimuth relative to TRUE 
-//   north.
+//   north. The offset is applied as the rays are read in - i.e. all other 
+//   operations use the updated azimuths.
 //
 //
 // Type: boolean
@@ -226,7 +227,8 @@ azimuth_offset = $(TRUCK_HEADING_DEG);
 //
 // If TRUE, this offset will be ADDED to the measured elevation angles. 
 //   This is useful to correct for a systematic bias in measured elevation 
-//   angles.
+//   angles. The offset is applied as the rays are read in - i.e. all 
+//   other operations use the updated elevations.
 //
 //
 // Type: boolean
@@ -1150,19 +1152,20 @@ adjust_rhi_sweep_limits_using_angles = FALSE;
 // Type: boolean
 //
 
-force_sur_sweep_transitions_at_fixed_azimuth = FALSE;
+force_sur_sweep_transitions_at_fixed_azimuth = TRUE;
 
 ///////////// sur_sweep_transitions_azimuth_deg ///////
 //
 // Azimuth to be used for forcing surveillance sweep transitions (deg).
 //
-// See 'adjust_sur_sweep_limits_to_fixed_azimuth'.
+// See 'adjust_sur_sweep_limits_to_fixed_azimuth'. Any azimuth_offset 
+//   will be applied before this check.
 //
 //
 // Type: double
 //
 
-sur_sweep_transitions_azimuth_deg = 0;
+sur_sweep_transitions_azimuth_deg = 79;
 
 //======================================================================
 //
@@ -1233,7 +1236,7 @@ trim_surveillance_sweeps_to_360deg = FALSE;
 //     ELAPSED_TIME
 //
 
-end_of_vol_decision = AUTOMATIC;
+end_of_vol_decision = CHANGE_IN_SWEEP_NUM;
 
 ///////////// last_sweep_in_vol ///////////////////////
 //
@@ -1550,24 +1553,6 @@ output_fields = {
     output_encoding = OUTPUT_SHORT
   }
   ,
-//  {
-//    dsr_name = "DBZVX",
-//    output_name = "DBZVX",
-//    long_name = "DBZVX",
-//    standard_name = "DBZVX",
-//    output_units = "dBZ",
-//    output_encoding = OUTPUT_SHORT
-//  }
-//  ,
-//  {
-//    dsr_name = "DBZVX_F",
-//    output_name = "DBZVX_F",
-//    long_name = "DBZVX_F",
-//    standard_name = "DBZVX_F",
-//    output_units = "dBZ",
-//    output_encoding = OUTPUT_SHORT
-//  }
-//  ,
   {
     dsr_name = "VEL",
     output_name = "VEL",
@@ -1604,96 +1589,6 @@ output_fields = {
     output_encoding = OUTPUT_SHORT
   }
   ,
-//  {
-//    dsr_name = "ZDR",
-//    output_name = "ZDR",
-//    long_name = "ZDR",
-//    standard_name = "ZDR",
-//    output_units = "dB",
-//    output_encoding = OUTPUT_SHORT
-//  }
-//  ,
-//  {
-//    dsr_name = "ZDR_F",
-//    output_name = "ZDR_F",
-//    long_name = "ZDR_F",
-//    standard_name = "ZDR_F",
-//    output_units = "dB",
-//    output_encoding = OUTPUT_SHORT
-//  }
-//  ,
-//  {
-//    dsr_name = "ZDRM",
-//    output_name = "ZDRM",
-//    long_name = "ZDRM",
-//    standard_name = "ZDRM",
-//    output_units = "dB",
-//    output_encoding = OUTPUT_SHORT
-//  }
-//  ,
-//  {
-//    dsr_name = "ZDRM_F",
-//    output_name = "ZDRM_F",
-//    long_name = "ZDRM_F",
-//    standard_name = "ZDRM_F",
-//    output_units = "dB",
-//    output_encoding = OUTPUT_SHORT
-//  }
-//  ,
-//  {
-//    dsr_name = "LDRHM",
-//    output_name = "LDRHM",
-//    long_name = "LDRHM",
-//    standard_name = "LDRHM",
-//    output_units = "",
-//    output_encoding = OUTPUT_SHORT
-//  }
-//  ,
-//  {
-//    dsr_name = "RHOHV_F",
-//    output_name = "RHOHV_F",
-//    long_name = "RHOHV_F",
-//    standard_name = "RHOHV_F",
-//    output_units = "",
-//    output_encoding = OUTPUT_SHORT
-//  }
-//  ,
-//  {
-//    dsr_name = "PHIDP",
-//    output_name = "PHIDP",
-//    long_name = "PHIDP",
-//    standard_name = "PHIDP",
-//    output_units = "deg",
-//    output_encoding = OUTPUT_SHORT
-//  }
-//  ,
-//  {
-//    dsr_name = "PHIDP_F",
-//    output_name = "PHIDP_F",
-//    long_name = "PHIDP_F",
-//    standard_name = "PHIDP_F",
-//    output_units = "deg",
-//    output_encoding = OUTPUT_SHORT
-//  }
-//  ,
-//  {
-//    dsr_name = "KDP",
-//    output_name = "KDP",
-//    long_name = "KDP",
-//    standard_name = "KDP",
-//    output_units = "deg/km",
-//    output_encoding = OUTPUT_SHORT
-//  }
-//  ,
-//  {
-//    dsr_name = "KDP_F",
-//    output_name = "KDP_F",
-//    long_name = "KDP_F",
-//    standard_name = "KDP_F",
-//    output_units = "deg/km",
-//    output_encoding = OUTPUT_SHORT
-//  }
-//  ,
   {
     dsr_name = "SNRHC",
     output_name = "SNRHC",
@@ -1703,33 +1598,6 @@ output_fields = {
     output_encoding = OUTPUT_SHORT
   }
   ,
-//  {
-//    dsr_name = "SNRHC_F",
-//    output_name = "SNRHC_F",
-//    long_name = "SNRHC_F",
-//    standard_name = "SNRHC_F",
-//    output_units = "dB",
-//    output_encoding = OUTPUT_SHORT
-//  }
-//  ,
-//  {
-//    dsr_name = "SNRVX",
-//    output_name = "SNRVX",
-//    long_name = "SNRVX",
-//    standard_name = "SNRVX",
-//    output_units = "dB",
-//    output_encoding = OUTPUT_SHORT
-//  }
-//  ,
-//  {
-//    dsr_name = "SNRVX_F",
-//    output_name = "SNRVX_F",
-//    long_name = "SNRVX_F",
-//    standard_name = "SNRVX_F",
-//    output_units = "dB",
-//    output_encoding = OUTPUT_SHORT
-//  }
-//  ,
   {
     dsr_name = "DBMHC",
     output_name = "DBMHC",
@@ -1739,69 +1607,6 @@ output_fields = {
     output_encoding = OUTPUT_SHORT
   }
   ,
-//  {
-//    dsr_name = "DBMHC_F",
-//    output_name = "DBMHC_F",
-//    long_name = "DBMHC_F",
-//    standard_name = "DBMHC_F",
-//    output_units = "dBm",
-//    output_encoding = OUTPUT_SHORT
-//  }
-//  ,
-//  {
-//    dsr_name = "DBMVX",
-//    output_name = "DBMVX",
-//    long_name = "DBMVX",
-//    standard_name = "DBMVX",
-//    output_units = "dBm",
-//    output_encoding = OUTPUT_SHORT
-//  }
-//  ,
-//  {
-//    dsr_name = "DBMVX_F",
-//    output_name = "DBMVX_F",
-//    long_name = "DBMVX_F",
-//    standard_name = "DBMVX_F",
-//    output_units = "dBm",
-//    output_encoding = OUTPUT_SHORT
-//  }
-//  ,
-//  {
-//    dsr_name = "VELPS",
-//    output_name = "VS1",
-//    long_name = "VELPS",
-//    standard_name = "VELPS",
-//    output_units = "m/s",
-//    output_encoding = OUTPUT_SHORT
-//  }
-//  ,
-//  {
-//    dsr_name = "VELPS_F",
-//   output_name = "VS1_F",
-//    long_name = "VELPS_F",
-//    standard_name = "VELPS_F",
-//    output_units = "m/s",
-//    output_encoding = OUTPUT_SHORT
-//  }
-//  ,
-//  {
-//    dsr_name = "VELPL",
-//    output_name = "VL1",
-//    long_name = "VELPL",
-//    standard_name = "VELPL",
-//    output_units = "m/s",
-//    output_encoding = OUTPUT_SHORT
-//  }
-//  ,
-//  {
-//    dsr_name = "VELPL_F",
-//    output_name = "VL1_F",
-//    long_name = "VELPL_F",
-//    standard_name = "VELPL_F",
-//    output_units = "m/s",
-//    output_encoding = OUTPUT_SHORT
-//  }
-//  ,
   {
     dsr_name = "NCP",
     output_name = "NCP",
@@ -1810,15 +1615,6 @@ output_fields = {
     output_units = "",
     output_encoding = OUTPUT_SHORT
   }
-  ,
-//  {
-//    dsr_name = "NCP_F",
-//    output_name = "NCP_F",
-//    long_name = "NCP_F",
-//    standard_name = "NCP_F",
-//    output_units = "",
-//    output_encoding = OUTPUT_SHORT
-//  }
 };
 
 //======================================================================
@@ -2217,7 +2013,7 @@ use_hyphen_in_file_name_datetime_part = FALSE;
 // Type: boolean
 //
 
-write_master_ldata_info = FALSE;
+write_master_ldata_info = TRUE;
 
 ///////////// write_individual_ldata_info /////////////
 //
@@ -2232,7 +2028,20 @@ write_master_ldata_info = FALSE;
 // Type: boolean
 //
 
-write_individual_ldata_info = TRUE;
+write_individual_ldata_info = FALSE;
+
+///////////// register_with_data_mapper ///////////////
+//
+// Option to register the latest_data_info with the data mapper.
+//
+// If true, contacts the DataMapper using TCP, to update the latest time 
+//   for this data set.
+//
+//
+// Type: boolean
+//
+
+register_with_data_mapper = FALSE;
 
 //======================================================================
 //

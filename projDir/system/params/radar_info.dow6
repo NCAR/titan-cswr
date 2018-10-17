@@ -38,16 +38,29 @@ setenv HIGH_XMIT_POWER_V_DBM      77.4
 setenv LOW_XMIT_POWER_H_DBM       77.3
 setenv LOW_XMIT_POWER_V_DBM       77.3
 
+setenv HIGH_DBZ_CORRECTION         0.0
 setenv HIGH_ZDR_CORRECTION_DB     -1.5
-setenv HIGH_SYSTEM_PHIDP_DEG         0
+setenv HIGH_SYSTEM_PHIDP_DEG       0.0
+
+setenv LOW_DBZ_CORRECTION          0.0
 setenv LOW_ZDR_CORRECTION_DB      -0.5
-setenv LOW_SYSTEM_PHIDP_DEG          0
+setenv LOW_SYSTEM_PHIDP_DEG        0.0
 
 setenv ANTENNA_GAIN_H_DB          44.3
 setenv ANTENNA_GAIN_V_DB          44.3
 
 setenv TWO_WAY_WAVEGUIDE_LOSS_H_DB 2.0
 setenv TWO_WAY_WAVEGUIDE_LOSS_V_DB 2.0
+
+setenv CHANGE_VELOCITY_SIGN FALSE
+setenv CHANGE_VELOCITY_SIGN_STAGGERED FALSE
+
+#############################################
+# velocity and phidp sign
+
+setenv CHANGE_VELOCITY_SIGN FALSE
+setenv CHANGE_VELOCITY_SIGN_STAGGERED FALSE
+setenv CHANGE_PHIDP_SIGN TRUE
 
 #############################################
 

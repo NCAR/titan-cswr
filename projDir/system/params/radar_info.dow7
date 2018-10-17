@@ -34,8 +34,11 @@ setenv HIGH_XMIT_POWER_V_DBM      79.59
 setenv LOW_XMIT_POWER_H_DBM       80.23
 setenv LOW_XMIT_POWER_V_DBM       80.19
 
+setenv HIGH_DBZ_CORRECTION         0.0
 setenv HIGH_ZDR_CORRECTION_DB      0.5
 setenv HIGH_SYSTEM_PHIDP_DEG         0
+
+setenv LOW_DBZ_CORRECTION          0.0
 setenv LOW_ZDR_CORRECTION_DB      1.00
 setenv LOW_SYSTEM_PHIDP_DEG          0
 
@@ -46,6 +49,11 @@ setenv TWO_WAY_WAVEGUIDE_LOSS_H_DB 2.0
 setenv TWO_WAY_WAVEGUIDE_LOSS_V_DB 2.0
 
 #############################################
+# velocity and phidp sign
+
+setenv CHANGE_VELOCITY_SIGN FALSE
+setenv CHANGE_VELOCITY_SIGN_STAGGERED FALSE
+setenv CHANGE_PHIDP_SIGN TRUE
 
 #############################################
 

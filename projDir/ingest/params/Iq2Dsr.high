@@ -273,7 +273,23 @@ compute_prt_from_interpulse_periods = FALSE;
 // Type: boolean
 //
 
-change_velocity_sign_staggered = FALSE;
+change_velocity_sign_staggered = $(CHANGE_VELOCITY_SIGN_STAGGERED);
+
+///////////// use_pulse_width_from_ts_proc ////////////
+//
+// Option to use the pulse width in the ts_processing headers.
+//
+// The default mode is to use the pulse width from the pulse headers. 
+//   However, for some radar systems the pulse width is correct in the 
+//   ts_processing headers, but not correct in the pulse headers. So this 
+//   option allows you to override the pulse width in the pulse headers by 
+//   copying it over from the ts_processing header.
+//
+//
+// Type: boolean
+//
+
+use_pulse_width_from_ts_proc = FALSE;
 
 ///////////// override_primary_prt ////////////////////
 //
@@ -316,6 +332,20 @@ primary_prt_secs = 0.001;
 //
 
 georef_time_margin_secs = 1;
+
+///////////// use_secondary_georeference //////////////
+//
+// If true, use the secondary georeference packet.
+//
+// By default, we use the primary georeference packet. And most mobile 
+//   radars only have one georeference. For those radars that have 2 
+//   georef devices, set this to true to use the secondary reference.
+//
+//
+// Type: boolean
+//
+
+use_secondary_georeference = FALSE;
 
 ///////////// check_radar_id //////////////////////////
 //
@@ -660,6 +690,43 @@ apply_elevation_offset = FALSE;
 
 elevation_offset = 0;
 
+///////////// override_scan_mode //////////////////////
+//
+// Option to override the scan mode in the time series data.
+//
+// Set this to TRUE if the scan_mode is incorrect in the time series, 
+//   and you can override to a constant scan mode.
+//
+//
+// Type: boolean
+//
+
+override_scan_mode = FALSE;
+
+///////////// scan_mode_for_override //////////////////
+//
+// Select the scan mode for override.
+//
+// See 'override_scan_mode'.
+//
+//
+// Type: enum
+// Options:
+//     SCAN_MODE_UNKNOWN
+//     SCAN_MODE_SECTOR
+//     SCAN_MODE_COPLANE
+//     SCAN_MODE_RHI
+//     SCAN_MODE_VERTICAL_POINTING
+//     SCAN_MODE_IDLE
+//     SCAN_MODE_SURVEILLANCE
+//     SCAN_MODE_SUNSCAN
+//     SCAN_MODE_POINTING
+//     SCAN_MODE_MANUAL_PPI
+//     SCAN_MODE_MANUAL_RHI
+//
+
+scan_mode_for_override = SCAN_MODE_UNKNOWN;
+
 //======================================================================
 //
 // MOMENTS COMPUTATIONS.
@@ -776,7 +843,7 @@ elevation_offset = 0;
 //          DP_ALT_HV_CO_ONLY
 //          DP_ALT_HV_CO_CROSS
 //          DP_ALT_HV_FIXED_HV
-//          $(XMIT_RCV_MODE_HIGH)
+//          DP_SIM_HV_FIXED_HV
 //          DP_SIM_HV_SWITCHED_HV
 //          DP_H_ONLY_FIXED_HV
 //          DP_V_ONLY_FIXED_HV
@@ -815,7 +882,7 @@ moments_params = {
     xmit_rcv_mode = $(XMIT_RCV_MODE_HIGH),
     apply_clutter_filter = FALSE,
     apply_sz = FALSE,
-    change_velocity_sign = FALSE,
+    change_velocity_sign = $(CHANGE_VELOCITY_SIGN),
     proc_flags = PROC_FLAGS_NONE,
     check_scan_name = FALSE,
     scan_name = "not-set"
@@ -841,7 +908,7 @@ moments_params = {
     xmit_rcv_mode = $(XMIT_RCV_MODE_HIGH),
     apply_clutter_filter = FALSE,
     apply_sz = FALSE,
-    change_velocity_sign = FALSE,
+    change_velocity_sign = $(CHANGE_VELOCITY_SIGN),
     proc_flags = PROC_FLAGS_NONE,
     check_scan_name = FALSE,
     scan_name = "not-set"
@@ -867,7 +934,7 @@ moments_params = {
     xmit_rcv_mode = $(XMIT_RCV_MODE_HIGH),
     apply_clutter_filter = FALSE,
     apply_sz = FALSE,
-    change_velocity_sign = FALSE,
+    change_velocity_sign = $(CHANGE_VELOCITY_SIGN),
     proc_flags = PROC_FLAGS_NONE,
     check_scan_name = FALSE,
     scan_name = "not-set"
@@ -1306,7 +1373,7 @@ use_cal_from_time_series = FALSE;
 // Type: boolean
 //
 
-override_cal_dbz_correction = FALSE;
+override_cal_dbz_correction = TRUE;
 
 ///////////// dbz_correction //////////////////////////
 //
@@ -1318,7 +1385,7 @@ override_cal_dbz_correction = FALSE;
 // Type: double
 //
 
-dbz_correction = 0;
+dbz_correction = $(HIGH_DBZ_CORRECTION);
 
 ///////////// override_cal_zdr_correction /////////////
 //
@@ -1344,6 +1411,32 @@ override_cal_zdr_correction = TRUE;
 //
 
 zdr_correction_db = $(HIGH_ZDR_CORRECTION_DB);
+
+///////////// threshold_zdr_using_snr /////////////////
+//
+// Option to threshold ZDR using SNR.
+//
+// If true, we will only compute ZDR if the SNR in both the H and V 
+//   co-polar channels exceeds this value. See 'min_snr_db_for_zdr'.
+//
+//
+// Type: boolean
+//
+
+threshold_zdr_using_snr = FALSE;
+
+///////////// min_snr_db_for_zdr //////////////////////
+//
+// Min SNR for computing ZDR (dB).
+//
+// If the SNR is below this threshold for either the H or V co-polar 
+//   channels, ZDR will be set to missing. See 'threshold_zdr_using_snr'.
+//
+//
+// Type: double
+//
+
+min_snr_db_for_zdr = -7;
 
 ///////////// override_cal_ldr_corrections ////////////
 //
@@ -1382,6 +1475,36 @@ ldr_correction_db_h = 0;
 
 ldr_correction_db_v = 0;
 
+///////////// threshold_ldr_using_snr /////////////////
+//
+// Option to threshold LDR using SNR.
+//
+// If true, we will only compute LDR if the SNR in both the co- and 
+//   cross-polar channels exceeds this value. Since the cross-polar 
+//   channel is generally the weaker channel, it is the SNR on the 
+//   cross-polar channel that will be limiting. See 'min_snr_db_for_ldr'.
+//
+//
+// Type: boolean
+//
+
+threshold_ldr_using_snr = FALSE;
+
+///////////// min_snr_db_for_ldr //////////////////////
+//
+// Min SNR for computing LDR (dB).
+//
+// For LDR, the cross polar channel is the weaker return. Therefore 
+//   effectively this threshold will be applied to the cross channel. If 
+//   the SNR is below this threshold for either the co- or cross-polar 
+//   channels, LDR will be set to missing. See 'threshold_ldr_using_snr'.
+//
+//
+// Type: double
+//
+
+min_snr_db_for_ldr = -7;
+
 ///////////// override_cal_system_phidp ///////////////
 //
 // Option to override the system PHIDP in the calibration data.
@@ -1417,15 +1540,15 @@ system_phidp_deg = $(HIGH_SYSTEM_PHIDP_DEG);
 // Type: boolean
 //
 
-change_phidp_sign = TRUE;
+change_phidp_sign = $(CHANGE_PHIDP_SIGN);
 
 //======================================================================
 //
-// CORRECT RECEIVER GAINS BASED ON MEASURED TEMPERATURE.
+// CORRECT RECEIVER GAINS BASED ON MEASURED TEMPERATURE IN STATUS XML.
 //
 //======================================================================
  
-///////////// correct_receiver_gains_for_temperature //
+///////////// correct_rx_gains_for_temperature ////////
 //
 // Option to correct the calibration receiver gains based on 
 //   temperature.
@@ -1440,62 +1563,21 @@ change_phidp_sign = TRUE;
 // Type: boolean
 //
 
-correct_receiver_gains_for_temperature = FALSE;
+correct_rx_gains_for_temperature = FALSE;
 
-///////////// rx_gain_correction //////////////////////
+///////////// rx_temp_gain_corrections ////////////////
 //
 // Correction to be applied to the gain in each receiver channel.
 //
+
+//
 // The correction is computed as:
 //
-//     correction = intercept + temperature * slope.
+//     correction = intercept + temperature * slope. 
 //
-//
-// Type: struct
-//   typedef struct {
-//      rx_channel_t rx_channel;
-//        Options:
-//          RX_CHANNEL_HC
-//          RX_CHANNEL_VC
-//          RX_CHANNEL_HX
-//          RX_CHANNEL_VX
-//      double slope;
-//      double intercept;
-//   }
-//
-// 1D array - variable length.
-//
-
-rx_gain_correction = {
-  {
-    rx_channel = RX_CHANNEL_HC,
-    slope = -0.0776,
-    intercept = 1.5564
-  }
-  ,
-  {
-    rx_channel = RX_CHANNEL_VC,
-    slope = -0.0776,
-    intercept = 1.5564
-  }
-  ,
-  {
-    rx_channel = RX_CHANNEL_HX,
-    slope = -0.0776,
-    intercept = 1.5564
-  }
-  ,
-  {
-    rx_channel = RX_CHANNEL_VX,
-    slope = -0.0776,
-    intercept = 1.5564
-  }
-};
-
-///////////// temperature_tags_in_status_xml //////////
-//
-// Specify the tag list for locating the temperature. These should be 
-//   delimited in xml format, using '<' and '>'.
+//  The tag list allows us to find the temperature in the status xml 
+//   block in the time series. These should be delimited in xml format, 
+//   using '<' and '>'. 
 //
 // The temperature will be searched for in the status_xml section of the 
 //   time series data. These tags specify how to find the temperature 
@@ -1518,10 +1600,105 @@ rx_gain_correction = {
 //   <HcrStatus><HcrReceiverStatus><EikTemp>.
 //
 //
+// Type: struct
+//   typedef struct {
+//      rx_channel_t rx_channel;
+//        Options:
+//          RX_CHANNEL_HC
+//          RX_CHANNEL_VC
+//          RX_CHANNEL_HX
+//          RX_CHANNEL_VX
+//      double slope;
+//      double intercept;
+//      string temp_tag_list_in_status_xml;
+//   }
+//
+// 1D array - variable length.
+//
+
+rx_temp_gain_corrections = {
+  {
+    rx_channel = RX_CHANNEL_HC,
+    slope = -0.0776,
+    intercept = 1.5564,
+    temp_tag_list_in_status_xml = "<HcrStatus><HcrReceiverStatus><EikTemp>"
+  }
+  ,
+  {
+    rx_channel = RX_CHANNEL_VC,
+    slope = -0.0776,
+    intercept = 1.5564,
+    temp_tag_list_in_status_xml = "<HcrStatus><HcrReceiverStatus><EikTemp>"
+  }
+  ,
+  {
+    rx_channel = RX_CHANNEL_HX,
+    slope = -0.0776,
+    intercept = 1.5564,
+    temp_tag_list_in_status_xml = "<HcrStatus><HcrReceiverStatus><EikTemp>"
+  }
+  ,
+  {
+    rx_channel = RX_CHANNEL_VX,
+    slope = -0.0776,
+    intercept = 1.5564,
+    temp_tag_list_in_status_xml = "<HcrStatus><HcrReceiverStatus><EikTemp>"
+  }
+};
+
+//======================================================================
+//
+// FOR HCR, CORRECT RECEIVER GAIN FOR TEMPERATURE USING VALUES FROM SPDB.
+//
+//======================================================================
+ 
+///////////// correct_hcr_v_rx_gain_for_temperature ///
+//
+// Option to correct the HCR V-channel receiver gain for temperature.
+//
+// Computing the HCR receiver gain correction is complicated. Therefore 
+//   this is done offline, and the results are stored as XML in SPDB. Here 
+//   we retrieve the values from SPDB and apply them to correct the 
+//   receiver gain.
+//
+//
+// Type: boolean
+//
+
+correct_hcr_v_rx_gain_for_temperature = FALSE;
+
+///////////// hcr_delta_gain_spdb_url /////////////////
+//
+// URL for HCR gain correction from SPDB.
+//
+//
 // Type: string
 //
 
-temperature_tags_in_status_xml = "<HcrStatus><HcrReceiverStatus><EikTemp>";
+hcr_delta_gain_spdb_url = "/scr/rain1/rsfdata/projects/socrates/hcr/qc/data/socrates/spdb/tempVsGain";
+
+///////////// hcr_delta_gain_search_margin_secs ///////
+//
+// Search margin when finding gain correction data (secs).
+//
+// We search for the value closest in time to the beam time. This is the 
+//   search margin on either side of the search time.
+//
+//
+// Type: int
+//
+
+hcr_delta_gain_search_margin_secs = 3600;
+
+///////////// hcr_v_rx_delta_gain_tag_list ////////////
+//
+// URL for HCR gain correction from SPDB.
+//
+//
+// Type: string
+//
+
+hcr_v_rx_delta_gain_tag_list = "<HcrTempGainCorrection><v_delta_gain>";
 
 //======================================================================
 //
@@ -3312,6 +3489,70 @@ phidp_sdev_interest_weight = 1;
 
 //======================================================================
 //
+// RHOHV TEST to AUGMENT CMD.
+//
+// If clutter is present the RHOHV value should increase after 
+//   application of the clutter filter. We can use a RHOHV test to locate 
+//   gates at which CMD fails to identify weak clutter. This allows us to 
+//   improve clutter identification in cases with low CSR.
+//
+//======================================================================
+ 
+///////////// apply_rhohv_test_after_cmd //////////////
+//
+// Apply the RHOHV test after filtering based on CMD.
+//
+// This allows us to identify areas of weak clutter contamination that 
+//   CMD missed.
+//
+//
+// Type: boolean
+//
+
+apply_rhohv_test_after_cmd = FALSE;
+
+///////////// rhohv_test_min_rhohv ////////////////////
+//
+// Min RHOHV for application of the RHOHV test.
+//
+// If RHOHV is less than this, no weather is likely to be present. 
+//   Therefore do not apply the test to this gate.
+//
+//
+// Type: double
+//
+
+rhohv_test_min_rhohv = 0.5;
+
+///////////// rhohv_test_max_rhohv ////////////////////
+//
+// Max RHOHV for application of the RHOHV test.
+//
+// If RHOHV is greater than this, the weather return is highly coherent, 
+//   so clutter contamination is unlikely.
+//
+//
+// Type: double
+//
+
+rhohv_test_max_rhohv = 0.98;
+
+///////////// rhohv_improvement_factor_threshold //////
+//
+// The RHOHV improvment factor is a measure of the change in RHOHV 
+//   towards 1.0.
+//
+// The RHOHV test identifies clutter if the improvement factor exceeds 
+//   this value.
+//
+//
+// Type: double
+//
+
+rhohv_improvement_factor_threshold = 4;
+
+//======================================================================
+//
 // OUTPUT TO DSRADAR FMQ.
 //
 //======================================================================
@@ -3548,8 +3789,6 @@ beam_wait_msecs = 0;
 //          LAG0_VCHX_PHASE
 //          LAG0_HCVX_DB
 //          LAG0_HCVX_PHASE
-//          LAG0_VXHX_DB
-//          LAG0_VXHX_PHASE
 //          LAG1_HC_DB
 //          LAG1_HC_PHASE
 //          LAG1_VC_DB

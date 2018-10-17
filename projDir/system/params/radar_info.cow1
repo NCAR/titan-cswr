@@ -44,8 +44,11 @@ setenv HIGH_XMIT_POWER_V_DBM      87.0
 setenv LOW_XMIT_POWER_H_DBM       87.0
 setenv LOW_XMIT_POWER_V_DBM       87.0
 
+setenv HIGH_DBZ_CORRECTION         0.0
 setenv HIGH_ZDR_CORRECTION_DB      -0.4
 setenv HIGH_SYSTEM_PHIDP_DEG       0
+
+setenv LOW_DBZ_CORRECTION          0.0
 setenv LOW_ZDR_CORRECTION_DB       0
 setenv LOW_SYSTEM_PHIDP_DEG        0
 
@@ -55,14 +58,12 @@ setenv ANTENNA_GAIN_V_DB          42.5
 setenv TWO_WAY_WAVEGUIDE_LOSS_H_DB 2.0
 setenv TWO_WAY_WAVEGUIDE_LOSS_V_DB 2.0
 
-# Is AFC active?
-# In the lab we don't have a burst,
-# so we use the default frequency
+#############################################
+# velocity and phidp sign
 
-# ops mode
-setenv AFC_KEEP_OSC_DEFAULT_FREQ "false"
-# lab mode
-#setenv AFC_KEEP_OSC_DEFAULT_FREQ "true"
+setenv CHANGE_VELOCITY_SIGN FALSE
+setenv CHANGE_VELOCITY_SIGN_STAGGERED FALSE
+setenv CHANGE_PHIDP_SIGN TRUE
 
 #############################################
 
@@ -96,6 +97,17 @@ setenv SNRV_LOW SNRVC
 
 setenv POWER_DIFF_HIGH ZDR
 setenv POWER_DIFF_LOW ZDR
+
+#############################################
+
+# Is AFC active?
+# In the lab we don't have a burst,
+# so we use the default frequency
+
+# ops mode
+setenv AFC_KEEP_OSC_DEFAULT_FREQ "false"
+# lab mode
+#setenv AFC_KEEP_OSC_DEFAULT_FREQ "true"
 
 ########################
 # transmitter settings

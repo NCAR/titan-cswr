@@ -26,3 +26,7 @@ InputWatcher  quicklook.dow8 start_InputWatcher.quicklook.dow8   snuff_inst
 ###############################################################################
 # RADAR MONITOR display
 RadMon         dow8        start_RadMon.dow8          snuff_inst    
+###############################################################################
+# Quicklooks to catalog
+LdataWatcher    quicklook.dow8.sur   start_inst(archive)     snuff_inst    
+LdataWatcher    quicklook.dow8.sec   start_inst(archive)     snuff_inst    

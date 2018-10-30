@@ -27,9 +27,9 @@ def main():
     global ftpPassword
     global ftpDebugLevel
 
-    ftpServer = "catalog.eol.ucar.edu"
-    ftpUser = "radar"
-    ftpPassword = "0nT@r1o"
+    ftpServer = "181.30.169.202"
+    ftpUser = "relopsftp"
+    ftpPassword = "rayosyyyy"
     
     # parse the command line
 
@@ -88,7 +88,7 @@ def ftpFile(fileName, filePath, validDayStr):
     else:
         ftpDebugLevel = 0
 
-    targetDir = options.radarName
+    targetDir = os.path.join('upload', options.radarName)
     
     if (options.debug == True):
         print "targetDir: ", targetDir
@@ -141,7 +141,7 @@ def parseArgs():
 
     # parse the command line
 
-    radarName = os.environ['RADAR_NAME']
+    radarName = os.environ['radar_name']
     
     usage = "usage: %prog [options]"
     parser = OptionParser(usage)
@@ -165,10 +165,6 @@ def parseArgs():
                       dest='radarName',
                       default=radarName,
                       help='name of radar')
-    parser.add_option('--frequency',
-                      dest='frequency',
-                      default='high',
-                      help='high or low')
 
     (options, args) = parser.parse_args()
 
@@ -179,7 +175,6 @@ def parseArgs():
         print >>sys.stderr, "  fullFilePath: ", options.fullFilePath
         print >>sys.stderr, "  fileName: ", options.fileName
         print >>sys.stderr, "  radarName: ", options.radarName
-        print >>sys.stderr, "  frequency: ", options.frequency
 
 ########################################################################
 # Run a command in a shell, wait for it to complete

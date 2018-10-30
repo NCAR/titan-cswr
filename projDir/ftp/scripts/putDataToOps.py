@@ -29,7 +29,7 @@ def main():
 
     ftpServer = "181.30.169.202"
     ftpUser = "relopsftp"
-    ftpPassword = "rayosyyyy"
+    ftpPassword = "rayos2018"
     
     # parse the command line
 

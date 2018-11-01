@@ -32,7 +32,7 @@
 //     DEBUG_VERBOSE
 //
 
-debug = DEBUG_OFF;
+debug = DEBUG_NORM;
 
 ///////////// instance ////////////////////////////////
 //

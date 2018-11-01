@@ -355,7 +355,7 @@ filter_using_elev = TRUE;
 // Type: double
 //
 
-specified_min_elev = 0.75;
+specified_min_elev = 1.25;
 
 ///////////// specified_max_elev //////////////////////
 //
@@ -364,7 +364,7 @@ specified_min_elev = 0.75;
 // Type: double
 //
 
-specified_max_elev = 1.25;
+specified_max_elev = 1.85;
 
 ///////////// filter_using_sweep_number ///////////////
 //

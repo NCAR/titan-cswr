@@ -146,7 +146,7 @@ def parseArgs():
     usage = "usage: %prog [options]"
     parser = OptionParser(usage)
     parser.add_option('--debug',
-                      dest='debug', default='False',
+                      dest='debug', default=True,
                       action="store_true",
                       help='Set debugging on')
     parser.add_option('--unix_time',

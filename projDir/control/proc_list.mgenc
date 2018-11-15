@@ -46,6 +46,12 @@ Dsr2Radx  quicklook.high.sur   start_Dsr2Radx.quicklook.high.sur  snuff_inst
 Dsr2Radx  quicklook.low.sur    start_Dsr2Radx.quicklook.low.sur   snuff_inst    
 #Dsr2Radx  quicklook.low.rhi    start_Dsr2Radx.quicklook.low.rhi   snuff_inst    
 ###############################################################################
+# FTP quicklook data to OPS center - high data only
+#
+#LdataWatcher  data_to_catalog.high  start_LdataWatcher.data_to_catalog.high snuff_inst 
+LdataWatcher  quicklook.high.sur  start_inst(archive)  snuff_inst 
+#LdataWatcher  quicklook.low.sur  start_inst(archive)  snuff_inst 
+###############################################################################
 # Creating quicklook images
 #
 #LdataWatcher  quicklook.high  start_LdataWatcher.quicklook.high snuff_inst 

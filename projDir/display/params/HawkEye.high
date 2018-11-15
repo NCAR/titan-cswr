@@ -397,11 +397,11 @@ fields = {
   }
   ,
   {
-    label = "VEL40",
+    label = "VEL10",
     raw_name = "VEL",
     filtered_name = "VEL_F",
     units = "m/s",
-    color_map = "vel40.colors",
+    color_map = "vel10.colors.kak",
     shortcut = "5"
   }
   ,

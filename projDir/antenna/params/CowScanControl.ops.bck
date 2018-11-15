@@ -146,8 +146,7 @@ start_reading_at_fmq_start = FALSE;
 // Type: boolean
 //
 
-//run_scans_on_schedule = TRUE;
-run_scans_on_schedule = FALSE;
+run_scans_on_schedule = TRUE;
 
 ///////////// scan_schedule_interval_secs /////////////
 //
@@ -272,7 +271,7 @@ scan_sequence = {
     end_el_deg = -999,
     delta_el_deg = -999,
     n_sweeps = 6,
-    angle_list = "0.5,0.5,1,1.5,2,3,4,5",
+    angle_list = "1,2,3,4,5,6",
     transition_tolerance_deg = -999,
     nsecs_wait = 0
   }
@@ -288,7 +287,7 @@ scan_sequence = {
     end_el_deg = -999,
     delta_el_deg = -999,
     n_sweeps = 6,
-    angle_list = "0.5,0.5,1,1.5,2,3,4,5",
+    angle_list = "1,2,3,4,5,6",
     transition_tolerance_deg = -999,
     nsecs_wait = 0
   }

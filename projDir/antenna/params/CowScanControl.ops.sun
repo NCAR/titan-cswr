@@ -272,58 +272,58 @@ scan_sequence = {
     end_el_deg = -999,
     delta_el_deg = -999,
     n_sweeps = 6,
-    angle_list = "0.5,0.5,1,1.5,2,3,4,5",
+    angle_list = "56,56.1,56.2,56.3,56.4,56.5, 56.6, 56.7, 56.8, 56.9, 57, 57.1",
     transition_tolerance_deg = -999,
     nsecs_wait = 0
   }
-  ,
-  {
-    scan_mode = SCAN_MODE_SURVEILLANCE,
-    az_rate_deg_per_sec = 20,
-    el_rate_deg_per_sec = 20,
-    start_az_deg = 340,
-    end_az_deg = 20,
-    delta_az_deg = -999,
-    start_el_deg = -999,
-    end_el_deg = -999,
-    delta_el_deg = -999,
-    n_sweeps = 6,
-    angle_list = "0.5,0.5,1,1.5,2,3,4,5",
-    transition_tolerance_deg = -999,
-    nsecs_wait = 0
-  }
-  ,
-  {
-    scan_mode = SCAN_MODE_POINTING,
-    az_rate_deg_per_sec = 20,
-    el_rate_deg_per_sec = 20,
-    start_az_deg = 340,
-    end_az_deg = -999,
-    delta_az_deg = -999,
-    start_el_deg = 3,
-    end_el_deg = -999,
-    delta_el_deg = -999,
-    n_sweeps = 1,
-    angle_list = "",
-    transition_tolerance_deg = -999,
-    nsecs_wait = 1
-  }
-  ,
-  {
-    scan_mode = SCAN_MODE_SURVEILLANCE,
-    az_rate_deg_per_sec = 20,
-    el_rate_deg_per_sec = 20,
-    start_az_deg = 340,
-    end_az_deg = 20,
-    delta_az_deg = -999,
-    start_el_deg = -999,
-    end_el_deg = -999,
-    delta_el_deg = -999,
-    n_sweeps = 1,
-    angle_list = "90.0,90.0",
-    transition_tolerance_deg = -999,
-    nsecs_wait = 0
-  }
+//  ,
+//  {
+//    scan_mode = SCAN_MODE_SURVEILLANCE,
+//    az_rate_deg_per_sec = 20,
+//    el_rate_deg_per_sec = 20,
+//    start_az_deg = 340,
+//    end_az_deg = 20,
+//    delta_az_deg = -999,
+//    start_el_deg = -999,
+//    end_el_deg = -999,
+//    delta_el_deg = -999,
+//    n_sweeps = 6,
+//    angle_list = "0.5,0.5,1,1.5,2,3,4,5",
+//    transition_tolerance_deg = -999,
+//    nsecs_wait = 0
+//  }
+//  ,
+//  {
+//    scan_mode = SCAN_MODE_POINTING,
+//    az_rate_deg_per_sec = 20,
+//    el_rate_deg_per_sec = 20,
+//    start_az_deg = 340,
+//    end_az_deg = -999,
+//    delta_az_deg = -999,
+//    start_el_deg = 3,
+//    end_el_deg = -999,
+//    delta_el_deg = -999,
+//    n_sweeps = 1,
+//    angle_list = "",
+//    transition_tolerance_deg = -999,
+//    nsecs_wait = 1
+//  }
+//  ,
+//  {
+//    scan_mode = SCAN_MODE_SURVEILLANCE,
+//    az_rate_deg_per_sec = 20,
+//    el_rate_deg_per_sec = 20,
+//    start_az_deg = 340,
+//   end_az_deg = 20,
+//   delta_az_deg = -999,
+//   start_el_deg = -999,
+//   end_el_deg = -999,
+//    delta_el_deg = -999,
+//    n_sweeps = 1,
+//    angle_list = "90.0,90.0",
+//    transition_tolerance_deg = -999,
+//    nsecs_wait = 0
+//  }
 };
 
 ///////////// requested_angle_tolerance ///////////////

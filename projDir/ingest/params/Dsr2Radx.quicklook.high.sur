@@ -1605,12 +1605,12 @@ output_fields = {
 
 output_data_set = {
   {
-    output_dir = "$(DATA_DIR)/$(RADAR_NAME)/dorade/quicklook/high",
+    output_dir = "$(DATA_DIR)/$(RADAR_NAME)/dorade/quicklook/high/sur",
     format = OUTPUT_FORMAT_DORADE
   }
   ,
   {
-    output_dir = "$(DATA_DIR)/$(RADAR_NAME)/cfradial/quicklook/high",
+    output_dir = "$(DATA_DIR)/$(RADAR_NAME)/cfradial/quicklook/high/sur",
     format = OUTPUT_FORMAT_CFRADIAL
   }
 };
@@ -1682,7 +1682,7 @@ append_year_dir_to_output_dir = FALSE;
 // Type: boolean
 //
 
-separate_output_dirs_by_scan_type = TRUE;
+separate_output_dirs_by_scan_type = FALSE;
 
 ///////////// write_surveillance_files ////////////////
 //
@@ -1970,7 +1970,7 @@ use_hyphen_in_file_name_datetime_part = FALSE;
 // Type: boolean
 //
 
-write_master_ldata_info = FALSE;
+write_master_ldata_info = TRUE;
 
 ///////////// write_individual_ldata_info /////////////
 //

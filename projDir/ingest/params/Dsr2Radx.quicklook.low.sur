@@ -76,7 +76,7 @@ procmap_register_interval = 60;
 // Type: string
 //
 
-ginput_fmq_url = "$(DATA_DIR)/fmq/moments/shmem_low_20200";
+input_fmq_url = "$(DATA_DIR)/fmq/moments/shmem_low_20200";
 
 ///////////// seek_to_end_of_input ////////////////////
 //
@@ -1605,12 +1605,12 @@ output_fields = {
 
 output_data_set = {
   {
-    output_dir = "$(DATA_DIR)/$(RADAR_NAME)/dorade/quicklook/low",
+    output_dir = "$(DATA_DIR)/$(RADAR_NAME)/dorade/quicklook/low/sur",
     format = OUTPUT_FORMAT_DORADE
   }
   ,
   {
-    output_dir = "$(DATA_DIR)/$(RADAR_NAME)/cfradial/quicklook/low",
+    output_dir = "$(DATA_DIR)/$(RADAR_NAME)/cfradial/quicklook/low/sur",
     format = OUTPUT_FORMAT_CFRADIAL
   }
 };
@@ -1682,7 +1682,7 @@ append_year_dir_to_output_dir = FALSE;
 // Type: boolean
 //
 
-separate_output_dirs_by_scan_type = TRUE;
+separate_output_dirs_by_scan_type = FALSE;
 
 ///////////// write_surveillance_files ////////////////
 //
@@ -1970,7 +1970,7 @@ use_hyphen_in_file_name_datetime_part = FALSE;
 // Type: boolean
 //
 
-write_master_ldata_info = FALSE;
+write_master_ldata_info = TRUE;
 
 ///////////// write_individual_ldata_info /////////////
 //

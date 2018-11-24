@@ -410,7 +410,7 @@ specified_start_range = 0;
 // Type: boolean
 //
 
-filter_using_elev = FALSE;
+filter_using_elev = TRUE;
 
 ///////////// specified_min_elev //////////////////////
 //
@@ -422,7 +422,7 @@ filter_using_elev = FALSE;
 // Type: double
 //
 
-specified_min_elev = -10;
+specified_min_elev = 1.5;
 
 ///////////// specified_max_elev //////////////////////
 //
@@ -434,7 +434,7 @@ specified_min_elev = -10;
 // Type: double
 //
 
-specified_max_elev = 90;
+specified_max_elev = 2.5;
 
 ///////////// filter_using_sweep_number ///////////////
 //

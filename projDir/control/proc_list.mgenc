@@ -42,8 +42,8 @@ RadMon         low        start_RadMon.low           snuff_inst
 # QUICKLOOK DATA
 #
 Dsr2Radx  quicklook.high.sur   start_Dsr2Radx.quicklook.high.sur  snuff_inst    
-#Dsr2Radx  quicklook.high.rhi   start_Dsr2Radx.quicklook.high.rhi  snuff_inst    
 Dsr2Radx  quicklook.low.sur    start_Dsr2Radx.quicklook.low.sur   snuff_inst    
+#Dsr2Radx  quicklook.high.rhi   start_Dsr2Radx.quicklook.high.rhi  snuff_inst    
 #Dsr2Radx  quicklook.low.rhi    start_Dsr2Radx.quicklook.low.rhi   snuff_inst    
 ###############################################################################
 # FTP quicklook data to OPS center - high data only

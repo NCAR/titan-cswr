@@ -78,7 +78,7 @@
           This the the X offset, in pixels, from the main frame of the application.
           ]]>
         </info>
-        <value>19</value>
+        <value>91</value>
       </param>
 
       <param name="yy" type="Integer">
@@ -89,7 +89,7 @@
           This the the Y offset, in pixels, from the main frame of the application.
           ]]>
         </info>
-        <value>791</value>
+        <value>133</value>
       </param>
 
       <param name="width" type="Integer">
@@ -183,9 +183,10 @@ Each line entry should be formatted as follows:
 #1000ns 1000 PRF, 1/1,  75m, 149km,  13.5m/s : cowdrx.1000.1000.1_1.75m
 #1000ns 1000 PRF, 2/3,  75m, 149km,  27.0m/s : cowdrx.1000.1000.2_3.75m
 #1000ns 1000 PRF, 4/5,  75m, 149km,  54.0m/s : cowdrx.1000.1000.4_5.75m
-667ns  1000 PRF, 1/1, 100m, 149km,  13.5m/s : cowdrx.667.1000.1_1.100m
+##667ns  1000 PRF, 1/1, 100m, 149km,  13.5m/s : cowdrx.667.1000.1_1.100m
+667ns  1000 PRF, 2/3, 100m, 148km,  27.0m/s : cowdrx.667.1000.2_3.100m
 #667ns  1200 PRF, 1/1, 100m, 124km,  16.2m/s : cowdrx.667.1200.1_1.100m
-667ns  1200 PRF, 2/3, 100m, 124km,  32.4m/s : cowdrx.667.1200.2_3.100m
+##667ns  1200 PRF, 2/3, 100m, 124km,  32.4m/s : cowdrx.667.1200.2_3.100m
 #667ns  1200 PRF, 4/5, 100m, 124km,  64.8m/s : cowdrx.667.1200.4_5.100m
 #500ns  2000 PRF, 1/1,  75m,  74km,  27.0m/s : cowdrx.500.2000.1_1.75m
 #500ns  2000 PRF, 3/4,  75m,  74km,  81.0m/s : cowdrx.500.2000.3_4.75m
@@ -197,11 +198,11 @@ Each line entry should be formatted as follows:
 #1333ns  750 PRF, 1/1, 100m, 199km,  10.1m/s : cowdrx.1333.750.1_1.100m
 #1333ns  750 PRF, 2/3, 100m, 199km,  20.3m/s : cowdrx.1333.750.2_3.100m
 #1333ns  750 PRF, 4/5, 100m, 199km,  40.5m/s : cowdrx.1333.750.4_5.100m
-667ns  1200 PRF, 2/3, 100m, 124km,  32.4m/s : cowdrx.default
-1333ns calibration                          : cowdrx.1333.calib
+667ns  1000 PRF, 2/3, 100m, 148km,  27.0m/s : cowdrx.default
+##1333ns calibration                          : cowdrx.1333.calib
 1000ns calibration                          : cowdrx.1000.calib
-667ns  calibration                          : cowdrx.667.calib
-500ns  calibration                          : cowdrx.500.calib
+##667ns  calibration                          : cowdrx.667.calib
+##500ns  calibration                          : cowdrx.500.calib
 </value>
       </param>
 
@@ -235,7 +236,7 @@ Each line entry should be formatted as follows:
           This the the X offset, in pixels, from the main frame of the application.
           ]]>
         </info>
-        <value>125</value>
+        <value>643</value>
       </param>
 
       <param name="yy" type="Integer">
@@ -246,7 +247,7 @@ Each line entry should be formatted as follows:
           This the the Y offset, in pixels, from the main frame of the application.
           ]]>
         </info>
-        <value>179</value>
+        <value>284</value>
       </param>
 
       <param name="width" type="Integer">
@@ -411,7 +412,7 @@ Each line entry should be formatted as follows:
           This the the X offset, in pixels, from the main frame of the application.
           ]]>
         </info>
-        <value>364</value>
+        <value>796</value>
       </param>
 
       <param name="yy" type="Integer">
@@ -422,7 +423,7 @@ Each line entry should be formatted as follows:
           This the the Y offset, in pixels, from the main frame of the application.
           ]]>
         </info>
-        <value>0</value>
+        <value>269</value>
       </param>
 
       <param name="width" type="Integer">

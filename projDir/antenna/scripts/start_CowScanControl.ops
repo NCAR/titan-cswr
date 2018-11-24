@@ -2,5 +2,5 @@
 
 cd $PROJ_DIR/antenna/params
 
-CowScanControl -params CowScanControl.ops
+CowScanControl -params CowScanControl.ops.NS
 

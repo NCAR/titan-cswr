@@ -253,7 +253,7 @@ scan_schedule_max_wait_secs = 300;
 //      double delta_el_deg;
 //      int n_sweeps;
 //      string angle_list;
-//      double transition_tolerance_deg;
+//      double angle_tolerance_deg;
 //      double nsecs_wait;
 //   }
 //
@@ -262,66 +262,44 @@ scan_schedule_max_wait_secs = 300;
 
 scan_sequence = {
   {
+    scan_name = "sur",
     scan_mode = SCAN_MODE_SURVEILLANCE,
     az_rate_deg_per_sec = 20,
     el_rate_deg_per_sec = 20,
     start_az_deg = 340,
     end_az_deg = 20,
-    delta_az_deg = -999,
     start_el_deg = -999,
     end_el_deg = -999,
-    delta_el_deg = -999,
-    n_sweeps = 6,
     angle_list = "0.5,1,2,3,4,5,6,7,0.5,1,8,9.5,11,13,15,18,21",
-    transition_tolerance_deg = -999,
+    angle_tolerance_deg = 0.1,
     nsecs_wait = 0
   }
   ,
   {
+    scan_name = "sur",
     scan_mode = SCAN_MODE_SURVEILLANCE,
     az_rate_deg_per_sec = 20,
     el_rate_deg_per_sec = 20,
     start_az_deg = 340,
     end_az_deg = 20,
-    delta_az_deg = -999,
     start_el_deg = -999,
     end_el_deg = -999,
-    delta_el_deg = -999,
-    n_sweeps = 6,
     angle_list = "0.5,1,1.5,2,3,4,5,6,8,10",
-    transition_tolerance_deg = -999,
+    angle_tolerance_deg = 0.1,
     nsecs_wait = 0
   }
   ,
-  // {
-  //   scan_mode = SCAN_MODE_POINTING,
-  //   az_rate_deg_per_sec = 20,
-  //   el_rate_deg_per_sec = 20,
-  //   start_az_deg = 340,
-  //   end_az_deg = -999,
-  //   delta_az_deg = -999,
-  //   start_el_deg = 3,
-  //   end_el_deg = -999,
-  //   delta_el_deg = -999,
-  //   n_sweeps = 1,
-  //   angle_list = "",
-  //   transition_tolerance_deg = -999,
-  //   nsecs_wait = 1
-  // }
- // ,
   {
-    scan_mode = SCAN_MODE_SURVEILLANCE,
+    scan_name = "vert",
+    scan_mode = SCAN_MODE_VERTICAL_POINTING,
     az_rate_deg_per_sec = 20,
     el_rate_deg_per_sec = 20,
     start_az_deg = 340,
     end_az_deg = 20,
-    delta_az_deg = -999,
     start_el_deg = -999,
     end_el_deg = -999,
-    delta_el_deg = -999,
-    n_sweeps = 1,
     angle_list = "90.0",
-    transition_tolerance_deg = -999,
+    angle_tolerance_deg = 0.1,
     nsecs_wait = 0
   }
 };

@@ -25,11 +25,8 @@ setenv LANG C
 setenv HOST_OS LINUX_LROSE
 setenv GCC_WARNINGS "-Wall"
 
-#setenv LROSE_CORE_DIR $HOME/git/lrose-core
-#setenv LROSE_INSTALL_DIR $HOME/lrose
-
-setenv LROSE_CORE_DIR $HOME/latest/git/lrose-core
-setenv LROSE_INSTALL_DIR $HOME/latest/lrose
+setenv LROSE_CORE_DIR $HOME/git/lrose-core
+setenv LROSE_INSTALL_DIR $HOME/lrose
 
 setenv RAP_MAKE_INC_DIR $LROSE_CORE_DIR/codebase/make_include
 setenv RAP_MAKE_BIN_DIR $LROSE_CORE_DIR/codebase/make_bin

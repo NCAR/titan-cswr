@@ -1,0 +1,7 @@
+#! /bin/csh
+
+cd $PROJ_DIR/antenna/params
+
+CowScanControl -params CowScanControl.ops.STORM.RHI
+
+

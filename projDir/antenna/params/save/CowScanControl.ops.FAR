@@ -1,0 +1,388 @@
+/**********************************************************************
+ * TDRP params for CowScanControl
+ **********************************************************************/
+
+//======================================================================
+//
+// CowScanControl controls the COW ARA antenna. It connects to the 
+//   antenna controller using TCP over ethernet, and issues ascii commands 
+//   to the controller. It also monitors the antenna angles etc using the 
+//   time series FMQ. CowScanControl runs on the DRX host.
+//
+//======================================================================
+ 
+//======================================================================
+//
+// DEBUGGING AND PROCESS CONTROL.
+//
+//======================================================================
+ 
+///////////// debug ///////////////////////////////////
+//
+// Debug option.
+//
+// If set, debug messages will be printed appropriately.
+//
+//
+// Type: enum
+// Options:
+//     DEBUG_OFF
+//     DEBUG_NORM
+//     DEBUG_VERBOSE
+//     DEBUG_EXTRA
+//
+
+debug = DEBUG_NORM;
+
+///////////// instance ////////////////////////////////
+//
+// Process instance.
+//
+// Used for registration with procmap.
+//
+//
+// Type: string
+//
+
+instance = "ops";
+
+///////////// register_with_procmap ///////////////////
+//
+// Option to register with the process mapper.
+//
+// If true, this application will try to register with procmap once per 
+//   minute. (If unable to do so, no error occurs.).
+//
+//
+// Type: boolean
+//
+
+register_with_procmap = TRUE;
+
+//======================================================================
+//
+// COMMUNICATING WITH ANTENNA CONTROLLER.
+//
+// The ARA antenna controller contains a Lantronix module for handling 
+//   TCP connections. The default IP address is 142.29.30.1. Connect to 
+//   the web interface at the IP and change the IP address to that 
+//   required by the COW - i.e. 10.3.3.80.
+//
+//======================================================================
+ 
+///////////// antcon_ip_address ///////////////////////
+//
+// IP address of the antenna controller.
+//
+// This is the IP address of the Lantronix module in the ARA controller.
+//
+//
+// Type: string
+//
+
+antcon_ip_address = "antcon";
+
+///////////// antcon_tcp_port /////////////////////////
+//
+// TCP port for communicating with the antenna controller.
+//
+// This is the TCP port on the Lantronix module in the antenna 
+//   controller.
+//
+//
+// Type: int
+//
+
+antcon_tcp_port = 10001;
+
+//======================================================================
+//
+// FMQ INPUT - time series message queue.
+//
+//======================================================================
+ 
+///////////// time_series_fmq_path ////////////////////
+//
+// Name of input fmq for time series.
+//
+// We read this FMQ to get antenna position etc.
+//
+//
+// Type: string
+//
+
+time_series_fmq_path = "$(DATA_DIR)/fmq/ts/shmem_high_with_angles_10300";
+
+///////////// start_reading_at_fmq_start //////////////
+//
+// Option to start reading at beginning of input FMQs.
+//
+// Normally, we start reading at the end of the queues. For debugging, 
+//   however, it is sometimes helpful to start at the beginning of the 
+//   queues.
+//
+//
+// Type: boolean
+//
+
+start_reading_at_fmq_start = FALSE;
+
+//======================================================================
+//
+// RUN ON A SCHEDULE.
+//
+// Option to run the scans on a time-based schedule.
+//
+//======================================================================
+ 
+///////////// run_scans_on_schedule ///////////////////
+//
+// Option to run on a schedule.
+//
+// If TRUE, it will run all of the scans in the sequence, and then 
+//   restart the sequence on the indicated schedule.
+//
+//
+// Type: boolean
+//
+
+run_scans_on_schedule = TRUE;
+//run_scans_on_schedule = FALSE;
+
+///////////// scan_schedule_interval_secs /////////////
+//
+// The schedule will be started on an even number of seconds after the 
+//   hour.
+//
+// Make sure the interval is an integer fraction of an hour.
+//
+//
+// Type: int
+//
+
+scan_schedule_interval_secs = 600;
+
+///////////// scan_schedule_max_wait_secs /////////////
+//
+// Max wait time for schedule.
+//
+// If the wait time is longer than this, it will free-run.
+//
+//
+// Type: int
+//
+
+scan_schedule_max_wait_secs = 600;
+
+//======================================================================
+//
+// SCAN DETAILS.
+//
+// This is a sequence of scans to be run one after the other, in order. 
+//   After all scans have been run once, the sequence is repeated.
+//
+//======================================================================
+ 
+///////////// scan_sequence ///////////////////////////
+//
+// Scan sequence.
+//
+
+//
+// Sets up the scan sequence. Each entry in the sequence is run in 
+//   order. When the end of the sequence is reached, the entire sequence 
+//   is repeated. 
+//
+// az_rate_deg_per_sec and el_rate_deg_per_sec apply to all scan modes 
+//   except for IDLE.
+//
+// nsecs_wait applies to POINTING and IDLE modes only.
+//
+// The number of sweeps (n_sweeps) applies to VERTICAL_POINTING mode 
+//   only.
+//
+// POINTING: move to (start_az_deg, start_el_deg) and point for 
+//   nsecs_wait.
+//
+// SURVEILLANCE: starts at start_az_deg. Rotation is clockwise. Moves 
+//   through angle list.
+//
+// SECTOR: starts at (start_az_deg, start_el_deg). Sweeps clockwise to 
+//   end_az_deg and then back again. Lowest elevation is start_el_deg, 
+//   each sweep increases by delta_el_deg until end_el_deg is reached. 
+//
+// RHI: starts at (start_az_deg, start_el_deg). Sweeps up to end_el_deg 
+//   and then back down again. First azimuth is at start_az_deg, each 
+//   sweep increases by delta_az_deg until end_az_deg is reached. 
+//
+// VERTICAL_POINTING: starts at (start_az_defg, start_el_deg). Elevation 
+//   stays fixed. Rotation is clockwise. Each sweep is 370 degrees in 
+//   azimuth arc. A volume is made up of n_sweeps.
+//
+// SUNSCAN: starts at start_az_deg to left of sun and start_el_deg below 
+//   sun. Sweeps clockwise across sun to end_az_deg and then back again. 
+//   Each sweep increases by delta_el_deg until end_el_deg above sun is 
+//   reached.
+//
+// SUNSCAN_RHI: starts at start_az_deg to left of sun and start_el_deg 
+//   below sun. Sweeps up across sun to end_az_deg and then back down 
+//   again. Each sweep increases by delta_az_deg until end_az_deg reached.
+//
+// IDLE: stop at the current antenna position, and wait for nsecs_wait.
+//
+//
+// Type: struct
+//   typedef struct {
+//      scan_mode_t scan_mode;
+//        Options:
+//          SCAN_MODE_SECTOR
+//          SCAN_MODE_RHI
+//          SCAN_MODE_VERTICAL_POINTING
+//          SCAN_MODE_IDLE
+//          SCAN_MODE_SURVEILLANCE
+//          SCAN_MODE_SUNSCAN
+//          SCAN_MODE_POINTING
+//          SCAN_MODE_SUNSCAN_RHI
+//      double az_rate_deg_per_sec;
+//      double el_rate_deg_per_sec;
+//      double start_az_deg;
+//      double end_az_deg;
+//      double delta_az_deg;
+//      double start_el_deg;
+//      double end_el_deg;
+//      double delta_el_deg;
+//      int n_sweeps;
+//      string angle_list;
+//      double transition_tolerance_deg;
+//      double nsecs_wait;
+//   }
+//
+// 1D array - variable length.
+//
+
+scan_sequence = {
+  {
+    scan_name = "sur",
+    scan_mode = SCAN_MODE_SURVEILLANCE,
+    az_rate_deg_per_sec = 20,
+    el_rate_deg_per_sec = 20,
+    start_az_deg = 340,
+    end_az_deg = 20,
+    start_el_deg = -999,
+    end_el_deg = -999,
+    angle_list = "0.5,1,1.5,2.2,3,4,5.2,6.5,8,10",
+    angle_tolerance_deg = 0.1,
+    nsecs_wait = 0
+  } 
+  ,
+  {
+    scan_name = "sur",
+    scan_mode = SCAN_MODE_SURVEILLANCE,
+    az_rate_deg_per_sec = 20,
+    el_rate_deg_per_sec = 20,
+    start_az_deg = 340,
+    end_az_deg = 20,
+    start_el_deg = -999,
+    end_el_deg = -999,
+    angle_list = "0.5,1,1.5,2.2,3,4,5.2,6.5,8",
+    angle_tolerance_deg = 0.1,
+    nsecs_wait = 0
+  }
+  ,
+  {
+    scan_name = "sur",
+    scan_mode = SCAN_MODE_SURVEILLANCE,
+    az_rate_deg_per_sec = 20,
+    el_rate_deg_per_sec = 20,
+    start_az_deg = 340,
+    end_az_deg = 20,
+    start_el_deg = -999,
+    end_el_deg = -999,
+    angle_list = "0.5,1,1.5,2.2,3,4,5.2,6.5,8",
+    angle_tolerance_deg = 0.1,
+    nsecs_wait = 0
+  }
+};
+
+///////////// requested_angle_tolerance ///////////////
+//
+// Tolerance for checking a requested angle has been reached (deg).
+//
+// We check the antenna angles against the requested values. This 
+//   applies, for example, to pointing scans.
+//
+//
+// Type: double
+//
+
+requested_angle_tolerance = 0.1;
+
+///////////// transition_angle_tolerance //////////////
+//
+// Angle tolerance for flagging a beam in transition (deg).
+//
+// We check the actual antenna angles against the nominal fixed angle 
+//   for the scan. If the difference differs by more than tolerance, the 
+//   beam will be flagged as in transition.
+//
+//
+// Type: double
+//
+
+transition_angle_tolerance = 0.2;
+
+///////////// azimuth_correction_deg //////////////////
+//
+// Correction to raw azimuth to align data to True North (deg).
+//
+// This value is ADDED to the raw azimuth to get the corrected value. 
+//   Note that for the XPOL radar, the raw azimuth of the direction in 
+//   which the trailer is pointing is 120 degrees.
+//
+//
+// Type: double
+//
+
+azimuth_correction_deg = 0;
+
+///////////// sector_widen_secs ///////////////////////
+//
+// Widen a sector by this number of seconds.
+//
+// In order to prevent transitions within the sector, we optionally 
+//   widen the sector by a number of degrees equal to the specified time 
+//   multiplied by the antenna azimuth rate.
+//
+//
+// Type: double
+//
+
+sector_widen_secs = 0.5;
+
+///////////// rhi_widen_secs //////////////////////////
+//
+// Widen rhi elevation range by this number of seconds.
+//
+// In order to prevent transitions within the rhi, we optionally widen 
+//   the rhi vertical sector by a number of degrees equal to the specified 
+//   time multiplied by the antenna elevation rate.
+//
+//
+// Type: double
+//
+
+rhi_widen_secs = 0.5;
+
+///////////// default_antenna_speed ///////////////////
+//
+// Antenna speed for normal moves (deg/sec).
+//
+// This speed will be used to position the antenna to the start of each 
+//   scan.
+//
+//
+// Type: double
+//
+
+default_antenna_speed = 15;
+

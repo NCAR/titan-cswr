@@ -268,6 +268,16 @@ set
   make
   make install
 
+# Note about GPL licencing issue
+
+# When compiling the driver (above) you may get an error related to the GPL
+# licence restrictions. If that occurs, you need to edit the file
+#   WinDriver1150_64/redist/linux_wrappers.c
+# and apply the following change:
+#
+# < MODULE_LICENSE("Proprietary");
+# > MODULE_LICENSE("GPL");
+
 # Add the following to /etc/rc.local
 
   rmmod windrvr6

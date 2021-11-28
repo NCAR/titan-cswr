@@ -1,0 +1,102 @@
+staHow to perform the calibration using TsCalAuto
+==============================================
+
+On DRX:
+
+1. Stop the realtime system
+---------------------------
+
+  stop_all
+
+2. Start the cal processes
+--------------------------
+
+  start_cal
+
+3. Go to the cal params directory
+---------------------------------
+
+  cd
+  cd projDir/cal/params
+
+4. Set the siggen
+-----------------
+
+Set the siggen up to inject signals into the H and V couplers.
+
+5. Run the cals for each pulse width
+-------------------------------------
+
+For each of the pulse widths:
+
+  (a) select the correct entry in the GUI.
+  (b) run the cal.
+  (c) close the pop-up window with the cal plot.
+
+Pulse width 0.2 us:
+
+  Select 0.2 us in GUI
+  Wait for data to start
+  start_TsCalAuto.high.0.2us
+  Close popup
+  start_TsCalAuto.low.0.2us
+  Close popup
+
+Pulse width 0.4 us:
+
+  Select 0.4 us in GUI
+  Wait for data to start
+  start_TsCalAuto.high.0.4us
+  Close popup
+  start_TsCalAuto.low.0.4us
+  Close popup
+
+Pulse width 0.5 us:
+
+  Select 0.5 us in GUI
+  Wait for data to start
+  start_TsCalAuto.high.0.5us
+  Close popup
+  start_TsCalAuto.low.0.5us
+  Close popup
+
+Pulse width 0.8 us:
+
+  Select 0.8 us in GUI
+  Wait for data to start
+  start_TsCalAuto.high.0.8us
+  Close popup
+  start_TsCalAuto.low.0.8us
+  Close popup
+
+Pulse width 1.0 us:
+
+  Select 1.0 us in GUI
+  Wait for data to start
+  start_TsCalAuto.high.1.0us
+  Close popup
+  start_TsCalAuto.low.1.0us
+  Close popup
+
+6. Stop the cal processes
+-------------------------
+
+  stop_all
+
+7. Copy to the default files
+----------------------------
+
+cd
+cd projDir/data/DOW7/cal/high/calib_0.4us (or DOW6 - depends on which radar)
+cp TsCalAuto_yyyymmdd_hhmmss.xml TsCalAuto.default.xml
+
+cd
+cd projDir/data/DOW7/cal/low/calib_0.4us (or DOW6 - depends on which radar)
+cp TsCalAuto_yyyymmdd_hhmmss.xml TsCalAuto.default.xml
+
+8. Copy the results across to mgen
+----------------------------------
+
+  rsync_cal_to_mgen
+
+

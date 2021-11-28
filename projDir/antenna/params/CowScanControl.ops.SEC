@@ -32,6 +32,7 @@
 //     DEBUG_EXTRA
 //
 
+// debug = DEBUG_VERBOSE;
 debug = DEBUG_NORM;
 
 ///////////// instance ////////////////////////////////
@@ -231,7 +232,7 @@ scan_schedule_interval_secs = 600;
 // Type: int
 //
 
-scan_schedule_max_wait_secs = 600;
+scan_schedule_max_wait_secs = 0;
 
 //======================================================================
 //
@@ -315,44 +316,44 @@ scan_schedule_max_wait_secs = 600;
 
 scan_sequence = {
   {
-    scan_name = "sur",
-    scan_mode = SCAN_MODE_SURVEILLANCE,
-    az_rate_deg_per_sec = 24,
-    el_rate_deg_per_sec = 20,
-    start_az_deg = 340,
-    end_az_deg = 20,
+    scan_name = "sec180",
+    scan_mode = SCAN_MODE_SECTOR,
+    az_rate_deg_per_sec = 25,
+    el_rate_deg_per_sec = 10,
+    start_az_deg = 60,
+    end_az_deg = 240,
     start_el_deg = 0,
     end_el_deg = 0,
-    angle_list = "2,4,6,8,10,12,15,2,4,6,8,10,12,15",
-    angle_tolerance_deg = 0.1,
+    angle_list = "2,4,6,8,10,12",
+    angle_tolerance_deg = 0.25,
     nsecs_wait = 0
   }
   ,
   {
-    scan_name = "rhi",
-    scan_mode = SCAN_MODE_RHI,
-    az_rate_deg_per_sec = 20,
-    el_rate_deg_per_sec = 6,
-    start_az_deg = 0,
-    end_az_deg = 0,
+    scan_name = "sec270",
+    scan_mode = SCAN_MODE_SECTOR,
+    az_rate_deg_per_sec = 25,
+    el_rate_deg_per_sec = 10,
+    start_az_deg = 40,
+    end_az_deg = 310,
     start_el_deg = 0,
-    end_el_deg = 50,
-    angle_list = "304,309.5,316,329",
-    angle_tolerance_deg = 0.5,
+    end_el_deg = 0,
+    angle_list = "22,24,26,28,30,32",
+    angle_tolerance_deg = 0.25,
     nsecs_wait = 0
   }
   ,
-       {
-    scan_name = "vert",
-    scan_mode = SCAN_MODE_SURVEILLANCE,
-    az_rate_deg_per_sec = 11,
-    el_rate_deg_per_sec = 20,
-    start_az_deg = 340,
-    end_az_deg = 20,
+  {
+    scan_name = "sec90",
+    scan_mode = SCAN_MODE_SECTOR,
+    az_rate_deg_per_sec = 25,
+    el_rate_deg_per_sec = 10,
+    start_az_deg = 90,
+    end_az_deg = 180,
     start_el_deg = 0,
     end_el_deg = 0,
-    angle_list = "90.0",
-    angle_tolerance_deg = 0.1,
+    angle_list = "42,44,46,48,50,52",
+    angle_tolerance_deg = 0.25,
     nsecs_wait = 0
   }
 };

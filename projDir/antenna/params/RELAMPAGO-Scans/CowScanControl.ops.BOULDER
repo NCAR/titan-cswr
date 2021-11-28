@@ -231,7 +231,7 @@ scan_schedule_interval_secs = 600;
 // Type: int
 //
 
-scan_schedule_max_wait_secs = 300;
+scan_schedule_max_wait_secs = 0;
 
 //======================================================================
 //
@@ -323,38 +323,24 @@ scan_sequence = {
     end_az_deg = 20,
     start_el_deg = -999,
     end_el_deg = -999,
-    angle_list = "0.5,1.5,2.5,4,6,8,10,11,12,13,14,15.5,17,18.5,20,23,27",
-    angle_tolerance_deg = 0.1,
+    angle_list = "3,3,3,3,3,3,3,3,3,3,3,3,3,3,3",
+    angle_tolerance_deg = 1.0,
     nsecs_wait = 0
   }
-  ,
-  {
-    scan_name = "sur",
-    scan_mode = SCAN_MODE_SURVEILLANCE,
-    az_rate_deg_per_sec = 20,
-    el_rate_deg_per_sec = 20,
-    start_az_deg = 340,
-    end_az_deg = 20,
-    start_el_deg = -999,
-    end_el_deg = -999,
-    angle_list = "0.5,1,1.5,2,3,4,5,6,8,10",
-    angle_tolerance_deg = 0.1,
-    nsecs_wait = 0
-  }
-  ,
-  {
-    scan_name = "vert",
-    scan_mode = SCAN_MODE_VERTICAL_POINTING,
-    az_rate_deg_per_sec = 20,
-    el_rate_deg_per_sec = 20,
-    start_az_deg = 340,
-    end_az_deg = 20,
-    start_el_deg = -999,
-    end_el_deg = -999,
-    angle_list = "90.0",
-    angle_tolerance_deg = 0.25,
-    nsecs_wait = 0
-  }
+//  ,
+//  {
+//    scan_name = "vert",
+//    scan_mode = SCAN_MODE_VERTICAL_POINTING,
+//    az_rate_deg_per_sec = 11,
+//    el_rate_deg_per_sec = 20,
+//    start_az_deg = 340,
+//    end_az_deg = 20,
+//    start_el_deg = -999,
+//    end_el_deg = -999,
+//    angle_list = "90.0",
+//    angle_tolerance_deg = 0.1,
+//    nsecs_wait = 0
+//  }
 };
 
 ///////////// requested_angle_tolerance ///////////////

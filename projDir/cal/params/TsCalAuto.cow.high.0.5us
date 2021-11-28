@@ -190,7 +190,7 @@ siggen_ip_address = "siggen";
 // Type: double
 //
 
-siggen_max_power = -25;
+siggen_max_power = 5;
 
 ///////////// siggen_min_power ////////////////////////
 //

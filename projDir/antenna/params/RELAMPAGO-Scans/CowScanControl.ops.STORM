@@ -129,66 +129,6 @@ start_reading_at_fmq_start = FALSE;
 
 //======================================================================
 //
-// FMQ OUTPUT for scan flags.
-//
-// We write the scan flags to this FMQ.
-//
-//======================================================================
- 
-///////////// scan_flag_fmq_path //////////////////////
-//
-// Name of scan flag fmq.
-//
-// We write the scan flags to this FMQ in XML format.
-//
-//
-// Type: string
-//
-
-scan_flag_fmq_path = "$(DATA_DIR)/fmq/antenna/scan_flags";
-
-///////////// scan_flag_fmq_size //////////////////////
-//
-// Size of output FMQ, in bytes.
-//
-// This is the total size of the output FMQ buffer. Some of this buffer 
-//   will be used for control bytes (12 bytes per message).
-//
-//
-// Type: int
-//
-
-scan_flag_fmq_size = 1000000;
-
-///////////// scan_flag_fmq_nslots ////////////////////
-//
-// Number of slots in scan flag FMQ.
-//
-// The number of slots corresponds to the maximum number of messages 
-//   which may be written to the buffer before overwrites occur. However, 
-//   overwrites may occur sooner if the size is not set large enough.
-//
-//
-// Type: int
-//
-
-scan_flag_fmq_nslots = 1000;
-
-///////////// data_mapper_report_interval /////////////
-//
-// Number of seconds between reports to DataMapper.
-//
-// If > 0, the program will register with the DataMapper when the output 
-//   FMQ is written to. If <= 0, registration will not be performed.
-//
-//
-// Type: int
-//
-
-data_mapper_report_interval = 5;
-
-//======================================================================
-//
 // RUN ON A SCHEDULE.
 //
 // Option to run the scans on a time-based schedule.
@@ -206,7 +146,8 @@ data_mapper_report_interval = 5;
 // Type: boolean
 //
 
-run_scans_on_schedule = FALSE;
+run_scans_on_schedule = TRUE;
+//run_scans_on_schedule = FALSE;
 
 ///////////// scan_schedule_interval_secs /////////////
 //
@@ -231,7 +172,7 @@ scan_schedule_interval_secs = 600;
 // Type: int
 //
 
-scan_schedule_max_wait_secs = 600;
+scan_schedule_max_wait_secs = 300;
 
 //======================================================================
 //
@@ -255,41 +196,43 @@ scan_schedule_max_wait_secs = 600;
 // az_rate_deg_per_sec and el_rate_deg_per_sec apply to all scan modes 
 //   except for IDLE.
 //
-// nsecs_wait: number of seconds to wait at end of scan.
+// nsecs_wait applies to POINTING and IDLE modes only.
 //
-// start_az_deg and end_az_deg apply to SURVEILLANCE, SECTOR and 
-//   SUNSCAN.
-//
-// start_el_deg and end_el_deg apply to RHI mode.
+// The number of sweeps (n_sweeps) applies to VERTICAL_POINTING mode 
+//   only.
 //
 // POINTING: move to (start_az_deg, start_el_deg) and point for 
 //   nsecs_wait.
 //
 // SURVEILLANCE: starts at start_az_deg. Rotation is clockwise. Moves 
-//   through angle list in elevation. Transition flags start at 
-//   end_az_deg.
+//   through angle list.
 //
-// SECTOR: starts at start_az_deg, sweeps clockwise to end_az_deg and 
-//   then back again. Moves through the angle list in elevation.
+// SECTOR: starts at (start_az_deg, start_el_deg). Sweeps clockwise to 
+//   end_az_deg and then back again. Lowest elevation is start_el_deg, 
+//   each sweep increases by delta_el_deg until end_el_deg is reached. 
 //
-// RHI: starts at start_el_deg, sweeps up to end_el_deg and then back 
-//   down again. Moves through the angle list in azimuth.
+// RHI: starts at (start_az_deg, start_el_deg). Sweeps up to end_el_deg 
+//   and then back down again. First azimuth is at start_az_deg, each 
+//   sweep increases by delta_az_deg until end_az_deg is reached. 
 //
-// VERTICAL_POINTING: for details see SURVEILLANCE - this scan is 
-//   identical to surveillance except it is expected that the elevation 
-//   angle list will be close to 90 deg.
+// VERTICAL_POINTING: starts at (start_az_defg, start_el_deg). Elevation 
+//   stays fixed. Rotation is clockwise. Each sweep is 370 degrees in 
+//   azimuth arc. A volume is made up of n_sweeps.
 //
-// SUNSCAN: angles are relative to the location of the sun center. 
-//   Starts at start_az_deg to the left of sun center. Sweeps clockwise 
-//   across sun to end_az_deg relative to sun center. Angle list is 
-//   elevation relative to the sun center.
+// SUNSCAN: starts at start_az_deg to left of sun and start_el_deg below 
+//   sun. Sweeps clockwise across sun to end_az_deg and then back again. 
+//   Each sweep increases by delta_el_deg until end_el_deg above sun is 
+//   reached.
+//
+// SUNSCAN_RHI: starts at start_az_deg to left of sun and start_el_deg 
+//   below sun. Sweeps up across sun to end_az_deg and then back down 
+//   again. Each sweep increases by delta_az_deg until end_az_deg reached.
 //
 // IDLE: stop at the current antenna position, and wait for nsecs_wait.
 //
 //
 // Type: struct
 //   typedef struct {
-//      string scan_name;
 //      scan_mode_t scan_mode;
 //        Options:
 //          SCAN_MODE_SECTOR
@@ -299,12 +242,16 @@ scan_schedule_max_wait_secs = 600;
 //          SCAN_MODE_SURVEILLANCE
 //          SCAN_MODE_SUNSCAN
 //          SCAN_MODE_POINTING
+//          SCAN_MODE_SUNSCAN_RHI
 //      double az_rate_deg_per_sec;
 //      double el_rate_deg_per_sec;
 //      double start_az_deg;
 //      double end_az_deg;
+//      double delta_az_deg;
 //      double start_el_deg;
 //      double end_el_deg;
+//      double delta_el_deg;
+//      int n_sweeps;
 //      string angle_list;
 //      double angle_tolerance_deg;
 //      double nsecs_wait;
@@ -317,40 +264,40 @@ scan_sequence = {
   {
     scan_name = "sur",
     scan_mode = SCAN_MODE_SURVEILLANCE,
-    az_rate_deg_per_sec = 24,
+    az_rate_deg_per_sec = 20,
     el_rate_deg_per_sec = 20,
     start_az_deg = 340,
     end_az_deg = 20,
-    start_el_deg = 0,
-    end_el_deg = 0,
-    angle_list = "2,4,6,8,10,12,15,2,4,6,8,10,12,15",
+    start_el_deg = -999,
+    end_el_deg = -999,
+    angle_list = "0.5,1,2,3,4,5,6,7,0.5,1,8,9.5,11,13,15,18,21",
     angle_tolerance_deg = 0.1,
     nsecs_wait = 0
   }
   ,
   {
-    scan_name = "rhi",
-    scan_mode = SCAN_MODE_RHI,
-    az_rate_deg_per_sec = 20,
-    el_rate_deg_per_sec = 6,
-    start_az_deg = 0,
-    end_az_deg = 0,
-    start_el_deg = 0,
-    end_el_deg = 50,
-    angle_list = "304,309.5,316,329",
-    angle_tolerance_deg = 0.5,
-    nsecs_wait = 0
-  }
-  ,
-       {
-    scan_name = "vert",
+    scan_name = "sur",
     scan_mode = SCAN_MODE_SURVEILLANCE,
-    az_rate_deg_per_sec = 11,
+    az_rate_deg_per_sec = 20,
     el_rate_deg_per_sec = 20,
     start_az_deg = 340,
     end_az_deg = 20,
-    start_el_deg = 0,
-    end_el_deg = 0,
+    start_el_deg = -999,
+    end_el_deg = -999,
+    angle_list = "0.5,1,1.5,2,3,4,5,6,8,10",
+    angle_tolerance_deg = 0.1,
+    nsecs_wait = 0
+  }
+  ,
+  {
+    scan_name = "vert",
+    scan_mode = SCAN_MODE_VERTICAL_POINTING,
+    az_rate_deg_per_sec = 20,
+    el_rate_deg_per_sec = 20,
+    start_az_deg = 340,
+    end_az_deg = 20,
+    start_el_deg = -999,
+    end_el_deg = -999,
     angle_list = "90.0",
     angle_tolerance_deg = 0.1,
     nsecs_wait = 0

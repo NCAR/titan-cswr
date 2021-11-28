@@ -293,7 +293,7 @@ pentek_sampling_frequency_hz = 1.2e+08;
 // Type: double
 //
 
-prt_sec = 0.001;
+prt_sec = 0.0005;
 
 ///////////// prt_is_staggered ////////////////////////
 //
@@ -306,7 +306,7 @@ prt_sec = 0.001;
 // Type: boolean
 //
 
-prt_is_staggered = FALSE;
+prt_is_staggered = TRUE;
 
 ///////////// staggered_prt_ratio /////////////////////
 //
@@ -323,7 +323,7 @@ prt_is_staggered = FALSE;
 //     STAGGER_4_5
 //
 
-staggered_prt_ratio = STAGGER_2_3;
+staggered_prt_ratio = STAGGER_3_4;
 
 ///////////// tx_mode /////////////////////////////////
 //
@@ -611,7 +611,7 @@ afc_enabled = TRUE;
 // Type: boolean
 //
 
-afc_keep_osc_default_freq = TRUE;
+afc_keep_osc_default_freq = $(AFC_KEEP_OSC_DEFAULT_FREQ);
 
 ///////////// IF_stage1_hz ////////////////////////////
 //

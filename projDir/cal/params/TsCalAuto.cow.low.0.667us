@@ -30,6 +30,7 @@
 //
 
 debug = DEBUG_NORM;
+//debug = DEBUG_VERBOSE;
 
 ///////////// instance ////////////////////////////////
 //
@@ -549,7 +550,7 @@ twoWayRadomeLossDbV = 0;
 // Type: double
 //
 
-receiverMismatchLossDb = 1.50;
+receiverMismatchLossDb = 1.5;
 
 ///////////// noiseSourcePowerDbmH ////////////////////
 //

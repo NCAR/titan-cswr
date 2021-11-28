@@ -306,7 +306,7 @@ prt_sec = 0.001;
 // Type: boolean
 //
 
-prt_is_staggered = FALSE;
+prt_is_staggered = TRUE;
 
 ///////////// staggered_prt_ratio /////////////////////
 //
@@ -373,7 +373,7 @@ max_duty_cycle = $(MAX_DUTY_CYCLE);
 // Type: double
 //
 
-tx_nominal_pulse_width = 0.5e-06;
+tx_nominal_pulse_width = 6.67e-07;
 
 ///////////// tx_mod_width_stretch_high ///////////////
 //
@@ -388,7 +388,7 @@ tx_nominal_pulse_width = 0.5e-06;
 // Type: double
 //
 
-tx_mod_width_stretch_high = $(TX_MOD_WIDTH_STRETCH_HIGH_500);
+tx_mod_width_stretch_high = $(TX_MOD_WIDTH_STRETCH_HIGH_667);
 
 ///////////// tx_delay_high ///////////////////////////
 //
@@ -402,7 +402,7 @@ tx_mod_width_stretch_high = $(TX_MOD_WIDTH_STRETCH_HIGH_500);
 // Type: double
 //
 
-tx_delay_high = $(TX_DELAY_HIGH_500);
+tx_delay_high = $(TX_DELAY_HIGH_667);
 
 ///////////// tx_mod_width_stretch_low ////////////////
 //
@@ -417,7 +417,7 @@ tx_delay_high = $(TX_DELAY_HIGH_500);
 // Type: double
 //
 
-tx_mod_width_stretch_low = $(TX_MOD_WIDTH_STRETCH_LOW_500);
+tx_mod_width_stretch_low = $(TX_MOD_WIDTH_STRETCH_LOW_667);
 
 ///////////// tx_pulse_separation /////////////////////
 //
@@ -433,7 +433,7 @@ tx_mod_width_stretch_low = $(TX_MOD_WIDTH_STRETCH_LOW_500);
 // Type: double
 //
 
-tx_pulse_separation = $(TX_PULSE_SEPARATION_500);
+tx_pulse_separation = $(TX_PULSE_SEPARATION_667);
 
 //======================================================================
 //
@@ -468,7 +468,7 @@ n_gates = $(MAX_N_GATES);
 // Type: double
 //
 
-rx_gate_width = 0.5e-06;
+rx_gate_width = 6.67e-07;
 
 //======================================================================
 //
@@ -487,7 +487,7 @@ rx_gate_width = 0.5e-06;
 // Type: double
 //
 
-tx_to_rx_delay_high = $(TX_TO_RX_DELAY_HIGH_500);
+tx_to_rx_delay_high = $(TX_TO_RX_DELAY_HIGH_667);
 
 ///////////// tx_to_rx_delay_low //////////////////////
 //
@@ -500,7 +500,7 @@ tx_to_rx_delay_high = $(TX_TO_RX_DELAY_HIGH_500);
 // Type: double
 //
 
-tx_to_rx_delay_low = $(TX_TO_RX_DELAY_LOW_500);
+tx_to_rx_delay_low = $(TX_TO_RX_DELAY_LOW_667);
 
 //======================================================================
 //
@@ -522,7 +522,7 @@ tx_to_rx_delay_low = $(TX_TO_RX_DELAY_LOW_500);
 // Type: double
 //
 
-tx_to_burst_sample_delay_high = $(TX_TO_BURST_SAMPLE_DELAY_HIGH_500);
+tx_to_burst_sample_delay_high = $(TX_TO_BURST_SAMPLE_DELAY_HIGH_667);
 
 ///////////// burst_sample_width_stretch_high /////////
 //
@@ -537,7 +537,7 @@ tx_to_burst_sample_delay_high = $(TX_TO_BURST_SAMPLE_DELAY_HIGH_500);
 // Type: double
 //
 
-burst_sample_width_stretch_high = $(BURST_SAMPLE_WIDTH_STRETCH_HIGH_500);
+burst_sample_width_stretch_high = $(BURST_SAMPLE_WIDTH_STRETCH_HIGH_667);
 
 ///////////// tx_to_burst_sample_delay_low ////////////
 //
@@ -550,7 +550,7 @@ burst_sample_width_stretch_high = $(BURST_SAMPLE_WIDTH_STRETCH_HIGH_500);
 // Type: double
 //
 
-tx_to_burst_sample_delay_low = $(TX_TO_BURST_SAMPLE_DELAY_LOW_500);
+tx_to_burst_sample_delay_low = $(TX_TO_BURST_SAMPLE_DELAY_LOW_667);
 
 ///////////// burst_sample_width_stretch_low //////////
 //
@@ -565,7 +565,7 @@ tx_to_burst_sample_delay_low = $(TX_TO_BURST_SAMPLE_DELAY_LOW_500);
 // Type: double
 //
 
-burst_sample_width_stretch_low = $(BURST_SAMPLE_WIDTH_STRETCH_LOW_500);
+burst_sample_width_stretch_low = $(BURST_SAMPLE_WIDTH_STRETCH_LOW_667);
 
 ///////////// burst_n_pulses_for_props ////////////////
 //
@@ -581,6 +581,20 @@ burst_sample_width_stretch_low = $(BURST_SAMPLE_WIDTH_STRETCH_LOW_500);
 //
 
 burst_n_pulses_for_props = 500;
+
+///////////// burst_width_require_edge_detection //////
+//
+// Require detection of rising and falling edges for width computation.
+//
+// If false, the pulse width will be reported even if no edges are seen. 
+//   This is useful for testing when a CW signal is injected into the 
+//   burst channel, and the signal is not modulated to simulate a burst.
+//
+//
+// Type: boolean
+//
+
+burst_width_require_edge_detection = TRUE;
 
 //======================================================================
 //
@@ -611,7 +625,7 @@ afc_enabled = TRUE;
 // Type: boolean
 //
 
-afc_keep_osc_default_freq = TRUE;
+afc_keep_osc_default_freq = $(AFC_KEEP_OSC_DEFAULT_FREQ);
 
 ///////////// IF_stage1_hz ////////////////////////////
 //
@@ -1232,17 +1246,46 @@ gui_tcp_port = 5630;
 
 //======================================================================
 //
-// COMPUTING ANTENNA SCAN DATA.
+// DETERMING ANTENNA SCAN DATA.
 //
 // The Rapid DOW scans only in surveillance mode. All sweeps end at the 
-//   same azimuth, generally when the antenna is pointing over the truck 
-//   cab (0 deg measured). Some antenna scan strategies will be at a 
-//   single elevation only, and others will have 2 elevation angles, i.e. 
-//   2 sets of sweeps per volume. For every antenna sweep there is are 6 
-//   sweeps, one for each frequency.
+//   same azimuth, generally when the antenna is close to the truck cab. 
+//   We either get scan info from the antenna controller app, or assume a 
+//   constant angle for the elevation change.
 //
 //======================================================================
  
+///////////// scan_flags_mode /////////////////////////
+//
+// Options for determining the scan flags.
+//
+// SCAN_FLAGS_FROM_ANTENNA_CONTROLLER: read scan flags from 
+//   CowScanControl app, via an FMQ. SCAN_FLAGS_FROM_AZIMUTH_TRANSITION: 
+//   compute scan flags assuming an antenna transition at a fixed azimuth 
+//   angle every sweep, in surveillance mode.
+//
+//
+// Type: enum
+// Options:
+//     SCAN_FLAGS_FROM_ANTENNA_CONTROLLER
+//     SCAN_FLAGS_FROM_AZIMUTH_TRANSITION
+//
+
+// scan_flags_mode = SCAN_FLAGS_FROM_ANTENNA_CONTROLLER;
+scan_flags_mode = SCAN_FLAGS_FROM_AZIMUTH_TRANSITION;
+
+///////////// scan_flags_fmq_path /////////////////////
+//
+// Name of scan flag fmq.
+//
+// We write the scan flags to this FMQ in XML format.
+//
+//
+// Type: string
+//
+
+scan_flags_fmq_path = "$(DATA_DIR)/fmq/antenna/scan_flags";
+
 ///////////// sweep_transition_azimuth_deg ////////////
 //
 // Azimuth to be used for ending one sweep and starting the next (deg).
@@ -1399,7 +1442,7 @@ test_start_az = 0;
 // Type: double
 //
 
-test_end_az = 10;
+test_end_az = 90;
 
 ///////////// test_az_secs_per_rev ////////////////////
 //

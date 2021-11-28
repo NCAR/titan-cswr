@@ -315,43 +315,15 @@ scan_schedule_max_wait_secs = 600;
 
 scan_sequence = {
   {
-    scan_name = "sur",
-    scan_mode = SCAN_MODE_SURVEILLANCE,
-    az_rate_deg_per_sec = 24,
-    el_rate_deg_per_sec = 20,
-    start_az_deg = 340,
-    end_az_deg = 20,
+    scan_name = "sun",
+    scan_mode = SCAN_MODE_SUNSCAN,
+    az_rate_deg_per_sec = 1,
+    el_rate_deg_per_sec = 1,
+    start_az_deg = -10,
+    end_az_deg = 10,
     start_el_deg = 0,
     end_el_deg = 0,
-    angle_list = "2,4,6,8,10,12,15,2,4,6,8,10,12,15",
-    angle_tolerance_deg = 0.1,
-    nsecs_wait = 0
-  }
-  ,
-  {
-    scan_name = "rhi",
-    scan_mode = SCAN_MODE_RHI,
-    az_rate_deg_per_sec = 20,
-    el_rate_deg_per_sec = 6,
-    start_az_deg = 0,
-    end_az_deg = 0,
-    start_el_deg = 0,
-    end_el_deg = 50,
-    angle_list = "304,309.5,316,329",
-    angle_tolerance_deg = 0.5,
-    nsecs_wait = 0
-  }
-  ,
-       {
-    scan_name = "vert",
-    scan_mode = SCAN_MODE_SURVEILLANCE,
-    az_rate_deg_per_sec = 11,
-    el_rate_deg_per_sec = 20,
-    start_az_deg = 340,
-    end_az_deg = 20,
-    start_el_deg = 0,
-    end_el_deg = 0,
-    angle_list = "90.0",
+    angle_list = "-2.0,-1.8,-1.6,-1.4,-1.2,-1.0,-0.8,-0.6,-0.4,-0.2,0.0,0.2,0.4,0.6,0.8,1.0,1.2,1.4,1.6,1.8,2.0",
     angle_tolerance_deg = 0.1,
     nsecs_wait = 0
   }
@@ -396,7 +368,7 @@ transition_angle_tolerance = 0.2;
 // Type: double
 //
 
-azimuth_correction_deg = 0;
+azimuth_correction_deg = $(TRUCK_HEADING_DEG);
 
 ///////////// sector_widen_secs ///////////////////////
 //

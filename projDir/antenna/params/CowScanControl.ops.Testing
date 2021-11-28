@@ -32,7 +32,8 @@
 //     DEBUG_EXTRA
 //
 
-debug = DEBUG_NORM;
+//debug = DEBUG_NORM;
+debug = DEBUG_EXTRA;
 
 ///////////// instance ////////////////////////////////
 //
@@ -125,7 +126,8 @@ time_series_fmq_path = "$(DATA_DIR)/fmq/ts/shmem_high_with_angles_10300";
 // Type: boolean
 //
 
-start_reading_at_fmq_start = FALSE;
+start_reading_at_fmq_start = TRUE;
+//start_reading_at_fmq_start = FALSE;
 
 //======================================================================
 //
@@ -317,41 +319,41 @@ scan_sequence = {
   {
     scan_name = "sur",
     scan_mode = SCAN_MODE_SURVEILLANCE,
-    az_rate_deg_per_sec = 24,
+    az_rate_deg_per_sec = 25,
     el_rate_deg_per_sec = 20,
     start_az_deg = 340,
     end_az_deg = 20,
-    start_el_deg = 0,
-    end_el_deg = 0,
-    angle_list = "2,4,6,8,10,12,15,2,4,6,8,10,12,15",
-    angle_tolerance_deg = 0.1,
+    start_el_deg = -999,
+    end_el_deg = -999,
+    angle_list = "85.2,84.4,83.6,82.8,82.0,81.6,81.2,80.8,80.4",
+    angle_tolerance_deg = 0.25,
     nsecs_wait = 0
   }
   ,
+//  {
+//    scan_name = "rhi",
+//    scan_mode = SCAN_MODE_RHI,
+//    az_rate_deg_per_sec = 20,
+//    el_rate_deg_per_sec = 6,
+//    start_az_deg = 0,
+//    end_az_deg = 0,
+//    start_el_deg = 0,
+//    end_el_deg = 50,
+//    angle_list = "304,309.5,316,320",
+//    angle_tolerance_deg = 0.5,
+//    nsecs_wait = 0
+//  }
+//  ,
   {
-    scan_name = "rhi",
-    scan_mode = SCAN_MODE_RHI,
-    az_rate_deg_per_sec = 20,
-    el_rate_deg_per_sec = 6,
-    start_az_deg = 0,
-    end_az_deg = 0,
-    start_el_deg = 0,
-    end_el_deg = 50,
-    angle_list = "304,309.5,316,329",
-    angle_tolerance_deg = 0.5,
-    nsecs_wait = 0
-  }
-  ,
-       {
     scan_name = "vert",
-    scan_mode = SCAN_MODE_SURVEILLANCE,
-    az_rate_deg_per_sec = 11,
-    el_rate_deg_per_sec = 20,
+    scan_mode = SCAN_MODE_VERTICAL_POINTING,
+    az_rate_deg_per_sec = 24,
+    el_rate_deg_per_sec = 10,
     start_az_deg = 340,
     end_az_deg = 20,
-    start_el_deg = 0,
-    end_el_deg = 0,
-    angle_list = "90.0",
+    start_el_deg = -999,
+    end_el_deg = -999,
+    angle_list = "85.0",
     angle_tolerance_deg = 0.1,
     nsecs_wait = 0
   }

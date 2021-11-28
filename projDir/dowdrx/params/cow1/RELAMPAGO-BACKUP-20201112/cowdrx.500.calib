@@ -293,7 +293,7 @@ pentek_sampling_frequency_hz = 1.2e+08;
 // Type: double
 //
 
-prt_sec = 0.001;
+prt_sec = 0.0005;
 
 ///////////// prt_is_staggered ////////////////////////
 //

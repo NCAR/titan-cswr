@@ -1,0 +1,83 @@
+##############################################################################
+# SYSTEM processes
+#
+DsServerMgr   primary    start_DsServerMgr           snuff_inst        
+DataMapper    primary    start_DataMapper            kill_DataMapper   
+DsFileDist    quicklook  start_DsFileDist.quicklook  snuff_inst        
+#
+###############################################################################
+# MOMENTS
+#
+Iq2Dsr      mgenc.high     start_Iq2Dsr.mgenc.high              snuff_inst    
+Iq2Dsr      mgenc.low      start_Iq2Dsr.mgenc.low               snuff_inst    
+Dsr2Radx    cfradial.high  start_Dsr2Radx.cfradial.high   snuff_inst    
+Dsr2Radx    cfradial.low   start_Dsr2Radx.cfradial.low    snuff_inst    
+Dsr2Radx    dorade.high    start_Dsr2Radx.dorade.high     snuff_inst    
+Dsr2Radx    dorade.low     start_Dsr2Radx.dorade.low      snuff_inst    
+###############################################################################
+# Merging moments
+#
+#DsrMerge  ops                start_DsrMerge.ops                snuff_inst 
+#Dsr2Radx  cfradial.combined  start_Dsr2Radx.cfradial.combined  snuff_inst 
+#Dsr2Radx  dorade.combined    start_Dsr2Radx.dorade.combined    snuff_inst 
+###############################################################################
+# Time series recording
+#
+TsSmartSave   high      start_TsSmartSave.high   snuff_inst    
+TsSmartSave   low       start_TsSmartSave.low    snuff_inst    
+###############################################################################
+# Status monitoring
+#
+TsStatusMonitor   high      start_TsStatusMonitor.high   snuff_inst    
+TsStatusMonitor   low       start_TsStatusMonitor.low    snuff_inst    
+###############################################################################
+# Transmit quicklook data to ftp
+#
+#InputWatcher  quicklook.high start_InputWatcher.quicklook.high snuff_inst    
+###############################################################################
+# RADAR MONITOR display
+RadMon         high       start_RadMon.high          snuff_inst    
+RadMon         low        start_RadMon.low           snuff_inst    
+###############################################################################
+# QUICKLOOK DATA
+#
+Dsr2Radx  quicklook.high.sur   start_Dsr2Radx.quicklook.high.sur  snuff_inst    
+Dsr2Radx  quicklook.low.sur    start_Dsr2Radx.quicklook.low.sur   snuff_inst    
+#Dsr2Radx  quicklook.high.rhi   start_Dsr2Radx.quicklook.high.rhi  snuff_inst    
+#Dsr2Radx  quicklook.low.rhi    start_Dsr2Radx.quicklook.low.rhi   snuff_inst    
+###############################################################################
+# FTP quicklook data to OPS center - high data only
+#
+#LdataWatcher  data_to_catalog.high  start_LdataWatcher.data_to_catalog.high snuff_inst 
+LdataWatcher  quicklook.high.sur  start_inst(archive)  snuff_inst 
+#LdataWatcher  quicklook.low.sur  start_inst(archive)  snuff_inst 
+###############################################################################
+# Creating quicklook images
+#
+#LdataWatcher  quicklook.high  start_LdataWatcher.quicklook.high snuff_inst 
+#LdataWatcher  quicklook.low   start_LdataWatcher.quicklook.low  snuff_inst 
+###############################################################################
+# FTP data to CATALOG - high data only
+#
+#LdataWatcher  data_to_catalog.high  start_LdataWatcher.data_to_catalog.high snuff_inst 
+#LdataWatcher  data_to_catalog.low   start_LdataWatcher.data_to_catalog.low  snuff_inst 
+###############################################################################
+# FTP data to CSWR
+#
+#LdataWatcher  data_to_cswr.high  start_LdataWatcher.data_to_cswr.high snuff_inst 
+#LdataWatcher  data_to_cswr.low   start_LdataWatcher.data_to_cswr.low  snuff_inst 
+###############################################################################
+# FTP images to CSWR
+#
+#LdataWatcher  images_to_cswr.high  start_LdataWatcher.images_to_cswr.high snuff_inst loca#lhost
+#LdataWatcher  images_to_cswr.low   start_LdataWatcher.images_to_cswr.low  snuff_inst 
+###############################################################################
+# RHI location
+#
+#Rhi2Spdb        ops          start_Rhi2Spdb.ops           snuff_inst    
+######################################################################################
+# Solar cals
+#
+#SunCal          high         start_SunCal.high            snuff_inst    
+#SunCal          low          start_SunCal.low             snuff_inst 
+######################################################################################

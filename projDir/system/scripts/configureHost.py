@@ -53,17 +53,17 @@ def main():
     # debug print
 
     if (options.debug):
-        print >>sys.stderr, "Running script: ", os.path.basename(__file__)
-        print >>sys.stderr, ""
-        print >>sys.stderr, "  Options:"
-        print >>sys.stderr, "    Debug: ", options.debug
-        print >>sys.stderr, "    Verbose: ", options.verbose
-        print >>sys.stderr, "    homeDir: ", homeDir
-        print >>sys.stderr, "    projDir: ", projDir
-        print >>sys.stderr, "    controlDir: ", controlDir
-        print >>sys.stderr, "    gitDir: ", options.gitDir
-        print >>sys.stderr, "    gitProjDir: ", gitProjDir
-        print >>sys.stderr, "    gitSystemDir: ", gitSystemDir
+        print("Running script: ", os.path.basename(__file__), file=sys.stderr)
+        print("", file=sys.stderr)
+        print("  Options:", file=sys.stderr)
+        print("    Debug: ", options.debug, file=sys.stderr)
+        print("    Verbose: ", options.verbose, file=sys.stderr)
+        print("    homeDir: ", homeDir, file=sys.stderr)
+        print("    projDir: ", projDir, file=sys.stderr)
+        print("    controlDir: ", controlDir, file=sys.stderr)
+        print("    gitDir: ", options.gitDir, file=sys.stderr)
+        print("    gitProjDir: ", gitProjDir, file=sys.stderr)
+        print("    gitSystemDir: ", gitSystemDir, file=sys.stderr)
 
     # read current host type if previously set
 
@@ -74,19 +74,19 @@ def main():
         prevHostType = hostTypeFile.read()
         prevHostType = prevHostType.strip(string.whitespace)
     if (options.debug):
-        print >>sys.stderr, "    prevHostType: ", prevHostType
+        print("    prevHostType: ", prevHostType, file=sys.stderr)
 
     # get the host type interactively
 
-    hostTypes = [ 'mgen6', 'mgen7', 'mgen8', 'mgenr', 'mgenc',
-                  'drx6', 'drx7', 'drx8', 'drxr', 'drxc' ]
+    hostTypes = [ 'mgen6', 'mgen7', 'mgen8', 'mgenr', 'mgenc', 'mgenc2',
+                  'drx6', 'drx7', 'drx8', 'drxr', 'drxc', 'drxc2' ]
 
-    print ""
-    print "Choose host type from the following list"
-    print "       or hit enter to use host type shown:"
+    print("")
+    print("Choose host type from the following list")
+    print("       or hit enter to use host type shown:")
     for hostType in hostTypes:
-        print "     ", hostType
-    hostType = raw_input('    ............. (' + prevHostType + ')? ')
+        print("     ", hostType)
+    hostType = input('    ............. (' + prevHostType + ')? ')
     if (len(hostType) < 4):
         hostType = prevHostType
     else:
@@ -95,7 +95,7 @@ def main():
             if (hostType == htype):
                 typeIsValid = True
         if (typeIsValid != True):
-            print >>sys.stderr, "ERROR - invalid host type: ", hostType
+            print("ERROR - invalid host type: ", hostType, file=sys.stderr)
             sys.exit(1)
 
     gitProjDir = os.path.join(options.gitDir, "projDir")
@@ -108,17 +108,17 @@ def main():
 
     # banner
 
-    print " "
-    print "*****************************************************************"
-    print
-    print "  configure DOW"
-    print
-    print "  runtime: " + str(datetime.datetime.now())
-    print
-    print "  host type: ", hostType
-    print
-    print "*****************************************************************"
-    print " "
+    print(" ")
+    print("*****************************************************************")
+    print()
+    print("  configure DOW")
+    print()
+    print("  runtime: " + str(datetime.datetime.now()))
+    print()
+    print("  host type: ", hostType)
+    print()
+    print("*****************************************************************")
+    print(" ")
 
     # make links to the dotfiles in git projDir
     
@@ -162,11 +162,13 @@ def main():
     radar_name['drx8'] = 'dow8'
     radar_name['drxr'] = 'dowr'
     radar_name['drxc'] = 'cow1'
+    radar_name['drxc2'] = 'cow2'
     radar_name['mgen6'] = 'dow6'
     radar_name['mgen7'] = 'dow7'
     radar_name['mgen8'] = 'dow8'
     radar_name['mgenr'] = 'dowr'
     radar_name['mgenc'] = 'cow1'
+    radar_name['mgenc2'] = 'cow2'
     
     sParamsDir = os.path.join(projDir, 'system/params')
     os.chdir(sParamsDir)
@@ -184,7 +186,7 @@ def main():
     installDataDir = os.path.join(options.dataDir, dataSubDir)
 
     if (options.debug):
-        print >>sys.stderr, "Install data dir: ", installDataDir
+        print("Install data dir: ", installDataDir, file=sys.stderr)
 
     # create symlink to data
 
@@ -241,10 +243,10 @@ def removeSymlink(dir, linkName):
 
     if (os.path.exists(linkName)):
         # link name exists but is not a link
-        print >>sys.stderr, "ERROR - trying to remove symbolic link"
-        print >>sys.stderr, "  dir: ", dir
-        print >>sys.stderr, "  linkName: ", linkName
-        print >>sys.stderr, "This is NOT A LINK"
+        print("ERROR - trying to remove symbolic link", file=sys.stderr)
+        print("  dir: ", dir, file=sys.stderr)
+        print("  linkName: ", linkName, file=sys.stderr)
+        print("This is NOT A LINK", file=sys.stderr)
         sys.exit(1)
 
 ########################################################################
@@ -253,17 +255,17 @@ def removeSymlink(dir, linkName):
 def runCommand(cmd):
 
     if (options.debug == True):
-        print >>sys.stderr, "running cmd:",cmd
+        print("running cmd:",cmd, file=sys.stderr)
 
     try:
         retcode = subprocess.call(cmd, shell=True)
         if retcode < 0:
-            print >>sys.stderr, "Child was terminated by signal: ", -retcode
+            print("Child was terminated by signal: ", -retcode, file=sys.stderr)
         else:
             if (options.verbose == True):
-                print >>sys.stderr, "Child returned code: ", retcode
-    except OSError, e:
-        print >>sys.stderr, "Execution failed:", e
+                print("Child returned code: ", retcode, file=sys.stderr)
+    except OSError as e:
+        print("Execution failed:", e, file=sys.stderr)
 
 ########################################################################
 # Run - entry point
